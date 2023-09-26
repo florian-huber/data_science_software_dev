@@ -1,0 +1,12 @@
+name: python_software_dev
+dependencies:
+  - python=3.10
+  - numpy
+  - numba
+  - dask
+  - matplotlib
+  - jupyter
+  - pytest
+  - pylint
+  - black
+  - snakeviz
