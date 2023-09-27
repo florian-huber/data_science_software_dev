@@ -1,7 +1,17 @@
 # Data Science Software Development
 ### (Kurs "Data Science und KI Infrastrukturen") im Studiengang DAISY an der HSD, Düsseldorf.
 
-Software development basics for Data Scientists.
+Der Kurs hat zum Ziel angehende Data Scientists Programmier- und Software-Development-Skills beizubringenn über das grundlegenden Python Scripting-Niveau hinaus.
+
+Dazu zählen:
+- Shell/Bash scripting
+- git & GitHub
+- Entwicklung im Team
+- Clean code, code design, best practices
+- Unit tests
+- Continuous integration
+- Performance profiling & optimization
+- Cloud computing
 
 
 ### Create Environment
