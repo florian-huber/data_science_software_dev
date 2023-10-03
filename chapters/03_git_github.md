@@ -13,13 +13,13 @@ Doch die Realität zeigt, dass diese Methode zahlreiche Fallstricke birgt:
 
 Der letzte Punkt ist besonders problematisch, wenn Teammitglieder asynchron arbeiten, d.h., nicht gleichzeitig oder an verschiedenen Orten. Das manuelle Zusammenführen (oder "Mergen") von Dateien kann zu Fehlern führen, Überschneidungen verursachen und ist sehr zeitaufwändig. Einige Änderungen könnten sogar verloren gehen oder überschrieben werden.
 
-![fig_versioning_unprofessional_way_01](..\images\fig_versioning_unprofessional_way_01.png)
+![fig_versioning_unprofessional_way_01](../images/fig_versioning_unprofessional_way_01.png)
 
 Hier kommt die Versionskontrolle ins Spiel! Sie stellt eine elegante Lösung für diese Herausforderungen dar und ermöglicht es Einzelpersonen und Teams, effizienter und fehlerfreier zu arbeiten.
 
 
 
-![fig_versioning_unprofessional_way_02](..\images\fig_versioning_unprofessional_way_02.png)
+![fig_versioning_unprofessional_way_02](../images/fig_versioning_unprofessional_way_02.png)
 
 ## Warum Versionskontrolle (version control)?
 
@@ -43,7 +43,7 @@ Git speichert nicht komplette Dateikopien, sondern konzentriert sich auf die Unt
 
 
 
-![fig_versioning_deltas](..\images\fig_versioning_deltas.png)
+![fig_versioning_deltas](../images/fig_versioning_deltas.png)
 
 ## Grundlegender Prozess
 
@@ -55,13 +55,13 @@ Bei Git geht es um den Zyklus von Änderungen, die in drei Phasen auftreten:
 
 
 
-![fig_git_basic_process](..\images\fig_git_basic_process.png)
+![fig_git_basic_process](../images/fig_git_basic_process.png)
 
 ### Branches
 
 Branches sind parallele Versionen eines Projekts. Sie ermöglichen es, an neuen Features oder Ideen zu arbeiten, ohne die  Haupt-"Produktions"-Version des Codes zu beeinflussen. Wenn ein Feature  fertig ist, kann es in den Hauptzweig (meistens "master" oder "main"  genannt) eingefügt (gemerged) werden.
 
-![fig_git_basic_process_branches](..\images\fig_git_basic_process_branches.png)
+![fig_git_basic_process_branches](../images/fig_git_basic_process_branches.png)
 
 ## Es geht nicht nur um eine Datei!
 
