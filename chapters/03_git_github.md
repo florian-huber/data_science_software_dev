@@ -85,3 +85,9 @@ Da Git in der Softwarebranche weit verbreitet ist, gibt es zahlreiche Ressourcen
 - [Atlassian's Git Guide](https://www.atlassian.com/git)
 
 **Empfehlung:** Es kann auch hilfreich sein, interaktive Tutorials oder Kurse zu belegen, um die praktische Anwendung von Git zu üben.
+
+
+
+### Weitere Quellen:
+
+Für die Live Coding Sessions wird Material vom [Data Carpentry Git Course](https://swcarpentry.github.io/git-novice/) verwendet. Anders als die Links weiter oben ist das Material aber nicht primär zum Selbststudium gedacht.
