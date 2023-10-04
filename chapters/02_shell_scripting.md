@@ -139,8 +139,6 @@ Nicht umsonst ist im Hacking-Bereich Bash UND Python recht beliebt. Beides läss
 Über `python my_python_code.py` lassen sich von einem Bash-Skript aus Python-Skripte ausführen.
 
 ```
-#!/usr/bin/env python3
-
 print("Das ist Python-Code!")
 ```
 
