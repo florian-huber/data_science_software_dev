@@ -40,7 +40,9 @@ Wir starten langsam und schauen uns erst einmal die Standard-Befehle an um Ordne
 
 Befehle sind immer wie folgt aufgebaut:
 
-![image-20220909135234762](C:\Users\flori\AppData\Roaming\Typora\typora-user-images\image-20220909135234762.png)
+![Shell command structure](../images/shell_command_syntax.svg)
+
+(Illustration taken from Data Carpentry course)
 
 Anders als andere Programmiersprachen ist **bash** ein CLI (Command-Line Interface) und funktioniert immer im Kontext des aktuellen Verzeichnisses.
 
