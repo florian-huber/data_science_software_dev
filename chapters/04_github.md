@@ -27,7 +27,10 @@ Mit Git arbeitet man zunächst lokal auf dem eigenen Computer (lokales Repositor
 
 - Bei diesem Ansatz haben alle Teammitglieder Schreibzugriff auf das zentrale Repository.
 - Die Entwicklung erfolgt hauptsächlich über verschiedene Branches, wobei jeder Branch eine bestimmte Aufgabe oder ein Feature repräsentiert.
-- Nachdem die Arbeit in einem Branch abgeschlossen ist, wird er in den Hauptbranch (oft "master" oder "main" genannt) gemerged.
+- Nachdem die Arbeit in einem Branch abgeschlossen ist, wird er in den Hauptbranch (oft "master" oder "main" genannt) gemerged. 
+  In der Regel geschieht dies über einen Pull Request um sowohl die Dokumentation als auch die Qualität des Projektes zu verbessern.
+
+![Centralized Github Workflow](C:\HSD\OneDrive - Hochschule Düsseldorf\DAISY\data_science_software_dev\images\fig_github_centralized_workflow.png)
 
 ### Working in Teams: Fork-based Workflow
 
@@ -37,10 +40,10 @@ Dieser Workflow wird vor allem in großen Projekten verwendet, insbesondere bei 
 - Entwickler führen Änderungen in ihrem eigenen Fork durch und wenn sie bereit sind, ihre Änderungen mit dem Hauptrepository zu teilen, erstellen sie einen "Pull Request".
 - Ein "Pull Request" ist eine Anfrage, Änderungen aus dem Fork in das Hauptrepository zu übernehmen. Es bietet auch eine Plattform für Code-Reviews und Diskussionen, bevor die Änderungen übernommen werden.
 
-
+![Fork-based Github Workflow](C:\HSD\OneDrive - Hochschule Düsseldorf\DAISY\data_science_software_dev\images\fig_github_fork-based_workflow.png)
 
 ## Getting started
 
 Wie auch zu Git, findet ihr im Netz viele Tutorials und Informationen zum Arbeiten mit GitHub.
-Zum Beispiel die [Einführungsseiten von GitHub](https://docs.github.com/en/get-started).
+Zum Beispiel die [Einführungsseiten n GitHub](https://docs.github.com/en/get-started).
 
