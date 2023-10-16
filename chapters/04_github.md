@@ -23,6 +23,10 @@ Ein öffentliches GitHub-Repository kann viel über einen Entwickler aussagen. E
 
 Mit Git arbeitet man zunächst lokal auf dem eigenen Computer (lokales Repository). Wenn man dann Änderungen mit anderen teilen möchte oder eine sichere Kopie seiner Arbeit in der Cloud haben möchte, "pusht" man die Änderungen zu einem Remote-Repository, z.B. auf GitHub.
 
+![GitHub Areas and Remote](../images/fig_github_areas_remote.png)
+
+
+
 ### Working in Teams: Centralized Workflow
 
 - Bei diesem Ansatz haben alle Teammitglieder Schreibzugriff auf das zentrale Repository.
