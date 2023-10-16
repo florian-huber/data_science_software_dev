@@ -25,6 +25,12 @@ Mit Git arbeitet man zunächst lokal auf dem eigenen Computer (lokales Repositor
 
 ![GitHub Areas and Remote](../images/fig_github_areas_remote.png)
 
+Um das lokale Repository mit der online Repository abzugleichen werden wir v.a. die folgenden Befehle nutzen
+
+- `git push` - damit werden die neuen Commits ins online Repository verschoben
+- `git pull` - damit werden neue Commits aus dem online ins lokale Working Directory verschoben. 
+  (Achtung, d.h. es werden eventuell gerade erst bearbeitete Änderungen von uns überschrieben, daher vor git pull darauf achten, dass alle Änderungen bereits zu Git hinzugefügt wurden --> `git status`)
+
 
 
 ### Working in Teams: Centralized Workflow
@@ -45,6 +51,12 @@ Dieser Workflow wird vor allem in großen Projekten verwendet, insbesondere bei 
 - Ein "Pull Request" ist eine Anfrage, Änderungen aus dem Fork in das Hauptrepository zu übernehmen. Es bietet auch eine Plattform für Code-Reviews und Diskussionen, bevor die Änderungen übernommen werden.
 
 ![Fork-based Github Workflow](../images/fig_github_fork-based_workflow.png)
+
+In diesem Fall ist die Struktur der Abläufe in Git noch einen Schritt komplexer. Es gibt nun nicht mehr nur unsere lokale Kopie sowie `origin` (Remote Repository im eigenen GitHub Account, oder Remote Repository mit umfangreichen Schreibrechten), sondern auch noch `upstream` als weiteres Remote Repository. Letzteres ist in der Regel das "Hauptrepository", also nach außen der zentrale Anlaufpunkt. In vielen Fällen haben Nutzer\*innen auch gar keine direkten Schreibrechte für dieses Repository, z.B. bei großen Community-Projekten. Der hier beschriebene Workflow wird aber auch genutzt um einem beliebigen auf GitHub stehenden Repository eigene Änderungen vorschlagen zu können (wenn dies die jeweiligen Rechteinhaber\*innen wünschen).
+
+![GitHub Areas and Remote](../images/fig_github_areas_remote_fork.png)
+
+
 
 ## Getting started
 
