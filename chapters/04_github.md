@@ -1,12 +1,12 @@
 # GitHub
 
-Während **Git** als dezentrales Versionskontrollsystem dient, das in erster Linie lokal auf dem Computer eines Entwicklers betrieben wird, kommt der wahre Mehrwert von Git häufig erst dann zur Geltung, wenn es in Verbindung mit einem zentralen Repository-Hosting-Service verwendet wird. Hier treten Plattformen wie **GitHub**, **Bitbucket** und **GitLab** in Erscheinung.
+Während **Git** als dezentrales Versionskontrollsystem dient, das in erster Linie lokal auf dem Computer eines Entwicklers betrieben wird, kommt der wahre Mehrwert von Git häufig erst dann zur Geltung, wenn es in Verbindung mit einem zentralen Repository-Hosting-Service verwendet wird. Hier treten Plattformen wie **GitHub**, **GitLab** und **Bitbucket** in Erscheinung.
 
 ## Kurzer Vergleich
 
 - **GitHub**: Eine der populärsten Plattformen für das Hosting von Git-Repositories. Sie bietet eine benutzerfreundliche Oberfläche, integrierte Issue-Tracking-Tools und einen lebhaften Marktplatz für Erweiterungen. Mit der jüngsten Übernahme durch Microsoft hat GitHub auch eine enge Integration in viele Microsoft-Produkte, insbesondere Visual Studio, erhalten.
-- **Bitbucket**: Ursprünglich von Atlassian entwickelt und bietet eine tiefe Integration mit anderen Atlassian-Produkten wie JIRA und Confluence. Es unterstützt sowohl Git als auch Mercurial und ist besonders in Unternehmen beliebt.
-- **GitLab**: Ein Open-Source-Git-Repository-Manager, der sowohl als selbst gehostete Lösung als auch in einer Cloud-basierten Version verfügbar ist. GitLab bietet viele fortschrittliche Features, insbesondere im Bereich der CI/CD-Integration.
+- **GitLab**: Ein Open-Source-Git-Repository-Manager, der sowohl als selbst gehostete Lösung als auch in einer Cloud-basierten Version verfügbar ist. GitLab bietet viele fortschrittliche Features, insbesondere im Bereich der CI/CD-Integration. Durch die Möglichkeit des eigenen Hostings wird es oft innerhalb von Firmen verwendet.
+- **Bitbucket**: Ursprünglich von Atlassian entwickelt und bietet eine tiefe Integration mit anderen Atlassian-Produkten wie JIRA und Confluence. Es unterstützt sowohl Git als auch Mercurial und wird in vielen Unternehmen eingesetzt.
 
 Für den Zweck dieser Veranstaltung werden wir uns auf **GitHub** konzentrieren.
 
