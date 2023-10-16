@@ -56,7 +56,16 @@ In diesem Fall ist die Struktur der Abläufe in Git noch einen Schritt komplexer
 
 ![GitHub Areas and Remote](../images/fig_github_areas_remote_fork.png)
 
+###  Pull Request
 
+**Pull** **Requests** sind ein zentraler Prozess auf GitHub (oder anderen online Repository Plattformen) um Code-Änderungen besser beurteilen und einbringen zu können. 
+
+Auch wenn „pull“ im Namen steckt, könnte man das Ganze im Sinne von git auch als Push oder Merge sehen. Wichtig ist: eine Änderung des Codes soll stattfinden. 
+
+- Entwickler*in programmiert ein neues Feature in ihrem eigenen Repository (und/oder einem eigenen Branch).
+- Pull Request ist eine Anfrage ob der veränderte Code in das zentrale online Repository eingebracht werden kann.
+- Entwickler*innen begutachten und diskutieren die Änderungen (--> Code Review!). Weitere Änderungen können eingebaut werden.
+- Wenn Verantwortliche/r („maintainer“) einverstanden ist wird der neue Code „gemerged“.
 
 ## Getting started
 
