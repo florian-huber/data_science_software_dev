@@ -56,7 +56,7 @@ In diesem Fall ist die Struktur der Abläufe in Git noch einen Schritt komplexer
 
 ![GitHub Areas and Remote](../images/fig_github_areas_remote_fork.png)
 
-###  Pull Request
+### Pull Request
 
 **Pull** **Requests** sind ein zentraler Prozess auf GitHub (oder anderen online Repository Plattformen) um Code-Änderungen besser beurteilen und einbringen zu können. 
 
