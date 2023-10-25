@@ -4,9 +4,11 @@ dependencies:
   - numpy
   - numba
   - dask
+  - flake8
   - matplotlib
   - jupyter
   - pytest
   - pylint
+  - ruff
   - black
   - snakeviz
