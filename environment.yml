@@ -3,6 +3,7 @@ dependencies:
   - python=3.10
   - numpy
   - numba
+  - cookiecutter
   - dask
   - flake8
   - matplotlib
