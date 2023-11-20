@@ -410,7 +410,7 @@ Die Ausgabe die wir bekommen ist aber noch nicht sehr informativ. Darum besser:
 black code_example_for_linting.py --check --diff
 ```
 
-Als nächstes einmal ausprobieren wie `black` als *Formatter* funktioniert (was eigentlich auch der Standard-Modus von `black` ist). Um die Datei nicht zu überschreiben, bitte einmal vorher die Datei kopieren und umbenennen (z.B. in bash mit `mv code_example_for_linting.py code_example_before_black.py`).
+Als nächstes einmal ausprobieren wie `black` als *Formatter* funktioniert (was eigentlich auch der Standard-Modus von `black` ist). Um die Datei nicht zu überschreiben, bitte einmal vorher die Datei kopieren und umbenennen (z.B. in bash mit `cp code_example_for_linting.py code_example_before_black.py`).
 
 Dann
 
