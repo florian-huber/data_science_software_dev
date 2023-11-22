@@ -64,10 +64,23 @@ We start with two main functions:
 2. `play_game(names)`
 
 ```python
-# blackjack.py
 def count_cards(cards):
-    """Counts card values in blackjack."""
-    # Implementation details...
+    """Counts the total value of the given cards in a blackjack game."""
+    card_values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6,
+                   '7': 7, '8': 8, '9': 9, '10': 10,
+                   'J': 10, 'Q': 10, 'K': 10, 'A': 11}
+    total = 0
+    aces = 0
+    for card in cards:
+        total += card_values[card]
+        if card == 'A':
+            aces += 1
+
+    while total >= 21 and aces:
+        total -= 10
+        aces -= 1
+
+    return total
 
 def play_game(names):
     """Game logic for blackjack."""
