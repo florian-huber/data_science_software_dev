@@ -51,11 +51,17 @@ The `tmp_path` fixture provides a temporary file system path where files and dir
 
 ```python
 def test_create_file(tmp_path):
-    d = tmp_path / "sub"
-    d.mkdir()
-    p = d / "hello.txt"
-    p.write_text("hello, world")
-    assert p.read_text() == "hello, world"
+    temp_dir = tmp_path / "sub"
+    temp_dir.mkdir()
+    temp_file = temp_dir / "hello.txt"
+    temp_file.write_text("hello, world")
+    
+   
+    # Test if the file exists  
+    assert temp_file.is_file()  
+  
+    # Check the file's contents  
+    assert temp_file.read_text() == "Hello, pytest!"
 ```
 
 ## Monkeypatch
