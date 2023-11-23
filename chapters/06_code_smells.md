@@ -18,8 +18,7 @@ From a bird's eye perspective, issues in the code can range from overtly critica
 
 **Task:** Identify the problems or non-ideal patterns in the following code and then discuss and improve it with your fellow students.
 
-```
-python
+```python
 print("How good do you feel today? (from 1=horrible to 10=perfect)?")
 user_input1 = input("Your answer:")
 if user_input1 == "":
@@ -158,8 +157,7 @@ while True:
 
 **Improved Code:**
 
-```
-python
+```python
 def process_elements(input_lst):
     if not input_lst:
         return
@@ -187,8 +185,7 @@ Code with unclear logic, especially involving negations, can be very challenging
 
 **Example:**
 
-```
-python
+```python
 if not my_number != 6 or not my_number != 66:
     print ("Oh oh!")
 else:
@@ -199,8 +196,7 @@ else:
 
 **Improved Code:**
 
-```
-python
+```python
 if my_number == 6 or my_number == 66:
     print("Oh oh!")
 else:
