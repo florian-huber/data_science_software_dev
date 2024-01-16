@@ -8,6 +8,7 @@ Dazu zählen:
 - git & GitHub
 - Entwicklung im Team
 - Clean code, code design, best practices
+- Debugging
 - Unit tests
 - Continuous integration
 - Performance profiling & optimization
