@@ -1,6 +1,7 @@
-# Data Science und AI Infrastrukturen
+# Einführung
+Dieses Skript begleitet den Kurs "Data Science und AI Infrastrukturen" im Studiengang DAISY an der [Hochschule Düsseldorf](https://www.hs-duesseldorf.de/).
 
-Bisher (1. und 2. Semester) haben wir mit Hilfe von Python, zahlreichen Python Bibliotheken und Jupyter Notebooks komplette Data Science Workflows umgesetzt. Die Vorteile von dieser Art zu arbeiten liegen auf der Hand:
+Bisher (1. und 2. Semester) haben wir, z.B. in der [Einführung Programmieren](https://florian-huber.github.io/python-introduction/) und in der [Einführung Data Science](https://florian-huber.github.io/data_science_course/) mit Hilfe von Python, zahlreichen Python Bibliotheken und Jupyter Notebooks komplette Data Science Workflows umgesetzt. Die Vorteile von dieser Art zu arbeiten liegen auf der Hand:
 
 - schnelle Umsetzbarkeit
 - Kompletter Ablauf von Datenimport bis hin zu den Visualisierungen in einer Umgebung
@@ -12,7 +13,7 @@ Ideal für den Data Science Prozess!
 
 Oder doch nicht?
 
-### Grenzen des Notebooks
+## Grenzen des Notebooks
 
 Jupyter Notebooks sind für viele Anwendungen im Data Science Bereich sehr nützlich und werden (aus gutem Grund) in der Praxis auch sehr häufig verwendet. Allerdings hat diese Form zu arbeiten einige sehr wichtige Begrenzungen!
 
@@ -21,7 +22,7 @@ Jupyter Notebooks sind für viele Anwendungen im Data Science Bereich sehr nütz
 
 Über diese Schritte hinaus, sind Jupyter Notebooks allerdings nicht mehr nutzbar, oder zumindest nicht sehr praktisch. Aber was sollen diese Schritte darüber hinaus eigentlich sein?
 
-#### Getting serious
+### Getting serious
 
 Falls es unser Ziel war, nur einmalig bestimmte Analysen durchzuführen, Korrelationen zu finden, eine erste Aussage zu treffen etc., dann kann es gut sein, dass ein komplettes Data Science Projekt vollständig in Jupyter Notebook(s) umsetzbar ist. Das fertige Notebook und die damit generierten Grafiken sind quasi unser Endprodukt und wir können unser Projekt danach abschließen.
 
@@ -45,9 +46,8 @@ Für alle diese Punkte sind Jupyter Notebooks nicht gut geeignet.
 
 Eine weiter Grenze der Notebooks sind
 
-#### Performance-Limits
+### Performance-Limits
 
 Notebooks funktionieren gut solange sie nicht mehr als die frei verfügbaren Ressourcen unseres Computers  in Anspruch nehmen. D.h. nur soviel Arbeitsspeicher wie vorhanden und nur soviel CPU/GPU das wir nicht tagelang auf Berechnungen warten müssen. Je nach Bereich und Aufgabe werden diese Grenzen aber oft sehr schnell gesprengt! 
 
 Frage: Gab es schon Probleme, bei denen die Hardware die zu Verfügung stand nicht mehr ausgereicht hat?
-

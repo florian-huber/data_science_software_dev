@@ -61,7 +61,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3. Git &amp; GitHub" href="03_git_github.html" />
-    <link rel="prev" title="1. Data Science und AI Infrastrukturen" href="01_introduction.html" />
+    <link rel="prev" title="1. Einführung" href="01_introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -181,7 +181,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_introduction.html">1. Data Science und AI Infrastrukturen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_introduction.html">1. Einführung</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Shell Scripting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_git_github.html">3. Git &amp; GitHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_github.html">4. GitHub</a></li>
@@ -398,23 +398,35 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zuruck-in-die-zukunft-shell-scripting">2.1. Zurück in die Zukunft… Shell scripting!</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unix">2.1.1. Unix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">2.1.2. Linux</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shell">2.1.3. Shell</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash">2.1.4. Bash</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-shell-scripting-lernen">2.1.1. Warum Shell Scripting lernen?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.2. Bash</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teil-1-dateien-und-ordner">2.2.1. Teil 1 - Dateien und Ordner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-ist-shell-scripting-unverzichtbar">2.2. Warum ist Shell Scripting unverzichtbar?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einfuhrung-der-begriffe-bash-cli-shell">2.3. Einführung der Begriffe: Bash, CLI, Shell</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#andere-shells">2.3.1. Andere Shells:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nachster-schritt-dateien-verzeichnisse-erstellen-und-loschen">2.3. Nächster Schritt: Dateien &amp; Verzeichnisse erstellen und löschen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-skripte">2.4. Bash-Skripte</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-in-der-kommandozeilen-ubergeben">2.4.1. Argumente in der Kommandozeilen übergeben</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-und-einrichtung">2.4. Installation und Einrichtung</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-unter-windows-via-wsl">2.4.1. Bash unter Windows (via WSL)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternativ-git-bash">2.4.2. Alternativ: Git Bash</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macos-bash-ist-vorinstalliert">2.4.3. MacOS: Bash ist vorinstalliert</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zum-schluss-bash-python">2.5. Zum Schluss: Bash + Python!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#und-noch-vieles-mehr">2.6. Und noch vieles mehr.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wenn-du-macos-nutzt-hast-du-gluck-bash-ist-bereits-vorinstalliert-du-kannst-einfach-das-terminal-offnen-und-loslegen">2.5. Wenn du MacOS nutzt, hast du Glück – Bash ist bereits vorinstalliert. Du kannst einfach das Terminal öffnen und loslegen.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash">2.5.1. Bash</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#navigieren-im-dateisystem">2.5.2. Navigieren im Dateisystem:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nachster-schritt-dateien-verzeichnisse-erstellen-und-loschen">2.5.3. Nächster Schritt: Dateien &amp; Verzeichnisse erstellen und löschen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-skripte">2.5.4. Bash-Skripte</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-in-der-kommandozeilen-ubergeben">2.5.4.1. Argumente in der Kommandozeilen übergeben</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zum-schluss-bash-python">2.5.5. Zum Schluss: Bash + Python!</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unix-shell-bash-vs-windows">2.6. Unix shell/bash vs. Windows</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#und-noch-vieles-mehr">2.6.1. Und noch vieles mehr.</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -430,34 +442,108 @@ document.write(`
 <h1><span class="section-number">2. </span>Shell Scripting<a class="headerlink" href="#shell-scripting" title="Link to this heading">#</a></h1>
 <section id="zuruck-in-die-zukunft-shell-scripting">
 <h2><span class="section-number">2.1. </span>Zurück in die Zukunft… Shell scripting!<a class="headerlink" href="#zuruck-in-die-zukunft-shell-scripting" title="Link to this heading">#</a></h2>
-<p>iele von uns sind es gewohnt, Computer über grafische Benutzeroberflächen zu bedienen. Das Öffnen eines Terminals kann wie eine Reise in die Vergangenheit erscheinen. Doch im Bereich Data Science und KI gibt es triftige Gründe, sich mit der Kommandozeile vertraut zu machen. Lassen Sie uns einen Blick in die Geschichte werfen:</p>
-<section id="unix">
-<h3><span class="section-number">2.1.1. </span>Unix<a class="headerlink" href="#unix" title="Link to this heading">#</a></h3>
+<p>Viele von uns sind es gewohnt, Computer vor allem über grafische Benutzeroberflächen zu bedienen. Das Öffnen eines Terminals kann wie eine Reise in die Vergangenheit erscheinen. Doch im Bereich Data Science und KI gibt es triftige Gründe, sich mit der Kommandozeile vertraut zu machen. Hier lohnt sich ein (kleiner) Ausflug in die Geschichte:</p>
+<p><strong>Unix</strong></p>
 <p>Unix ist ein Betriebssystem, das in den 1970er Jahren bei AT&amp;T Bell Labs entwickelt wurde. Es war die Basis für viele moderne Betriebssysteme und führte Konzepte wie das hierarchische Dateisystem und die Verwendung von einfachen Textdateien für die Systemkonfiguration ein.</p>
-</section>
-<section id="linux">
-<h3><span class="section-number">2.1.2. </span>Linux<a class="headerlink" href="#linux" title="Link to this heading">#</a></h3>
+<p><strong>Linux</strong></p>
 <p>Linux ist ein Unix-ähnliches Betriebssystem, das in den frühen 1990ern von Linus Torvalds entwickelt wurde. Es verwendet den Linux-Kernel und bietet eine breite Palette von Tools und Anwendungen für Entwickler.</p>
-</section>
-<section id="shell">
-<h3><span class="section-number">2.1.3. </span>Shell<a class="headerlink" href="#shell" title="Link to this heading">#</a></h3>
+<p><strong>Shell</strong></p>
 <p>Die Shell ist eine Benutzeroberfläche, die dem Benutzer den Zugriff auf die Funktionen eines Betriebssystems ermöglicht. Dabei werden Befehle in Textform eingegeben.</p>
-</section>
-<section id="bash">
-<h3><span class="section-number">2.1.4. </span>Bash<a class="headerlink" href="#bash" title="Link to this heading">#</a></h3>
+<p><strong>Bash</strong></p>
 <p>Bash (Bourne Again SHell) ist eine der bekanntesten Shells und wurde als Ersatz für die Bourne Shell entwickelt. Sie bietet viele Erweiterungen und Verbesserungen, die in anderen Shells nicht zu finden sind.</p>
+<section id="warum-shell-scripting-lernen">
+<h3><span class="section-number">2.1.1. </span>Warum Shell Scripting lernen?<a class="headerlink" href="#warum-shell-scripting-lernen" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Welche Programmiersprachen nutzen Hacker?</strong></p>
+<ul>
+<li><p>Eine häufig gestellte Frage, wenn es um das Image der “Hacker” geht. Eine Untersuchung von Koch et al. (2022) <span id="id1">[]</span> zeigt, dass 72,5% der Hacker Bash, Shell oder PowerShell nutzen, gefolgt von Python mit 70%. Danach kommt lange nichts – alle anderen Sprachen liegen um die 30% und darunter.</p></li>
+</ul>
+</li>
+<li><p><strong>Linux und Data Science – Die unsichtbare Dominanz</strong></p>
+<ul>
+<li><p>Kurze Geschichte von Linux:</p>
+<ul>
+<li><p>1991 wurde Linux von Linus Torvalds entwickelt.</p></li>
+<li><p>Heute ist Linux allgegenwärtig, besonders in Bereichen wie Servern, Cloud Computing und Supercomputern.</p></li>
+<li><p>Linux bildet die Basis für Betriebssysteme wie Android und Chrome OS und wird von riesigen IT-Infrastrukturen verwendet, inklusive Google und Facebook.</p></li>
+<li><p>Selbst Microsoft betreibt die meisten seiner Server mit Linux!</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Warum ist Linux so beliebt?</strong></p>
+<ul>
+<li><p><strong>Open Source</strong>: Jeder kann den Quellcode einsehen und verändern.</p></li>
+<li><p><strong>Kostenlos</strong>: Linux kostet nichts.</p></li>
+<li><p><strong>Sicherheit</strong>: Dank der globalen Community werden Sicherheitslücken schneller entdeckt und behoben.</p></li>
+<li><p><strong>Performance</strong>: Im Vergleich zu Windows ist Linux oft ressourcenschonender, da es nicht auf eine umfassende Benutzererfahrung optimiert ist, sondern schlank und effizient läuft.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
 <hr class="docutils" />
+<section id="warum-ist-shell-scripting-unverzichtbar">
+<h2><span class="section-number">2.2. </span>Warum ist Shell Scripting unverzichtbar?<a class="headerlink" href="#warum-ist-shell-scripting-unverzichtbar" title="Link to this heading">#</a></h2>
+<p>Das Erlernen der Grundlagen von Linux und Shell Scripting ist für Data Scientists unerlässlich, weil viele Aufgaben nur auf diesem Weg effizient gelöst werden können:</p>
+<ul class="simple">
+<li><p><strong>Automatisierung</strong>: Server, Großrechner und Cloud-Infrastrukturen werden oft über Shell-Skripte gesteuert.</p></li>
+<li><p><strong>Effizienz</strong>: Viele wichtige Prozesse in der Software-Entwicklung, im Bereich Web-Apps und bei der Nutzung von Servern lassen sich mit der Kommandozeile besser automatisieren als mit grafischen Tools.</p></li>
+<li><p><strong>Macht der CLI</strong>: Viele leistungsstarke Tools und Bibliotheken für Data Science sind direkt über die Kommandozeile zugänglich, z.B. Hadoop, Spark und Docker.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="einfuhrung-der-begriffe-bash-cli-shell">
+<h2><span class="section-number">2.3. </span>Einführung der Begriffe: Bash, CLI, Shell<a class="headerlink" href="#einfuhrung-der-begriffe-bash-cli-shell" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>CLI (Command Line Interface)</strong>: Eine textbasierte Benutzeroberfläche zur Interaktion mit dem Betriebssystem.</p></li>
+<li><p><strong>Shell</strong>: Ein Kommandozeileninterpreter (CLI) bei Linux, der Befehle interpretiert und ausführt.</p></li>
+<li><p><strong>Bash</strong>: Die “Bourne Again Shell” ist die am weitesten verbreitete Shell in Linux-Umgebungen.</p>
+<ul>
+<li><p>Bash ist unter macOS vorinstalliert und kann auf Windows über das Windows Subsystem for Linux (WSL) oder Git Bash genutzt werden.</p></li>
+</ul>
+</li>
+</ul>
+<section id="andere-shells">
+<h3><span class="section-number">2.3.1. </span>Andere Shells:<a class="headerlink" href="#andere-shells" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Zsh</strong>: Eine alternative Shell, die mehr Funktionen und Benutzerfreundlichkeit bietet.</p></li>
+<li><p><strong>Fish</strong>: Eine moderne Shell mit einer intuitiven Syntax.</p></li>
+<li><p><strong>PowerShell</strong>: Wird in Windows verwendet und hat tiefe Integration ins Windows-Betriebssystem.</p></li>
+</ul>
 </section>
 </section>
-<section id="id1">
-<h2><span class="section-number">2.2. </span>Bash<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="installation-und-einrichtung">
+<h2><span class="section-number">2.4. </span>Installation und Einrichtung<a class="headerlink" href="#installation-und-einrichtung" title="Link to this heading">#</a></h2>
+<section id="bash-unter-windows-via-wsl">
+<h3><span class="section-number">2.4.1. </span>Bash unter Windows (via WSL)<a class="headerlink" href="#bash-unter-windows-via-wsl" title="Link to this heading">#</a></h3>
+<p>Um Bash unter Windows zu nutzen, kannst du das <strong>Windows Subsystem for Linux (WSL)</strong> installieren. Die entsprechenden Schritte findet man in zahlreichen online-Tutorials, z.B. <a class="reference external" href="https://www.howtogeek.com/744328/how-to-install-the-windows-subsystem-for-linux-on-windows-11/">hier</a>.</p>
+</section>
+<section id="alternativ-git-bash">
+<h3><span class="section-number">2.4.2. </span>Alternativ: Git Bash<a class="headerlink" href="#alternativ-git-bash" title="Link to this heading">#</a></h3>
+<p>Eine einfachere Möglichkeit, Bash unter Windows zu nutzen, ist <strong>Git Bash</strong>:</p>
+<ol class="arabic simple">
+<li><p>Lade <a class="reference external" href="https://gitforwindows.org/">Git für Windows</a> herunter und installiere es.</p></li>
+<li><p>Git Bash wird zusammen mit Git installiert und bietet eine Bash-ähnliche Umgebung.</p></li>
+</ol>
+</section>
+<section id="macos-bash-ist-vorinstalliert">
+<h3><span class="section-number">2.4.3. </span>MacOS: Bash ist vorinstalliert<a class="headerlink" href="#macos-bash-ist-vorinstalliert" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="wenn-du-macos-nutzt-hast-du-gluck-bash-ist-bereits-vorinstalliert-du-kannst-einfach-das-terminal-offnen-und-loslegen">
+<h2><span class="section-number">2.5. </span>Wenn du MacOS nutzt, hast du Glück – Bash ist bereits vorinstalliert. Du kannst einfach das Terminal öffnen und loslegen.<a class="headerlink" href="#wenn-du-macos-nutzt-hast-du-gluck-bash-ist-bereits-vorinstalliert-du-kannst-einfach-das-terminal-offnen-und-loslegen" title="Link to this heading">#</a></h2>
+<section id="bash">
+<h3><span class="section-number">2.5.1. </span>Bash<a class="headerlink" href="#bash" title="Link to this heading">#</a></h3>
 <p>Das gute an Bash-Befehlen: Man muss sie nicht auswendig lernen! Bei Unsicherheiten können Befehle einfach nachgeschlagen werden. Für einen schnellen Überblick gibt es z.B. <a class="reference external" href="https://www.educative.io/blog/bash-shell-command-cheat-sheet">hier</a> eine Übersicht.</p>
-<section id="teil-1-dateien-und-ordner">
-<h3><span class="section-number">2.2.1. </span>Teil 1 - Dateien und Ordner<a class="headerlink" href="#teil-1-dateien-und-ordner" title="Link to this heading">#</a></h3>
+</section>
+<section id="navigieren-im-dateisystem">
+<h3><span class="section-number">2.5.2. </span>Navigieren im Dateisystem:<a class="headerlink" href="#navigieren-im-dateisystem" title="Link to this heading">#</a></h3>
 <p>Wir starten langsam und schauen uns erst einmal die Standard-Befehle an um Ordner zu wechseln und deren Inhalt zu sehen:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pwd</span></code> gibt den aktuellen Ordner an in dem wir uns befinden</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ls</span></code>(für list/listing) zeigt alle Dateien und Unterordner</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ls</span></code>(für list/listing) zeigt den Inhalt des aktuellen Verzeichnisses auf.</p></li>
 <li><p>mit <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">foldername</span></code> gehe ich in einen Ordner namens “foldername”, mit <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code> gehe ich wieder einen Ordner tiefer zurück</p></li>
 <li><p>mit <code class="docutils literal notranslate"><span class="pre">--help</span></code> können Hinweise zu den möglichen Parametern abgefragt werden, z.B. <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">--help</span></code>.</p></li>
 </ul>
@@ -521,9 +607,8 @@ document.write(`
 </table>
 </div>
 </section>
-</section>
 <section id="nachster-schritt-dateien-verzeichnisse-erstellen-und-loschen">
-<h2><span class="section-number">2.3. </span>Nächster Schritt: Dateien &amp; Verzeichnisse erstellen und löschen<a class="headerlink" href="#nachster-schritt-dateien-verzeichnisse-erstellen-und-loschen" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">2.5.3. </span>Nächster Schritt: Dateien &amp; Verzeichnisse erstellen und löschen<a class="headerlink" href="#nachster-schritt-dateien-verzeichnisse-erstellen-und-loschen" title="Link to this heading">#</a></h3>
 <p>Mit <strong>bash</strong> können wir einfach Dateien und Verzeichnisse erstellen oder eben auch löschen.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -554,7 +639,7 @@ document.write(`
 <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">new_dir/</span></code> Vorsicht! Dieser Befehl löscht Dateien/Verzeichnisse unwiderruflich!</p>
 </section>
 <section id="bash-skripte">
-<h2><span class="section-number">2.4. </span>Bash-Skripte<a class="headerlink" href="#bash-skripte" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">2.5.4. </span>Bash-Skripte<a class="headerlink" href="#bash-skripte" title="Link to this heading">#</a></h3>
 <p>Für komplexere Aufgaben wird die Kommandozeile alleine sehr schnell zu umständlich, daher wechseln wir hier zu Shell oder Bash Skripten. Das sind einfach Textdateien (typischerweise mit <code class="docutils literal notranslate"><span class="pre">.sh</span></code> Endung) in denen wir beliebig umfangreiche Bash-Programme entwerden können. Die Skripte lassen sich aus der Kommanozeile aufrufen mit:</p>
 <p><code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">my_script.sh</span></code></p>
 <p>In Form dieser Skripte lassen sich auch die Vielzahl der Möglichkeiten die Bash bietet besser nutzen. Zum Beispiel <strong>Loops</strong>, diese sehen in Bash folgendermaßen aus:</p>
@@ -580,7 +665,7 @@ done
 </pre></div>
 </div>
 <section id="argumente-in-der-kommandozeilen-ubergeben">
-<h3><span class="section-number">2.4.1. </span>Argumente in der Kommandozeilen übergeben<a class="headerlink" href="#argumente-in-der-kommandozeilen-ubergeben" title="Link to this heading">#</a></h3>
+<h4><span class="section-number">2.5.4.1. </span>Argumente in der Kommandozeilen übergeben<a class="headerlink" href="#argumente-in-der-kommandozeilen-ubergeben" title="Link to this heading">#</a></h4>
 <p>Innerhalb eines Bash-Skripts können wir auch Argumente nutzen. Hier bezeichnet <code class="docutils literal notranslate"><span class="pre">$1</span></code>, <code class="docutils literal notranslate"><span class="pre">$2</span></code> etc. das erste, zweite usw. Argument nach dem Skriptnamen. Z.B. folgendes Skript, <code class="docutils literal notranslate"><span class="pre">print_first.sh</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo $1
 </pre></div>
@@ -590,7 +675,7 @@ done
 </section>
 </section>
 <section id="zum-schluss-bash-python">
-<h2><span class="section-number">2.5. </span>Zum Schluss: Bash + Python!<a class="headerlink" href="#zum-schluss-bash-python" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">2.5.5. </span>Zum Schluss: Bash + Python!<a class="headerlink" href="#zum-schluss-bash-python" title="Link to this heading">#</a></h3>
 <p>Nicht umsonst ist im Hacking-Bereich Bash UND Python recht beliebt. Beides lässt sich nämlich auch sehr einfach kombinieren!</p>
 <p>Über <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">my_python_code.py</span></code> lassen sich von einem Bash-Skript aus Python-Skripte ausführen.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Das ist Python-Code!&quot;</span><span class="p">)</span>
@@ -598,8 +683,40 @@ done
 </div>
 <p>Speichern Sie den obigen Code in einer Datei namens <code class="docutils literal notranslate"><span class="pre">example_script.py</span></code>, machen Sie ihn ausführbar mit <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">example_script.py</span></code> und führen Sie ihn aus mit <code class="docutils literal notranslate"><span class="pre">./example_script.py</span></code>.</p>
 </section>
+</section>
+<section id="unix-shell-bash-vs-windows">
+<h2><span class="section-number">2.6. </span>Unix shell/bash vs. Windows<a class="headerlink" href="#unix-shell-bash-vs-windows" title="Link to this heading">#</a></h2>
+<p>Wir haben uns in der ersten Session mit der Unix Shell auseinandergesetzt. Mit “git bash” konnten wir dies sowohl unter Linux, wie auch MacOS oder Windows nutzen. Der Windows eigene Terminal (cmd.exe) hat aber andere historische Wurzeln (DOS) und hat darum auch andere Befehle.</p>
+<p>Hier eine kleine Auswahl der häufigstens Befehle die sich unterscheiden:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Bash</p></th>
+<th class="head"><p>Windows</p></th>
+<th class="head"><p>Funktion</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ls</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dir</span></code></p></td>
+<td><p>Dateien und Verzeichnisse im aktuellen Ordner anzeigen.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">rm</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">del</span></code></p></td>
+<td><p>Datei(en) löschen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mv</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">move</span></code></p></td>
+<td><p>Dateien verschieben</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cp</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">copy</span></code></p></td>
+<td><p>Dateien kopieren</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <section id="und-noch-vieles-mehr">
-<h2><span class="section-number">2.6. </span>Und noch vieles mehr.<a class="headerlink" href="#und-noch-vieles-mehr" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">2.6.1. </span>Und noch vieles mehr.<a class="headerlink" href="#und-noch-vieles-mehr" title="Link to this heading">#</a></h3>
 <p>Bash kann noch viel mehr, aber das werden wir (vorläufig) noch nicht benötigen. So können beispielsweise auch Funktionen definiert werden und vieles mehr.</p>
 <p>Für weitere Übungen, Tipps und Beispiele zu Bash hier einige Links:</p>
 <ul class="simple">
@@ -607,6 +724,7 @@ done
 <li><p>https://explainshell.com/</p></li>
 <li><p>https://wiki.ubuntuusers.de/Shell/Bash-Skripting-Guide_f%C3%BCr_Anf%C3%A4nger/</p></li>
 </ul>
+</section>
 </section>
 </section>
 
@@ -646,7 +764,7 @@ done
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Data Science und AI Infrastrukturen</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Einführung</p>
       </div>
     </a>
     <a class="right-next"
@@ -675,23 +793,35 @@ done
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zuruck-in-die-zukunft-shell-scripting">2.1. Zurück in die Zukunft… Shell scripting!</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unix">2.1.1. Unix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">2.1.2. Linux</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shell">2.1.3. Shell</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash">2.1.4. Bash</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-shell-scripting-lernen">2.1.1. Warum Shell Scripting lernen?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.2. Bash</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teil-1-dateien-und-ordner">2.2.1. Teil 1 - Dateien und Ordner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-ist-shell-scripting-unverzichtbar">2.2. Warum ist Shell Scripting unverzichtbar?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einfuhrung-der-begriffe-bash-cli-shell">2.3. Einführung der Begriffe: Bash, CLI, Shell</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#andere-shells">2.3.1. Andere Shells:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nachster-schritt-dateien-verzeichnisse-erstellen-und-loschen">2.3. Nächster Schritt: Dateien &amp; Verzeichnisse erstellen und löschen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-skripte">2.4. Bash-Skripte</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-in-der-kommandozeilen-ubergeben">2.4.1. Argumente in der Kommandozeilen übergeben</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-und-einrichtung">2.4. Installation und Einrichtung</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-unter-windows-via-wsl">2.4.1. Bash unter Windows (via WSL)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternativ-git-bash">2.4.2. Alternativ: Git Bash</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macos-bash-ist-vorinstalliert">2.4.3. MacOS: Bash ist vorinstalliert</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zum-schluss-bash-python">2.5. Zum Schluss: Bash + Python!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#und-noch-vieles-mehr">2.6. Und noch vieles mehr.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wenn-du-macos-nutzt-hast-du-gluck-bash-ist-bereits-vorinstalliert-du-kannst-einfach-das-terminal-offnen-und-loslegen">2.5. Wenn du MacOS nutzt, hast du Glück – Bash ist bereits vorinstalliert. Du kannst einfach das Terminal öffnen und loslegen.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash">2.5.1. Bash</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#navigieren-im-dateisystem">2.5.2. Navigieren im Dateisystem:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nachster-schritt-dateien-verzeichnisse-erstellen-und-loschen">2.5.3. Nächster Schritt: Dateien &amp; Verzeichnisse erstellen und löschen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-skripte">2.5.4. Bash-Skripte</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-in-der-kommandozeilen-ubergeben">2.5.4.1. Argumente in der Kommandozeilen übergeben</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zum-schluss-bash-python">2.5.5. Zum Schluss: Bash + Python!</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unix-shell-bash-vs-windows">2.6. Unix shell/bash vs. Windows</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#und-noch-vieles-mehr">2.6.1. Und noch vieles mehr.</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
