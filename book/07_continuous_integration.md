@@ -37,7 +37,7 @@ GitHub Actions is a CI/CD (Continuous Integration/Continuous Deployment) platfor
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
+          python-version: '3.12'
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -101,7 +101,7 @@ GitHub Actions is a CI/CD (Continuous Integration/Continuous Deployment) platfor
       strategy:
         matrix:
           os: [ubuntu-latest, windows-latest, macos-latest]
-          python-version: ["3.7", "3.8", "3.9", "3.10"]
+          python-version: ["3.9", "3.10", "3.11", "3.12"]
       steps:
       - uses: actions/checkout@v2
       - name: Set up Python
@@ -111,7 +111,7 @@ GitHub Actions is a CI/CD (Continuous Integration/Continuous Deployment) platfor
       # ... further steps ...
   ```
 
-- This configuration tests the project across the latest versions of Ubuntu, Windows, and macOS, and with Python versions 3.7 to 3.10.
+- This configuration tests the project across the latest versions of Ubuntu, Windows, and macOS, and with Python versions 3.9 to 3.12.
 
 ## 5. Conclusion
 

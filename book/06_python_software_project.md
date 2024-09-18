@@ -6,7 +6,7 @@ Bisher (z.B. bei einfacheren Data Science Workflows) konnten wir oft mit recht r
 
 Für umfangreichere Projekte, oder aber auch die Entwicklung eigener Tools oder Software, reicht das in der Regel aber nicht mehr aus!
 
-![fig_development_process_sketch](C:\HSD\OneDrive - Hochschule Düsseldorf\DAISY\data_science_software_dev\images\fig_development_process_sketch.png)
+![fig_development_process_sketch](../images/fig_development_process_sketch.png)
 
 **2.1. Idee**
 Jeder Entwicklungsprozess beginnt mit einer Idee oder einem Problem. Es ist wichtig, diese Idee klar zu definieren und zu verstehen, welche Herausforderungen sie mit sich bringt.
