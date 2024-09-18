@@ -1,0 +1,29 @@
+format: jb-book
+root: book/cover
+parts:
+  - caption: Introduction
+    numbered: true  # Only applies to chapters in Part 1.
+    chapters:
+    - file: book/01_introduction
+    - file: book/02_shell_scripting
+    - file: book/03_git_github
+    - file: book/04_github
+  - caption: Clean Code
+    numbered: true
+    chapters:
+    - file: book/05_clean_code
+    - file: book/06_code_smells
+    - file: book/06_python_software_project
+  - caption: Data Acquisition and First Exploration
+    numbered: true
+    chapters:
+    - file: book/06_testing
+    - file: book/07_continuous_integration
+    - file: book/07_testing_2
+  - caption: References
+    chapters:
+    - file: book/acknowledgements
+    - file: book/bibliography
+  - caption: Source Code and Contributions
+    chapters:
+    - file: book/github
