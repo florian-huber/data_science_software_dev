@@ -82,11 +82,6 @@ Eine einfachere Möglichkeit, Bash unter Windows zu nutzen, ist **Git Bash**:
 ### MacOS: Bash ist vorinstalliert
 
 Wenn du MacOS nutzt, hast du Glück – Bash ist bereits vorinstalliert. Du kannst einfach das Terminal öffnen und loslegen.
-------
-
-### Bash
-
-Das gute an Bash-Befehlen: Man muss sie nicht auswendig lernen! Bei Unsicherheiten können Befehle einfach nachgeschlagen werden. Für einen schnellen Überblick gibt es z.B. [hier](https://www.educative.io/blog/bash-shell-command-cheat-sheet) eine Übersicht.
 
 
 
@@ -125,6 +120,9 @@ Anders als andere Programmiersprachen ist **bash** ein CLI (Command-Line Interfa
 | `cd /home/username/Documents` | change to specific directory                                 |
 | `cd -`                        | change to last directory                                     |
 |                               |                                                              |
+
+
+Das gute an Bash-Befehlen: Man muss sie nicht auswendig lernen! Bei Unsicherheiten können Befehle einfach nachgeschlagen werden. Für einen schnellen Überblick gibt es z.B. [hier](https://www.educative.io/blog/bash-shell-command-cheat-sheet) eine Übersicht.
 
 ### Nächster Schritt: Dateien & Verzeichnisse erstellen und löschen
 
