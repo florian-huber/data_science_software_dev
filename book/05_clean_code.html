@@ -1,0 +1,1018 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>5. Cleaner Code, Better Code &#8212; Data Science Software Development with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/05_clean_code';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Code Smells" href="06_code_smells.html" />
+    <link rel="prev" title="4. GitHub" href="04_github.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="cover.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/cover_mini.png" class="logo__image only-light" alt="Data Science Software Development with Python - Home"/>
+    <script>document.write(`<img src="../_static/cover_mini.png" class="logo__image only-dark" alt="Data Science Software Development with Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="cover.html">
+                    Sofware Development für Data Scientists (mit Python)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_introduction.html">1. Data Science und AI Infrastrukturen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_shell_scripting.html">2. Shell Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_git_github.html">3. Git &amp; GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_github.html">4. GitHub</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Code</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Cleaner Code, Better Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_code_smells.html">6. Code Smells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_python_software_project.html">7. Python Software Projekt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition and First Exploration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="06_testing.html">8. Code Testing with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">9. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">10. Code Testing (2)</a></li>
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/florian-huber/data_science_software_dev" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/florian-huber/data_science_software_dev/issues/new?title=Issue%20on%20page%20%2Fbook/05_clean_code.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/05_clean_code.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Cleaner Code, Better Code</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-bedeutung-von-besserem-code">5.1. 1. Die Bedeutung von „besserem“ Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-besser">5.1.1. 1.1. Was ist „besser“?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-besserer-code-wichtig-ist">5.1.2. 1.2. Warum besserer Code wichtig ist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-weg-zu-besserem-code-clean-code">5.1.3. 1.3. Der Weg zu „besserem“ Code: Clean Code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-code-grundlagen">5.2. 2. Clean Code - Grundlagen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-clean-code">5.2.1. Was ist Clean Code?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weshalb-clean-code">5.2.2. Weshalb Clean Code?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#style-guides-und-ihre-bedeutung">5.2.3. <strong>Style Guides und ihre Bedeutung</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pep-8-der-python-style-guide">5.2.3.1. PEP 8 - Der Python Style Guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linting">5.3. 3. Linting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-beispiel">5.3.1. Code Beispiel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pylint">5.3.2. pylint</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flake8">5.3.3. flake8</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anwendung">5.3.4. Anwendung</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mehr-informationen-zu-flake8">5.3.4.1. Mehr Informationen zu <code class="docutils literal notranslate"><span class="pre">flake8</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ruff">5.3.5. ruff</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-informationen-zu-ruff">5.3.5.1. Weitere Informationen zu <code class="docutils literal notranslate"><span class="pre">ruff</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#black">5.3.6. black</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.3.7. Anwendung</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mehr-informationen-zu-black">5.3.7.1. Mehr Informationen zu <code class="docutils literal notranslate"><span class="pre">black</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linter-pylint-vs-flake8-vs-ruff-vs-formatter-black">5.3.8. Linter (Pylint vs flake8 vs ruff) vs Formatter (black)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-coding">5.4. –&gt; Live Coding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ausblick">5.4.1. Ausblick</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="cleaner-code-better-code">
+<h1><span class="section-number">5. </span>Cleaner Code, Better Code<a class="headerlink" href="#cleaner-code-better-code" title="Link to this heading">#</a></h1>
+<p><strong>Eingangsfrage 1:</strong>
+<em>Was bedeutet „besser“?</em></p>
+<p><strong>Antworten:</strong></p>
+<ul class="simple">
+<li><p>„Besser“ definiert eine Richtung, aber keinen festen Endpunkt.</p></li>
+<li><p>Perfektion ist nicht das Endziel, da es im wirklichen Leben selten erreichbar ist.</p></li>
+<li><p>Ziel ist, einen Code zu schreiben, der beständig, wiederholbar und zuverlässig arbeitet.</p></li>
+<li><p>Die kommenden Wochen werden tiefer in diese Prinzipien eintauchen.</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>Eingangsfrage 2:</strong>
+<em>Brauche ich das?</em></p>
+<p><strong>Antworten:</strong></p>
+<ol class="arabic simple">
+<li><p>Ja! Schon aus pragmatischen Gründen:</p>
+<ul class="simple">
+<li><p>Ohne solide (Python-)Programmierkenntnisse ist ein Abschluss in DAISY kaum machbar.</p></li>
+<li><p>Firmen haben Erwartungen, wenn “Data Science / KI” im Lebenslauf steht. Und sie prüfen diese!</p></li>
+</ul>
+</li>
+<li><p>Solide Programmierfähigkeiten öffnen in der Data Science/KI Welt viele Türen. Es geht nicht nur ums Programmieren, sondern auch um das Verstehen und Leiten von Projekten.</p></li>
+</ol>
+<hr class="docutils" />
+<p>In der Welt der Programmierung geht es nicht nur darum, dass der Code funktioniert. Die Art und Weise, wie der Code geschrieben, organisiert und präsentiert wird, kann einen großen Unterschied in der Produktivität, Zusammenarbeit und Wartungsfähigkeit machen. In diesem Teil werden wir uns mit den Prinzipien des “Clean Code” und den Best Practices für besseres Programmieren in Data Science und KI vertiefend beschäftigen.</p>
+<section id="die-bedeutung-von-besserem-code">
+<h2><span class="section-number">5.1. </span>1. Die Bedeutung von „besserem“ Code<a class="headerlink" href="#die-bedeutung-von-besserem-code" title="Link to this heading">#</a></h2>
+<section id="was-ist-besser">
+<h3><span class="section-number">5.1.1. </span>1.1. Was ist „besser“?<a class="headerlink" href="#was-ist-besser" title="Link to this heading">#</a></h3>
+<p>„Besser“ ist ein relatives Konzept. In der Programmierung bezieht es sich oft darauf, wie effizient, lesbar und wartbar ein Code ist. Es ist wichtig zu betonen, dass “besser” nicht immer “perfekt” bedeutet. In der echten Welt ist es oft nicht möglich oder sogar notwendig, einen perfekten Code zu schreiben. Stattdessen sollte das Ziel sein, ständig zu verbessern und einen Code zu erstellen, der wiederholbar und zuverlässig funktioniert.</p>
+</section>
+<section id="warum-besserer-code-wichtig-ist">
+<h3><span class="section-number">5.1.2. </span>1.2. Warum besserer Code wichtig ist<a class="headerlink" href="#warum-besserer-code-wichtig-ist" title="Link to this heading">#</a></h3>
+<p>Besserer Code ist aus mehreren Gründen wichtig:</p>
+<ul class="simple">
+<li><p><strong>Zuverlässigkeit:</strong> Code, der den Best Practices folgt, hat tendenziell weniger Fehler und ist vorhersehbarer.</p></li>
+<li><p><strong>Wartbarkeit:</strong> Es ist einfacher, Code zu aktualisieren und zu verbessern, wenn er gut organisiert und dokumentiert ist.</p></li>
+<li><p><strong>Zusammenarbeit:</strong> In Teams ist es wesentlich einfacher, mit Code zu arbeiten, der den gemeinsamen Standards folgt.</p></li>
+</ul>
+</section>
+<section id="der-weg-zu-besserem-code-clean-code">
+<h3><span class="section-number">5.1.3. </span>1.3. Der Weg zu „besserem“ Code: Clean Code<a class="headerlink" href="#der-weg-zu-besserem-code-clean-code" title="Link to this heading">#</a></h3>
+<p>Während es viele Methoden gibt, um Code zu verbessern, ist eine der effektivsten und anerkanntesten Methoden die Anwendung von “Clean Code” Prinzipien. “Clean Code” bietet nicht nur eine klare Struktur und Lesbarkeit, sondern stellt auch sicher, dass der Code nachhaltig, wartbar und effizient bleibt. Im nächsten Abschnitt werden wir uns genauer mit der Definition, den Vorteilen und den Prinzipien von Clean Code beschäftigen und wie diese in der Python-Programmierung umgesetzt werden können.</p>
+</section>
+</section>
+<section id="clean-code-grundlagen">
+<h2><span class="section-number">5.2. </span>2. Clean Code - Grundlagen<a class="headerlink" href="#clean-code-grundlagen" title="Link to this heading">#</a></h2>
+<section id="was-ist-clean-code">
+<h3><span class="section-number">5.2.1. </span>Was ist Clean Code?<a class="headerlink" href="#was-ist-clean-code" title="Link to this heading">#</a></h3>
+<p>Clean Code ist ein Code, der leicht zu lesen, zu verstehen und zu warten ist. Es geht nicht nur darum, wie der Code aussieht, sondern auch darum, wie er strukturiert ist.</p>
+<p>Clean Code ist aber nicht nur ein Ziel, sondern auch eine Methode. Es gibt  bestimmte Prinzipien und Best Practices, die Entwickler befolgen können, um ihren Code sauberer und effizienter zu gestalten.</p>
+</section>
+<section id="weshalb-clean-code">
+<h3><span class="section-number">5.2.2. </span>Weshalb Clean Code?<a class="headerlink" href="#weshalb-clean-code" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Lesbarkeit:</strong> Ein sauberer Code ist einfacher zu lesen und zu verstehen.</p></li>
+<li><p><strong>Wartbarkeit:</strong> Ein sauberer Code ist einfacher zu warten und zu erweitern.</p></li>
+<li><p><strong>Produktivität:</strong> Mit sauberem Code können Entwickler schneller und effizienter arbeiten.</p></li>
+</ul>
+<p><strong>Eingangsbeispiele und ihre Bedeutung</strong>
+Zur Verdeutlichung der Prinzipien von Clean Code werden im Laufe des Kapitels verschiedene Codebeispiele analysiert und diskutiert.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">animals</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;elephant&#39;</span><span class="p">]</span>
+<span class="c1"># vs</span>
+<span class="n">animals</span><span class="o">=</span> <span class="p">[</span>    <span class="s1">&#39;dog&#39;</span><span class="p">,</span>   <span class="s1">&#39;cat&#39;</span><span class="p">,</span><span class="s2">&quot;elephant&quot;</span>   <span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Fragen zum Nachdenken:</strong></p>
+<ul class="simple">
+<li><p>Wer legt fest, wie Code aussehen sollte?</p></li>
+<li><p>Warum nicht individuell entscheiden?</p></li>
+</ul>
+<p><strong>Antworten:</strong></p>
+<ul class="simple">
+<li><p>Für den Python-Interpreter ist der Stil nebensächlich, aber Menschen lesen den Code!</p></li>
+<li><p>Ziel 1: Der Stil soll die Lesbarkeit unterstützen.</p></li>
+<li><p>Ziel 2: Code sollte global verständlich sein, nicht nur für den Autor.</p></li>
+</ul>
+</section>
+<section id="style-guides-und-ihre-bedeutung">
+<h3><span class="section-number">5.2.3. </span><strong>Style Guides und ihre Bedeutung</strong><a class="headerlink" href="#style-guides-und-ihre-bedeutung" title="Link to this heading">#</a></h3>
+<p>Style Guides sind Sammlungen von Konventionen und Best Practices für eine bestimmte Programmiersprache oder ein bestimmtes Framework. Sie definieren einen Standard, wie Code geschrieben und formatiert werden sollte, um Konsistenz, Lesbarkeit und Wartbarkeit zu gewährleisten.</p>
+<p>In der Welt von Python ist PEP 8 der bekannteste und am weitesten verbreitete Style Guide, und viele der Konzepte und Prinzipien, die er enthält, sind nicht nur für Python, sondern auch für andere Sprachen relevant.</p>
+<section id="pep-8-der-python-style-guide">
+<h4><span class="section-number">5.2.3.1. </span>PEP 8 - Der Python Style Guide<a class="headerlink" href="#pep-8-der-python-style-guide" title="Link to this heading">#</a></h4>
+<p>PEP 8, das für “Python Enhancement Proposal 8” steht, ist der offizielle Style Guide für Python-Code. Entwickelt wurde er von der Python-Community, um Best Practices und Stilkonventionen zu definieren, die die Lesbarkeit von Python-Code fördern. Es behandelt Themen wie  Namenskonventionen, Kommentarstile, Zeilenlänge und viele andere Aspekte des Python-Codes.</p>
+<p><strong>Aufgabe:</strong></p>
+<ul class="simple">
+<li><p>Eine sinnvolle Regel aus PEP 8 finden.</p></li>
+<li><p>Eine Regel aus PEP 8 finden, die als überflüssig betrachtet wird.</p></li>
+</ul>
+<p><strong>Beispiel:</strong></p>
+<blockquote>
+<div><p>“One of Guide’s key insights is that code is read much more often than it is written.”</p>
+</div></blockquote>
+<blockquote>
+<div><p>“Consistency with this style guide is important. However, use judgment if a guideline seems inapplicable.”</p>
+</div></blockquote>
+<p>Einige wichtigsten Punkte aus PEP 8 sind:</p>
+<p><strong>a) Namenskonventionen</strong></p>
+<ul class="simple">
+<li><p><strong>Variablen:</strong> Sollten in <code class="docutils literal notranslate"><span class="pre">snake_case</span></code> benannt werden, das bedeutet, alle Buchstaben in Kleinbuchstaben und Worte durch Unterstriche getrennt. Beispiel: <code class="docutils literal notranslate"><span class="pre">user_input</span></code>, <code class="docutils literal notranslate"><span class="pre">load_data_function</span></code>.</p></li>
+<li><p><strong>Funktionen und Methoden:</strong> Verwenden ebenfalls <code class="docutils literal notranslate"><span class="pre">snake_case</span></code>. Beispiel: <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">calculate_average()</span></code>.</p></li>
+<li><p><strong>Klassen:</strong> Sollten in <code class="docutils literal notranslate"><span class="pre">PascalCase</span></code> benannt werden, wobei jedes Wort großgeschrieben wird und ohne Unterstriche. Beispiel: <code class="docutils literal notranslate"><span class="pre">CarFactory</span></code>, <code class="docutils literal notranslate"><span class="pre">UserDatabase</span></code>.</p></li>
+<li><p><strong>Konstanten:</strong> Werden in Großbuchstaben mit Unterstrichen geschrieben, z.B. <code class="docutils literal notranslate"><span class="pre">MAX_LENGTH</span></code>, <code class="docutils literal notranslate"><span class="pre">DEFAULT_COLOR</span></code>.</p></li>
+</ul>
+<p><strong>b) Leerzeichen</strong></p>
+<p>Leerzeichen spielen eine entscheidende Rolle in Python, insbesondere wegen seiner Einrückungssyntax. Einige der PEP 8-Richtlinien für Leerzeichen sind:</p>
+<ul class="simple">
+<li><p>Verwenden von 4 Leerzeichen pro Einrückungslevel.</p></li>
+<li><p>Keine Leerzeichen rund um Funktions- und Methodenparameter: <code class="docutils literal notranslate"><span class="pre">func(x,</span> <span class="pre">y)</span></code> nicht <code class="docutils literal notranslate"><span class="pre">func(</span> <span class="pre">x,</span> <span class="pre">y</span> <span class="pre">)</span></code>.</p></li>
+<li><p>Leerzeichen um Operatoren herum: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1</span></code> und nicht <code class="docutils literal notranslate"><span class="pre">x=1</span></code>.</p></li>
+<li><p>Keine Leerzeichen am Ende von Zeilen.</p></li>
+</ul>
+<p><strong>c) Zeilenlänge</strong></p>
+<ul class="simple">
+<li><p>Traditionell wurde empfohlen, die Zeilen auf maximal 79 Zeichen für Code und 72 für Kommentare zu beschränken. Dies war historisch bedingt durch die Breite von Displays und die Lesbarkeit.</p></li>
+<li><p>In modernen Entwicklungsumgebungen ist jedoch eine Zeilenlänge von bis zu 100 oder 120 Zeichen oft akzeptabel, da die Bildschirme heute in der Regel breiter sind. Trotzdem sollte der Code so formatiert sein, dass er ohne horizontales Scrollen leicht lesbar ist.</p></li>
+</ul>
+<p><strong>d) Zeilenumbrüche</strong></p>
+<p>In Fällen, in denen ein Ausdruck oder eine Anweisung zu lang wird, sollte ein Zeilenumbruch verwendet werden, um die Lesbarkeit zu erhöhen. PEP 8 bietet mehrere Methoden, um dies elegant zu tun, einschließlich:</p>
+<ul>
+<li><p>Bei Verwendung von Klammern (<code class="docutils literal notranslate"><span class="pre">()</span></code>, <code class="docutils literal notranslate"><span class="pre">{}</span></code>, <code class="docutils literal notranslate"><span class="pre">[]</span></code>) kann der Code nach der Klammer umgebrochen werden.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gut:</span>
+<span class="n">total_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+    <span class="n">item_1</span><span class="p">,</span> <span class="n">item_2</span><span class="p">,</span> <span class="n">item_3</span><span class="p">,</span> 
+    <span class="n">item_4</span><span class="p">,</span> <span class="n">item_5</span>
+<span class="p">)</span>
+
+<span class="c1"># Schlecht:</span>
+<span class="n">total_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">item_1</span><span class="p">,</span> <span class="n">item_2</span><span class="p">,</span> <span class="n">item_3</span><span class="p">,</span> <span class="n">item_4</span><span class="p">,</span> <span class="n">item_5</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Bei langen Bedingungen kann <code class="docutils literal notranslate"><span class="pre">and</span></code> oder <code class="docutils literal notranslate"><span class="pre">or</span></code> zum Umbruch verwendet werden.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gut:</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">condition_1</span> <span class="ow">and</span> <span class="n">condition_2</span> <span class="ow">and</span> 
+    <span class="n">condition_3</span> <span class="ow">and</span> <span class="n">condition_4</span><span class="p">):</span>
+    <span class="n">do_something</span><span class="p">()</span>
+
+<span class="c1"># Schlecht:</span>
+<span class="k">if</span> <span class="n">condition_1</span> <span class="ow">and</span> <span class="n">condition_2</span> <span class="ow">and</span> <span class="n">condition_3</span> <span class="ow">and</span> <span class="n">condition_4</span><span class="p">:</span>
+    <span class="n">do_something</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>e) Importieren von Modulen</strong></p>
+<p>Importe sollten immer am Anfang einer Datei stehen und in folgender Reihenfolge organisiert werden:</p>
+<ol class="arabic simple">
+<li><p>Standardbibliotheken</p></li>
+<li><p>Drittanbieterbibliotheken</p></li>
+<li><p>Lokale Anwendungs-/Bibliotheks-spezifische Importe</p></li>
+</ol>
+<p>Außerdem sollte man einen Abstand zwischen den verschiedenen Import-Gruppen lassen.</p>
+<p><strong>Beispiel:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>  <span class="c1"># Standardbibliothek</span>
+<span class="kn">import</span> <span class="nn">sys</span>  <span class="c1"># Standardbibliothek</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>  <span class="c1"># Drittanbieterbibliothek</span>
+
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">User</span>  <span class="c1"># Lokale Anwendung</span>
+</pre></div>
+</div>
+<p><strong>f) Kommentare</strong></p>
+<p>Kommentare sind wichtig, um den Code verständlicher zu machen, insbesondere wenn er komplex ist. Es sollten jedoch keine offensichtlichen Dinge kommentiert werden. Außerdem sollte der Code so klar und lesbar wie möglich geschrieben werden, sodass er von sich aus selbsterklärend ist.</p>
+<p><strong>Beispiel:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gut:</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="c1"># Schlecht:</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="c1"># Addiere a zu b</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p><strong>g) Vermeidung von globalen Variablen</strong></p>
+<p>PEP 8 empfiehlt, die Verwendung von globalen Variablen zu vermeiden, da sie den Code schwerer verständlich und wartbar machen können. Wenn sie unvermeidlich sind, sollten sie jedoch klar kommentiert werden.</p>
+<p><strong>Beispiel:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vermeiden:</span>
+<span class="n">global_variable</span> <span class="o">=</span> <span class="s2">&quot;I am global&quot;</span>
+
+<span class="k">def</span> <span class="nf">print_global</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">global_variable</span><span class="p">)</span>
+
+<span class="c1"># Besser:</span>
+<span class="k">def</span> <span class="nf">print_value</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>h) Fehlertypen nicht allgemein fangen</strong></p>
+<p>Es sollte vermieden werden, allgemeine Exception-Blöcke zu verwenden, da dies zu unerwarteten Fehlern führen kann.</p>
+<p><strong>Beispiel:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Schlecht:</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ein Fehler ist aufgetreten!&quot;</span><span class="p">)</span>
+
+<span class="c1"># Gut:</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bitte geben Sie eine gültige Zahl ein!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Durch das Beachten dieser und anderer Richtlinien aus PEP 8 kann man sicherstellen, dass der Python-Code nicht nur funktionsfähig, sondern auch gut lesbar und wartbar ist. Es lohnt sich, regelmäßig auf PEP 8 zurückzugreifen und den eigenen Code danach zu überprüfen</p>
+</section>
+</section>
+</section>
+<section id="linting">
+<h2><span class="section-number">5.3. </span>3. Linting<a class="headerlink" href="#linting" title="Link to this heading">#</a></h2>
+<p><strong>Was ist Linting?</strong>
+Linting ist der Prozess des Überprüfens des Quellcodes auf programmatische und stilistische Fehler. Ein “Linter” ist ein Tool, das den Code automatisch überprüft und häufige Fehler oder Abweichungen von Stilrichtlinien meldet. In Python gibt es verschiedene Linter, wobei einige der bekanntesten <code class="docutils literal notranslate"><span class="pre">pylint</span></code>, <code class="docutils literal notranslate"><span class="pre">flake8</span></code> und <code class="docutils literal notranslate"><span class="pre">black</span></code> sind.
+Und, relativ neu aber (nach meiner Einschätzung) zukünftig häufig genutzt, ist <code class="docutils literal notranslate"><span class="pre">ruff</span></code>.</p>
+<section id="code-beispiel">
+<h3><span class="section-number">5.3.1. </span>Code Beispiel<a class="headerlink" href="#code-beispiel" title="Link to this heading">#</a></h3>
+<p>Um die Linter zu testen, nehmen wir das folgende (nonsense) Code Beispiel:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">magic_numbers</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">1</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">,</span>
+    <span class="mi">5</span><span class="p">,</span>
+    <span class="mi">6</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">,</span>
+    <span class="mi">8</span>
+<span class="p">]</span>
+<span class="n">magic_dictionary</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="mi">3</span><span class="p">:</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="mi">4</span><span class="p">:</span><span class="s2">&quot;d&quot;</span><span class="p">,</span><span class="mi">5</span><span class="p">:</span><span class="s2">&quot;e&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">:</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">5</span><span class="p">:</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="mi">7</span><span class="p">:</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="mi">8</span><span class="p">:</span><span class="s2">&quot;h&quot;</span><span class="p">,</span><span class="mi">9</span><span class="p">:</span><span class="s2">&quot;i&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">:</span><span class="s2">&quot;j&quot;</span><span class="p">,</span><span class="mi">11</span><span class="p">:</span><span class="s2">&quot;k&quot;</span><span class="p">,</span><span class="mi">12</span><span class="p">:</span><span class="s2">&quot;l&quot;</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">PowerCompute</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="n">number1</span> <span class="o">=</span> <span class="n">a</span><span class="o">**</span><span class="n">b</span>
+    <span class="n">number2</span><span class="o">=</span><span class="n">b</span><span class="o">**</span><span class="n">a</span>
+    <span class="n">max_number</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">number1</span><span class="p">,</span><span class="n">number2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">max_number</span><span class="o">&lt;</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">magic_numbers</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">magic_dictionary</span><span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">magic_numbers</span><span class="p">)])</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">magic_numbers</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">max_number</span>
+    <span class="k">return</span> <span class="mi">11</span>
+
+<span class="k">class</span> <span class="nc">power_computer</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">11</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="mi">12</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="mi">13</span>
+
+    <span class="k">def</span> <span class="nf">computeSomething</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">PowerCompute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">))</span>
+
+<span class="c1">#Run code for testing</span>
+<span class="n">MyComputer</span> <span class="o">=</span> <span class="n">power_computer</span><span class="p">()</span>
+<span class="n">MyComputer</span><span class="o">.</span><span class="n">computeSomething</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="pylint">
+<h3><span class="section-number">5.3.2. </span>pylint<a class="headerlink" href="#pylint" title="Link to this heading">#</a></h3>
+<p>(Falls noch nicht vorhanden, installieren mit <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pylint</span></code>.)</p>
+<p>Pylint ist ein äußerst umfangreicher Python-Linter, der darauf abzielt, fehlerhaften Code und stilistische Inkonsistenzen in Python-Programmen aufzudecken. Er verwendet eine Vielzahl von Heuristiken, um potenzielle Fehler und schlechte Praktiken im Code zu identifizieren.</p>
+<p><strong>Hauptmerkmale:</strong></p>
+<ul class="simple">
+<li><p>Überprüft, ob Module und Klassen den vorgegebenen Codierungsstandards entsprechen.</p></li>
+<li><p>Erkennt Fehler oder Probleme, die bei der Ausführung auftreten könnten.</p></li>
+<li><p>Bietet detaillierte Berichte über die Codequalität.</p></li>
+<li><p>Erlaubt die Anpassung der Regeln durch Konfigurationsdateien und Inline-Kommentare.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">pylint</span></code> lässt sich einfach über die Kommandozeile ausführen mit:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pylint<span class="w"> </span>code_example_for_linting.py
+</pre></div>
+</div>
+<p>Am besten die Datei kopieren und umbenennen (z.B. in bash mit <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">code_example_for_linting.py</span> <span class="pre">code_example_pylint.py</span></code>). Anschließend versuche, den <em>Linter</em> zufrieden zu stellen…</p>
+</section>
+<section id="flake8">
+<h3><span class="section-number">5.3.3. </span>flake8<a class="headerlink" href="#flake8" title="Link to this heading">#</a></h3>
+<p>Flake8 ist ein Wrapper-Tool, das mehrere andere Python-Linting-Tools kombiniert. Insbesondere verknüpft es PyFlakes, pycodestyle (früher bekannt als pep8) und McCabe zu einem einzigen, einfach zu verwendenden Tool.</p>
+<p><strong>Hauptmerkmale:</strong></p>
+<ul class="simple">
+<li><p>Überprüft den Code auf syntaktische Fehler mit PyFlakes.</p></li>
+<li><p>Überprüft den Code auf PEP 8-Konformität mit pycodestyle.</p></li>
+<li><p>Bewertet die Komplexität des Codes mit McCabe.</p></li>
+</ul>
+<p><strong>Vorteile:</strong></p>
+<ul class="simple">
+<li><p>Etwas Schneller und effizienter (als z.B. pylint).</p></li>
+<li><p>Kombiniert die Stärken mehrerer Linter.</p></li>
+<li><p>Einfache Integration in Entwicklungsworkflows.</p></li>
+</ul>
+</section>
+<section id="anwendung">
+<h3><span class="section-number">5.3.4. </span>Anwendung<a class="headerlink" href="#anwendung" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">flake8</span></code> lässt sich einfach über die Kommandozeile ausführen mit:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>flake8<span class="w"> </span>code_example_for_linting.py
+</pre></div>
+</div>
+<p>Am besten die Datei kopieren und umbenennen (z.B. in bash mit <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">code_example_for_linting.py</span> <span class="pre">code_example_flake8.py</span></code>). Anschließend versuche, den <em>Linter</em> zufrieden zu stellen…</p>
+<p><strong>Anpassungen</strong></p>
+<p>Oft gibt es einzelne Aspekte, die wir nicht für wichtig halten, oder bei denen wir bewusst von Stil-Vorgaben abweichen. Dafür lassen sich viele Linter ziemlich detailiert anpassen. Ein Beispiel hier wäre die Änderung der maximal gewünschten Zeilenlänge von 79 auf z.B. 120 Zeichen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>flake8<span class="w"> </span>--max-line-length<span class="w"> </span><span class="m">120</span><span class="w"> </span>code_example_for_linting.py
+</pre></div>
+</div>
+<p>Oder, wenn wir eine spezielle Meldung ignorieren wollen, geht z.B.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>flake8<span class="w"> </span>--ignore<span class="w"> </span>E231<span class="w"> </span>code_example_for_linting.py
+</pre></div>
+</div>
+<p>Es ist auch möglich einen Linter über eine spezielle Konfigurationsdatei noch viel detaillierter auf die eigenen Bedürfnisse abzustimmen.</p>
+<section id="mehr-informationen-zu-flake8">
+<h4><span class="section-number">5.3.4.1. </span>Mehr Informationen zu <code class="docutils literal notranslate"><span class="pre">flake8</span></code><a class="headerlink" href="#mehr-informationen-zu-flake8" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>https://flake8.pycqa.org/en/latest/</p></li>
+<li><p>https://calmcode.io/flake8/introduction.html</p></li>
+</ul>
+</section>
+</section>
+<section id="ruff">
+<h3><span class="section-number">5.3.5. </span>ruff<a class="headerlink" href="#ruff" title="Link to this heading">#</a></h3>
+<p>Jetzt noch ein recht neues Python Tool: <code class="docutils literal notranslate"><span class="pre">ruff</span></code>.</p>
+<p>Kann ebenfalls mit <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ruff</span></code> installiert werden.</p>
+<p>Danach wird es z.B. als umfangreicher Linter ausgeführt mit:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ruff<span class="w"> </span>--select<span class="o">=</span>ALL<span class="w"> </span>check<span class="w"> </span>code_example_for_linting.py
+</pre></div>
+</div>
+<p><strong>Hauptmerkmale:</strong></p>
+<ul class="simple">
+<li><p>ruff funktioniert ähnlich wie pylint oder flake8, ist aber <strong>deutlich</strong> schneller in der Ausführung.</p></li>
+<li></li>
+</ul>
+<section id="weitere-informationen-zu-ruff">
+<h4><span class="section-number">5.3.5.1. </span>Weitere Informationen zu <code class="docutils literal notranslate"><span class="pre">ruff</span></code><a class="headerlink" href="#weitere-informationen-zu-ruff" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>https://docs.astral.sh/ruff/configuration/#command-line-interface</p></li>
+<li><p>https://pythonspeed.com/articles/pylint-flake8-ruff/</p></li>
+</ul>
+</section>
+</section>
+<section id="black">
+<h3><span class="section-number">5.3.6. </span>black<a class="headerlink" href="#black" title="Link to this heading">#</a></h3>
+<p>Black ist anders als Pylint und Flake8. Es ist nicht nur ein Linter, sondern auch ein Code-Formatter. Anstatt nur stilistische Probleme und Fehler im Code zu melden, formatiert Black den Code automatisch gemäß seinem eigenen Stil, der eng an PEP 8 angelehnt ist.</p>
+<p><strong>Hauptmerkmale:</strong></p>
+<ul class="simple">
+<li><p>Automatische Codeformatierung.</p></li>
+<li><p>Hat eine strikte und unveränderliche Stilrichtlinie, die es “The Blackened” nennt.</p></li>
+<li><p>Unterstützt Python 3.6 und höher.</p></li>
+</ul>
+<p><strong>Vorteile:</strong></p>
+<ul class="simple">
+<li><p>Keine Entscheidungen bezüglich des Stils: Black entscheidet für Sie.</p></li>
+<li><p>Spart Zeit, da keine Diskussionen über Codierungsstil mehr erforderlich sind.</p></li>
+<li><p>Sehr schnell und kann leicht in CI-Workflows integriert werden.</p></li>
+</ul>
+<p><strong>Nachteile:</strong></p>
+<ul class="simple">
+<li><p>Macht keine Kompromisse: Black macht keine Ausnahmen und dies kann für manche Teams zu streng sein.</p></li>
+<li><p>Kann nicht angepasst werden, um bestimmte Stilpräferenzen zu berücksichtigen.</p></li>
+<li><p>Ersetzt oft nicht ausreichend ein strengeres Linting (wie z.B. von <code class="docutils literal notranslate"><span class="pre">pylint</span></code> oder <code class="docutils literal notranslate"><span class="pre">ruff</span></code>)</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3><span class="section-number">5.3.7. </span>Anwendung<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Zuerst soll <code class="docutils literal notranslate"><span class="pre">black</span></code> als <em>Linter</em> eingesetzt werden.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>black<span class="w"> </span>code_example_for_linting.py<span class="w"> </span>--check
+</pre></div>
+</div>
+<p>Die Ausgabe die wir bekommen ist aber noch nicht sehr informativ. Darum besser:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>black<span class="w"> </span>code_example_for_linting.py<span class="w"> </span>--check<span class="w"> </span>--diff
+</pre></div>
+</div>
+<p>Als nächstes einmal ausprobieren wie <code class="docutils literal notranslate"><span class="pre">black</span></code> als <em>Formatter</em> funktioniert (was eigentlich auch der Standard-Modus von <code class="docutils literal notranslate"><span class="pre">black</span></code> ist). Um die Datei nicht zu überschreiben, bitte einmal vorher die Datei kopieren und umbenennen (z.B. in bash mit <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">code_example_for_linting.py</span> <span class="pre">code_example_before_black.py</span></code>).</p>
+<p>Dann</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>black<span class="w"> </span>code_example_before_black.py
+</pre></div>
+</div>
+<section id="mehr-informationen-zu-black">
+<h4><span class="section-number">5.3.7.1. </span>Mehr Informationen zu <code class="docutils literal notranslate"><span class="pre">black</span></code><a class="headerlink" href="#mehr-informationen-zu-black" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>https://black.readthedocs.io/en/stable/index.html</p></li>
+<li><p>https://calmcode.io/black/introduction.html</p></li>
+</ul>
+</section>
+</section>
+<section id="linter-pylint-vs-flake8-vs-ruff-vs-formatter-black">
+<h3><span class="section-number">5.3.8. </span>Linter (Pylint vs flake8 vs ruff) vs Formatter (black)<a class="headerlink" href="#linter-pylint-vs-flake8-vs-ruff-vs-formatter-black" title="Link to this heading">#</a></h3>
+<p>Alle drei Linter-Bibliotheken funktionieren sehr gut, <code class="docutils literal notranslate"><span class="pre">pylint</span></code> und <code class="docutils literal notranslate"><span class="pre">flake8</span></code> sind zudem sehr etabliert und bekannt (<code class="docutils literal notranslate"><span class="pre">ruff</span></code> wird da aber wahrscheinlich bald aufholen). Es gibt im Internet zahlreiche Pros/Cons-Debatten. Oft reicht es aus, nach subjektiver Präferenz einen der Linter auszuwählen.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">flake8</span></code> lässt sich über Plugins erweitern, ist aber im einfachen Modus nicht so umfangreich/gründlich wie <code class="docutils literal notranslate"><span class="pre">pylint</span></code> oder <code class="docutils literal notranslate"><span class="pre">ruff</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ruff</span></code> ist mit Abstand am schnellsten, das spielt aber erst bei größeren Projekten ein wichtige Rolle.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">black</span></code> ist am komfortabelsten, da es die nötigen Änderungen auch gleich ausführt. In den meisten Fällen kann dies ein strengeres Linting aber nicht ganz ersetzen</p></li>
+<li><p>Für umfangreiche Python-Softwareprojekte bietet es sich an, zumindest <strong>einen Linter</strong> zu nutzen. Und, falls gewünscht, einen <strong>Formatter</strong> wie <code class="docutils literal notranslate"><span class="pre">black</span></code> noch davorzuschalten.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="live-coding">
+<h2><span class="section-number">5.4. </span>–&gt; Live Coding<a class="headerlink" href="#live-coding" title="Link to this heading">#</a></h2>
+<p>In der Live Coding Session werden die vier Tools (<code class="docutils literal notranslate"><span class="pre">pylint</span></code>, <code class="docutils literal notranslate"><span class="pre">flake8</span></code>, <code class="docutils literal notranslate"><span class="pre">ruff</span></code>, <code class="docutils literal notranslate"><span class="pre">black</span></code>) über ihre jeweiligen Comand-Line-Interfaces ausprobiert und verglichen.</p>
+<p>Zum Schluss soll versucht werden, den bereitgestellten Code soweit zu verbessern, dass entweder <code class="docutils literal notranslate"><span class="pre">pylint</span></code> oder <code class="docutils literal notranslate"><span class="pre">ruff</span></code> keine größeren Beschwerden mehr haben.</p>
+<section id="ausblick">
+<h3><span class="section-number">5.4.1. </span>Ausblick<a class="headerlink" href="#ausblick" title="Link to this heading">#</a></h3>
+<p>Es gibt noch viele weitere Linter, sowie auch umfangreichere Tools um automatisiert die Code Qualität zu überprüfen bzw. zu verbessern. Zwei erwähnenswerte:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mypy</span></code> wird genutzt um die korrekte/konsistente Verwendung von Datentypen zu überprüfen</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SonarCloud</span></code> ist ein <strong>sehr</strong> umfangreiches Tool um Code zu beurteilen und potentielle Schachstellen aufzudecken.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04_github.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>GitHub</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="06_code_smells.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Code Smells</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-bedeutung-von-besserem-code">5.1. 1. Die Bedeutung von „besserem“ Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-besser">5.1.1. 1.1. Was ist „besser“?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-besserer-code-wichtig-ist">5.1.2. 1.2. Warum besserer Code wichtig ist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-weg-zu-besserem-code-clean-code">5.1.3. 1.3. Der Weg zu „besserem“ Code: Clean Code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-code-grundlagen">5.2. 2. Clean Code - Grundlagen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-clean-code">5.2.1. Was ist Clean Code?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weshalb-clean-code">5.2.2. Weshalb Clean Code?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#style-guides-und-ihre-bedeutung">5.2.3. <strong>Style Guides und ihre Bedeutung</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pep-8-der-python-style-guide">5.2.3.1. PEP 8 - Der Python Style Guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linting">5.3. 3. Linting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-beispiel">5.3.1. Code Beispiel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pylint">5.3.2. pylint</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flake8">5.3.3. flake8</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anwendung">5.3.4. Anwendung</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mehr-informationen-zu-flake8">5.3.4.1. Mehr Informationen zu <code class="docutils literal notranslate"><span class="pre">flake8</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ruff">5.3.5. ruff</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-informationen-zu-ruff">5.3.5.1. Weitere Informationen zu <code class="docutils literal notranslate"><span class="pre">ruff</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#black">5.3.6. black</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.3.7. Anwendung</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mehr-informationen-zu-black">5.3.7.1. Mehr Informationen zu <code class="docutils literal notranslate"><span class="pre">black</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linter-pylint-vs-flake8-vs-ruff-vs-formatter-black">5.3.8. Linter (Pylint vs flake8 vs ruff) vs Formatter (black)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-coding">5.4. –&gt; Live Coding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ausblick">5.4.1. Ausblick</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Florian Huber
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

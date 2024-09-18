@@ -1,0 +1,67 @@
+Traceback (most recent call last):
+  File "/home/runner/micromamba/envs/python_software_dev/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/runner/micromamba/envs/python_software_dev/lib/python3.12/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/python_software_dev/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/python_software_dev/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba/envs/python_software_dev/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/home/runner/micromamba/envs/python_software_dev/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/micromamba/envs/python_software_dev/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import pandas as pd
+
+df = pd.DataFrame({"A": [2, 3, 4, 5],
+                   "B": [0, -1, 0, -5],
+                  })
+
+@numba.jit(nopython=True)
+def get_max(df):
+    return df.max()
+
+get_max(df)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypingError[0m                               Traceback (most recent call last)
+Cell [0;32mIn[10], line 11[0m
+[1;32m      7[0m [38;5;129m@numba[39m[38;5;241m.[39mjit(nopython[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+[1;32m      8[0m [38;5;28;01mdef[39;00m [38;5;21mget_max[39m(df):
+[1;32m      9[0m     [38;5;28;01mreturn[39;00m df[38;5;241m.[39mmax()
+[0;32m---> 11[0m [43mget_max[49m[43m([49m[43mdf[49m[43m)[49m
+
+File [0;32m~/micromamba/envs/python_software_dev/lib/python3.12/site-packages/numba/core/dispatcher.py:423[0m, in [0;36m_DispatcherBase._compile_for_args[0;34m(self, *args, **kws)[0m
+[1;32m    419[0m         msg [38;5;241m=[39m ([38;5;124mf[39m[38;5;124m"[39m[38;5;132;01m{[39;00m[38;5;28mstr[39m(e)[38;5;241m.[39mrstrip()[38;5;132;01m}[39;00m[38;5;124m [39m[38;5;130;01m\n[39;00m[38;5;130;01m\n[39;00m[38;5;124mThis error may have been caused [39m[38;5;124m"[39m
+[1;32m    420[0m                [38;5;124mf[39m[38;5;124m"[39m[38;5;124mby the following argument(s):[39m[38;5;130;01m\n[39;00m[38;5;132;01m{[39;00margs_str[38;5;132;01m}[39;00m[38;5;130;01m\n[39;00m[38;5;124m"[39m)
+[1;32m    421[0m         e[38;5;241m.[39mpatch_message(msg)
+[0;32m--> 423[0m     [43merror_rewrite[49m[43m([49m[43me[49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mtyping[39;49m[38;5;124;43m'[39;49m[43m)[49m
+[1;32m    424[0m [38;5;28;01mexcept[39;00m errors[38;5;241m.[39mUnsupportedError [38;5;28;01mas[39;00m e:
+[1;32m    425[0m     [38;5;66;03m# Something unsupported is present in the user code, add help info[39;00m
+[1;32m    426[0m     error_rewrite(e, [38;5;124m'[39m[38;5;124munsupported_error[39m[38;5;124m'[39m)
+
+File [0;32m~/micromamba/envs/python_software_dev/lib/python3.12/site-packages/numba/core/dispatcher.py:364[0m, in [0;36m_DispatcherBase._compile_for_args.<locals>.error_rewrite[0;34m(e, issue_type)[0m
+[1;32m    362[0m     [38;5;28;01mraise[39;00m e
+[1;32m    363[0m [38;5;28;01melse[39;00m:
+[0;32m--> 364[0m     [38;5;28;01mraise[39;00m e[38;5;241m.[39mwith_traceback([38;5;28;01mNone[39;00m)
+
+[0;31mTypingError[0m: Failed in nopython mode pipeline (step: nopython frontend)
+[1m[1mnon-precise type pyobject[0m
+[0m[1mDuring: typing of argument at /tmp/ipykernel_3203/1526091316.py (7)[0m
+[1m
+File "../../../../../../tmp/ipykernel_3203/1526091316.py", line 7:[0m
+[1m<source missing, REPL/exec in use?>[0m 
+
+This error may have been caused by the following argument(s):
+- argument 0: [1mCannot determine Numba type of <class 'pandas.core.frame.DataFrame'>[0m
+
+

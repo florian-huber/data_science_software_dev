@@ -1,0 +1,907 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Live Coding: git &amp; GitHub &#8212; Data Science Software Development with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'live_coding_sessions/live_coding_02_git_live_coding';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../book/cover.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/cover_mini.png" class="logo__image only-light" alt="Data Science Software Development with Python - Home"/>
+    <script>document.write(`<img src="../_static/cover_mini.png" class="logo__image only-dark" alt="Data Science Software Development with Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../book/cover.html">
+                    Sofware Development für Data Scientists (mit Python)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../book/01_introduction.html">1. Data Science und AI Infrastrukturen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/02_shell_scripting.html">2. Shell Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/03_git_github.html">3. Git &amp; GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/04_github.html">4. GitHub</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../book/05_clean_code.html">5. Cleaner Code, Better Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/06_code_smells.html">6. Code Smells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/06_python_software_project.html">7. Python Software Projekt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition and First Exploration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../book/06_testing.html">8. Code Testing with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/07_continuous_integration.html">9. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/07_testing_2.html">10. Code Testing (2)</a></li>
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/florian-huber/data_science_software_dev" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/florian-huber/data_science_software_dev/issues/new?title=Issue%20on%20page%20%2Flive_coding_sessions/live_coding_02_git_live_coding.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/live_coding_sessions/live_coding_02_git_live_coding.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Live Coding: git & GitHub</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-coding">Live Coding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neues-projekt-starten">Neues Projekt starten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erste-datei-erzeugen">Erste Datei erzeugen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log">log</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ok-das-ganze-nochmal">OK, das Ganze nochmal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diff-optionen">diff –&gt; Optionen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-ubung">Mini-Übung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#staging">Staging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Mini-Übung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-history">Exploring history</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-history">Changing history</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#staging-area-un-committed-mistakes">Staging Area: Un-committed mistakes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#commits-zurucknehmen-mit-revert">Commits zurücknehmen mit <code class="docutils literal notranslate"><span class="pre">revert</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#datei-en-mit-checkoutin-einen-zustand-vor-einem-bestimmten-commit-versetzen">Datei(en) mit <code class="docutils literal notranslate"><span class="pre">checkout</span></code>in einen Zustand vor einem bestimmten Commit versetzen</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-reset-nicht-committete-anderungen-ruckgangig-machen">Mit <code class="docutils literal notranslate"><span class="pre">reset</span></code>: Nicht-committete Änderungen rückgängig machen</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-von-revert-im-vergleich-zu-checkout-und-reset">Zusammenfassung von <code class="docutils literal notranslate"><span class="pre">revert</span></code> im Vergleich zu <code class="docutils literal notranslate"><span class="pre">checkout</span></code> und <code class="docutils literal notranslate"><span class="pre">reset</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branches">Branches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonusmaterial-wie-speichert-git-die-daten">Bonusmaterial: Wie speichert Git die Daten?</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="live-coding-git-github">
+<h1>Live Coding: git &amp; GitHub<a class="headerlink" href="#live-coding-git-github" title="Link to this heading">#</a></h1>
+<p>(Erstellt auf Grundlage des Carpentry Git Kurses: https://carpentries-incubator.github.io/git-novice-branch-pr/)</p>
+<ul>
+<li><p>git installieren</p></li>
+<li><p>Läuft git? –&gt; <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">version</span></code></p></li>
+<li><p>Einrichten:
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">user.name</span> <span class="pre">&quot;Alice</span> <span class="pre">B&quot;</span></code>
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">user.email</span> <span class="pre">&quot;abc&#64;def.com&quot;</span></code></p></li>
+<li><p>Die bisherigen Einstellungen lassen sich einsehen mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--list</span></code>.</p></li>
+<li><p>Je nachdem wie git installiert wurde ist der Standardname für den Haupt-Branch “master” oder “main”. Wenn es immer “main” sein soll, lässt sich dies auch nachträglich noch ändern mit:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>init.defaultBranch<span class="w"> </span>main
+</pre></div>
+</div>
+</li>
+</ul>
+<section id="live-coding">
+<h2>Live Coding<a class="headerlink" href="#live-coding" title="Link to this heading">#</a></h2>
+<p>(Teil des Materials wurde adaptiert von: https://carpentries-incubator.github.io/git-novice-branch-pr/03-create/)</p>
+<p>Erster Test: Ist git richtig installiert –&gt; <code class="docutils literal notranslate"><span class="pre">git</span></code> im Terminal ausführen.</p>
+<section id="neues-projekt-starten">
+<h3>Neues Projekt starten<a class="headerlink" href="#neues-projekt-starten" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Zum Desktop gehen (oder anderem Ort)</p></li>
+<li><p>Neues Verzeichnis “planets” erstellen</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ~/Desktop
+$ mkdir planets
+$ cd planets
+</pre></div>
+</div>
+</li>
+<li><p>Wir sind jetzt im neuen Verzeichnis “planets”. Wir möchten dies zu einem git-Repository machen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git init
+</pre></div>
+</div>
+</li>
+<li><p>Hat sich im Ordner etwas verändert?
+Vielleicht nicht auf den ersten Blick (<code class="docutils literal notranslate"><span class="pre">ls</span></code>, bzw. <code class="docutils literal notranslate"><span class="pre">dir</span></code>), aber bei genauerem Hinsehen schon:  <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-a</span></code> (<code class="docutils literal notranslate"><span class="pre">dir</span> <span class="pre">/a</span></code> oder <code class="docutils literal notranslate"><span class="pre">dir</span> <span class="pre">-Force</span></code>) –&gt; .git</p></li>
+<li><p>–&gt; Neuer Ordner <code class="docutils literal notranslate"><span class="pre">.git</span></code> wurde erstellt. Darin wird die Projektgeschichte gespeichert.</p></li>
+</ul>
+</section>
+<section id="erste-datei-erzeugen">
+<h3>Erste Datei erzeugen<a class="headerlink" href="#erste-datei-erzeugen" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nano mars.txt
+</pre></div>
+</div>
+<p>Gib den folgenden Text in die <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> Datei ein:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cold</span> <span class="ow">and</span> <span class="n">dry</span><span class="p">,</span> <span class="n">but</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">favorite</span> <span class="n">color</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> enthält nun eine Zeile, die wir anzeigen können, indem wir ausführen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat mars.txt
+</pre></div>
+</div>
+<p>Wenn wir den Status unseres Projekts erneut überprüfen, zeigt uns Git, dass es die neue Datei erkannt hat:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status
+On branch main
+
+Initial commit
+
+Untracked files:
+   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+	mars.txt
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</pre></div>
+</div>
+<p>Die Nachricht “Untracked files” bedeutet, dass es eine Datei im Verzeichnis gibt, die Git nicht verfolgt. Wir können Git mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> mitteilen, eine Datei zu verfolgen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add mars.txt
+</pre></div>
+</div>
+<p>Danach können wir überprüfen, ob alles korrekt durchgeführt wurde:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git status
+On branch main
+
+Initial commit
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+
+	new file:   mars.txt
+</pre></div>
+</div>
+<p>Git weiß nun, dass es <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> verfolgen soll, hat diese  Änderungen jedoch noch nicht als Commit festgehalten. Um das zu tun,  müssen wir noch einen Befehl ausführen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git commit -m &quot;Start notes on Mars as a base&quot;
+[main (root-commit) f22b25e] Start notes on Mars as a base
+ 1 file changed, 1 insertion(+)
+ create mode 100644 mars.txt
+</pre></div>
+</div>
+<p>Wenn wir <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> ausführen, nimmt Git alles, was wir ihm mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> zum Speichern mitgeteilt haben, und speichert eine Kopie dauerhaft im speziellen <code class="docutils literal notranslate"><span class="pre">.git</span></code> Verzeichnis. Diese dauerhafte Kopie wird als <a class="reference external" href="https://carpentries-incubator.github.io/git-novice-branch-pr/reference/#commit">commit</a> (oder <a class="reference external" href="https://carpentries-incubator.github.io/git-novice-branch-pr/reference/#revision">revision</a>) bezeichnet und ihr Kurzidentifikator ist <code class="docutils literal notranslate"><span class="pre">f22b25e</span></code> (Dein Commit könnte einen anderen Identifikator haben.)</p>
+<p>Mit der <code class="docutils literal notranslate"><span class="pre">-m</span></code>-Option (für “message”) können wir einen kurzen, beschreibenden und spezifischen Kommentar aufzeichnen, der uns später helfen wird, uns daran zu erinnern, was wir getan haben und warum. Wenn wir nur <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> ohne die <code class="docutils literal notranslate"><span class="pre">-m</span></code>-Option ausführen, startet Git <code class="docutils literal notranslate"><span class="pre">nano</span></code> (oder welchen anderen Editor wir als <code class="docutils literal notranslate"><span class="pre">core.editor</span></code> konfiguriert haben), damit wir eine längere Nachricht schreiben können.</p>
+<p><a class="reference external" href="https://chris.beams.io/posts/git-commit/">Gute Commit-Nachrichten</a> beginnen mit einer kurzen (weniger als 50 Zeichen) Zusammenfassung der im Commit vorgenommenen Änderungen. Wenn du ins Detail gehen möchtest, füge eine leere Zeile zwischen der Zusammenfassung und deinen zusätzlichen Anmerkungen hinzu.</p>
+<p>Danach –&gt; <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code></p>
+</section>
+<section id="log">
+<h3>log<a class="headerlink" href="#log" title="Link to this heading">#</a></h3>
+<p>Wenn wir wissen wollen, was wir kürzlich gemacht haben, können wir Git bitten, uns die Historie des Projekts mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> zu zeigen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log
+commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
+Author: Alice B. Changing &lt;alice@futurum.galaxy&gt;
+Date:   Thu Aug 22 09:51:46 2023 -0400
+
+    Start notes on Mars as a base
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> listet alle Commits eines Repositoriums in  umgekehrter chronologischer Reihenfolge auf. Die Auflistung für jeden  Commit enthält den vollen Identifier des Commits (der mit den gleichen  Zeichen beginnt wie der Kurzidentifier, der vom <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>-Befehl zuvor gedruckt wurde), den Autor des Commits, wann er erstellt wurde,  und die Log-Nachricht, die Git beim Erstellen des Commits gegeben wurde.</p>
+<p>Das ist alles etwas unübersichtlich, darum nutzen wir hier oft eine Kurzversion der Ansicht mit</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log<span class="w"> </span>--oneline
+</pre></div>
+</div>
+</section>
+<section id="ok-das-ganze-nochmal">
+<h3>OK, das Ganze nochmal<a class="headerlink" href="#ok-das-ganze-nochmal" title="Link to this heading">#</a></h3>
+<p>Jetzt fügen wir der Datei <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> eine weitere Zeile hinzu.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>nano<span class="w"> </span>mars.txt
+$<span class="w"> </span>cat<span class="w"> </span>mars.txt
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Cold and dry, but everything is my favorite color.
+Having two moons sounds awesome!
+</pre></div>
+</div>
+<p>Unsere Änderungen werden von Git erkannt (–&gt; <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>), aber es steht dort auch “no changes added to commit”, d.h. die Änderungen werden nicht automatisch hinzugefügt. Dies muss aktiv durch uns selbst vorgenommen werden.
+Zuerst können wir uns aber nochmal die Änderungen genau anschauen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>diff
+</pre></div>
+</div>
+<p>Das gibt in etwas sowas aus:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>diff --git a/mars.txt b/mars.txt
+index d6a9cf8..b2ccad4 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1,3 @@
+ Cold an dry, but everything is nicely red.
++Having two moons sounds awesome!
++
+</pre></div>
+</div>
+<p>Falls wir mit den Änderungen einverstanden sind, können wir sie hinzufügen.</p>
+<p>–&gt; <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;add</span> <span class="pre">comment</span> <span class="pre">on</span> <span class="pre">moons&quot;</span></code></p>
+<p>Das funktioniert aber nicht!</p>
+<p>Denn wir haben den Stageing-Schritt vergessen. Korrekt muss der Ablauf so aussehen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>mars.txt
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;add comment on moons&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="diff-optionen">
+<h3>diff –&gt; Optionen<a class="headerlink" href="#diff-optionen" title="Link to this heading">#</a></h3>
+<p>Für <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> gibt es noch weitere Optionen, z.B. <code class="docutils literal notranslate"><span class="pre">--staged</span></code> wenn wir Änderungen anschauen wollen die schon mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> in den Stageing-Bereich geschoben wurden. Oder <code class="docutils literal notranslate"><span class="pre">--color-words</span></code> wenn wir nicht Zeilen sondern Zeichen-weise vergleichen wollen.</p>
+</section>
+<section id="mini-ubung">
+<h3>Mini-Übung<a class="headerlink" href="#mini-ubung" title="Link to this heading">#</a></h3>
+<p>Fügt jetzt eine weitere Zeile Text zu eurer <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> Datei und “committed” diese Änderungen mit Git.</p>
+</section>
+<section id="staging">
+<h3>Staging<a class="headerlink" href="#staging" title="Link to this heading">#</a></h3>
+<p>Natürlich müssen wir diesen Prozess nicht immer für jede Zeile durchführen!
+Zum Staging-Area können belieb viele Änderungen gleichzeitig oder nacheinander hinzugefügt werden. In der Praxis empfiehlt es sich, die einzelnen Commits nicht zu groß werden zu lassen, da nur die Commits wirkliche Speicherpunkte in der Geschichte darstellen (dazu später noch mehr).</p>
+<p>Jetzt versuchen wir aber mehrere Arten von Änderungen einmal zu kombinieren.</p>
+</section>
+<section id="id1">
+<h3>Mini-Übung<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Einen weiteren Satz zu <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> hinzufügen</p></li>
+<li><p>Eine neue Datei <code class="docutils literal notranslate"><span class="pre">venus.txt</span></code> erstellen mit einem ersten Satz darin (z.B. “If mars is too cold for you, this might be a good place to consider.”)</p></li>
+<li><p>Was steht nun bei <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>? (Vor und nach <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>)</p></li>
+</ul>
+<p>Hier sehen wir zwei Arten von Änderungen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+	<span class="n">new</span> <span class="n">file</span><span class="p">:</span>   <span class="n">venus</span><span class="o">.</span><span class="n">txt</span>
+    <span class="n">modified</span><span class="p">:</span>   <span class="n">mars</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Es fällt uns nun auf, dass wir doch lieber noch eine 2te Zeile zu <code class="docutils literal notranslate"><span class="pre">venus.txt</span></code> hinzufügen würden bevor wir das comitten.
+Was geschieht jetzt bei <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>?</p>
+<p>[Randnotitz: es geht auch <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span> <span class="pre">-s</span></code> für einen Kurzreport]</p>
+</section>
+<section id="exploring-history">
+<h3>Exploring history<a class="headerlink" href="#exploring-history" title="Link to this heading">#</a></h3>
+<p>Nicht immer sind wir zufrieden mit unseren Änderungen.
+Bitte darum einmal eine weitere Zeile zu <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> hinzufügen.</p>
+<p>Wir können die Änderungen zu bestimmten zeitlichen Punkten (commits) anschauen mit:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>diff<span class="w"> </span>HEAD~1<span class="w"> </span>mars.text
+</pre></div>
+</div>
+<p>Das bezieht sich immer auf den aktuellen Zustand (HEAD) und zählt Commits zurück.
+Es ist auch möglich direkt auf einen bestimmten Commit zu verweisen und zwar über den mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> angegebenen Hash.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>diff<span class="w"> </span>6bdfa53a094b11e7f124ca894955b57dd2210f27
+</pre></div>
+</div>
+<p>Die Hashes sind natürlich etwas sperrig. Am besten einfach Copy+Paste Nutzen (<strong>übrigens</strong>: in Bash geht das mit CTRL+INS/EINFG bzw. SHIFT+INS/EINFG).
+Oder, wir können auch nur die ersten Zeichen eines Hashes nutzen. Solange das für Git eindeutig ist wird auch das funktionieren:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>diff<span class="w"> </span>6bdfa5
+</pre></div>
+</div>
+</section>
+<section id="changing-history">
+<h3>Changing history<a class="headerlink" href="#changing-history" title="Link to this heading">#</a></h3>
+<p>Es gibt bei Git mehrere Wege um Änderungen wieder zurückzunehmen, z.B. bei versehentlichen oder fehlerhaften Änderungen. Hierbei gibt es aber eine Reihe von Dingen zu beachten. Die wichtigste Frage dabei ist: Wollen wir bestimmte Teil zu einem früheren Stand zurücksetzen (die zwischenzeitlichen Änderungen bleiben Teil der git-history), oder wollen wir komplett zu einem früheren Stand zurückkehren?
+Außerdem ist wichtig zu wissen: Wurden die Änderungen bereits “committed”, oder befinden sie sich nur in der Staging Area?</p>
+<section id="staging-area-un-committed-mistakes">
+<h4>Staging Area: Un-committed mistakes<a class="headerlink" href="#staging-area-un-committed-mistakes" title="Link to this heading">#</a></h4>
+<p>Dann einfach <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">HEAD</span> <span class="pre">mars.txt</span></code> um z.B. die noch Änderungen im Staging Bereich zu verwerfen.</p>
+</section>
+<section id="commits-zurucknehmen-mit-revert">
+<h4>Commits zurücknehmen mit <code class="docutils literal notranslate"><span class="pre">revert</span></code><a class="headerlink" href="#commits-zurucknehmen-mit-revert" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">revert</span></code> ist die sicherste Methode um Änderungen zurückzunehmen. Die Historie wird nämlich nicht geändert, sondern nur ein vorheriger Zustand erneut als neuer Commit hinzugefügt.</p>
+<p><strong>Szenario:</strong> Sie möchten die Änderungen eines bestimmten Commits rückgängig machen, ohne den Verlauf zu verändern.</p>
+<p>Um die Änderungen eines bestimmten Commits rückgängig zu machen, verwenden Sie:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git revert [COMMIT-HASH]
+</pre></div>
+</div>
+<p>Wenn Sie zum Beispiel den letzten Commit rückgängig machen möchten, verwenden Sie:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git revert HEAD
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">revert</span></code> wird Sie dann zu einem Texteditor führen, um eine Commit-Nachricht für den neuen Revert-Commit einzugeben. Sie können die vorgeschlagene Nachricht übernehmen oder eine eigene hinzufügen.</p>
+<p>Nachdem Sie die Nachricht gespeichert und den Editor geschlossen haben, wird ein neuer Commit erstellt, der die Änderungen des angegebenen Commits rückgängig macht.
+Soll keine spezielle Nachricht erscheinen, sondern nur so etwas wie “Revert XYZ commit”, dann geht dies mit der zusätzlichen option <code class="docutils literal notranslate"><span class="pre">--no-edit</span></code>, also <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">revert</span> <span class="pre">HEAD</span> <span class="pre">--no-edit</span></code>.</p>
+</section>
+<section id="datei-en-mit-checkoutin-einen-zustand-vor-einem-bestimmten-commit-versetzen">
+<h4>Datei(en) mit <code class="docutils literal notranslate"><span class="pre">checkout</span></code>in einen Zustand vor einem bestimmten Commit versetzen<a class="headerlink" href="#datei-en-mit-checkoutin-einen-zustand-vor-einem-bestimmten-commit-versetzen" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>6bdfa5<span class="w"> </span>mars.txt
+</pre></div>
+</div>
+<p>Oder</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>HEAD~1<span class="w"> </span>mars.txt
+</pre></div>
+</div>
+<p>Mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code> setzen Sie die Datei auf den Zustand eines früheren Commits zurück. Dies ist hilfreich, wenn Sie nur eine bestimmte Datei und nicht Ihr gesamtes Projekt rückgängig machen möchten.</p>
+<p>Wir probieren das mal aus und fügen eine fehlerhafte Zeile zur <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> Datei hinzu.
+<code class="docutils literal notranslate"><span class="pre">For</span> <span class="pre">germans,</span> <span class="pre">Mars</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">candy</span> <span class="pre">bar.</span></code></p>
+<p>Danach fügen wir diese wie gewohnt hinzu mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> und <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>.</p>
+<p>Nun machen wir das Ganze wieder rückgängig mit <code class="docutils literal notranslate"><span class="pre">checkout</span></code>!</p>
+<p>Überprüfen Sie den Inhalt von <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>mars.txt
+</pre></div>
+</div>
+<p>Achtung!
+Wenn wir hier nicht <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> dazu nehmen, dann erscheint eine Meldung <code class="docutils literal notranslate"><span class="pre">You</span> <span class="pre">are</span> <span class="pre">in</span> <span class="pre">'detached</span> <span class="pre">HEAD'</span> <span class="pre">state.</span></code>.</p>
+<p>Das kann mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">main</span></code> wieder geändert werden.</p>
+</section>
+<section id="mit-reset-nicht-committete-anderungen-ruckgangig-machen">
+<h4>Mit <code class="docutils literal notranslate"><span class="pre">reset</span></code>: Nicht-committete Änderungen rückgängig machen<a class="headerlink" href="#mit-reset-nicht-committete-anderungen-ruckgangig-machen" title="Link to this heading">#</a></h4>
+<p>Wenn Sie Änderungen an einer Datei vorgenommen haben und diese Änderungen noch nicht committed wurden, können Sie diese Änderungen mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span></code> verwerfen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--hard
+</pre></div>
+</div>
+<p>Achtung: Der Befehl löscht alle nicht-committeten Änderungen in Ihrem Arbeitsverzeichnis.</p>
+<p><strong>Mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span></code>: Letzten Commit rückgängig machen</strong></p>
+<p>Wenn Sie den letzten Commit rückgängig machen möchten, können Sie:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>HEAD~1
+</pre></div>
+</div>
+<p>Hierbei werden die Änderungen aem letzten Commit in Ihrem Arbeitsverzeichnis beibehalten, aber der Commit selbst wird aus Ihrer Commit-Historie entfernt.</p>
+<p>Wir probieren auch das einmal aus. Dazu fügen wir eine Zeile zu <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> hinzu, z.B. unsere Telefonnummer oder Kreditkartendaten. Und schließen das mit einem Commit ab.</p>
+<p>Komischerweise merken wir erst dann, dass das vielleicht nicht so schlau war. Was jetzt?</p>
+<p>Noch ist ja alles lokal, also nur bei uns auf dem eigenen Rechner. Daher lässt sich das noch einfach lösen und zwar über <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">HEAD~1</span></code>. Nun einmal mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> und <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> bzw. <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">mars.txt</span></code> anschauen was passiert ist…
+Wir benötigen also noch einen Schritt, z.B. eine manuelle Anpassung der Datei, oder einfach ein erneutes <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">--</span> <span class="pre">mars.txt</span></code>. Danach ist alles so, als wäre nichts geschehen.</p>
+</section>
+<section id="zusammenfassung-von-revert-im-vergleich-zu-checkout-und-reset">
+<h4>Zusammenfassung von <code class="docutils literal notranslate"><span class="pre">revert</span></code> im Vergleich zu <code class="docutils literal notranslate"><span class="pre">checkout</span></code> und <code class="docutils literal notranslate"><span class="pre">reset</span></code><a class="headerlink" href="#zusammenfassung-von-revert-im-vergleich-zu-checkout-und-reset" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">revert</span></code> erstellt einen neuen Commit und verändert nicht den Verlauf. Das macht es sicherer für Änderungen, die bereits öffentlich gemacht wurden.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code> ändert den Zustand von Dateien zu einem bestimmten Commit, ändert aber nicht den Verlauf.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span></code> kann den Verlauf ändern, indem Commits entfernt werden. Es gibt verschiedene Modi (<code class="docutils literal notranslate"><span class="pre">--soft</span></code>, <code class="docutils literal notranslate"><span class="pre">--mixed</span></code>, <code class="docutils literal notranslate"><span class="pre">--hard</span></code>), die bestimmen, wie der Arbeitsbereich und der Index beeinflusst werden.</p></li>
+</ul>
+<p><strong>Empfehlung:</strong> In den meisten Fällen, insbesondere wenn Änderungen bereits in ein Remote-Repository gepusht wurden, ist <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">revert</span></code> oder <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code> die sicherste Wahl, um Fehler rückgängig zu machen, da es keinen Verlauf umschreibt.</p>
+<p><strong>Ausnahmen</strong> sind zum Beispiel das versehentliche Hinzufügen von kritischen Inhalten, z.B. Passwörtern, Adressen etc.</p>
+</section>
+</section>
+</section>
+<section id="branches">
+<h2>Branches<a class="headerlink" href="#branches" title="Link to this heading">#</a></h2>
+<p>Bisher haben wir immer auf einem geraden Zeitstrahl gearbeitet. Manchmal möchten wir jedoch unseren Hauptzweig vor experimentellen Änderungen schützen. Hierfür können wir Zweige (Branches) nutzen, um gleichzeitig an separaten Aufgaben zu arbeiten.</p>
+<p>Betrachten wir die existierenden Branches mit:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>branch
+*<span class="w"> </span>main
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">*</span></code> zeigt den aktuellen Zweig an.</p>
+<p>In dieser Lektion will Dracula eine Analyse durchführen und weiß nicht, ob sie schneller in Bash oder Python sein wird. Er wird separate Branches für beide Analysen verwenden und dann den schnelleren in seinen Hauptzweig zusammenführen.</p>
+<p>Erstellen wir den Python-Branch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>pythondev
+$<span class="w"> </span>git<span class="w"> </span>branch
+*<span class="w"> </span>main
+<span class="w">  </span>pythondev
+</pre></div>
+</div>
+<p>Wir sehen, dass wir den <code class="docutils literal notranslate"><span class="pre">pythondev</span></code> Branch erstellt haben, aber immer noch im <code class="docutils literal notranslate"><span class="pre">main</span></code> Branch sind.</p>
+<p>Wechseln wir zum neuen Branch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>pythondev
+$<span class="w"> </span>git<span class="w"> </span>branch
+<span class="w">  </span>main
+*<span class="w"> </span>pythondev
+</pre></div>
+</div>
+<p>Nun erstellen wir unser Python-Skript:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>touch<span class="w"> </span>analysis.py
+$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>analysis.py
+$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Wrote and tested python analysis script&quot;</span>
+</pre></div>
+</div>
+<p>Wechseln wir zurück zum <code class="docutils literal notranslate"><span class="pre">main</span></code> Branch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>main
+</pre></div>
+</div>
+<p>Die Datei <code class="docutils literal notranslate"><span class="pre">analysis.py</span></code> ist nicht im <code class="docutils literal notranslate"><span class="pre">main</span></code> Branch. Wir können dies überprüfen mit <code class="docutils literal notranslate"><span class="pre">ls</span></code> und <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>.</p>
+<p>Wiederholen wir den Prozess für unser Bash-Skript in einem Branch namens <code class="docutils literal notranslate"><span class="pre">bashdev</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>bashdev
+$<span class="w"> </span>touch<span class="w"> </span>analysis.sh
+$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>analysis.sh
+$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span>“Wrote<span class="w"> </span>and<span class="w"> </span>tested<span class="w"> </span>bash<span class="w"> </span>analysis<span class="w"> </span>script”
+</pre></div>
+</div>
+<p>Die Python-Analyse (<code class="docutils literal notranslate"><span class="pre">analysis.py</span></code>) ist viel schneller als <code class="docutils literal notranslate"><span class="pre">analysis.sh</span></code>. Fügen wir diese Version in unseren <code class="docutils literal notranslate"><span class="pre">main</span></code> Branch ein:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>main
+$<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span>pythondev
+</pre></div>
+</div>
+<p>Nun löschen wir unsere alten Branches, um Verwirrung zu vermeiden:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>pythondev
+</pre></div>
+</div>
+<p>Da wir die Änderungen im <code class="docutils literal notranslate"><span class="pre">bashdev</span></code> Branch nicht beibehalten wollen, löschen wir auch diesen Branch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-D<span class="w"> </span>bashdev
+</pre></div>
+</div>
+<p>So haben wir erfolgreich Branches erstellt, verwendet und gelöscht, sowie Änderungen aus einem Branch in einen anderen zusammengeführt.</p>
+</section>
+<section id="bonusmaterial-wie-speichert-git-die-daten">
+<h2>Bonusmaterial: Wie speichert Git die Daten?<a class="headerlink" href="#bonusmaterial-wie-speichert-git-die-daten" title="Link to this heading">#</a></h2>
+<p>Nahezu alles was Git benötigt wird im <code class="docutils literal notranslate"><span class="pre">.git/</span></code> Ordner gespeichert.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log<span class="w"> </span>--online
+</pre></div>
+</div>
+<p>zeigt uns die bisherige Commit-Historie. Wir können uns die jeweiligen Git-Bäume anschauen mit</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>ls-tree<span class="w"> </span>add-hash-here
+</pre></div>
+</div>
+<p>Wobei der hash code des jeweiligen Commits der uns interessiert genutzt wird.</p>
+<p>Einzelne Elemente des Baumes können angezeigt werden, z.B. mit:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>cat-file<span class="w"> </span>blob<span class="w"> </span>add-hash-here
+</pre></div>
+</div>
+<p>Alle Bäume (trees), Commits, und Dateien (blobs) werden als Objekte im Ordner <code class="docutils literal notranslate"><span class="pre">objects/</span></code> gespeichert. Der jeweilige Inhalt wird über die SHA1 hash-Funktion in einen 160bit hash umgewandelt. Die ersten zwei Zeichen werden als Ordnername genutzt. Die jeweiligen Dateien, deren Name sich aus den restlichen Hash-Zeichen zusammensetzt, werden von git über Zip komprimiert um Speicherplatz zu sparen, darum sind sie nicht direkt sinnvoll lesbar (aber z.B. über <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">cat-file</span></code>).</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./live_coding_sessions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-coding">Live Coding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neues-projekt-starten">Neues Projekt starten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erste-datei-erzeugen">Erste Datei erzeugen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log">log</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ok-das-ganze-nochmal">OK, das Ganze nochmal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diff-optionen">diff –&gt; Optionen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-ubung">Mini-Übung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#staging">Staging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Mini-Übung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-history">Exploring history</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-history">Changing history</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#staging-area-un-committed-mistakes">Staging Area: Un-committed mistakes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#commits-zurucknehmen-mit-revert">Commits zurücknehmen mit <code class="docutils literal notranslate"><span class="pre">revert</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#datei-en-mit-checkoutin-einen-zustand-vor-einem-bestimmten-commit-versetzen">Datei(en) mit <code class="docutils literal notranslate"><span class="pre">checkout</span></code>in einen Zustand vor einem bestimmten Commit versetzen</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-reset-nicht-committete-anderungen-ruckgangig-machen">Mit <code class="docutils literal notranslate"><span class="pre">reset</span></code>: Nicht-committete Änderungen rückgängig machen</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-von-revert-im-vergleich-zu-checkout-und-reset">Zusammenfassung von <code class="docutils literal notranslate"><span class="pre">revert</span></code> im Vergleich zu <code class="docutils literal notranslate"><span class="pre">checkout</span></code> und <code class="docutils literal notranslate"><span class="pre">reset</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branches">Branches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonusmaterial-wie-speichert-git-die-daten">Bonusmaterial: Wie speichert Git die Daten?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Florian Huber
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
