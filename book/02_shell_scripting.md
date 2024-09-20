@@ -2,68 +2,61 @@
 
 ## Zurück in die Zukunft... Shell scripting!
 
-Viele von uns sind es gewohnt, Computer vor allem über grafische Benutzeroberflächen zu bedienen. Das Öffnen eines Terminals kann wie eine Reise in die Vergangenheit erscheinen. Doch im Bereich Data Science und KI gibt es triftige Gründe, sich mit der Kommandozeile vertraut zu machen. Hier lohnt sich ein (kleiner) Ausflug in die Geschichte:
+Viele von uns sind es gewohnt, Computer vor allem über grafische Benutzeroberflächen zu bedienen. Das Öffnen eines Terminals kann wie eine Reise in die Vergangenheit erscheinen. Doch im Bereich Data Science und KI gibt es triftige Gründe, sich mit der Kommandozeile vertraut zu machen. 
 
-**Unix**
+Aber starten wir einfach mit einer Frage:  
+**Welche Programmiersprachen nutzen Hacker?** 
 
-Unix ist ein Betriebssystem, das in den 1970er Jahren bei AT&T Bell Labs entwickelt wurde. Es war die Basis für viele moderne Betriebssysteme und führte Konzepte wie das hierarchische Dateisystem und die Verwendung von einfachen Textdateien für die Systemkonfiguration ein.
+Hier geht's zu Auflösung:
+```{toggle}
+  Das ist eine häufig gestellte Frage, wenn es um das Image der "Hacker" geht. Eine Untersuchung aus dem Jahr 2022 {cite}`koch2022programming` fand, dass 72,5% der Hacker hier zuerst "Bash, Shell, PowerShell" angaben, gefolgt von Python mit 70%. Danach kommt lange nichts – alle anderen Sprachen liegen um die 30% und darunter.
+```
+
+Ok, jetzt geht es aber hier im Kurs nicht darum Hacker auszubilden (sorry!), sondern wir bewegen uns im Bereich Data Science. Unter Data Scientists wäre Python sicher auf dem ersten Platz gelandet, aber zumindest grundlegende Skills im Bereich Bash/Shell sind trotzdem unerlässlich. Leicht gesagt, aber warum eigentlich?
+
+Um Verwirrungen zu vermeiden starten wir aber mit ein paar Begriffen:
+
+## Einführung der Begriffe: Bash, CLI, Shell
+Die gängigen Betriebssysteme setzten heute alle auf grafische Benutzeroberflächen, egal ob am Rechner, Tablet, oder Smartphone.
+In den 1970er Jahren war daran noch gar nicht zu denken, schon angesichts der im Rückblick bescheidenen Rechenkapazitäten. Bei Betriebssystemen war es daher lange völlig normal das Nutzer*innen ausschließlich über Eingaben in Textform mit dem Rechner interagierten, über ein sogenanntes  **CLI (Command Line Interface)**, eine textbasierte Benutzeroberfläche zur Interaktion mit dem Betriebssystem.
+
+Mit **Shell** (engl. für Schale oder Hülle) meint man im allgemeinen genau solch ein Programm das Befehle (in Textform) interpretiert und ausführt. Damit macht die Shell die Fähigkeiten eines Betriebssystems den Nutzer*innen, aber auch anderen Programmen zugänglich. Dabei ist **Bash**, die "Bourne Again Shell" die am weitesten verbreitete Shell in Linux-Umgebungen.
+
+Die Begriffe **Console** und **Terminal** bezogen sich ursprünglich auf physische Hardware also Monitor und Keyboard über die die Texteingaben erfolgten (also über ein Shell-Programm). Diese beiden Begriffe Console und Terminal wurden aber schon lange übertragen auf Software-Umsetzungen und werden heute im Alltag oft synonym verwendet.
+
+OK, das macht geschichtlich alles Sinn, aber warum sollten wir heute noch über eine textbasierte Shell arbeiten?
+Schließlich verfügen auch Linux-Systeme, wie z.B. Ubuntu, heute über sehr zugängliche grafische Oberflächen.
+Diese grafischen Oberflächen sind aber für "End-Nutzer*innen" konzipiert. Und wir werden sehen, dass sehr viele Prozesse besser oder sogar ausschließlich über ein Shell möglich sind!
+
+Wir starten mit der Frage: **Nutzt ihr selber Linux? Und wenn ja, wofür nutzt ihr es?
+```{toggle}
+Was auch immer hier die Antwort war. Sollte sie "Nein" gewesen sein, war sie ziemlich sicher nicht korrekt :)
+
+Linux ist nämlich überall in der digitalen Welt zu finden!
 
 **Linux**
-
-Linux ist ein Unix-ähnliches Betriebssystem, das in den frühen 1990ern von Linus Torvalds entwickelt wurde. Es verwendet den Linux-Kernel und bietet eine breite Palette von Tools und Anwendungen für Entwickler.
-
-**Shell**
-
-Die Shell ist eine Benutzeroberfläche, die dem Benutzer den Zugriff auf die Funktionen eines Betriebssystems ermöglicht. Dabei werden Befehle in Textform eingegeben.
-
-**Bash**
-
-Bash (Bourne Again SHell) ist eine der bekanntesten Shells und wurde als Ersatz für die Bourne Shell entwickelt. Sie bietet viele Erweiterungen und Verbesserungen, die in anderen Shells nicht zu finden sind.
-
-
-### Warum Shell Scripting lernen?
-
-- **Welche Programmiersprachen nutzen Hacker?**
-  - Eine häufig gestellte Frage, wenn es um das Image der "Hacker" geht. Eine Untersuchung von Koch et al. (2022) {cite}`koch2022programming` zeigt, dass 72,5% der Hacker Bash, Shell oder PowerShell nutzen, gefolgt von Python mit 70%. Danach kommt lange nichts – alle anderen Sprachen liegen um die 30% und darunter.
-  
-- **Linux und Data Science – Die unsichtbare Dominanz**
-  - Kurze Geschichte von Linux:
-    - 1991 wurde Linux von Linus Torvalds entwickelt.
-    - Heute ist Linux allgegenwärtig, besonders in Bereichen wie Servern, Cloud Computing und Supercomputern.
-    - Linux bildet die Basis für Betriebssysteme wie Android und Chrome OS und wird von riesigen IT-Infrastrukturen verwendet, inklusive Google und Facebook.
-    - Selbst Microsoft betreibt die meisten seiner Server mit Linux!
+  - 1991 wurde das Betriebssystem Linux von Linus Torvalds entwickelt (davor hab es seit den 1970er das Betriebssysten UNIX).
+  - Das Projekt war schnell (für Linus Torvalds wiedererwartend) erfolgreich
+  - Heute ist Linux allgegenwärtig, besonders in Bereichen wie Servern, Cloud Computing und Supercomputern.
+  - Linux bildet die Basis für Betriebssysteme wie Android und Chrome OS und wird von riesigen IT-Infrastrukturen verwendet, inklusive Google und Facebook.
+  - Selbst Microsoft betreibt die meisten seiner Server mit Linux!
+```
 
 - **Warum ist Linux so beliebt?**
   - **Open Source**: Jeder kann den Quellcode einsehen und verändern.
-  - **Kostenlos**: Linux kostet nichts.
-  - **Sicherheit**: Dank der globalen Community werden Sicherheitslücken schneller entdeckt und behoben.
-  - **Performance**: Im Vergleich zu Windows ist Linux oft ressourcenschonender, da es nicht auf eine umfassende Benutzererfahrung optimiert ist, sondern schlank und effizient läuft.
+  - **Kostenlos**: Linux kostet nichts, damit kann es auch auf belieb vielen Rechnern ohne Lizenzgebühren installiert werden
+  - **Sicherheit**: Linux gilt als recht sicher, da dank der globalen Community Sicherheitslücken oft schnell entdeckt und behoben werden.
+  - **Performance**: Im Vergleich zu Windows ist Linux oft ressourcenschonender, da es nicht auf eine umfassende Benutzererfahrung optimiert ist, sondern eher schlank und effizient läuft.
 
----
 
 ## Warum ist Shell Scripting unverzichtbar?
 
 Das Erlernen der Grundlagen von Linux und Shell Scripting ist für Data Scientists unerlässlich, weil viele Aufgaben nur auf diesem Weg effizient gelöst werden können:
 
-- **Automatisierung**: Server, Großrechner und Cloud-Infrastrukturen werden oft über Shell-Skripte gesteuert.
-- **Effizienz**: Viele wichtige Prozesse in der Software-Entwicklung, im Bereich Web-Apps und bei der Nutzung von Servern lassen sich mit der Kommandozeile besser automatisieren als mit grafischen Tools.
+- **Automatisierung**: Viele wichtige Prozesse in der Software-Entwicklung, im Bereich Web-Apps und bei der Nutzung von Servern lassen sich mit der Kommandozeile besser automatisieren als mit grafischen Tools.
+- **Nutzung größerer Hardware**: Server, Großrechner und Cloud-Infrastrukturen werden oft über Shell-Skripte gesteuert.
 - **Macht der CLI**: Viele leistungsstarke Tools und Bibliotheken für Data Science sind direkt über die Kommandozeile zugänglich, z.B. Hadoop, Spark und Docker.
 
----
-
-## Einführung der Begriffe: Bash, CLI, Shell
-
-- **CLI (Command Line Interface)**: Eine textbasierte Benutzeroberfläche zur Interaktion mit dem Betriebssystem.
-- **Shell**: Ein Kommandozeileninterpreter (CLI) bei Linux, der Befehle interpretiert und ausführt.
-- **Bash**: Die "Bourne Again Shell" ist die am weitesten verbreitete Shell in Linux-Umgebungen.
-  - Bash ist unter macOS vorinstalliert und kann auf Windows über das Windows Subsystem for Linux (WSL) oder Git Bash genutzt werden.
-
-### Andere Shells:
-- **Zsh**: Eine alternative Shell, die mehr Funktionen und Benutzerfreundlichkeit bietet.
-- **Fish**: Eine moderne Shell mit einer intuitiven Syntax.
-- **PowerShell**: Wird in Windows verwendet und hat tiefe Integration ins Windows-Betriebssystem.
-
----
 
 ## Installation und Einrichtung
 
