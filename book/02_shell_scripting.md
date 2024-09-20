@@ -42,7 +42,7 @@ Linux ist nämlich überall in der digitalen Welt zu finden!
   - Selbst Microsoft betreibt die meisten seiner Server mit Linux!
 ```
 
-- **Warum ist Linux so beliebt?**
+**Warum ist Linux so beliebt?**
   - **Open Source**: Jeder kann den Quellcode einsehen und verändern.
   - **Kostenlos**: Linux kostet nichts, damit kann es auch auf belieb vielen Rechnern ohne Lizenzgebühren installiert werden
   - **Sicherheit**: Linux gilt als recht sicher, da dank der globalen Community Sicherheitslücken oft schnell entdeckt und behoben werden.
