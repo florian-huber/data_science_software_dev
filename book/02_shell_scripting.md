@@ -43,7 +43,7 @@ Linux ist nämlich überall in der digitalen Welt zu finden!
 ```
 
 **Warum ist Linux so beliebt?**
-  - **Open Source**: Jeder kann den Quellcode einsehen und verändern.
+  - **Open Source!**: Jeder kann den Quellcode einsehen und verändern.
   - **Kostenlos**: Linux kostet nichts, damit kann es auch auf belieb vielen Rechnern ohne Lizenzgebühren installiert werden
   - **Sicherheit**: Linux gilt als recht sicher, da dank der globalen Community Sicherheitslücken oft schnell entdeckt und behoben werden.
   - **Performance**: Im Vergleich zu Windows ist Linux oft ressourcenschonender, da es nicht auf eine umfassende Benutzererfahrung optimiert ist, sondern eher schlank und effizient läuft.
@@ -116,6 +116,14 @@ Anders als andere Programmiersprachen ist **bash** ein CLI (Command-Line Interfa
 
 
 Das gute an Bash-Befehlen: Man muss sie nicht auswendig lernen! Bei Unsicherheiten können Befehle einfach nachgeschlagen werden. Für einen schnellen Überblick gibt es z.B. [hier](https://www.educative.io/blog/bash-shell-command-cheat-sheet) eine Übersicht.
+
+```{warning}
+**Achtung!** Shell/Bash ist nicht umsonst ein beliebtes Hacker Tool.
+
+- Mit Bash können Datei-Rechte eingesehen und geändert werden.
+- Mit Bash können Dateien, Verzeichnisse, Festplatten gelöscht werden.
+- Und: es gibt keinen Papierkorb!
+```
 
 ### Nächster Schritt: Dateien & Verzeichnisse erstellen und löschen
 
