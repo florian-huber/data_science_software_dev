@@ -3,7 +3,7 @@
 ## Motivation
 
 Sicherlich erinnert sich jeder an Zeiten, in denen man an einem größeren Dokument oder Programmcode arbeitete und unterschiedliche Versionen unter diversen Namen speicherte: "Projekt_Final", "Projekt_Final_v2", "Projekt_EchtJetztFinal". Das mag auf den ersten Blick praktikabel erscheinen, insbesondere wenn man allein an einem Projekt arbeitet. 
-(und... keine Sorge... das hat jede/r von uns schon so gemacht!)
+(Und, keine Sorge, das hat jede/r von uns schon so gemacht!)
 
 Doch die Realität zeigt, dass diese Methode zahlreiche Fallstricke birgt:
 
@@ -104,13 +104,16 @@ Letztlich geht es darum, das richtige Werkzeug für den jeweiligen Job und den e
 
 ## Rad nicht neu erfinden
 
-Da Git in der Softwarebranche weit verbreitet ist, gibt es zahlreiche Ressourcen, um es zu lernen und zu verstehen. Nutzen Sie diese Ressourcen, um Ihr Wissen zu vertiefen und bestmögliche Praktiken zu erlernen. Hier sind ein paar Vorschläge:
+Da Git in der Softwarebranche weit verbreitet ist, gibt es zahlreiche Ressourcen, um es zu lernen und zu verstehen. Darum wird dies hier im Skript auch nicht ausführlich alles wiederholt. Hier also ein paar Vorschläge mit denen sich das Thema gut erschließen lässt:
 
 - [W3Schools Git Tutorial](https://www.w3schools.com/git/)
 - [Atlassian's Git Guide](https://www.atlassian.com/git)
 
 **Empfehlung:** Es kann auch hilfreich sein, interaktive Tutorials oder Kurse zu belegen, um die praktische Anwendung von Git zu üben.
 
+```{info}
+Allgemein gilt beim Thema Git und GitHub was auch beim Programmieren gilt: Es kann nicht rein theoretisch über Videos, Vorlesungen, Bücher erlernt werden, sondern eigentlich nur über das Umsetzen in der Praxis. Das heißt, es macht durchaus Sinn sich etwas zu zwingen in den kommenden Projekten bewusst auf den Einsatz von Git zu setzen um Erfahrung damit zu sammeln.
+```
 
 
 ### Weitere Quellen:
