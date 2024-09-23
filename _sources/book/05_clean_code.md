@@ -27,12 +27,12 @@
 
 In der Welt der Programmierung geht es nicht nur darum, dass der Code funktioniert. Die Art und Weise, wie der Code geschrieben, organisiert und präsentiert wird, kann einen großen Unterschied in der Produktivität, Zusammenarbeit und Wartungsfähigkeit machen. In diesem Teil werden wir uns mit den Prinzipien des "Clean Code" und den Best Practices für besseres Programmieren in Data Science und KI vertiefend beschäftigen.
 
-## 1. Die Bedeutung von „besserem“ Code
+## Die Bedeutung von „besserem“ Code
 
-### 1.1. Was ist „besser“?
+### Was ist „besser“?
 „Besser“ ist ein relatives Konzept. In der Programmierung bezieht es sich oft darauf, wie effizient, lesbar und wartbar ein Code ist. Es ist wichtig zu betonen, dass "besser" nicht immer "perfekt" bedeutet. In der echten Welt ist es oft nicht möglich oder sogar notwendig, einen perfekten Code zu schreiben. Stattdessen sollte das Ziel sein, ständig zu verbessern und einen Code zu erstellen, der wiederholbar und zuverlässig funktioniert.
 
-### 1.2. Warum besserer Code wichtig ist
+### Warum besserer Code wichtig ist
 
 Besserer Code ist aus mehreren Gründen wichtig:
 
@@ -40,18 +40,18 @@ Besserer Code ist aus mehreren Gründen wichtig:
 - **Wartbarkeit:** Es ist einfacher, Code zu aktualisieren und zu verbessern, wenn er gut organisiert und dokumentiert ist.
 - **Zusammenarbeit:** In Teams ist es wesentlich einfacher, mit Code zu arbeiten, der den gemeinsamen Standards folgt.
 
-### 1.3. Der Weg zu „besserem“ Code: Clean Code
+### Der Weg zu „besserem“ Code: Clean Code
 
 Während es viele Methoden gibt, um Code zu verbessern, ist eine der effektivsten und anerkanntesten Methoden die Anwendung von "Clean Code" Prinzipien. "Clean Code" bietet nicht nur eine klare Struktur und Lesbarkeit, sondern stellt auch sicher, dass der Code nachhaltig, wartbar und effizient bleibt. Im nächsten Abschnitt werden wir uns genauer mit der Definition, den Vorteilen und den Prinzipien von Clean Code beschäftigen und wie diese in der Python-Programmierung umgesetzt werden können.
 
-## 2. Clean Code - Grundlagen
+## Clean Code - Grundlagen
 
-#### Was ist Clean Code?
+### Was ist Clean Code?
 Clean Code ist ein Code, der leicht zu lesen, zu verstehen und zu warten ist. Es geht nicht nur darum, wie der Code aussieht, sondern auch darum, wie er strukturiert ist.
 
-Clean Code ist aber nicht nur ein Ziel, sondern auch eine Methode. Es gibt  bestimmte Prinzipien und Best Practices, die Entwickler befolgen können, um ihren Code sauberer und effizienter zu gestalten.
+Clean Code ist aber nicht nur ein Ziel, sondern auch eine Methode. Es gibt bestimmte Prinzipien und Best Practices, die Entwickler befolgen können, um ihren Code sauberer und effizienter zu gestalten.
 
-#### Weshalb Clean Code?
+Prinzipiell gilt, das Clean Code kein Selbstzweck ist, sondern sich auf viele Aspekte bei der Softwareentwicklung sehr positiv auswirkt, z.B.:
 
 - **Lesbarkeit:** Ein sauberer Code ist einfacher zu lesen und zu verstehen.
 - **Wartbarkeit:** Ein sauberer Code ist einfacher zu warten und zu erweitern.
@@ -62,7 +62,9 @@ Zur Verdeutlichung der Prinzipien von Clean Code werden im Laufe des Kapitels ve
 
 ```python
 animals = ['dog', 'cat', 'elephant']
+
 # vs
+
 animals= [    'dog',   'cat',"elephant"   ]
 ```
 
