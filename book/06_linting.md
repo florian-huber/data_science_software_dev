@@ -109,7 +109,7 @@ ruff check --fix code_example_for_linting.py
 ```
 
 ```{warning}
-**Achtung! Wenn ihr `ruff` mit der Option `--fix` (oder, wie wir gleich sehen werden: `--format`) ausführt, werden direkt eure Dateien entsprechend angepasst. Das kann sehr praktisch sein, ist aber oft gar nicht direkt gewünscht. Wenn ihr also nur "testen" wollt, ob der Code die Linter-Regeln einhält dann sollte Ruff erst ohne diese Optionen ausgeführt werden.
+**Achtung!** Wenn ihr `ruff` mit der Option `--fix` (oder, wie wir gleich sehen werden: `--format`) ausführt, werden direkt eure Dateien entsprechend angepasst. Das kann sehr praktisch sein, ist aber oft gar nicht direkt gewünscht. Wenn ihr also nur "testen" wollt, ob der Code die Linter-Regeln einhält dann sollte Ruff erst ohne diese Optionen ausgeführt werden.
 ```
 
 ### Welche Regeln soll Ruff überprüfen?
@@ -223,22 +223,13 @@ black code_example_before_black.py
 
 
 
-## --> Live Coding
-
-In der Live Coding Session werden die zwei Tools (`ruff`, `black`) über ihre jeweiligen Comand-Line-Interfaces ausprobiert und verglichen.
-
-Zum Schluss soll versucht werden, den bereitgestellten Code soweit zu verbessern, dass entweder `black` oder `ruff` keine größeren Beschwerden mehr haben.
-
-
-
-## Ausblick
+## Ausblick & Weitere Quellen
 
 Es gibt noch viele weitere Linter, sowie auch umfangreichere Tools um automatisiert die Code Qualität zu überprüfen bzw. zu verbessern. Zwei erwähnenswerte:
 
 - `mypy` wird genutzt um die korrekte/konsistente Verwendung von Datentypen zu überprüfen
 - `SonarCloud` ist ein **sehr** umfangreiches Tool um Code zu beurteilen und potentielle Schachstellen aufzudecken.
 
-## Weitere Quellen
 
 Wir haben hier die sehr verbreiteten Linter `pylint` und `flake8` ausgelassen. Zu beiden gibt es aber zum Glück online viele Tutorials.
 Zum Beispiel:
