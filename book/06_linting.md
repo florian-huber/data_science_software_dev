@@ -184,7 +184,7 @@ Genau wir Ruff (aber anders als Pylint und Flake8) ist `Black` nicht nur ein Lin
 
 **Vorteile:**
 
-- Keine Entscheidungen bezüglich des Stils: Black entscheidet für Sie.
+- Keine Entscheidungen bezüglich des Stils: Black entscheidet für euch.
 - Spart Zeit, da keine Diskussionen über Codierungsstil mehr erforderlich sind.
 - Sehr schnell und kann leicht in CI-Workflows integriert werden.
 
