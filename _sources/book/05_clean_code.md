@@ -30,13 +30,13 @@ In der Welt der Programmierung geht es nicht nur darum, dass der Code funktionie
 ## Die Bedeutung von „besserem“ Code
 
 ### Was ist „besser“?
-„Besser“ ist ein relatives Konzept. In der Programmierung bezieht es sich oft darauf, wie effizient, lesbar und wartbar ein Code ist. Es ist wichtig zu betonen, dass "besser" nicht immer "perfekt" bedeutet. In der echten Welt ist es oft nicht möglich oder sogar notwendig, einen perfekten Code zu schreiben. Stattdessen sollte das Ziel sein, ständig zu verbessern und einen Code zu erstellen, der wiederholbar und zuverlässig funktioniert.
+„Besser“ ist ein relatives Konzept. In der Programmierung bezieht es sich oft darauf, wie effizient, lesbar und wartbar ein Code ist. Es ist wichtig zu betonen, dass "besser" nicht immer "perfekt" bedeutet. In der echten Welt ist es oft nicht notwendig (meistens auch gar nicht möglich) einen perfekten Code zu schreiben. Stattdessen sollte das Ziel sein, den Code kontinuierlich zu verbessern wo es sinnvoll ist und so einen Code zu erstellen, der wiederholbar und zuverlässig funktioniert.
 
 ### Warum besserer Code wichtig ist
 
 Besserer Code ist aus mehreren Gründen wichtig:
 
-- **Zuverlässigkeit:** Code, der den Best Practices folgt, hat tendenziell weniger Fehler und ist vorhersehbarer.
+- **Zuverlässigkeit:** Code, der den *Best Practices* folgt, hat tendenziell weniger Fehler und funktioniert vorhersehbarer.
 - **Wartbarkeit:** Es ist einfacher, Code zu aktualisieren und zu verbessern, wenn er gut organisiert und dokumentiert ist.
 - **Zusammenarbeit:** In Teams ist es wesentlich einfacher, mit Code zu arbeiten, der den gemeinsamen Standards folgt.
 
@@ -55,6 +55,7 @@ Prinzipiell gilt, das Clean Code kein Selbstzweck ist, sondern sich auf viele As
 
 - **Lesbarkeit:** Ein sauberer Code ist einfacher zu lesen und zu verstehen.
 - **Wartbarkeit:** Ein sauberer Code ist einfacher zu warten und zu erweitern.
+- **Fehlerreduktion**: Clean Code führt zu weniger Missverständnissen und damit auch zu weniger Fehlern. Wenn der Code klar und logisch strukturiert ist, sinkt die Wahrscheinlichkeit, dass unbemerkte Fehler entstehen.
 - **Produktivität:** Mit sauberem Code können Entwickler schneller und effizienter arbeiten.
 
 **Eingangsbeispiele und ihre Bedeutung**
@@ -68,16 +69,16 @@ animals = ['dog', 'cat', 'elephant']
 animals= [    'dog',   'cat',"elephant"   ]
 ```
 
-**Fragen zum Nachdenken:**
+### Clean Code – Wer entscheidet über den Stil?
 
-- Wer legt fest, wie Code aussehen sollte?
-- Warum nicht individuell entscheiden?
+Ein häufig gestellte Frage ist: Wer entscheidet eigentlich, wie der Code aussehen sollte? Warum kann nicht jeder seinen eigenen Stil entwickeln?
 
-**Antworten:**
+Die Antwort lautet: Für den **Python-Interpreter** ist der Stil zwar nebensächlich, aber für Menschen, die den Code lesen, ist er entscheidend. Die Lesbarkeit steht im Vordergrund, denn Code wird häufiger gelesen als geschrieben.
 
-- Für den Python-Interpreter ist der Stil nebensächlich, aber Menschen lesen den Code!
-- Ziel 1: Der Stil soll die Lesbarkeit unterstützen.
-- Ziel 2: Code sollte global verständlich sein, nicht nur für den Autor.
+- **Ziel 1**: Der Stil sollte die Lesbarkeit maximieren.
+- **Ziel 2**: Code sollte global verständlich sein, nicht nur für den Autor.
+
+In der Praxis wird diese Frage oft über sogenannte *Style Guides* adressiert.
 
 ### **Style Guides und ihre Bedeutung**
 
@@ -234,8 +235,7 @@ Durch das Beachten dieser und anderer Richtlinien aus PEP 8 kann man sicherstell
 ## 3. Linting
 
 **Was ist Linting?**
-Linting ist der Prozess des Überprüfens des Quellcodes auf programmatische und stilistische Fehler. Ein "Linter" ist ein Tool, das den Code automatisch überprüft und häufige Fehler oder Abweichungen von Stilrichtlinien meldet. In Python gibt es verschiedene Linter, wobei einige der bekanntesten `pylint`, `flake8` und `black` sind.
-Und, relativ neu aber (nach meiner Einschätzung) zukünftig häufig genutzt, ist `ruff`.
+Linting ist der Prozess des Überprüfens des Quellcodes auf programmatische und stilistische Fehler. Ein "Linter" ist ein Tool, das den Code automatisch überprüft und häufige Fehler oder Abweichungen von Stilrichtlinien meldet. In Python gibt es verschiedene Linter, wobei einige der bekanntesten `pylint`, `flake8`, `black` und `ruff` sind. Insbesondere `pylint` und `flake8` waren über viele Jahre sehr verbreitet in der Python Community und laufen im Hintergrund in vielen Python-Bibliotheken. Hier konzentrieren wir uns aber auf die zwei etwas neueren Linter `ruff` und `black` die zunehmend Einzug halten und vielen Entwickler*innen als moderner und leistungsfähiger gelten.
 
 ### Code Beispiel
 
@@ -282,99 +282,119 @@ MyComputer = power_computer()
 MyComputer.computeSomething()
 ```
 
+### Ruff
 
+Ruff ist ein äußerst schneller Python-Linter und Code-Formatter, der sich zunehmender Beliebtheit erfreut. Er hilft uns dabei sauberen, wartbaren und fehlerfreien Code zu schreiben.
 
-### pylint
+#### Installation von Ruff
 
-(Falls noch nicht vorhanden, installieren mit `pip install pylint`.)
+Die Installation von Ruff ist unkompliziert, und das Tool funktioniert „out of the box“, ohne dass komplizierte Konfigurationen erforderlich sind. Hier sind die wichtigsten Installationsmethoden für verschiedene Systeme:
 
-Pylint ist ein äußerst umfangreicher Python-Linter, der darauf abzielt, fehlerhaften Code und stilistische Inkonsistenzen in Python-Programmen aufzudecken. Er verwendet eine Vielzahl von Heuristiken, um potenzielle Fehler und schlechte Praktiken im Code zu identifizieren.
-
-**Hauptmerkmale:**
-
-- Überprüft, ob Module und Klassen den vorgegebenen Codierungsstandards entsprechen.
-- Erkennt Fehler oder Probleme, die bei der Ausführung auftreten könnten.
-- Bietet detaillierte Berichte über die Codequalität.
-- Erlaubt die Anpassung der Regeln durch Konfigurationsdateien und Inline-Kommentare.
-
-`pylint` lässt sich einfach über die Kommandozeile ausführen mit:
-
+- Mit **Pip** (Standard für Python-Projekte):
 ```bash
-pylint code_example_for_linting.py
+python -m pip install ruff
+```
+- Oder mit **Conda**:
+```bash
+conda install -c conda-forge ruff
 ```
 
-Am besten die Datei kopieren und umbenennen (z.B. in bash mit `mv code_example_for_linting.py code_example_pylint.py`). Anschließend versuche, den *Linter* zufrieden zu stellen...
+#### Linting mit Ruff
+Ruff ermöglicht es dir, deinen Python-Code schnell auf Fehler und Inkonsistenzen zu überprüfen. Während Linting zwar keine Bugs garantiert entdeckt, hilft es dir dabei, stilistische Probleme und potenzielle Fehler im Code zu identifizieren.
 
-
-
-### flake8
-
-Flake8 ist ein Wrapper-Tool, das mehrere andere Python-Linting-Tools kombiniert. Insbesondere verknüpft es PyFlakes, pycodestyle (früher bekannt als pep8) und McCabe zu einem einzigen, einfach zu verwendenden Tool.
-
-**Hauptmerkmale:**
-
-- Überprüft den Code auf syntaktische Fehler mit PyFlakes.
-- Überprüft den Code auf PEP 8-Konformität mit pycodestyle.
-- Bewertet die Komplexität des Codes mit McCabe.
-
-**Vorteile:**
-
-- Etwas Schneller und effizienter (als z.B. pylint).
-- Kombiniert die Stärken mehrerer Linter.
-- Einfache Integration in Entwicklungsworkflows.
-
-### Anwendung
-
-`flake8` lässt sich einfach über die Kommandozeile ausführen mit:
-
+Mit dem folgenden Befehl überprüft Ruff alle Code-Dateien im aktuellen Ordner
 ```bash
-flake8 code_example_for_linting.py
+ruff check
 ```
 
-Am besten die Datei kopieren und umbenennen (z.B. in bash mit `mv code_example_for_linting.py code_example_flake8.py`). Anschließend versuche, den *Linter* zufrieden zu stellen...
-
-**Anpassungen**
-
-Oft gibt es einzelne Aspekte, die wir nicht für wichtig halten, oder bei denen wir bewusst von Stil-Vorgaben abweichen. Dafür lassen sich viele Linter ziemlich detailiert anpassen. Ein Beispiel hier wäre die Änderung der maximal gewünschten Zeilenlänge von 79 auf z.B. 120 Zeichen:
-
+Es könnnen auch nur einzelne Dateien oder Ordner überprüft werden. In unserem Fall z.B. nur der oben angezeigte Code (nehmen wir mal an dieser befindet sich in der Datei `code_example_for_linting.py`):
 ```bash
-flake8 --max-line-length 120 code_example_for_linting.py
+ruff check code_example_for_linting.py
 ```
 
-Oder, wenn wir eine spezielle Meldung ignorieren wollen, geht z.B.
-
+Daraufhin gibt uns Ruff eine umfangreiche Meldung zurück (hier das Ergebnis mit Ruff in der Version 0.6.7):
 ```bash
-flake8 --ignore E231 code_example_for_linting.py
+code_for_linting.py:1:8: F401 [*] `os` imported but unused
+  |
+1 | import os
+  |        ^^ F401
+2 | import numpy as np
+  |
+  = help: Remove unused import: `os`
+
+code_for_linting.py:14:55: F601 Dictionary key literal `5` repeated
+   |
+12 |     8
+13 | ]
+14 | magic_dictionary={1:"a",2:"b",3:"c",4:"d",5:"e",6:"f",5:"f",7:"g",8:"h",9:"i",10:"j",11:"k",12:"l"}
+   |                                                       ^ F601
+15 |
+16 | def PowerCompute(a, b, c):
+   |
+   = help: Remove repeated key literal `5`
+
+Found 2 errors.
+[*] 1 fixable with the `--fix` option.
 ```
 
-Es ist auch möglich einen Linter über eine spezielle Konfigurationsdatei noch viel detaillierter auf die eigenen Bedürfnisse abzustimmen. 
-
-#### Mehr Informationen zu `flake8`
-
-- https://flake8.pycqa.org/en/latest/
-- https://calmcode.io/flake8/introduction.html
-
-### ruff
-
-Jetzt noch ein recht neues Python Tool: `ruff`.
-
-Kann ebenfalls mit `pip install ruff` installiert werden.
-
-Danach wird es z.B. als umfangreicher Linter ausgeführt mit:
-
+In diesem Beispiel findet Ruff zwei Fehler und sagt das einer davon automatisch behoben werden kann und zwar mit:
 ```bash
-ruff --select=ALL check code_example_for_linting.py
+ruff check --fix code_example_for_linting.py
 ```
 
-**Hauptmerkmale:**
+```{warning}
+**Achtung! Wenn ihr `ruff` mit der Option `--fix` (oder, wie wir gleich sehen werden: `--format`) ausführt, werden direkt eure Dateien entsprechend angepasst. Das kann sehr praktisch sein, ist aber oft gar nicht direkt gewünscht. Wenn ihr also nur "testen" wollt, ob der Code die Linter-Regeln einhält dann sollte Ruff erst ohne diese Optionen ausgeführt werden.
+```
 
-- ruff funktioniert ähnlich wie pylint oder flake8, ist aber **deutlich** schneller in der Ausführung.
-- 
+### Welche Regeln soll Ruff überprüfen?
+
+In dem Fall den wir gerade gesehen haben wurde Ruff mit den Standardeinstellungen verwendet. Hier wird erstmal nur auf gröbere Fehler geachtet.
+Mit Ruff lassen sich aber sehr viele etablierte Regeln im Bezug auf Code Style überprüfen.
+
+Es können z.B. einzelne Regeln ausgewählt werden über `rule`, eine Übersicht der mehr als 800 Möglichkeiten [findet ihr hier](https://docs.astral.sh/ruff/rules/).
+
+Falls du mehr über einen bestimmten Fehler wissen möchtest, kannst du den Fehlercode mit dem Befehl `ruff rule` näher untersuchen. Zum Beispiel:
+
+```bash
+ruff check code_example_for_linting.py --select F601
+```
+
+In den meisten Fällen interessiert uns aber nicht nur eine einzige Regel sondern wir möchten viele gleichzeitig testen. Dafür können auch ganze in der [Ruff Dokumentation der `Rules`](https://docs.astral.sh/ruff/rules/) angegebene Gruppen genutzt werden, z.B.
+
+```bash
+ruff check code_example_for_linting.py --select F
+```
+Das nutzt dann die "Pyflakes" Regeln. Oder für den "pydocstyle":
+```bash
+ruff check code_example_for_linting.py --select D
+```
+Auch möglich wäre sogar `ALL` um alle Regeln auszuwählen:
+```bash
+ruff check code_example_for_linting.py --select ALL
+```
+```{note}
+Am besten an dieser Stelle einfach mal selbst die hier angegebenen Optionen (bzw. gerne auch noch weitere) ausprobieren um ein Gefühl dafür zu bekommen wie unterschiedlich das Feedback des Ruff-Linters ausfällt.
+```
+
+#### Konfiguration von Ruff
+
+Bei größeren Python-Softwareprojekten macht es oft sogar Sinn, die für das Projekt verbindlichen Regeln einmal gemeinsam festzulegen. Diese können dann für Ruff in einer Konfigurationsdatei hinterlegt werden. Die Konfigurationsdatei kann entweder `ruff.toml`, `.ruff.toml` oder `pyproject.toml` heißen. Hier ein einfaches Beispiel für eine `ruff.toml`-Datei:
+```toml
+line-length = 120
+
+[lint]
+select = ["E501", "I"]
+```
+Mit dieser Konfiguration wird Ruff auf eine maximale Zeilenlänge von 120 Zeichen prüfen und spezifische Regeln für Importe (I-Regeln) und Zeilenlängen (E501) anwenden.
+Wenn die entsprechende `.toml` im selben Ordner oder einem der Unterordner liegt, wird Ruff dies erkennen und die entsprechenden Einstellungen übernehmen wenn wir `ruff check` ausführen.
+
+####
+
 
 #### Weitere Informationen zu `ruff`
 
-- https://docs.astral.sh/ruff/configuration/#command-line-interface
-- https://pythonspeed.com/articles/pylint-flake8-ruff/
+- [Real Python Tutorial](https://realpython.com/ruff-python/)
+- [Ruff Tutorial](https://docs.astral.sh/ruff/tutorial/)
 
 ### black
 
@@ -384,7 +404,6 @@ Black ist anders als Pylint und Flake8. Es ist nicht nur ein Linter, sondern auc
 
 - Automatische Codeformatierung.
 - Hat eine strikte und unveränderliche Stilrichtlinie, die es "The Blackened" nennt.
-- Unterstützt Python 3.6 und höher.
 
 **Vorteile:**
 
@@ -427,16 +446,6 @@ black code_example_before_black.py
 
 
 
-### Linter (Pylint vs flake8 vs ruff) vs Formatter (black)
-
-Alle drei Linter-Bibliotheken funktionieren sehr gut, `pylint` und `flake8` sind zudem sehr etabliert und bekannt (`ruff` wird da aber wahrscheinlich bald aufholen). Es gibt im Internet zahlreiche Pros/Cons-Debatten. Oft reicht es aus, nach subjektiver Präferenz einen der Linter auszuwählen.
-
-- `flake8` lässt sich über Plugins erweitern, ist aber im einfachen Modus nicht so umfangreich/gründlich wie `pylint` oder `ruff`
-- `ruff` ist mit Abstand am schnellsten, das spielt aber erst bei größeren Projekten ein wichtige Rolle.
-- `black` ist am komfortabelsten, da es die nötigen Änderungen auch gleich ausführt. In den meisten Fällen kann dies ein strengeres Linting aber nicht ganz ersetzen
-- Für umfangreiche Python-Softwareprojekte bietet es sich an, zumindest **einen Linter** zu nutzen. Und, falls gewünscht, einen **Formatter** wie `black` noch davorzuschalten.
-
----
 
 ## --> Live Coding
 
@@ -453,5 +462,11 @@ Es gibt noch viele weitere Linter, sowie auch umfangreichere Tools um automatisi
 - `mypy` wird genutzt um die korrekte/konsistente Verwendung von Datentypen zu überprüfen
 - `SonarCloud` ist ein **sehr** umfangreiches Tool um Code zu beurteilen und potentielle Schachstellen aufzudecken.
 
+### Weitere Quellen
 
+Wir haben hier die sehr verbreiteten Linter `pylint` und `flake8` ausgelassen. Zu beiden gibt es aber zum Glück online viele Tutorials.
+Zum Beispiel:
 
+- [Flake8 Dokumentation](https://flake8.pycqa.org/en/latest/)
+- [Calmcode Tutorial](https://calmcode.io/flake8/introduction.html)
+- [Pylint Dokumentation](https://docs.pylint.org/tutorial.html)

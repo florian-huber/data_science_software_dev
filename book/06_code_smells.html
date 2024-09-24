@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6. Code Smells &#8212; Data Science Software Development with Python</title>
+    <title>7. Code Smells &#8212; Data Science Software Development with Python</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/06_code_smells';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. Python Software Projekt" href="06_python_software_project.html" />
-    <link rel="prev" title="5. Cleaner Code, Better Code" href="05_clean_code.html" />
+    <link rel="next" title="8. Python Software Projekt" href="06_python_software_project.html" />
+    <link rel="prev" title="6. Linting" href="06_linting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,14 +189,15 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Code</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="05_clean_code.html">5. Cleaner Code, Better Code</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Code Smells</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_python_software_project.html">7. Python Software Projekt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_linting.html">6. Linting</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Code Smells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_python_software_project.html">8. Python Software Projekt</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition and First Exploration</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="06_testing.html">8. Code Testing with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">9. Introduction to Continuous Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">10. Code Testing (2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_testing.html">9. Code Testing with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">10. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">11. Code Testing (2)</a></li>
 
 
 
@@ -405,16 +406,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-code-smell">6.1. <strong>What is a Code Smell?</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-live-coding-exercise">6.1.1. <strong>Example &amp; Live Coding Exercise:</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-code-smell">7.1. <strong>What is a Code Smell?</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-live-coding-exercise">7.1.1. <strong>Example &amp; Live Coding Exercise:</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-code-smells">6.2. <strong>Common Code Smells</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-smell-code-too-complex-to-read">6.3. Common smell: code too complex to read</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deeply-nested-code">6.3.1. <strong>Deeply Nested Code</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cryptic-logic-and-negations">6.3.2. <strong>Cryptic Logic and Negations</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proper-use-of-return-and-break">6.3.3. <strong>Proper Use of <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code></strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lengthy-functions">6.3.4. <strong>Lengthy Functions</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-code-smells">7.2. <strong>Common Code Smells</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-smell-code-too-complex-to-read">7.3. Common smell: code too complex to read</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deeply-nested-code">7.3.1. <strong>Deeply Nested Code</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cryptic-logic-and-negations">7.3.2. <strong>Cryptic Logic and Negations</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proper-use-of-return-and-break">7.3.3. <strong>Proper Use of <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lengthy-functions">7.3.4. <strong>Lengthy Functions</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -429,19 +430,19 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="code-smells">
-<h1><span class="section-number">6. </span>Code Smells<a class="headerlink" href="#code-smells" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">7. </span>Code Smells<a class="headerlink" href="#code-smells" title="Link to this heading">#</a></h1>
 <p><strong>Quote:</strong> “You know you are working on clean code when each routine you read turns out to be pretty much what you expected. You can call it beautiful code when the code also makes it look like the language was made for the problem.”</p>
 <ul class="simple">
 <li><p><strong>Ward Cunningham</strong></p></li>
 </ul>
 <hr class="docutils" />
 <section id="what-is-a-code-smell">
-<h2><span class="section-number">6.1. </span><strong>What is a Code Smell?</strong><a class="headerlink" href="#what-is-a-code-smell" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.1. </span><strong>What is a Code Smell?</strong><a class="headerlink" href="#what-is-a-code-smell" title="Link to this heading">#</a></h2>
 <p>Code smells, known in German as “Codegeruch,” refers to symptoms in the codebase which indicate deeper problems in the software’s design or structure. Although the code might work functionally, these “smells” often make the code less readable and can introduce risks when future changes are needed.</p>
 <p>From a bird’s eye perspective, issues in the code can range from overtly critical (such as syntax errors and bugs) to subtle yet potentially damaging in the long run, like formatting errors and code smells.</p>
 <hr class="docutils" />
 <section id="example-live-coding-exercise">
-<h3><span class="section-number">6.1.1. </span><strong>Example &amp; Live Coding Exercise:</strong><a class="headerlink" href="#example-live-coding-exercise" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.1.1. </span><strong>Example &amp; Live Coding Exercise:</strong><a class="headerlink" href="#example-live-coding-exercise" title="Link to this heading">#</a></h3>
 <p><strong>Task:</strong> Identify the problems or non-ideal patterns in the following code and then discuss and improve it with your fellow students.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;How good do you feel today? (from 1=horrible to 10=perfect)?&quot;</span><span class="p">)</span>
 <span class="n">user_input1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your answer:&quot;</span><span class="p">)</span>
@@ -470,7 +471,7 @@ document.write(`
 </section>
 </section>
 <section id="common-code-smells">
-<h2><span class="section-number">6.2. </span><strong>Common Code Smells</strong><a class="headerlink" href="#common-code-smells" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.2. </span><strong>Common Code Smells</strong><a class="headerlink" href="#common-code-smells" title="Link to this heading">#</a></h2>
 <ol class="arabic">
 <li><p><strong>Duplicated Code</strong></p>
 <p>A prominent smell in the provided code was duplication. The principle of <strong>DRY (Don’t Repeat Yourself)</strong> emphasizes that each piece of your application should have a single representation in the codebase.</p>
@@ -531,11 +532,11 @@ document.write(`
 <p>The last return statement is unreachable and hence redundant.</p>
 </section>
 <section id="common-smell-code-too-complex-to-read">
-<h2><span class="section-number">6.3. </span>Common smell: code too complex to read<a class="headerlink" href="#common-smell-code-too-complex-to-read" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.3. </span>Common smell: code too complex to read<a class="headerlink" href="#common-smell-code-too-complex-to-read" title="Link to this heading">#</a></h2>
 <p>Complexity in code is not just about how many lines of code you have or how big your functions are. It’s about how difficult it is to understand, maintain, and extend the code. This complexity is often introduced through various coding patterns that might seem harmless or even “efficient” at first glance but can lead to maintenance nightmares in the long run.</p>
 <hr class="docutils" />
 <section id="deeply-nested-code">
-<h3><span class="section-number">6.3.1. </span><strong>Deeply Nested Code</strong><a class="headerlink" href="#deeply-nested-code" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.3.1. </span><strong>Deeply Nested Code</strong><a class="headerlink" href="#deeply-nested-code" title="Link to this heading">#</a></h3>
 <p>One major source of complexity is code that is nested too deeply. Deeply nested code is hard to read and understand because you have to keep track of which conditions or loops each line of code is part of.</p>
 <p><strong>Example:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -585,7 +586,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="cryptic-logic-and-negations">
-<h3><span class="section-number">6.3.2. </span><strong>Cryptic Logic and Negations</strong><a class="headerlink" href="#cryptic-logic-and-negations" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.3.2. </span><strong>Cryptic Logic and Negations</strong><a class="headerlink" href="#cryptic-logic-and-negations" title="Link to this heading">#</a></h3>
 <p>Code with unclear logic, especially involving negations, can be very challenging to understand.</p>
 <p><strong>Example:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">my_number</span> <span class="o">!=</span> <span class="mi">6</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">my_number</span> <span class="o">!=</span> <span class="mi">66</span><span class="p">:</span>
@@ -605,13 +606,13 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="proper-use-of-return-and-break">
-<h3><span class="section-number">6.3.3. </span><strong>Proper Use of <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code></strong><a class="headerlink" href="#proper-use-of-return-and-break" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.3.3. </span><strong>Proper Use of <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code></strong><a class="headerlink" href="#proper-use-of-return-and-break" title="Link to this heading">#</a></h3>
 <p>Using <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code> judiciously can help you avoid unnecessary <code class="docutils literal notranslate"><span class="pre">elif</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> blocks, making the code clearer.</p>
 <p>For instance, instead of having multiple <code class="docutils literal notranslate"><span class="pre">elif</span></code> or <code class="docutils literal notranslate"><span class="pre">else</span></code> blocks, you can simply <code class="docutils literal notranslate"><span class="pre">return</span></code> from a function or <code class="docutils literal notranslate"><span class="pre">break</span></code> out of a loop once you know that no further processing is needed.</p>
 </section>
 <hr class="docutils" />
 <section id="lengthy-functions">
-<h3><span class="section-number">6.3.4. </span><strong>Lengthy Functions</strong><a class="headerlink" href="#lengthy-functions" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.3.4. </span><strong>Lengthy Functions</strong><a class="headerlink" href="#lengthy-functions" title="Link to this heading">#</a></h3>
 <p>Functions that are too long are hard to understand, debug, and test. A function should ideally do one thing and do it well.</p>
 <p><strong>Tips to handle long functions:</strong></p>
 <ol class="arabic simple">
@@ -654,12 +655,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="05_clean_code.html"
+       href="06_linting.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Cleaner Code, Better Code</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Linting</p>
       </div>
     </a>
     <a class="right-next"
@@ -667,7 +668,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Python Software Projekt</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Python Software Projekt</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -687,16 +688,16 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-code-smell">6.1. <strong>What is a Code Smell?</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-live-coding-exercise">6.1.1. <strong>Example &amp; Live Coding Exercise:</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-code-smell">7.1. <strong>What is a Code Smell?</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-live-coding-exercise">7.1.1. <strong>Example &amp; Live Coding Exercise:</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-code-smells">6.2. <strong>Common Code Smells</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-smell-code-too-complex-to-read">6.3. Common smell: code too complex to read</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deeply-nested-code">6.3.1. <strong>Deeply Nested Code</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cryptic-logic-and-negations">6.3.2. <strong>Cryptic Logic and Negations</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proper-use-of-return-and-break">6.3.3. <strong>Proper Use of <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code></strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lengthy-functions">6.3.4. <strong>Lengthy Functions</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-code-smells">7.2. <strong>Common Code Smells</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-smell-code-too-complex-to-read">7.3. Common smell: code too complex to read</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deeply-nested-code">7.3.1. <strong>Deeply Nested Code</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cryptic-logic-and-negations">7.3.2. <strong>Cryptic Logic and Negations</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proper-use-of-return-and-break">7.3.3. <strong>Proper Use of <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lengthy-functions">7.3.4. <strong>Lengthy Functions</strong></a></li>
 </ul>
 </li>
 </ul>
