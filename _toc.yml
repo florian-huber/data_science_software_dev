@@ -12,6 +12,7 @@ parts:
     numbered: true
     chapters:
     - file: book/05_clean_code
+    - file: book/06_linting
     - file: book/06_code_smells
     - file: book/06_python_software_project
   - caption: Data Acquisition and First Exploration

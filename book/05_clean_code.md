@@ -388,7 +388,7 @@ select = ["E501", "I"]
 Mit dieser Konfiguration wird Ruff auf eine maximale Zeilenlänge von 120 Zeichen prüfen und spezifische Regeln für Importe (I-Regeln) und Zeilenlängen (E501) anwenden.
 Wenn die entsprechende `.toml` im selben Ordner oder einem der Unterordner liegt, wird Ruff dies erkennen und die entsprechenden Einstellungen übernehmen wenn wir `ruff check` ausführen.
 
-
+####
 
 
 #### Weitere Informationen zu `ruff`
@@ -404,7 +404,6 @@ Black ist anders als Pylint und Flake8. Es ist nicht nur ein Linter, sondern auc
 
 - Automatische Codeformatierung.
 - Hat eine strikte und unveränderliche Stilrichtlinie, die es "The Blackened" nennt.
-- Unterstützt Python 3.6 und höher.
 
 **Vorteile:**
 
