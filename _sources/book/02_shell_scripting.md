@@ -20,7 +20,7 @@ Um Verwirrungen zu vermeiden starten wir aber mit ein paar Begriffen:
 Die gängigen Betriebssysteme setzten heute alle auf grafische Benutzeroberflächen, egal ob am Rechner, Tablet, oder Smartphone.
 In den 1970er Jahren war daran noch gar nicht zu denken, schon angesichts der im Rückblick bescheidenen Rechenkapazitäten. Bei Betriebssystemen war es daher lange völlig normal das Nutzer*innen ausschließlich über Eingaben in Textform mit dem Rechner interagierten, über ein sogenanntes  **CLI (Command Line Interface)**, eine textbasierte Benutzeroberfläche zur Interaktion mit dem Betriebssystem.
 
-Mit **Shell** (engl. für Schale oder Hülle) meint man im allgemeinen genau solch ein Programm das Befehle (in Textform) interpretiert und ausführt. Damit macht die Shell die Fähigkeiten eines Betriebssystems den Nutzer*innen, aber auch anderen Programmen zugänglich. Dabei ist **Bash**, die "Bourne Again Shell" die am weitesten verbreitete Shell in Linux-Umgebungen.
+Mit **Shell** (engl. für Schale oder Hülle) meint man im allgemeinen genau solch ein Programm das Befehle (in Textform) interpretiert und ausführt. Damit macht die Shell die Fähigkeiten eines Betriebssystems den Nutzer*innen, aber auch anderen Programmen zugänglich. Dabei ist **Bash**, die "Bourne Again Shell" (bezieht sich auf eine frühere Shell von Stephen Bourne) die am weitesten verbreitete Shell in Linux-Umgebungen.
 
 Die Begriffe **Console** und **Terminal** bezogen sich ursprünglich auf physische Hardware also Monitor und Keyboard über die die Texteingaben erfolgten (also über ein Shell-Programm). Diese beiden Begriffe Console und Terminal wurden aber schon lange übertragen auf Software-Umsetzungen und werden heute im Alltag oft synonym verwendet.
 
@@ -60,19 +60,18 @@ Das Erlernen der Grundlagen von Linux und Shell Scripting ist für Data Scientis
 
 ## Installation und Einrichtung
 
-### Bash unter Windows (via WSL)
-
-Um Bash unter Windows zu nutzen, kannst du das **Windows Subsystem for Linux (WSL)** installieren. Die entsprechenden Schritte findet man in zahlreichen online-Tutorials, z.B. [hier](https://www.howtogeek.com/744328/how-to-install-the-windows-subsystem-for-linux-on-windows-11/).
-
-
-### Alternativ: Git Bash
+**Für den schnellen Einstieg: Git Bash**
 
 Eine einfachere Möglichkeit, Bash unter Windows zu nutzen, ist **Git Bash**:
 
 1. Lade [Git für Windows](https://gitforwindows.org/) herunter und installiere es.
 2. Git Bash wird zusammen mit Git installiert und bietet eine Bash-ähnliche Umgebung.
 
-### MacOS: Bash ist vorinstalliert
+**Für Fortgeschrittene: Bash unter Windows (via WSL)**
+
+Um Bash unter Windows zu nutzen, kannst du das **Windows Subsystem for Linux (WSL)** installieren. Die entsprechenden Schritte findet man in zahlreichen online-Tutorials, z.B. [hier](https://www.howtogeek.com/744328/how-to-install-the-windows-subsystem-for-linux-on-windows-11/) oder [hier](https://learn.microsoft.com/en-us/windows/wsl/install).
+
+**MacOS: Bash ist vorinstalliert**
 
 Wenn du MacOS nutzt, hast du Glück – Bash ist bereits vorinstalliert. Du kannst einfach das Terminal öffnen und loslegen.
 
@@ -82,7 +81,7 @@ Wenn du MacOS nutzt, hast du Glück – Bash ist bereits vorinstalliert. Du kann
 
 Wir starten langsam und schauen uns erst einmal die Standard-Befehle an um Ordner zu wechseln und deren Inhalt zu sehen:
 
-- `pwd` gibt den aktuellen Ordner an in dem wir uns befinden
+- `pwd` gibt den aktuellen Ordner an in dem wir uns befinden. Unter Linux sieht das typischerweise aus wie `/homer/itsme`, bei Windows eher wie `C:\Users\itsme`.
 - `ls`(für list/listing) zeigt den Inhalt des aktuellen Verzeichnisses auf.
 - mit `cd foldername` gehe ich in einen Ordner namens "foldername", mit `cd ..` gehe ich wieder einen Ordner tiefer zurück
 - mit `--help` können Hinweise zu den möglichen Parametern abgefragt werden, z.B. `ls --help`.
@@ -127,23 +126,122 @@ Das gute an Bash-Befehlen: Man muss sie nicht auswendig lernen! Bei Unsicherheit
 
 ### Nächster Schritt: Dateien & Verzeichnisse erstellen und löschen
 
-Mit **bash** können wir einfach Dateien und Verzeichnisse erstellen oder eben auch löschen.
+Mit **bash** können wir Dateien und Verzeichnisse einfach erstellen, anzeigen, umbenennen, kopieren, verschieben oder löschen. Diese Operationen sind nützlich für das Arbeiten mit Dateien auf der Kommandozeile.
+
+| Befehl           | Funktion                                                     |
+| ---------------- | ------------------------------------------------------------ |
+| `mkdir new_dir`  | Erstellt ein neues Verzeichnis namens "new_dir"              |
+| `rm -r new_dir/` | Löscht das Verzeichnis "new_dir" und seinen Inhalt rekursiv (Achtung: unwiderruflich!) |
+| `ls -t`          | Sortiert die Verzeichnisinhalte nach Änderungsdatum (absteigend) |
+| `ls -R`          | Listet die Inhalte eines Verzeichnisses rekursiv auf         |
 
 
 
-| Befehl          | Funktion                                                     |
-| --------------- | ------------------------------------------------------------ |
-| `mkdir new_dir` | "make directory" here: makes new directory "new_dir"         |
-| `rm new_dir/`   | rm = "remove" --> Careful! Cannot be undone!                 |
-| `ls -t`         | Sorts the directory contents by last-modified date (descending) |
-| `ls -R`         | Recursively `ls` this direct                                 |
-
-```
-
-```
-
+```{warning}
 **Achtung!**
 `rm new_dir/` Vorsicht! Dieser Befehl löscht Dateien/Verzeichnisse unwiderruflich! 
+```
+
+#### Dateien und Verzeichnisse erstellen
+**Verzeichnisse erstellen:**
+
+Mit dem Befehl mkdir lassen sich Verzeichnisse schnell erstellen. Beispiel:
+```bash
+# Erstelle ein neues Verzeichnis
+mkdir new_dir
+
+# Überprüfen, ob das Verzeichnis erstellt wurde:
+ls
+```
+Mehrere Verzeichnisse auf einmal erstellen:
+```bash
+mkdir -p secrets/data
+
+# Mit Unterverzeichnissen anzeigen
+ls -R
+```
+Hinweis: Das ist das Gleiche, als ob du im Dateiexplorer ein Verzeichnis erstellst!
+
+**Dateien erstellen:**
+
+Um eine Datei zu erstellen, kann ein Texteditor wie nano verwenden werden:
+```bash
+cd secrets
+nano my_diary.txt
+```
+Oder, alternativ kannst auch direkt eine leere Dateien ohne Editor erstellt werden mit `touch`:
+```bash
+touch data/facts1.csv
+touch data/facts2.csv
+touch data/facts3.csv
+```
+
+#### Dateien und Verzeichnisse umbenennen, verschieben und kopieren
+Dateien oder Verzeichnisse können mit `mv`verschoben oder umbenannt werden.
+```bash
+cd data
+# Umbenennen der Datei facts3.csv in facts0.csv
+mv facts3.csv facts0.csv
+```
+
+Dateien können mit dem Befehl `cp` kopiert werden:
+```bash
+# Kopieren der Datei facts2.csv und Umbenennen der Kopie in facts3.csv
+cp facts2.csv facts3.csv
+```
+
+**Versteckte Verzeichnisse:**
+
+Verzeichnisse können durch Voranstellen eines Punktes „versteckt“ werden.
+```bash
+mv secrets/ .secrets/
+ls
+ls -a  # Zeigt auch versteckte Dateien und Verzeichnisse an
+```
+
+#### Übung:
+
+Es wurde eine Datei statiscs.txt erstellt (z.B. mit `touch statiscs.txt`), sie sollte jedoch statistics.txt heißen. Mit welchem der folgenden Befehle kann sie umbenannt werden?
+```bash
+cp statiscs.txt statistics.txt
+mv statiscs.txt statistics.txt
+mv statiscs.txt .
+cp statiscs.txt .
+```
+
+**Gute Namenskonventionen:**
+
+Es wird empfohlen, keine Punkte oder Leerzeichen in Dateinamen zu verwenden, um Komplikationen zu vermeiden.
+
+Beispiel:
+```bash
+mkdir one long name
+ls
+```
+Was passiert hier (und warum)?
+
+Leerzeichen in Dateinamen sollten vermieden werden. Um sie wieder zu löschen kann `rm -r one\ long\ name` genutzt werden.
+
+#### Dateien und Verzeichnisse löschen:
+
+Das Löschen eines Verzeichnisses mit `rm new_dir/ ist nicht ausreichend. Es muss rekursiv gelöscht werden:`
+```bash
+rm -r new_dir/
+```
+
+Dateien können mit dem Befehl `rm` direkt gelöscht werden:
+```bash
+rm facts0.csv
+```
+
+```{warning}
+**Hinweis:** Gelöschte Dateien werden nicht in den Papierkorb verschoben, sondern dauerhaft entfernt.
+```
+Zum sichereren Löschen kann `rm` mit der Option `-i` (interaktiv) verwendet werden:
+```bash
+rm -i facts3.csv
+```
+
 
 ### Bash-Skripte
 
