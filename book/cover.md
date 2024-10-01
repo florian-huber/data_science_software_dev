@@ -1,13 +1,13 @@
 <img src="../images/cover_german.png" alt="cover image"/>
 
-# Sofware Development für Data Scientists (mit Python)
+# Software Development für Data Scientists (mit Python)
 
 **Florian Huber**
 
 Düsseldorf University of Applied Sciences (HSD)  
 & Centre for Digitalization and Digitality (ZDD)
 
-**v0.1** 2024-09-18
+**v0.2** 2024-10-01
 
 **Über mich:**
 Ich arbeite als Professor für Data Science an der [Hochschule Düsseldorf (HSD)](https://www.hs-duesseldorf.de/). Dort bringe ich Studierenden die Grundlagen von Data Science,  Programmieren mit Python, Machine Learning bei oder gebe ungefragten Rat zu Kaffee, Schokolade, und allen anderen Dingen die wirklich wichtig sind im Leben.
