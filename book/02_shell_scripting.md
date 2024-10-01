@@ -176,6 +176,73 @@ touch data/facts2.csv
 touch data/facts3.csv
 ```
 
+#### Dateien und Verzeichnisse umbenennen, verschieben und kopieren
+Dateien oder Verzeichnisse können mit `mv`verschoben oder umbenannt werden.
+```bash
+cd data
+# Umbenennen der Datei facts3.csv in facts0.csv
+mv facts3.csv facts0.csv
+```
+
+Dateien können mit dem Befehl `cp` kopiert werden:
+```bash
+# Kopieren der Datei facts2.csv und Umbenennen der Kopie in facts3.csv
+cp facts2.csv facts3.csv
+```
+
+**Versteckte Verzeichnisse:**
+
+Verzeichnisse können durch Voranstellen eines Punktes „versteckt“ werden.
+```bash
+mv secrets/ .secrets/
+ls
+ls -a  # Zeigt auch versteckte Dateien und Verzeichnisse an
+```
+
+#### Übung:
+
+Es wurde eine Datei statiscs.txt erstellt (z.B. mit `touch statiscs.txt`), sie sollte jedoch statistics.txt heißen. Mit welchem der folgenden Befehle kann sie umbenannt werden?
+```bash
+cp statiscs.txt statistics.txt
+mv statiscs.txt statistics.txt
+mv statiscs.txt .
+cp statiscs.txt .
+```
+
+**Gute Namenskonventionen:**
+
+Es wird empfohlen, keine Punkte oder Leerzeichen in Dateinamen zu verwenden, um Komplikationen zu vermeiden.
+
+Beispiel:
+```bash
+mkdir one long name
+ls
+```
+Was passiert hier (und warum)?
+
+Leerzeichen in Dateinamen sollten vermieden werden. Um sie wieder zu löschen kann `rm -r one\ long\ name` genutzt werden.
+
+#### Dateien und Verzeichnisse löschen:
+
+Das Löschen eines Verzeichnisses mit `rm new_dir/ ist nicht ausreichend. Es muss rekursiv gelöscht werden:`
+```bash
+rm -r new_dir/
+```
+
+Dateien können mit dem Befehl `rm` direkt gelöscht werden:
+```bash
+rm facts0.csv
+```
+
+```{warning}
+**Hinweis:** Gelöschte Dateien werden nicht in den Papierkorb verschoben, sondern dauerhaft entfernt.
+```
+Zum sichereren Löschen kann `rm` mit der Option `-i` (interaktiv) verwendet werden:
+```bash
+rm -i facts3.csv
+```
+
+
 ### Bash-Skripte
 
 Für komplexere Aufgaben wird die Kommandozeile alleine sehr schnell zu umständlich, daher wechseln wir hier zu Shell oder Bash Skripten. Das sind einfach Textdateien (typischerweise mit `.sh` Endung) in denen wir beliebig umfangreiche Bash-Programme entwerden können. Die Skripte lassen sich aus der Kommanozeile aufrufen mit:
