@@ -405,8 +405,98 @@ fi
 Die lässt sich, genau wie vorher, über `bash main.sh 7` ausführen (oder natürlich mit entsprechenden anderen Zahlenwerten).
 Je nach Betriebssystem muss manchmal `python` durch `python3` erstetzt werden.
 
+### Argumente mit `argparse` verarbeiten
 
+Für komplexere Shell-Skripte reicht es nicht immer aus, nur einfache Positionsparameter wie `$1`, `$2` usw. zu verwenden. Hier kommt das Modul **`argparse`** ins Spiel, das in Python verwendet wird, um robuste und benutzerfreundliche Argumentparser zu erstellen. Es ermöglicht, benannte und optionale Argumente in einem Python-Skript zu verarbeiten, ähnlich wie bei Befehlen in der Kommandozeile.
 
+#### Installation und Nutzung von `argparse`
+
+Da `argparse` ein Standardmodul in Python ist, muss es nicht separat installiert werden. Ein einfaches Beispiel zeigt, wie du mit `argparse` Argumente in deinem Python-Skript verarbeiten kannst:
+
+```python
+import argparse
+
+# Initialisiere den Parser
+parser = argparse.ArgumentParser(description="Ein Beispielskript für argparse")
+
+# Füge optionale Argumente hinzu
+parser.add_argument('-n', '--name', type=str, help='Dein Name')
+parser.add_argument('-r', '--repetitions', type=int, default=1, help='Wie oft die Nachricht wiederholt wird')
+
+# Lese die Argumente aus
+args = parser.parse_args()
+
+# Nutze die Argumente
+for _ in range(args.repetitions):
+    print(f"Hallo, {args.name}!")
+```
+Dieses Skript kann dann mit optionalen Argumenten aufgerufen werden:
+
+```bash
+python my_script.py --name "Max" --repetitions 5
+```
+
+#### Warum `argparse` verwenden?
+
+- **Benutzerfreundlichkeit**: Skripte werden leichter nutzbar, da sie klar dokumentierte Argumente und Optionen bereitstellen.
+- **Fehlerbehandlung**: `argparse` erkennt und meldet ungültige Eingaben direkt, ohne dass man zusätzlichen Code für die Validierung schreiben muss.
+- **Flexibilität**: Man kann mehrere Argumente und Optionen hinzufügen, um das Skript flexibel an verschiedene Aufgaben anzupassen.
+
+Wenn du Argumente aus der Kommandozeile in deinen Bash-Skripten nutzen möchtest, lohnt es sich, auch eine Lösung wie `argparse` in Betracht zu ziehen, wenn das Skript in Python implementiert wird.
+
+### Dateiberechtigungen mit `chmod` setzen
+
+Der Befehl **`chmod`** (change mode) wird verwendet, um Dateiberechtigungen in Unix- und Linux-Systemen zu ändern. Berechtigungen definieren, wer auf eine Datei oder ein Verzeichnis zugreifen, sie ändern oder ausführen darf. Diese Berechtigungen sind entscheidend, wenn es um Sicherheit und Kontrolle über den Zugriff auf Ressourcen geht.
+
+#### Berechtigungen verstehen
+
+Unix-Berechtigungen werden in drei Kategorien unterteilt:
+
+- **User (u)**: Der Besitzer der Datei.
+- **Group (g)**: Eine Gruppe von Benutzern, die auf die Datei zugreifen kann.
+- **Others (o)**: Alle anderen Benutzer, die auf dem System sind.
+
+Für jede dieser Kategorien können folgende Berechtigungen gesetzt werden:
+
+- **r** (read): Die Datei kann gelesen werden.
+- **w** (write): Die Datei kann verändert werden.
+- **x** (execute): Die Datei kann als ausführbares Programm gestartet werden.
+
+#### Nutzung von `chmod`
+
+Der Befehl `chmod` erlaubt es, Berechtigungen entweder symbolisch oder numerisch zu setzen.
+
+**Symbolische Methode**:
+
+- Beispiel: Dem Benutzer die Berechtigung zum Ausführen einer Datei geben:
+
+```bash
+chmod u+x my_script.sh
+```
+
+Hiermit wird dem Benutzer (`u`) das Ausführungsrecht (`x`) für das Skript `my_script.sh` erteilt.
+
+**Numerische Methode**:
+
+Berechtigungen können auch durch Zahlenwerte festgelegt werden. Diese basieren auf einer binären Darstellung der Berechtigungen:
+
+- `4` steht für Lesen (r)
+- `2` steht für Schreiben (w)
+- `1` steht für Ausführen (x)
+
+Durch Addition dieser Werte lassen sich kombinierte Berechtigungen setzen. Beispiel:
+
+- `7` (4+2+1) bedeutet volle Berechtigungen (lesen, schreiben, ausführen).
+- `6` (4+2) bedeutet lesen und schreiben, aber nicht ausführen.
+
+Um allen (User, Group, Others) volle Berechtigungen zu geben:
+```bash
+chmod 777 my_script.sh
+```
+
+#### Best Practice: Sicherer Umgang mit Berechtigungen
+
+Es ist wichtig, Dateiberechtigungen umsichtig zu setzen, um Sicherheitsprobleme zu vermeiden. Vermeide es, Skripten oder Dateien pauschal Berechtigungen wie `777` zu geben, da dies ungewollten Zugriff ermöglicht. Stattdessen sollten Berechtigungen möglichst restriktiv vergeben werden, z.B. nur `755` für ausführbare Skripte, um sicherzustellen, dass nur der Besitzer Schreibrechte hat.
 
 
 ## Unix shell/bash vs. Windows
@@ -421,7 +511,6 @@ Hier eine kleine Auswahl der häufigstens Befehle die sich unterscheiden:
 | `rm` | `del`   | Datei(en) löschen                                       |
 | `mv` | `move`  | Dateien verschieben                                     |
 | `cp` | `copy`  | Dateien kopieren                                        |
-
 
 
 
