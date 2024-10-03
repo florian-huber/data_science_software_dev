@@ -224,12 +224,12 @@ Leerzeichen in Dateinamen sollten vermieden werden. Um sie wieder zu löschen ka
 
 #### Dateien und Verzeichnisse löschen:
 
-Das Löschen eines Verzeichnisses mit `rm new_dir/ ist nicht ausreichend. Es muss rekursiv gelöscht werden:`
+Das Löschen eines Verzeichnisses mit `rm new_dir/` ist nicht ausreichend. Es muss rekursiv gelöscht werden:
 ```bash
 rm -r new_dir/
 ```
 
-Dateien können mit dem Befehl `rm` direkt gelöscht werden:
+Dateien können mit dem Befehl `rm` direkt gelöscht werden. Dazu wechseln wir mit `cd .secrets/data/` in den entsprechenden Ordner und löschen dort die gewüschte Datei mit:
 ```bash
 rm facts0.csv
 ```
@@ -251,23 +251,31 @@ Für komplexere Aufgaben wird die Kommandozeile alleine sehr schnell zu umständ
 
 In Form dieser Skripte lassen sich auch die Vielzahl der Möglichkeiten die Bash bietet besser nutzen. Zum Beispiel **Loops**, diese sehen in Bash folgendermaßen aus:
 
-```
+```bash
 for variable in 1 2 3
 do
     echo $variable
 done
 ```
 
-Eine klassische for-Schleife lässt sich erstellen über:
-
-```
-for ((a=1; a <= $2; a++))
+Oder
+```bash
+for variable in {1..5}
 do
-    echo $a
+    echo $variable
 done
 ```
 
-Eine weitere wichtige Struktur sind Verzweigungen. Auch in Bash gibt es if-else:
+Eine klassische for-Schleife lässt auch erstellen über:
+
+```bash
+for ((a=1; a <= 5; a++))
+do
+    echo a
+done
+```
+
+Neben Variablen und Schleifen sind Verzweigungen wichtige Kernkomponenten für komplexere Programme. Wenig überraschend gibt es auch in Bash dafür if-else Verzweigungen. Diese sind wie folgt aufgebaut:
 
 ```
 if [ Bedingung ]; then
@@ -280,13 +288,30 @@ fi
 
 #### Argumente in der Kommandozeilen übergeben
 
-Innerhalb eines Bash-Skripts können wir auch Argumente nutzen. Hier bezeichnet `$1`, `$2` etc. das erste, zweite usw. Argument nach dem Skriptnamen. Z.B. folgendes Skript, `print_first.sh`:
+Innerhalb eines Bash-Skripts können wir auch Argumente nutzen. Hier bezeichnet `$1`, `$2` etc. das erste, zweite usw. Argument nach dem Skriptnamen. Wir können das folgendes Skript, `print_first.sh`, erstellen:
 
 ```
 echo $1
 ```
 
-Kann jetzt über `bash print_first.sh "dies hier bitte ausgeben"` aufgerufen werden und gibt dann über `echo` das Argument (also "dies hier bitte ausgeben") aus.
+Dieses Skript jetzt über `bash print_first.sh "Dies hier bitte ausgeben"` aufgerufen werden und gibt dann über `echo` das Argument (also "Dies hier bitte ausgeben") aus.
+
+Als nächstes können wir ein Skript `repeater.sh` erstellen das wie folgt aussieht:
+
+```bash
+for ((a=1; a <= $2; a++))
+do
+    echo $1
+done
+```
+
+Dieses Skript bitte einmal nachvollziehen und entsprechend ausführen. Was macht das genau?
+
+```{toggle}
+Das Skript gibt `$2`-mal den Eintrag von `$1` aus. Wir können also z.B. `bash repeater.sh "yes!" 5` ausführen und uns die entsprechende Ausgabe anschauen.
+```
+
+
 
 `$@` kann genutzt werden um alle Argumente zu addressieren.
 
