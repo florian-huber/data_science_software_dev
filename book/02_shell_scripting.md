@@ -69,11 +69,11 @@ Eine einfachere Möglichkeit, Bash unter Windows zu nutzen, ist **Git Bash**:
 
 **Für Fortgeschrittene: Bash unter Windows (via WSL)**
 
-Um Bash unter Windows zu nutzen, kannst du das **Windows Subsystem for Linux (WSL)** installieren. Die entsprechenden Schritte findet man in zahlreichen online-Tutorials, z.B. [hier](https://www.howtogeek.com/744328/how-to-install-the-windows-subsystem-for-linux-on-windows-11/) oder [hier](https://learn.microsoft.com/en-us/windows/wsl/install).
+Um Bash unter Windows zu nutzen, kann das **Windows Subsystem for Linux (WSL)** installiert werden. Die entsprechenden Schritte findet man in zahlreichen online-Tutorials, z.B. [hier](https://www.howtogeek.com/744328/how-to-install-the-windows-subsystem-for-linux-on-windows-11/) oder [hier](https://learn.microsoft.com/en-us/windows/wsl/install).
 
 **MacOS: Bash ist vorinstalliert**
 
-Wenn du MacOS nutzt, hast du Glück – Bash ist bereits vorinstalliert. Du kannst einfach das Terminal öffnen und loslegen.
+Bei MacOS ist Bash im Prinzip bereits vorinstalliert. Hier einfach das Terminal öffnen und loslegen.
 
 
 
@@ -160,16 +160,19 @@ mkdir -p secrets/data
 # Mit Unterverzeichnissen anzeigen
 ls -R
 ```
-Hinweis: Das ist das Gleiche, als ob du im Dateiexplorer ein Verzeichnis erstellst!
+Hinweis: Das ist das Gleiche, als ob im Dateiexplorer ein Verzeichnis erstellt wird!
 
 **Dateien erstellen:**
 
 Um eine Datei zu erstellen, kann ein Texteditor wie nano verwenden werden:
+
 ```bash
 cd secrets
 nano my_diary.txt
 ```
+
 Oder, alternativ kannst auch direkt eine leere Dateien ohne Editor erstellt werden mit `touch`:
+
 ```bash
 touch data/facts1.csv
 touch data/facts2.csv
@@ -324,7 +327,6 @@ do
 done
 ```
 
-```
 
 Vor der Übung haben wir Skripte gesehen die Eingabeparameter übernehmen können mit `$1`, `$2` usw. Für eine unbestimmte Anzahl Eingeabeparameter kann `$@` genutzt werden, hier ein einfaches Beispiel dazu:
 
@@ -411,7 +413,7 @@ Für komplexere Shell-Skripte reicht es nicht immer aus, nur einfache Positionsp
 
 #### Installation und Nutzung von `argparse`
 
-Da `argparse` ein Standardmodul in Python ist, muss es nicht separat installiert werden. Ein einfaches Beispiel zeigt, wie du mit `argparse` Argumente in deinem Python-Skript verarbeiten kannst:
+Da `argparse` ein Standardmodul in Python ist, muss es nicht separat installiert werden. Ein einfaches Beispiel zeigt, wie mit `argparse` Argumente in einem Python-Skript verarbeiten werden können:
 
 ```python
 import argparse
@@ -441,8 +443,6 @@ python my_script.py --name "Max" --repetitions 5
 - **Benutzerfreundlichkeit**: Skripte werden leichter nutzbar, da sie klar dokumentierte Argumente und Optionen bereitstellen.
 - **Fehlerbehandlung**: `argparse` erkennt und meldet ungültige Eingaben direkt, ohne dass man zusätzlichen Code für die Validierung schreiben muss.
 - **Flexibilität**: Man kann mehrere Argumente und Optionen hinzufügen, um das Skript flexibel an verschiedene Aufgaben anzupassen.
-
-Wenn du Argumente aus der Kommandozeile in deinen Bash-Skripten nutzen möchtest, lohnt es sich, auch eine Lösung wie `argparse` in Betracht zu ziehen, wenn das Skript in Python implementiert wird.
 
 ### Dateiberechtigungen mit `chmod` setzen
 
