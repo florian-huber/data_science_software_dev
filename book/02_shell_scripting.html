@@ -420,9 +420,22 @@ document.write(`
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-skripte">2.4.3. Bash-Skripte</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-in-der-kommandozeilen-ubergeben">2.4.3.1. Argumente in der Kommandozeilen übergeben</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.4.3.2. Übung:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verzweigungen">2.4.3.3. Verzweigungen</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zum-schluss-bash-python">2.4.4. Zum Schluss: Bash + Python!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zum-schluss-bash-kann-mehr-als-bash">2.4.4. Zum Schluss: Bash kann mehr als Bash!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-mit-argparse-verarbeiten">2.4.5. Argumente mit <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verarbeiten</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-und-nutzung-von-argparse">2.4.5.1. Installation und Nutzung von <code class="docutils literal notranslate"><span class="pre">argparse</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-argparse-verwenden">2.4.5.2. Warum <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verwenden?</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dateiberechtigungen-mit-chmod-setzen">2.4.6. Dateiberechtigungen mit <code class="docutils literal notranslate"><span class="pre">chmod</span></code> setzen</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#berechtigungen-verstehen">2.4.6.1. Berechtigungen verstehen</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nutzung-von-chmod">2.4.6.2. Nutzung von <code class="docutils literal notranslate"><span class="pre">chmod</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practice-sicherer-umgang-mit-berechtigungen">2.4.6.3. Best Practice: Sicherer Umgang mit Berechtigungen</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unix-shell-bash-vs-windows">2.5. Unix shell/bash vs. Windows</a><ul class="nav section-nav flex-column">
@@ -688,11 +701,11 @@ ls
 </section>
 <section id="dateien-und-verzeichnisse-loschen">
 <h4><span class="section-number">2.4.2.4. </span>Dateien und Verzeichnisse löschen:<a class="headerlink" href="#dateien-und-verzeichnisse-loschen" title="Link to this heading">#</a></h4>
-<p>Das Löschen eines Verzeichnisses mit <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">new_dir/</span> <span class="pre">ist</span> <span class="pre">nicht</span> <span class="pre">ausreichend.</span> <span class="pre">Es</span> <span class="pre">muss</span> <span class="pre">rekursiv</span> <span class="pre">gelöscht</span> <span class="pre">werden:</span></code></p>
+<p>Das Löschen eines Verzeichnisses mit <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">new_dir/</span></code> ist nicht ausreichend. Es muss rekursiv gelöscht werden:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>-r<span class="w"> </span>new_dir/
 </pre></div>
 </div>
-<p>Dateien können mit dem Befehl <code class="docutils literal notranslate"><span class="pre">rm</span></code> direkt gelöscht werden:</p>
+<p>Dateien können mit dem Befehl <code class="docutils literal notranslate"><span class="pre">rm</span></code> direkt gelöscht werden. Dazu wechseln wir mit <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.secrets/data/</span></code> in den entsprechenden Ordner und löschen dort die gewüschte Datei mit:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>facts0.csv
 </pre></div>
 </div>
@@ -711,20 +724,80 @@ ls
 <p>Für komplexere Aufgaben wird die Kommandozeile alleine sehr schnell zu umständlich, daher wechseln wir hier zu Shell oder Bash Skripten. Das sind einfach Textdateien (typischerweise mit <code class="docutils literal notranslate"><span class="pre">.sh</span></code> Endung) in denen wir beliebig umfangreiche Bash-Programme entwerden können. Die Skripte lassen sich aus der Kommanozeile aufrufen mit:</p>
 <p><code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">my_script.sh</span></code></p>
 <p>In Form dieser Skripte lassen sich auch die Vielzahl der Möglichkeiten die Bash bietet besser nutzen. Zum Beispiel <strong>Loops</strong>, diese sehen in Bash folgendermaßen aus:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for variable in 1 2 3
-do
-    echo $variable
-done
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>variable<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="k">do</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$variable</span>
+<span class="k">done</span>
 </pre></div>
 </div>
-<p>Eine klassische for-Schleife lässt sich erstellen über:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for ((a=1; a &lt;= $2; a++))
-do
-    echo $a
-done
+<p>Oder</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>variable<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..5<span class="o">}</span>
+<span class="k">do</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$variable</span>
+<span class="k">done</span>
 </pre></div>
 </div>
-<p>Eine weitere wichtige Struktur sind Verzweigungen. Auch in Bash gibt es if-else:</p>
+<p>Eine klassische for-Schleife lässt auch erstellen über:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="o">((</span><span class="nv">a</span><span class="o">=</span><span class="m">1</span><span class="p">;</span><span class="w"> </span>a<span class="w"> </span>&lt;<span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">;</span><span class="w"> </span>a++<span class="o">))</span>
+<span class="k">do</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span>a
+<span class="k">done</span>
+</pre></div>
+</div>
+<section id="argumente-in-der-kommandozeilen-ubergeben">
+<h4><span class="section-number">2.4.3.1. </span>Argumente in der Kommandozeilen übergeben<a class="headerlink" href="#argumente-in-der-kommandozeilen-ubergeben" title="Link to this heading">#</a></h4>
+<p>Innerhalb eines Bash-Skripts können wir auch Argumente nutzen. Hier bezeichnet <code class="docutils literal notranslate"><span class="pre">$1</span></code>, <code class="docutils literal notranslate"><span class="pre">$2</span></code> etc. das erste, zweite usw. Argument nach dem Skriptnamen. Wir können das folgendes Skript, <code class="docutils literal notranslate"><span class="pre">print_first.sh</span></code>, erstellen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo $1
+</pre></div>
+</div>
+<p>Dieses Skript jetzt über <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">print_first.sh</span> <span class="pre">&quot;Dies</span> <span class="pre">hier</span> <span class="pre">bitte</span> <span class="pre">ausgeben&quot;</span></code> aufgerufen werden und gibt dann über <code class="docutils literal notranslate"><span class="pre">echo</span></code> das Argument (also “Dies hier bitte ausgeben”) aus.</p>
+<p>Als nächstes können wir ein Skript <code class="docutils literal notranslate"><span class="pre">repeater.sh</span></code> erstellen das wie folgt aussieht:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="o">((</span><span class="nv">a</span><span class="o">=</span><span class="m">1</span><span class="p">;</span><span class="w"> </span>a<span class="w"> </span>&lt;<span class="o">=</span><span class="w"> </span><span class="nv">$2</span><span class="p">;</span><span class="w"> </span>a++<span class="o">))</span>
+<span class="k">do</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$1</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>Dieses Skript bitte einmal nachvollziehen und entsprechend ausführen. Was macht das genau?</p>
+<div class="toggle docutils container">
+<p>Das Skript gibt <code class="docutils literal notranslate"><span class="pre">$2</span></code>-mal den Eintrag von <code class="docutils literal notranslate"><span class="pre">$1</span></code> aus. Wir können also z.B. <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">repeater.sh</span> <span class="pre">&quot;yes!&quot;</span> <span class="pre">5</span></code> ausführen und uns die entsprechende Ausgabe anschauen.</p>
+</div>
+<p>Natürlich können solche Schleifen nicht nur für Ausgaben über <code class="docutils literal notranslate"><span class="pre">echo</span></code> genutzt werden, sondern können alle von Bash aufrufbaren Befehle dort ausgeführt werden. Also z.B. auch Befehle wie <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>, <code class="docutils literal notranslate"><span class="pre">mv</span></code>, oder wie in der folgenden Übung <code class="docutils literal notranslate"><span class="pre">cp</span></code>.</p>
+</section>
+<section id="id2">
+<h4><span class="section-number">2.4.3.2. </span>Übung:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<p>Schreibe ein Bash-Script, dass eine leere Datei <code class="docutils literal notranslate"><span class="pre">new_data.txt</span></code> erstellt und anschließend 10 Kopien dieser Datei erstellt deren Dateinamen die jeweilige Kopie-Nummer im Namen hat, also <code class="docutils literal notranslate"><span class="pre">new_data_1.txt</span></code> usw.</p>
+<p>Tipp: Variablen können auch einfach in Strings eingebaut werden über <code class="docutils literal notranslate"><span class="pre">my_file_$variable.txt</span></code>.</p>
+<div class="toggle docutils container">
+<p>Eine mögliche Lösung wäre:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create empty file</span>
+touch<span class="w"> </span>new_data.txt
+
+<span class="c1"># Make 10 copies with number</span>
+<span class="k">for</span><span class="w"> </span><span class="o">((</span><span class="nv">i</span><span class="o">=</span><span class="m">1</span><span class="p">;</span><span class="w"> </span>i<span class="w"> </span>&lt;<span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">;</span><span class="w"> </span>i++<span class="o">))</span>
+<span class="k">do</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span>
+<span class="w">    </span>cp<span class="w"> </span>new_data.txt<span class="w"> </span>new_data_<span class="nv">$i</span>.txt
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+Vor der Übung haben wir Skripte gesehen die Eingabeparameter übernehmen können mit `$1`, `$2` usw. Für eine unbestimmte Anzahl Eingeabeparameter kann `$@` genutzt werden, hier ein einfaches Beispiel dazu:
+
+```bash
+sum=0
+for variable in &quot;$@&quot;
+do
+  ((sum += variable))
+done
+echo $sum
+</pre></div>
+</div>
+</section>
+<section id="verzweigungen">
+<h4><span class="section-number">2.4.3.3. </span>Verzweigungen<a class="headerlink" href="#verzweigungen" title="Link to this heading">#</a></h4>
+<p>Neben Variablen und Schleifen sind Verzweigungen wichtige Kernkomponenten für komplexere Programme. Wenig überraschend gibt es auch in Bash dafür if-else Verzweigungen. Diese sind wie folgt aufgebaut:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">[</span> <span class="n">Bedingung</span> <span class="p">];</span> <span class="n">then</span>
    <span class="n">Befehle</span><span class="p">,</span> <span class="n">die</span> <span class="n">ausgeführt</span> <span class="n">werden</span><span class="p">,</span> <span class="n">wenn</span> <span class="n">die</span> <span class="n">Bedingung</span> <span class="n">wahr</span> <span class="n">ist</span>
 <span class="k">else</span>
@@ -732,24 +805,139 @@ done
 <span class="n">fi</span>
 </pre></div>
 </div>
-<section id="argumente-in-der-kommandozeilen-ubergeben">
-<h4><span class="section-number">2.4.3.1. </span>Argumente in der Kommandozeilen übergeben<a class="headerlink" href="#argumente-in-der-kommandozeilen-ubergeben" title="Link to this heading">#</a></h4>
-<p>Innerhalb eines Bash-Skripts können wir auch Argumente nutzen. Hier bezeichnet <code class="docutils literal notranslate"><span class="pre">$1</span></code>, <code class="docutils literal notranslate"><span class="pre">$2</span></code> etc. das erste, zweite usw. Argument nach dem Skriptnamen. Z.B. folgendes Skript, <code class="docutils literal notranslate"><span class="pre">print_first.sh</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo $1
+<p>Als Beispiel soll einmal das Skript <code class="docutils literal notranslate"><span class="pre">greater.sh</span></code> erstellt werden mit:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># INFO: -gt means &quot;greater than&quot;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span>-gt<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2"> is too much for me!&quot;</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;okay&quot;</span>
+<span class="k">fi</span>
 </pre></div>
 </div>
-<p>Kann jetzt über <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">print_first.sh</span> <span class="pre">&quot;dies</span> <span class="pre">hier</span> <span class="pre">bitte</span> <span class="pre">ausgeben&quot;</span></code> aufgerufen werden und gibt dann über <code class="docutils literal notranslate"><span class="pre">echo</span></code> das Argument (also “dies hier bitte ausgeben”) aus.</p>
-<p><code class="docutils literal notranslate"><span class="pre">$&#64;</span></code> kann genutzt werden um alle Argumente zu addressieren.</p>
+<p>Dies wird die entsprechenden Ausgaben erstellen wenn es mit <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">greater.sh</span> <span class="pre">15</span></code> bzw. anderen Zahlenwerten ausgeführt wird.</p>
 </section>
 </section>
-<section id="zum-schluss-bash-python">
-<h3><span class="section-number">2.4.4. </span>Zum Schluss: Bash + Python!<a class="headerlink" href="#zum-schluss-bash-python" title="Link to this heading">#</a></h3>
-<p>Nicht umsonst ist im Hacking-Bereich Bash UND Python recht beliebt. Beides lässt sich nämlich auch sehr einfach kombinieren!</p>
-<p>Über <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">my_python_code.py</span></code> lassen sich von einem Bash-Skript aus Python-Skripte ausführen.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Das ist Python-Code!&quot;</span><span class="p">)</span>
+<section id="zum-schluss-bash-kann-mehr-als-bash">
+<h3><span class="section-number">2.4.4. </span>Zum Schluss: Bash kann mehr als Bash!<a class="headerlink" href="#zum-schluss-bash-kann-mehr-als-bash" title="Link to this heading">#</a></h3>
+<p>Um zu verstehen, warum Shell-Skripte in vielen Gebieten sehr häufig verwendet werden (nicht nur im Bereich Hacking!) ist es wichtig sich eine weitere Eigenschaft klar zu machen.
+Bash-Skripte sind nicht limitiert auf die Ausführung von einer Reihe von Bash-Befehlen, Schleifen oder Verzweigungen. Wir können in Bash-Skripten <strong>alles</strong> ausführen, was wir sonst auch im Shell (oder Terminal) ausführen könnten. D.h. wir können zum Beispiel aus einem Shell-Skript heraus weitere Shell-Skripte ausführen.</p>
+<p>Ein einfacher Fall der zwei vorherige Beispiele verwendet ist ein Skript <code class="docutils literal notranslate"><span class="pre">main.sh</span></code> das wie folgt aussieht:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span>-gt<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2"> is too much for me!&quot;</span>
+<span class="k">else</span>
+<span class="w">    </span>bash<span class="w"> </span>repeater.sh<span class="w"> </span><span class="s2">&quot;okay&quot;</span><span class="w"> </span><span class="nv">$1</span>
+<span class="k">fi</span>
 </pre></div>
 </div>
-<p>Speichern Sie den obigen Code in einer Datei namens <code class="docutils literal notranslate"><span class="pre">example_script.py</span></code>, machen Sie ihn ausführbar mit <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">example_script.py</span></code> und führen Sie ihn aus mit <code class="docutils literal notranslate"><span class="pre">./example_script.py</span></code>.</p>
+<p>Dazu muss natürlich das oben angegebene Skript <code class="docutils literal notranslate"><span class="pre">repeater.sh</span></code> im selben Ordner vorliegen.</p>
+<p>Darüber hinaus hatten wir eingangs gesehen, dass im Hacking-Bereich scheinbar Bash UND Python recht beliebt sind.
+Das hat sicherliche viele Gründe. Einer davon liegt aber sicher auch darin, dass sich beides nämlich auch sehr einfach kombinieren lässt.</p>
+<p>Wir können ein einfaches Python-Skript erstellen, <code class="docutils literal notranslate"><span class="pre">my_python_code.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Das ist Python-Code!&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">*</span> <span class="s2">&quot;*&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Nun können wir das vorherige <code class="docutils literal notranslate"><span class="pre">main.sh</span></code> Skript entsprechend erweitern:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span>-gt<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2"> is too much for me!&quot;</span>
+<span class="w">    </span>python<span class="w"> </span>my_python_code.py
+<span class="k">else</span>
+<span class="w">    </span>bash<span class="w"> </span>repeater.sh<span class="w"> </span><span class="s2">&quot;okay&quot;</span><span class="w"> </span><span class="nv">$1</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+<p>Die lässt sich, genau wie vorher, über <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">main.sh</span> <span class="pre">7</span></code> ausführen (oder natürlich mit entsprechenden anderen Zahlenwerten).
+Je nach Betriebssystem muss manchmal <code class="docutils literal notranslate"><span class="pre">python</span></code> durch <code class="docutils literal notranslate"><span class="pre">python3</span></code> erstetzt werden.</p>
+</section>
+<section id="argumente-mit-argparse-verarbeiten">
+<h3><span class="section-number">2.4.5. </span>Argumente mit <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verarbeiten<a class="headerlink" href="#argumente-mit-argparse-verarbeiten" title="Link to this heading">#</a></h3>
+<p>Für komplexere Shell-Skripte reicht es nicht immer aus, nur einfache Positionsparameter wie <code class="docutils literal notranslate"><span class="pre">$1</span></code>, <code class="docutils literal notranslate"><span class="pre">$2</span></code> usw. zu verwenden. Hier kommt das Modul <strong><code class="docutils literal notranslate"><span class="pre">argparse</span></code></strong> ins Spiel, das in Python verwendet wird, um robuste und benutzerfreundliche Argumentparser zu erstellen. Es ermöglicht, benannte und optionale Argumente in einem Python-Skript zu verarbeiten, ähnlich wie bei Befehlen in der Kommandozeile.</p>
+<section id="installation-und-nutzung-von-argparse">
+<h4><span class="section-number">2.4.5.1. </span>Installation und Nutzung von <code class="docutils literal notranslate"><span class="pre">argparse</span></code><a class="headerlink" href="#installation-und-nutzung-von-argparse" title="Link to this heading">#</a></h4>
+<p>Da <code class="docutils literal notranslate"><span class="pre">argparse</span></code> ein Standardmodul in Python ist, muss es nicht separat installiert werden. Ein einfaches Beispiel zeigt, wie du mit <code class="docutils literal notranslate"><span class="pre">argparse</span></code> Argumente in deinem Python-Skript verarbeiten kannst:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+
+<span class="c1"># Initialisiere den Parser</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Ein Beispielskript für argparse&quot;</span><span class="p">)</span>
+
+<span class="c1"># Füge optionale Argumente hinzu</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-n&#39;</span><span class="p">,</span> <span class="s1">&#39;--name&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Dein Name&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="s1">&#39;--repetitions&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Wie oft die Nachricht wiederholt wird&#39;</span><span class="p">)</span>
+
+<span class="c1"># Lese die Argumente aus</span>
+<span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+<span class="c1"># Nutze die Argumente</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">repetitions</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hallo, </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Dieses Skript kann dann mit optionalen Argumenten aufgerufen werden:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>my_script.py<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;Max&quot;</span><span class="w"> </span>--repetitions<span class="w"> </span><span class="m">5</span>
+</pre></div>
+</div>
+</section>
+<section id="warum-argparse-verwenden">
+<h4><span class="section-number">2.4.5.2. </span>Warum <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verwenden?<a class="headerlink" href="#warum-argparse-verwenden" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Benutzerfreundlichkeit</strong>: Skripte werden leichter nutzbar, da sie klar dokumentierte Argumente und Optionen bereitstellen.</p></li>
+<li><p><strong>Fehlerbehandlung</strong>: <code class="docutils literal notranslate"><span class="pre">argparse</span></code> erkennt und meldet ungültige Eingaben direkt, ohne dass man zusätzlichen Code für die Validierung schreiben muss.</p></li>
+<li><p><strong>Flexibilität</strong>: Man kann mehrere Argumente und Optionen hinzufügen, um das Skript flexibel an verschiedene Aufgaben anzupassen.</p></li>
+</ul>
+<p>Wenn du Argumente aus der Kommandozeile in deinen Bash-Skripten nutzen möchtest, lohnt es sich, auch eine Lösung wie <code class="docutils literal notranslate"><span class="pre">argparse</span></code> in Betracht zu ziehen, wenn das Skript in Python implementiert wird.</p>
+</section>
+</section>
+<section id="dateiberechtigungen-mit-chmod-setzen">
+<h3><span class="section-number">2.4.6. </span>Dateiberechtigungen mit <code class="docutils literal notranslate"><span class="pre">chmod</span></code> setzen<a class="headerlink" href="#dateiberechtigungen-mit-chmod-setzen" title="Link to this heading">#</a></h3>
+<p>Der Befehl <strong><code class="docutils literal notranslate"><span class="pre">chmod</span></code></strong> (change mode) wird verwendet, um Dateiberechtigungen in Unix- und Linux-Systemen zu ändern. Berechtigungen definieren, wer auf eine Datei oder ein Verzeichnis zugreifen, sie ändern oder ausführen darf. Diese Berechtigungen sind entscheidend, wenn es um Sicherheit und Kontrolle über den Zugriff auf Ressourcen geht.</p>
+<section id="berechtigungen-verstehen">
+<h4><span class="section-number">2.4.6.1. </span>Berechtigungen verstehen<a class="headerlink" href="#berechtigungen-verstehen" title="Link to this heading">#</a></h4>
+<p>Unix-Berechtigungen werden in drei Kategorien unterteilt:</p>
+<ul class="simple">
+<li><p><strong>User (u)</strong>: Der Besitzer der Datei.</p></li>
+<li><p><strong>Group (g)</strong>: Eine Gruppe von Benutzern, die auf die Datei zugreifen kann.</p></li>
+<li><p><strong>Others (o)</strong>: Alle anderen Benutzer, die auf dem System sind.</p></li>
+</ul>
+<p>Für jede dieser Kategorien können folgende Berechtigungen gesetzt werden:</p>
+<ul class="simple">
+<li><p><strong>r</strong> (read): Die Datei kann gelesen werden.</p></li>
+<li><p><strong>w</strong> (write): Die Datei kann verändert werden.</p></li>
+<li><p><strong>x</strong> (execute): Die Datei kann als ausführbares Programm gestartet werden.</p></li>
+</ul>
+</section>
+<section id="nutzung-von-chmod">
+<h4><span class="section-number">2.4.6.2. </span>Nutzung von <code class="docutils literal notranslate"><span class="pre">chmod</span></code><a class="headerlink" href="#nutzung-von-chmod" title="Link to this heading">#</a></h4>
+<p>Der Befehl <code class="docutils literal notranslate"><span class="pre">chmod</span></code> erlaubt es, Berechtigungen entweder symbolisch oder numerisch zu setzen.</p>
+<p><strong>Symbolische Methode</strong>:</p>
+<ul class="simple">
+<li><p>Beispiel: Dem Benutzer die Berechtigung zum Ausführen einer Datei geben:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span>u+x<span class="w"> </span>my_script.sh
+</pre></div>
+</div>
+<p>Hiermit wird dem Benutzer (<code class="docutils literal notranslate"><span class="pre">u</span></code>) das Ausführungsrecht (<code class="docutils literal notranslate"><span class="pre">x</span></code>) für das Skript <code class="docutils literal notranslate"><span class="pre">my_script.sh</span></code> erteilt.</p>
+<p><strong>Numerische Methode</strong>:</p>
+<p>Berechtigungen können auch durch Zahlenwerte festgelegt werden. Diese basieren auf einer binären Darstellung der Berechtigungen:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">4</span></code> steht für Lesen (r)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code> steht für Schreiben (w)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> steht für Ausführen (x)</p></li>
+</ul>
+<p>Durch Addition dieser Werte lassen sich kombinierte Berechtigungen setzen. Beispiel:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">7</span></code> (4+2+1) bedeutet volle Berechtigungen (lesen, schreiben, ausführen).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">6</span></code> (4+2) bedeutet lesen und schreiben, aber nicht ausführen.</p></li>
+</ul>
+<p>Um allen (User, Group, Others) volle Berechtigungen zu geben:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span><span class="m">777</span><span class="w"> </span>my_script.sh
+</pre></div>
+</div>
+</section>
+<section id="best-practice-sicherer-umgang-mit-berechtigungen">
+<h4><span class="section-number">2.4.6.3. </span>Best Practice: Sicherer Umgang mit Berechtigungen<a class="headerlink" href="#best-practice-sicherer-umgang-mit-berechtigungen" title="Link to this heading">#</a></h4>
+<p>Es ist wichtig, Dateiberechtigungen umsichtig zu setzen, um Sicherheitsprobleme zu vermeiden. Vermeide es, Skripten oder Dateien pauschal Berechtigungen wie <code class="docutils literal notranslate"><span class="pre">777</span></code> zu geben, da dies ungewollten Zugriff ermöglicht. Stattdessen sollten Berechtigungen möglichst restriktiv vergeben werden, z.B. nur <code class="docutils literal notranslate"><span class="pre">755</span></code> für ausführbare Skripte, um sicherzustellen, dass nur der Besitzer Schreibrechte hat.</p>
+</section>
 </section>
 </section>
 <section id="unix-shell-bash-vs-windows">
@@ -874,9 +1062,22 @@ done
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-skripte">2.4.3. Bash-Skripte</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-in-der-kommandozeilen-ubergeben">2.4.3.1. Argumente in der Kommandozeilen übergeben</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.4.3.2. Übung:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verzweigungen">2.4.3.3. Verzweigungen</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zum-schluss-bash-python">2.4.4. Zum Schluss: Bash + Python!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zum-schluss-bash-kann-mehr-als-bash">2.4.4. Zum Schluss: Bash kann mehr als Bash!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-mit-argparse-verarbeiten">2.4.5. Argumente mit <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verarbeiten</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-und-nutzung-von-argparse">2.4.5.1. Installation und Nutzung von <code class="docutils literal notranslate"><span class="pre">argparse</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-argparse-verwenden">2.4.5.2. Warum <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verwenden?</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dateiberechtigungen-mit-chmod-setzen">2.4.6. Dateiberechtigungen mit <code class="docutils literal notranslate"><span class="pre">chmod</span></code> setzen</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#berechtigungen-verstehen">2.4.6.1. Berechtigungen verstehen</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nutzung-von-chmod">2.4.6.2. Nutzung von <code class="docutils literal notranslate"><span class="pre">chmod</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practice-sicherer-umgang-mit-berechtigungen">2.4.6.3. Best Practice: Sicherer Umgang mit Berechtigungen</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unix-shell-bash-vs-windows">2.5. Unix shell/bash vs. Windows</a><ul class="nav section-nav flex-column">
