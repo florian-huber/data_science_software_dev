@@ -275,16 +275,6 @@ do
 done
 ```
 
-Neben Variablen und Schleifen sind Verzweigungen wichtige Kernkomponenten für komplexere Programme. Wenig überraschend gibt es auch in Bash dafür if-else Verzweigungen. Diese sind wie folgt aufgebaut:
-
-```
-if [ Bedingung ]; then
-   Befehle, die ausgeführt werden, wenn die Bedingung wahr ist
-else
-   Befehle, die ausgeführt werden, wenn die Bedingung falsch ist
-fi
-```
-
 
 #### Argumente in der Kommandozeilen übergeben
 
@@ -311,23 +301,112 @@ Dieses Skript bitte einmal nachvollziehen und entsprechend ausführen. Was macht
 Das Skript gibt `$2`-mal den Eintrag von `$1` aus. Wir können also z.B. `bash repeater.sh "yes!" 5` ausführen und uns die entsprechende Ausgabe anschauen.
 ```
 
+Natürlich können solche Schleifen nicht nur für Ausgaben über `echo` genutzt werden, sondern können alle von Bash aufrufbaren Befehle dort ausgeführt werden. Also z.B. auch Befehle wie `mkdir`, `mv`, oder wie in der folgenden Übung `cp`.
 
 
-`$@` kann genutzt werden um alle Argumente zu addressieren.
+#### Übung:
+Schreibe ein Bash-Script, dass eine leere Datei `new_data.txt` erstellt und anschließend 10 Kopien dieser Datei erstellt deren Dateinamen die jeweilige Kopie-Nummer im Namen hat, also `new_data_1.txt` usw.
 
+Tipp: Variablen können auch einfach in Strings eingebaut werden über `my_file_$variable.txt`.
 
+```{toggle}
+Eine mögliche Lösung wäre:
 
-### Zum Schluss: Bash + Python!
+```bash
+# Create empty file
+touch new_data.txt
 
-Nicht umsonst ist im Hacking-Bereich Bash UND Python recht beliebt. Beides lässt sich nämlich auch sehr einfach kombinieren!
-
-Über `python my_python_code.py` lassen sich von einem Bash-Skript aus Python-Skripte ausführen.
+# Make 10 copies with number
+for ((i=1; i <= 10; i++))
+do
+    echo $i
+    cp new_data.txt new_data_$i.txt
+done
+```
 
 ```
+
+Vor der Übung haben wir Skripte gesehen die Eingabeparameter übernehmen können mit `$1`, `$2` usw. Für eine unbestimmte Anzahl Eingeabeparameter kann `$@` genutzt werden, hier ein einfaches Beispiel dazu:
+
+```bash
+sum=0
+for variable in "$@"
+do
+  ((sum += variable))
+done
+echo $sum
+```
+
+
+#### Verzweigungen
+
+Neben Variablen und Schleifen sind Verzweigungen wichtige Kernkomponenten für komplexere Programme. Wenig überraschend gibt es auch in Bash dafür if-else Verzweigungen. Diese sind wie folgt aufgebaut:
+
+```
+if [ Bedingung ]; then
+   Befehle, die ausgeführt werden, wenn die Bedingung wahr ist
+else
+   Befehle, die ausgeführt werden, wenn die Bedingung falsch ist
+fi
+```
+
+Als Beispiel soll einmal das Skript `greater.sh` erstellt werden mit:
+
+```bash
+# INFO: -gt means "greater than"
+if [ $1 -gt 10 ]; then
+    echo "$1 is too much for me!"
+else
+    echo "okay"
+fi
+```
+
+Dies wird die entsprechenden Ausgaben erstellen wenn es mit `bash greater.sh 15` bzw. anderen Zahlenwerten ausgeführt wird.
+
+
+### Zum Schluss: Bash kann mehr als Bash!
+
+Um zu verstehen, warum Shell-Skripte in vielen Gebieten sehr häufig verwendet werden (nicht nur im Bereich Hacking!) ist es wichtig sich eine weitere Eigenschaft klar zu machen.
+Bash-Skripte sind nicht limitiert auf die Ausführung von einer Reihe von Bash-Befehlen, Schleifen oder Verzweigungen. Wir können in Bash-Skripten **alles** ausführen, was wir sonst auch im Shell (oder Terminal) ausführen könnten. D.h. wir können zum Beispiel aus einem Shell-Skript heraus weitere Shell-Skripte ausführen.
+
+Ein einfacher Fall der zwei vorherige Beispiele verwendet ist ein Skript `main.sh` das wie folgt aussieht:
+```bash
+
+if [ $1 -gt 10 ]; then
+    echo "$1 is too much for me!"
+else
+    bash repeater.sh "okay" $1
+fi
+```
+
+Dazu muss natürlich das oben angegebene Skript `repeater.sh` im selben Ordner vorliegen.
+
+Darüber hinaus hatten wir eingangs gesehen, dass im Hacking-Bereich scheinbar Bash UND Python recht beliebt sind.
+Das hat sicherliche viele Gründe. Einer davon liegt aber sicher auch darin, dass sich beides nämlich auch sehr einfach kombinieren lässt.
+
+Wir können ein einfaches Python-Skript erstellen, `my_python_code.py`:
+```python
 print("Das ist Python-Code!")
+for i in range(1, 11):
+    print(i * 5 * "*")
 ```
 
-Speichern Sie den obigen Code in einer Datei namens `example_script.py`, machen Sie ihn ausführbar mit `chmod +x example_script.py` und führen Sie ihn aus mit `./example_script.py`.
+Nun können wir das vorherige `main.sh` Skript entsprechend erweitern:
+```bash
+
+if [ $1 -gt 10 ]; then
+    echo "$1 is too much for me!"
+    python my_python_code.py
+else
+    bash repeater.sh "okay" $1
+fi
+```
+
+Die lässt sich, genau wie vorher, über `bash main.sh 7` ausführen (oder natürlich mit entsprechenden anderen Zahlenwerten).
+Je nach Betriebssystem muss manchmal `python` durch `python3` erstetzt werden.
+
+
+
 
 
 ## Unix shell/bash vs. Windows
