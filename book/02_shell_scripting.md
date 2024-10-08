@@ -249,9 +249,18 @@ rm -i facts3.csv
 
 ### Bash-Skripte
 
-Für komplexere Aufgaben wird die Kommandozeile alleine sehr schnell zu umständlich, daher wechseln wir hier zu Shell oder Bash Skripten. Das sind einfach Textdateien (typischerweise mit `.sh` Endung) in denen wir beliebig umfangreiche Bash-Programme entwerden können. Die Skripte lassen sich aus der Kommanozeile aufrufen mit:
+Für komplexere Aufgaben wird die Kommandozeile alleine sehr schnell zu umständlich, daher wechseln wir hier zu Shell oder Bash Skripten.
+Das sind einfach Textdateien (typischerweise mit `.sh` Endung) in denen wir beliebig umfangreiche Bash-Programme entwerden können.
+Die Skripte lassen sich aus der Kommanozeile aufrufen mit:
 
-```bash my_script.sh```
+```bash
+bash my_script.sh
+```
+
+oder
+```bash
+./my_script.sh
+```
 
 In Form dieser Skripte lassen sich auch die Vielzahl der Möglichkeiten die Bash bietet besser nutzen. Zum Beispiel **Loops**, diese sehen in Bash folgendermaßen aus:
 
@@ -395,8 +404,8 @@ else
     bash repeater.sh "okay" $1
 fi
 ```
-
 Dazu muss natürlich das oben angegebene Skript `repeater.sh` im selben Ordner vorliegen.
+
 
 Darüber hinaus hatten wir eingangs gesehen, dass im Hacking-Bereich scheinbar Bash UND Python recht beliebt sind.
 Das hat sicherliche viele Gründe. Einer davon liegt aber sicher auch darin, dass sich beides nämlich auch sehr einfach kombinieren lässt.
