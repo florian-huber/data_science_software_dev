@@ -77,7 +77,7 @@ Bei MacOS ist Bash im Prinzip bereits vorinstalliert. Hier einfach das Terminal 
 
 
 
-### Navigieren im Dateisystem:
+## Navigieren im Dateisystem:
 
 Wir starten langsam und schauen uns erst einmal die Standard-Befehle an um Ordner zu wechseln und deren Inhalt zu sehen:
 
@@ -124,7 +124,7 @@ Das gute an Bash-Befehlen: Man muss sie nicht auswendig lernen! Bei Unsicherheit
 - Und: es gibt keinen Papierkorb!
 ```
 
-### Nächster Schritt: Dateien & Verzeichnisse erstellen und löschen
+### Dateien & Verzeichnisse erstellen, verschieben, umbenennen, kopieren
 
 Mit **bash** können wir Dateien und Verzeichnisse einfach erstellen, anzeigen, umbenennen, kopieren, verschieben oder löschen. Diese Operationen sind nützlich für das Arbeiten mit Dateien auf der Kommandozeile.
 
@@ -142,7 +142,8 @@ Mit **bash** können wir Dateien und Verzeichnisse einfach erstellen, anzeigen, 
 `rm new_dir/` Vorsicht! Dieser Befehl löscht Dateien/Verzeichnisse unwiderruflich! 
 ```
 
-#### Dateien und Verzeichnisse erstellen
+#### Dateien & Verzeichnisse erstellen
+
 **Verzeichnisse erstellen:**
 
 Mit dem Befehl mkdir lassen sich Verzeichnisse schnell erstellen. Beispiel:
@@ -326,7 +327,7 @@ do
     cp new_data.txt new_data_$i.txt
 done
 ```
-
+Anders als bei Python sind hier die Einrückungen nicht nötig. Sie können aber die Lesbarkeit des Skriptes erhöhen.
 
 Vor der Übung haben wir Skripte gesehen die Eingabeparameter übernehmen können mit `$1`, `$2` usw. Für eine unbestimmte Anzahl Eingeabeparameter kann `$@` genutzt werden, hier ein einfaches Beispiel dazu:
 
@@ -364,6 +365,20 @@ fi
 ```
 
 Dies wird die entsprechenden Ausgaben erstellen wenn es mit `bash greater.sh 15` bzw. anderen Zahlenwerten ausgeführt wird.
+
+Alternativ super übergabe von Parametern mit dem Aufruf des Skripts können auch innerhalb eines Skriptes User-Eingaben abgefragt werden:
+```bash
+echo -n "Enter a number:"
+read variable
+
+if [[ $variable -gt 10 ]]
+then
+    echo "It is greater than 10!"
+else
+    echo "It is smaller than 10!"
+fi
+```
+
 
 
 ### Zum Schluss: Bash kann mehr als Bash!
