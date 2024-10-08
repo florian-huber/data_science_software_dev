@@ -131,6 +131,122 @@ Da Git in der Softwarebranche weit verbreitet ist, gibt es zahlreiche Ressourcen
 Allgemein gilt beim Thema Git und GitHub was auch beim Programmieren gilt: Es kann nicht rein theoretisch über Videos, Vorlesungen, Bücher erlernt werden, sondern eigentlich nur über das Umsetzen in der Praxis. Das heißt, es macht durchaus Sinn sich etwas zu zwingen in den kommenden Projekten bewusst auf den Einsatz von Git zu setzen um Erfahrung damit zu sammeln.
 ```
 
+## Live Coding: Git
+
+### Git installieren und einrichten
+
+Nachdem wir eine grundlegende Einführung in Git hatten, geht es nun in den praktischen Teil – Live Coding. Im Folgenden werden wir Git auf Ihrem System installieren und die ersten Konfigurationen vornehmen.
+
+**Git installieren**
+
+Je nach Betriebssystem unterscheidet sich die Installation von Git leicht. Für Windows-Systeme wurde git bereits für das Thema Shell-Scripts installiert ([https://git-scm.com](https://git-scm.com)). Bei MaxOS und Linux ist git oft bereits installiert. Ansonsten finden sich [hier einige Anleitungen](https://carpentries.github.io/workshop-template/install_instructions/#git). 
+
+**Läuft Git?**
+
+Nach der Installation sollten wir überprüfen, ob Git korrekt installiert wurde. Dazu können wir das Terminal öffnen und den folgenden Befehl eingeben:
+```bash
+git version  # oder auch git --version
+```
+Wenn eine Version angezeigt wird, ist Git erfolgreich installiert.
+
+**Git konfigurieren**
+
+Bevor wir mit Git arbeiten, müssen wir einige grundlegende Einstellungen vornehmen, insbesondere Ihren Namen und Ihre E-Mail-Adresse. Diese Informationen werden in jedem Commit protokolliert, sodass Sie und andere Entwickler nachverfolgen können, wer welche Änderungen vorgenommen hat.
+
+Die aktuellen Einstellungen können wir einsehen mit:
+```bash
+git config --list
+```
+
+Zum ändern führen wir die folgenden Befehle im Terminal aus (dabei -Überraschung!- bitte Namen und Mail entsprechend austauschen...).
+
+```bash
+git config --global user.name "Alice B"
+git config --global user.email "abc@def.com"
+```
+Diese Einstellungen gelten global, das heißt, sie werden in allen Ihren Projekten verwendet, die wir mit Git verwalten.
+
+## Repository erstellen
+
+Bevor wir ein Git-Repository erstellen, sollten wir sicherstellen, dass Git korrekt installiert wurde.
+
+1. **Erster Test**: Führen Sie den folgenden Befehl im Terminal aus, um zu prüfen, ob Git funktioniert:
+
+    ```bash
+    git
+    ```
+
+   Wenn Git korrekt installiert ist, sehen Sie eine Liste der verfügbaren Befehle.
+
+---
+
+### Neues Verzeichnis erstellen
+
+Als Nächstes erstellen wir ein Verzeichnis, das wir zu einem Git-Repository machen werden.
+
+2. **Zum Desktop wechseln** (oder an einen anderen Ort Ihrer Wahl):
+
+    ```bash
+    $ cd ~/Desktop
+    ```
+
+3. **Neues Verzeichnis mit dem Namen "recipes" erstellen**:
+
+    ```bash
+    $ mkdir recipes
+    ```
+
+4. **In das neue Verzeichnis wechseln**:
+
+    ```bash
+    $ cd recipes
+    ```
+
+   Wir befinden uns nun im Verzeichnis `recipes`.
+
+---
+
+### Verzeichnis in ein Git-Repository umwandeln
+
+5. Um dieses Verzeichnis in ein Git-Repository zu verwandeln, verwenden Sie den folgenden Befehl:
+
+    ```bash
+    $ git init
+    ```
+
+   Dieser Befehl initialisiert ein neues Git-Repository und erstellt einen versteckten Ordner `.git` im Verzeichnis.
+
+---
+
+### Überprüfen, ob sich etwas geändert hat
+
+6. **Hat sich im Verzeichnis etwas verändert?**
+
+   - Auf den ersten Blick sehen Sie vielleicht keine Änderungen, wenn Sie den Befehl `ls` (Linux/macOS) oder `dir` (Windows) verwenden. Aber Git hat tatsächlich einen versteckten Ordner `.git` erstellt.
+   
+   - Um diesen versteckten Ordner zu sehen, müssen Sie den Befehl `ls -a` (Linux/macOS) oder `dir /a` (Windows) verwenden:
+
+     ```bash
+     $ ls -a   # für Linux/macOS
+     ```
+
+     ```bash
+     $ dir /a  # für Windows
+     ```
+
+     Oder in PowerShell:
+
+     ```bash
+     $ dir -Force
+     ```
+
+Der Ordner `.git` enthält alle Informationen, die Git benötigt, um die Änderungen in Ihrem Projekt zu verfolgen. Er zeigt an, dass das Verzeichnis nun ein Git-Repository ist.
+
+Sie haben jetzt erfolgreich ein neues Git-Repository erstellt! In den nächsten Schritten werden wir sehen, wie man Dateien hinzufügt und Änderungen verfolgt.
+
+
+Anschließend folgen wir grob dem [Kurs der Software Carpentries bei Kapitel 4](https://swcarpentry.github.io/git-novice/04-changes.html).
+
 
 ### Weitere Quellen:
 
