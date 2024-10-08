@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/02_shell_scripting';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. Git &amp; GitHub" href="03_git_github.html" />
+    <link rel="next" title="3. Versionskontrolle mit Git" href="03_git_github.html" />
     <link rel="prev" title="1. Einführung" href="01_introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -183,7 +183,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_introduction.html">1. Einführung</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Shell Scripting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_git_github.html">3. Git &amp; GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_git_github.html">3. Versionskontrolle mit Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_github.html">4. GitHub</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Code</span></p>
@@ -409,37 +409,37 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zuruck-in-die-zukunft-shell-scripting">2.1. Zurück in die Zukunft… Shell scripting!</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einfuhrung-der-begriffe-bash-cli-shell">2.2. Einführung der Begriffe: Bash, CLI, Shell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-ist-shell-scripting-unverzichtbar">2.3. Warum ist Shell Scripting unverzichtbar?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-und-einrichtung">2.4. Installation und Einrichtung</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#navigieren-im-dateisystem">2.4.1. Navigieren im Dateisystem:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nachster-schritt-dateien-verzeichnisse-erstellen-und-loschen">2.4.2. Nächster Schritt: Dateien &amp; Verzeichnisse erstellen und löschen</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dateien-und-verzeichnisse-erstellen">2.4.2.1. Dateien und Verzeichnisse erstellen</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dateien-und-verzeichnisse-umbenennen-verschieben-und-kopieren">2.4.2.2. Dateien und Verzeichnisse umbenennen, verschieben und kopieren</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ubung">2.4.2.3. Übung:</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dateien-und-verzeichnisse-loschen">2.4.2.4. Dateien und Verzeichnisse löschen:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-und-einrichtung">2.4. Installation und Einrichtung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigieren-im-dateisystem">2.5. Navigieren im Dateisystem:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dateien-verzeichnisse-erstellen-verschieben-umbenennen-kopieren">2.5.1. Dateien &amp; Verzeichnisse erstellen, verschieben, umbenennen, kopieren</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dateien-verzeichnisse-erstellen">2.5.1.1. Dateien &amp; Verzeichnisse erstellen</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dateien-und-verzeichnisse-umbenennen-verschieben-und-kopieren">2.5.1.2. Dateien und Verzeichnisse umbenennen, verschieben und kopieren</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ubung">2.5.1.3. Übung:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dateien-und-verzeichnisse-loschen">2.5.1.4. Dateien und Verzeichnisse löschen:</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-skripte">2.4.3. Bash-Skripte</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-in-der-kommandozeilen-ubergeben">2.4.3.1. Argumente in der Kommandozeilen übergeben</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.4.3.2. Übung:</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verzweigungen">2.4.3.3. Verzweigungen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-skripte">2.5.2. Bash-Skripte</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-in-der-kommandozeilen-ubergeben">2.5.2.1. Argumente in der Kommandozeilen übergeben</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.5.2.2. Übung:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verzweigungen">2.5.2.3. Verzweigungen</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zum-schluss-bash-kann-mehr-als-bash">2.4.4. Zum Schluss: Bash kann mehr als Bash!</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-mit-argparse-verarbeiten">2.4.5. Argumente mit <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verarbeiten</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-und-nutzung-von-argparse">2.4.5.1. Installation und Nutzung von <code class="docutils literal notranslate"><span class="pre">argparse</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-argparse-verwenden">2.4.5.2. Warum <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verwenden?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zum-schluss-bash-kann-mehr-als-bash">2.5.3. Zum Schluss: Bash kann mehr als Bash!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-mit-argparse-verarbeiten">2.5.4. Argumente mit <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verarbeiten</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-und-nutzung-von-argparse">2.5.4.1. Installation und Nutzung von <code class="docutils literal notranslate"><span class="pre">argparse</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-argparse-verwenden">2.5.4.2. Warum <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verwenden?</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dateiberechtigungen-mit-chmod-setzen">2.4.6. Dateiberechtigungen mit <code class="docutils literal notranslate"><span class="pre">chmod</span></code> setzen</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#berechtigungen-verstehen">2.4.6.1. Berechtigungen verstehen</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nutzung-von-chmod">2.4.6.2. Nutzung von <code class="docutils literal notranslate"><span class="pre">chmod</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practice-sicherer-umgang-mit-berechtigungen">2.4.6.3. Best Practice: Sicherer Umgang mit Berechtigungen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dateiberechtigungen-mit-chmod-setzen">2.5.5. Dateiberechtigungen mit <code class="docutils literal notranslate"><span class="pre">chmod</span></code> setzen</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#berechtigungen-verstehen">2.5.5.1. Berechtigungen verstehen</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nutzung-von-chmod">2.5.5.2. Nutzung von <code class="docutils literal notranslate"><span class="pre">chmod</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practice-sicherer-umgang-mit-berechtigungen">2.5.5.3. Best Practice: Sicherer Umgang mit Berechtigungen</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unix-shell-bash-vs-windows">2.5. Unix shell/bash vs. Windows</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#und-noch-vieles-mehr">2.5.1. Und noch vieles mehr.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unix-shell-bash-vs-windows">2.6. Unix shell/bash vs. Windows</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#und-noch-vieles-mehr">2.6.1. Und noch vieles mehr.</a></li>
 </ul>
 </li>
 </ul>
@@ -515,11 +515,12 @@ Diese grafischen Oberflächen sind aber für “End-Nutzer*innen” konzipiert. 
 <li><p>Git Bash wird zusammen mit Git installiert und bietet eine Bash-ähnliche Umgebung.</p></li>
 </ol>
 <p><strong>Für Fortgeschrittene: Bash unter Windows (via WSL)</strong></p>
-<p>Um Bash unter Windows zu nutzen, kannst du das <strong>Windows Subsystem for Linux (WSL)</strong> installieren. Die entsprechenden Schritte findet man in zahlreichen online-Tutorials, z.B. <a class="reference external" href="https://www.howtogeek.com/744328/how-to-install-the-windows-subsystem-for-linux-on-windows-11/">hier</a> oder <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/install">hier</a>.</p>
+<p>Um Bash unter Windows zu nutzen, kann das <strong>Windows Subsystem for Linux (WSL)</strong> installiert werden. Die entsprechenden Schritte findet man in zahlreichen online-Tutorials, z.B. <a class="reference external" href="https://www.howtogeek.com/744328/how-to-install-the-windows-subsystem-for-linux-on-windows-11/">hier</a> oder <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/install">hier</a>.</p>
 <p><strong>MacOS: Bash ist vorinstalliert</strong></p>
-<p>Wenn du MacOS nutzt, hast du Glück – Bash ist bereits vorinstalliert. Du kannst einfach das Terminal öffnen und loslegen.</p>
+<p>Bei MacOS ist Bash im Prinzip bereits vorinstalliert. Hier einfach das Terminal öffnen und loslegen.</p>
+</section>
 <section id="navigieren-im-dateisystem">
-<h3><span class="section-number">2.4.1. </span>Navigieren im Dateisystem:<a class="headerlink" href="#navigieren-im-dateisystem" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">2.5. </span>Navigieren im Dateisystem:<a class="headerlink" href="#navigieren-im-dateisystem" title="Link to this heading">#</a></h2>
 <p>Wir starten langsam und schauen uns erst einmal die Standard-Befehle an um Ordner zu wechseln und deren Inhalt zu sehen:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pwd</span></code> gibt den aktuellen Ordner an in dem wir uns befinden. Unter Linux sieht das typischerweise aus wie <code class="docutils literal notranslate"><span class="pre">/homer/itsme</span></code>, bei Windows eher wie <code class="docutils literal notranslate"><span class="pre">C:\Users\itsme</span></code>.</p></li>
@@ -596,9 +597,8 @@ Diese grafischen Oberflächen sind aber für “End-Nutzer*innen” konzipiert. 
 <li><p>Und: es gibt keinen Papierkorb!</p></li>
 </ul>
 </div>
-</section>
-<section id="nachster-schritt-dateien-verzeichnisse-erstellen-und-loschen">
-<h3><span class="section-number">2.4.2. </span>Nächster Schritt: Dateien &amp; Verzeichnisse erstellen und löschen<a class="headerlink" href="#nachster-schritt-dateien-verzeichnisse-erstellen-und-loschen" title="Link to this heading">#</a></h3>
+<section id="dateien-verzeichnisse-erstellen-verschieben-umbenennen-kopieren">
+<h3><span class="section-number">2.5.1. </span>Dateien &amp; Verzeichnisse erstellen, verschieben, umbenennen, kopieren<a class="headerlink" href="#dateien-verzeichnisse-erstellen-verschieben-umbenennen-kopieren" title="Link to this heading">#</a></h3>
 <p>Mit <strong>bash</strong> können wir Dateien und Verzeichnisse einfach erstellen, anzeigen, umbenennen, kopieren, verschieben oder löschen. Diese Operationen sind nützlich für das Arbeiten mit Dateien auf der Kommandozeile.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -627,8 +627,8 @@ Diese grafischen Oberflächen sind aber für “End-Nutzer*innen” konzipiert. 
 <p><strong>Achtung!</strong>
 <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">new_dir/</span></code> Vorsicht! Dieser Befehl löscht Dateien/Verzeichnisse unwiderruflich!</p>
 </div>
-<section id="dateien-und-verzeichnisse-erstellen">
-<h4><span class="section-number">2.4.2.1. </span>Dateien und Verzeichnisse erstellen<a class="headerlink" href="#dateien-und-verzeichnisse-erstellen" title="Link to this heading">#</a></h4>
+<section id="dateien-verzeichnisse-erstellen">
+<h4><span class="section-number">2.5.1.1. </span>Dateien &amp; Verzeichnisse erstellen<a class="headerlink" href="#dateien-verzeichnisse-erstellen" title="Link to this heading">#</a></h4>
 <p><strong>Verzeichnisse erstellen:</strong></p>
 <p>Mit dem Befehl mkdir lassen sich Verzeichnisse schnell erstellen. Beispiel:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Erstelle ein neues Verzeichnis</span>
@@ -645,7 +645,7 @@ ls
 ls<span class="w"> </span>-R
 </pre></div>
 </div>
-<p>Hinweis: Das ist das Gleiche, als ob du im Dateiexplorer ein Verzeichnis erstellst!</p>
+<p>Hinweis: Das ist das Gleiche, als ob im Dateiexplorer ein Verzeichnis erstellt wird!</p>
 <p><strong>Dateien erstellen:</strong></p>
 <p>Um eine Datei zu erstellen, kann ein Texteditor wie nano verwenden werden:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>secrets
@@ -660,7 +660,7 @@ touch<span class="w"> </span>data/facts3.csv
 </div>
 </section>
 <section id="dateien-und-verzeichnisse-umbenennen-verschieben-und-kopieren">
-<h4><span class="section-number">2.4.2.2. </span>Dateien und Verzeichnisse umbenennen, verschieben und kopieren<a class="headerlink" href="#dateien-und-verzeichnisse-umbenennen-verschieben-und-kopieren" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">2.5.1.2. </span>Dateien und Verzeichnisse umbenennen, verschieben und kopieren<a class="headerlink" href="#dateien-und-verzeichnisse-umbenennen-verschieben-und-kopieren" title="Link to this heading">#</a></h4>
 <p>Dateien oder Verzeichnisse können mit <code class="docutils literal notranslate"><span class="pre">mv</span></code>verschoben oder umbenannt werden.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>data
 <span class="c1"># Umbenennen der Datei facts3.csv in facts0.csv</span>
@@ -681,7 +681,7 @@ ls<span class="w"> </span>-a<span class="w">  </span><span class="c1"># Zeigt au
 </div>
 </section>
 <section id="ubung">
-<h4><span class="section-number">2.4.2.3. </span>Übung:<a class="headerlink" href="#ubung" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">2.5.1.3. </span>Übung:<a class="headerlink" href="#ubung" title="Link to this heading">#</a></h4>
 <p>Es wurde eine Datei statiscs.txt erstellt (z.B. mit <code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">statiscs.txt</span></code>), sie sollte jedoch statistics.txt heißen. Mit welchem der folgenden Befehle kann sie umbenannt werden?</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>statiscs.txt<span class="w"> </span>statistics.txt
 mv<span class="w"> </span>statiscs.txt<span class="w"> </span>statistics.txt
@@ -700,7 +700,7 @@ ls
 <p>Leerzeichen in Dateinamen sollten vermieden werden. Um sie wieder zu löschen kann <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">one\</span> <span class="pre">long\</span> <span class="pre">name</span></code> genutzt werden.</p>
 </section>
 <section id="dateien-und-verzeichnisse-loschen">
-<h4><span class="section-number">2.4.2.4. </span>Dateien und Verzeichnisse löschen:<a class="headerlink" href="#dateien-und-verzeichnisse-loschen" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">2.5.1.4. </span>Dateien und Verzeichnisse löschen:<a class="headerlink" href="#dateien-und-verzeichnisse-loschen" title="Link to this heading">#</a></h4>
 <p>Das Löschen eines Verzeichnisses mit <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">new_dir/</span></code> ist nicht ausreichend. Es muss rekursiv gelöscht werden:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>-r<span class="w"> </span>new_dir/
 </pre></div>
@@ -720,9 +720,17 @@ ls
 </section>
 </section>
 <section id="bash-skripte">
-<h3><span class="section-number">2.4.3. </span>Bash-Skripte<a class="headerlink" href="#bash-skripte" title="Link to this heading">#</a></h3>
-<p>Für komplexere Aufgaben wird die Kommandozeile alleine sehr schnell zu umständlich, daher wechseln wir hier zu Shell oder Bash Skripten. Das sind einfach Textdateien (typischerweise mit <code class="docutils literal notranslate"><span class="pre">.sh</span></code> Endung) in denen wir beliebig umfangreiche Bash-Programme entwerden können. Die Skripte lassen sich aus der Kommanozeile aufrufen mit:</p>
-<p><code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">my_script.sh</span></code></p>
+<h3><span class="section-number">2.5.2. </span>Bash-Skripte<a class="headerlink" href="#bash-skripte" title="Link to this heading">#</a></h3>
+<p>Für komplexere Aufgaben wird die Kommandozeile alleine sehr schnell zu umständlich, daher wechseln wir hier zu Shell oder Bash Skripten.
+Das sind einfach Textdateien (typischerweise mit <code class="docutils literal notranslate"><span class="pre">.sh</span></code> Endung) in denen wir beliebig umfangreiche Bash-Programme entwerden können.
+Die Skripte lassen sich aus der Kommanozeile aufrufen mit:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>my_script.sh
+</pre></div>
+</div>
+<p>oder</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./my_script.sh
+</pre></div>
+</div>
 <p>In Form dieser Skripte lassen sich auch die Vielzahl der Möglichkeiten die Bash bietet besser nutzen. Zum Beispiel <strong>Loops</strong>, diese sehen in Bash folgendermaßen aus:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>variable<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
 <span class="k">do</span>
@@ -745,7 +753,7 @@ ls
 </pre></div>
 </div>
 <section id="argumente-in-der-kommandozeilen-ubergeben">
-<h4><span class="section-number">2.4.3.1. </span>Argumente in der Kommandozeilen übergeben<a class="headerlink" href="#argumente-in-der-kommandozeilen-ubergeben" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">2.5.2.1. </span>Argumente in der Kommandozeilen übergeben<a class="headerlink" href="#argumente-in-der-kommandozeilen-ubergeben" title="Link to this heading">#</a></h4>
 <p>Innerhalb eines Bash-Skripts können wir auch Argumente nutzen. Hier bezeichnet <code class="docutils literal notranslate"><span class="pre">$1</span></code>, <code class="docutils literal notranslate"><span class="pre">$2</span></code> etc. das erste, zweite usw. Argument nach dem Skriptnamen. Wir können das folgendes Skript, <code class="docutils literal notranslate"><span class="pre">print_first.sh</span></code>, erstellen:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo $1
 </pre></div>
@@ -765,7 +773,7 @@ ls
 <p>Natürlich können solche Schleifen nicht nur für Ausgaben über <code class="docutils literal notranslate"><span class="pre">echo</span></code> genutzt werden, sondern können alle von Bash aufrufbaren Befehle dort ausgeführt werden. Also z.B. auch Befehle wie <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>, <code class="docutils literal notranslate"><span class="pre">mv</span></code>, oder wie in der folgenden Übung <code class="docutils literal notranslate"><span class="pre">cp</span></code>.</p>
 </section>
 <section id="id2">
-<h4><span class="section-number">2.4.3.2. </span>Übung:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">2.5.2.2. </span>Übung:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p>Schreibe ein Bash-Script, dass eine leere Datei <code class="docutils literal notranslate"><span class="pre">new_data.txt</span></code> erstellt und anschließend 10 Kopien dieser Datei erstellt deren Dateinamen die jeweilige Kopie-Nummer im Namen hat, also <code class="docutils literal notranslate"><span class="pre">new_data_1.txt</span></code> usw.</p>
 <p>Tipp: Variablen können auch einfach in Strings eingebaut werden über <code class="docutils literal notranslate"><span class="pre">my_file_$variable.txt</span></code>.</p>
 <div class="toggle docutils container">
@@ -782,21 +790,19 @@ touch<span class="w"> </span>new_data.txt
 </pre></div>
 </div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-Vor der Übung haben wir Skripte gesehen die Eingabeparameter übernehmen können mit `$1`, `$2` usw. Für eine unbestimmte Anzahl Eingeabeparameter kann `$@` genutzt werden, hier ein einfaches Beispiel dazu:
-
-```bash
-sum=0
-for variable in &quot;$@&quot;
-do
-  ((sum += variable))
-done
-echo $sum
+<p>Anders als bei Python sind hier die Einrückungen nicht nötig. Sie können aber die Lesbarkeit des Skriptes erhöhen.</p>
+<p>Vor der Übung haben wir Skripte gesehen die Eingabeparameter übernehmen können mit <code class="docutils literal notranslate"><span class="pre">$1</span></code>, <code class="docutils literal notranslate"><span class="pre">$2</span></code> usw. Für eine unbestimmte Anzahl Eingeabeparameter kann <code class="docutils literal notranslate"><span class="pre">$&#64;</span></code> genutzt werden, hier ein einfaches Beispiel dazu:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">sum</span><span class="o">=</span><span class="m">0</span>
+<span class="k">for</span><span class="w"> </span>variable<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+<span class="k">do</span>
+<span class="w">  </span><span class="o">((</span><span class="nv">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>variable<span class="o">))</span>
+<span class="k">done</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$sum</span>
 </pre></div>
 </div>
 </section>
 <section id="verzweigungen">
-<h4><span class="section-number">2.4.3.3. </span>Verzweigungen<a class="headerlink" href="#verzweigungen" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">2.5.2.3. </span>Verzweigungen<a class="headerlink" href="#verzweigungen" title="Link to this heading">#</a></h4>
 <p>Neben Variablen und Schleifen sind Verzweigungen wichtige Kernkomponenten für komplexere Programme. Wenig überraschend gibt es auch in Bash dafür if-else Verzweigungen. Diese sind wie folgt aufgebaut:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">[</span> <span class="n">Bedingung</span> <span class="p">];</span> <span class="n">then</span>
    <span class="n">Befehle</span><span class="p">,</span> <span class="n">die</span> <span class="n">ausgeführt</span> <span class="n">werden</span><span class="p">,</span> <span class="n">wenn</span> <span class="n">die</span> <span class="n">Bedingung</span> <span class="n">wahr</span> <span class="n">ist</span>
@@ -815,10 +821,22 @@ echo $sum
 </pre></div>
 </div>
 <p>Dies wird die entsprechenden Ausgaben erstellen wenn es mit <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">greater.sh</span> <span class="pre">15</span></code> bzw. anderen Zahlenwerten ausgeführt wird.</p>
+<p>Alternativ super übergabe von Parametern mit dem Aufruf des Skripts können auch innerhalb eines Skriptes User-Eingaben abgefragt werden:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;Enter a number:&quot;</span>
+<span class="nb">read</span><span class="w"> </span>variable
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$variable</span><span class="w"> </span>-gt<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">]]</span>
+<span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;It is greater than 10!&quot;</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;It is smaller than 10!&quot;</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="zum-schluss-bash-kann-mehr-als-bash">
-<h3><span class="section-number">2.4.4. </span>Zum Schluss: Bash kann mehr als Bash!<a class="headerlink" href="#zum-schluss-bash-kann-mehr-als-bash" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.5.3. </span>Zum Schluss: Bash kann mehr als Bash!<a class="headerlink" href="#zum-schluss-bash-kann-mehr-als-bash" title="Link to this heading">#</a></h3>
 <p>Um zu verstehen, warum Shell-Skripte in vielen Gebieten sehr häufig verwendet werden (nicht nur im Bereich Hacking!) ist es wichtig sich eine weitere Eigenschaft klar zu machen.
 Bash-Skripte sind nicht limitiert auf die Ausführung von einer Reihe von Bash-Befehlen, Schleifen oder Verzweigungen. Wir können in Bash-Skripten <strong>alles</strong> ausführen, was wir sonst auch im Shell (oder Terminal) ausführen könnten. D.h. wir können zum Beispiel aus einem Shell-Skript heraus weitere Shell-Skripte ausführen.</p>
 <p>Ein einfacher Fall der zwei vorherige Beispiele verwendet ist ein Skript <code class="docutils literal notranslate"><span class="pre">main.sh</span></code> das wie folgt aussieht:</p>
@@ -851,11 +869,11 @@ Das hat sicherliche viele Gründe. Einer davon liegt aber sicher auch darin, das
 Je nach Betriebssystem muss manchmal <code class="docutils literal notranslate"><span class="pre">python</span></code> durch <code class="docutils literal notranslate"><span class="pre">python3</span></code> erstetzt werden.</p>
 </section>
 <section id="argumente-mit-argparse-verarbeiten">
-<h3><span class="section-number">2.4.5. </span>Argumente mit <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verarbeiten<a class="headerlink" href="#argumente-mit-argparse-verarbeiten" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.5.4. </span>Argumente mit <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verarbeiten<a class="headerlink" href="#argumente-mit-argparse-verarbeiten" title="Link to this heading">#</a></h3>
 <p>Für komplexere Shell-Skripte reicht es nicht immer aus, nur einfache Positionsparameter wie <code class="docutils literal notranslate"><span class="pre">$1</span></code>, <code class="docutils literal notranslate"><span class="pre">$2</span></code> usw. zu verwenden. Hier kommt das Modul <strong><code class="docutils literal notranslate"><span class="pre">argparse</span></code></strong> ins Spiel, das in Python verwendet wird, um robuste und benutzerfreundliche Argumentparser zu erstellen. Es ermöglicht, benannte und optionale Argumente in einem Python-Skript zu verarbeiten, ähnlich wie bei Befehlen in der Kommandozeile.</p>
 <section id="installation-und-nutzung-von-argparse">
-<h4><span class="section-number">2.4.5.1. </span>Installation und Nutzung von <code class="docutils literal notranslate"><span class="pre">argparse</span></code><a class="headerlink" href="#installation-und-nutzung-von-argparse" title="Link to this heading">#</a></h4>
-<p>Da <code class="docutils literal notranslate"><span class="pre">argparse</span></code> ein Standardmodul in Python ist, muss es nicht separat installiert werden. Ein einfaches Beispiel zeigt, wie du mit <code class="docutils literal notranslate"><span class="pre">argparse</span></code> Argumente in deinem Python-Skript verarbeiten kannst:</p>
+<h4><span class="section-number">2.5.4.1. </span>Installation und Nutzung von <code class="docutils literal notranslate"><span class="pre">argparse</span></code><a class="headerlink" href="#installation-und-nutzung-von-argparse" title="Link to this heading">#</a></h4>
+<p>Da <code class="docutils literal notranslate"><span class="pre">argparse</span></code> ein Standardmodul in Python ist, muss es nicht separat installiert werden. Ein einfaches Beispiel zeigt, wie mit <code class="docutils literal notranslate"><span class="pre">argparse</span></code> Argumente in einem Python-Skript verarbeiten werden können:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="c1"># Initialisiere den Parser</span>
@@ -879,20 +897,19 @@ Je nach Betriebssystem muss manchmal <code class="docutils literal notranslate">
 </div>
 </section>
 <section id="warum-argparse-verwenden">
-<h4><span class="section-number">2.4.5.2. </span>Warum <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verwenden?<a class="headerlink" href="#warum-argparse-verwenden" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">2.5.4.2. </span>Warum <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verwenden?<a class="headerlink" href="#warum-argparse-verwenden" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>Benutzerfreundlichkeit</strong>: Skripte werden leichter nutzbar, da sie klar dokumentierte Argumente und Optionen bereitstellen.</p></li>
 <li><p><strong>Fehlerbehandlung</strong>: <code class="docutils literal notranslate"><span class="pre">argparse</span></code> erkennt und meldet ungültige Eingaben direkt, ohne dass man zusätzlichen Code für die Validierung schreiben muss.</p></li>
 <li><p><strong>Flexibilität</strong>: Man kann mehrere Argumente und Optionen hinzufügen, um das Skript flexibel an verschiedene Aufgaben anzupassen.</p></li>
 </ul>
-<p>Wenn du Argumente aus der Kommandozeile in deinen Bash-Skripten nutzen möchtest, lohnt es sich, auch eine Lösung wie <code class="docutils literal notranslate"><span class="pre">argparse</span></code> in Betracht zu ziehen, wenn das Skript in Python implementiert wird.</p>
 </section>
 </section>
 <section id="dateiberechtigungen-mit-chmod-setzen">
-<h3><span class="section-number">2.4.6. </span>Dateiberechtigungen mit <code class="docutils literal notranslate"><span class="pre">chmod</span></code> setzen<a class="headerlink" href="#dateiberechtigungen-mit-chmod-setzen" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.5.5. </span>Dateiberechtigungen mit <code class="docutils literal notranslate"><span class="pre">chmod</span></code> setzen<a class="headerlink" href="#dateiberechtigungen-mit-chmod-setzen" title="Link to this heading">#</a></h3>
 <p>Der Befehl <strong><code class="docutils literal notranslate"><span class="pre">chmod</span></code></strong> (change mode) wird verwendet, um Dateiberechtigungen in Unix- und Linux-Systemen zu ändern. Berechtigungen definieren, wer auf eine Datei oder ein Verzeichnis zugreifen, sie ändern oder ausführen darf. Diese Berechtigungen sind entscheidend, wenn es um Sicherheit und Kontrolle über den Zugriff auf Ressourcen geht.</p>
 <section id="berechtigungen-verstehen">
-<h4><span class="section-number">2.4.6.1. </span>Berechtigungen verstehen<a class="headerlink" href="#berechtigungen-verstehen" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">2.5.5.1. </span>Berechtigungen verstehen<a class="headerlink" href="#berechtigungen-verstehen" title="Link to this heading">#</a></h4>
 <p>Unix-Berechtigungen werden in drei Kategorien unterteilt:</p>
 <ul class="simple">
 <li><p><strong>User (u)</strong>: Der Besitzer der Datei.</p></li>
@@ -907,7 +924,7 @@ Je nach Betriebssystem muss manchmal <code class="docutils literal notranslate">
 </ul>
 </section>
 <section id="nutzung-von-chmod">
-<h4><span class="section-number">2.4.6.2. </span>Nutzung von <code class="docutils literal notranslate"><span class="pre">chmod</span></code><a class="headerlink" href="#nutzung-von-chmod" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">2.5.5.2. </span>Nutzung von <code class="docutils literal notranslate"><span class="pre">chmod</span></code><a class="headerlink" href="#nutzung-von-chmod" title="Link to this heading">#</a></h4>
 <p>Der Befehl <code class="docutils literal notranslate"><span class="pre">chmod</span></code> erlaubt es, Berechtigungen entweder symbolisch oder numerisch zu setzen.</p>
 <p><strong>Symbolische Methode</strong>:</p>
 <ul class="simple">
@@ -935,13 +952,13 @@ Je nach Betriebssystem muss manchmal <code class="docutils literal notranslate">
 </div>
 </section>
 <section id="best-practice-sicherer-umgang-mit-berechtigungen">
-<h4><span class="section-number">2.4.6.3. </span>Best Practice: Sicherer Umgang mit Berechtigungen<a class="headerlink" href="#best-practice-sicherer-umgang-mit-berechtigungen" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">2.5.5.3. </span>Best Practice: Sicherer Umgang mit Berechtigungen<a class="headerlink" href="#best-practice-sicherer-umgang-mit-berechtigungen" title="Link to this heading">#</a></h4>
 <p>Es ist wichtig, Dateiberechtigungen umsichtig zu setzen, um Sicherheitsprobleme zu vermeiden. Vermeide es, Skripten oder Dateien pauschal Berechtigungen wie <code class="docutils literal notranslate"><span class="pre">777</span></code> zu geben, da dies ungewollten Zugriff ermöglicht. Stattdessen sollten Berechtigungen möglichst restriktiv vergeben werden, z.B. nur <code class="docutils literal notranslate"><span class="pre">755</span></code> für ausführbare Skripte, um sicherzustellen, dass nur der Besitzer Schreibrechte hat.</p>
 </section>
 </section>
 </section>
 <section id="unix-shell-bash-vs-windows">
-<h2><span class="section-number">2.5. </span>Unix shell/bash vs. Windows<a class="headerlink" href="#unix-shell-bash-vs-windows" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.6. </span>Unix shell/bash vs. Windows<a class="headerlink" href="#unix-shell-bash-vs-windows" title="Link to this heading">#</a></h2>
 <p>Wir haben uns in der ersten Session mit der Unix Shell auseinandergesetzt. Mit “git bash” konnten wir dies sowohl unter Linux, wie auch MacOS oder Windows nutzen. Der Windows eigene Terminal (cmd.exe) hat aber andere historische Wurzeln (DOS) und hat darum auch andere Befehle.</p>
 <p>Hier eine kleine Auswahl der häufigstens Befehle die sich unterscheiden:</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -972,7 +989,7 @@ Je nach Betriebssystem muss manchmal <code class="docutils literal notranslate">
 </table>
 </div>
 <section id="und-noch-vieles-mehr">
-<h3><span class="section-number">2.5.1. </span>Und noch vieles mehr.<a class="headerlink" href="#und-noch-vieles-mehr" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.6.1. </span>Und noch vieles mehr.<a class="headerlink" href="#und-noch-vieles-mehr" title="Link to this heading">#</a></h3>
 <p>Bash kann noch viel mehr, aber das werden wir (vorläufig) noch nicht benötigen. So können beispielsweise auch Funktionen definiert werden und vieles mehr.</p>
 <p>Für weitere Übungen, Tipps und Beispiele zu Bash hier einige Links:</p>
 <ul class="simple">
@@ -1028,7 +1045,7 @@ Je nach Betriebssystem muss manchmal <code class="docutils literal notranslate">
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Git &amp; GitHub</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Versionskontrolle mit Git</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1051,37 +1068,37 @@ Je nach Betriebssystem muss manchmal <code class="docutils literal notranslate">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zuruck-in-die-zukunft-shell-scripting">2.1. Zurück in die Zukunft… Shell scripting!</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einfuhrung-der-begriffe-bash-cli-shell">2.2. Einführung der Begriffe: Bash, CLI, Shell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-ist-shell-scripting-unverzichtbar">2.3. Warum ist Shell Scripting unverzichtbar?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-und-einrichtung">2.4. Installation und Einrichtung</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#navigieren-im-dateisystem">2.4.1. Navigieren im Dateisystem:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nachster-schritt-dateien-verzeichnisse-erstellen-und-loschen">2.4.2. Nächster Schritt: Dateien &amp; Verzeichnisse erstellen und löschen</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dateien-und-verzeichnisse-erstellen">2.4.2.1. Dateien und Verzeichnisse erstellen</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dateien-und-verzeichnisse-umbenennen-verschieben-und-kopieren">2.4.2.2. Dateien und Verzeichnisse umbenennen, verschieben und kopieren</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ubung">2.4.2.3. Übung:</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dateien-und-verzeichnisse-loschen">2.4.2.4. Dateien und Verzeichnisse löschen:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-und-einrichtung">2.4. Installation und Einrichtung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigieren-im-dateisystem">2.5. Navigieren im Dateisystem:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dateien-verzeichnisse-erstellen-verschieben-umbenennen-kopieren">2.5.1. Dateien &amp; Verzeichnisse erstellen, verschieben, umbenennen, kopieren</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dateien-verzeichnisse-erstellen">2.5.1.1. Dateien &amp; Verzeichnisse erstellen</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dateien-und-verzeichnisse-umbenennen-verschieben-und-kopieren">2.5.1.2. Dateien und Verzeichnisse umbenennen, verschieben und kopieren</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ubung">2.5.1.3. Übung:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dateien-und-verzeichnisse-loschen">2.5.1.4. Dateien und Verzeichnisse löschen:</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-skripte">2.4.3. Bash-Skripte</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-in-der-kommandozeilen-ubergeben">2.4.3.1. Argumente in der Kommandozeilen übergeben</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.4.3.2. Übung:</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verzweigungen">2.4.3.3. Verzweigungen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-skripte">2.5.2. Bash-Skripte</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-in-der-kommandozeilen-ubergeben">2.5.2.1. Argumente in der Kommandozeilen übergeben</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.5.2.2. Übung:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verzweigungen">2.5.2.3. Verzweigungen</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zum-schluss-bash-kann-mehr-als-bash">2.4.4. Zum Schluss: Bash kann mehr als Bash!</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-mit-argparse-verarbeiten">2.4.5. Argumente mit <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verarbeiten</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-und-nutzung-von-argparse">2.4.5.1. Installation und Nutzung von <code class="docutils literal notranslate"><span class="pre">argparse</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-argparse-verwenden">2.4.5.2. Warum <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verwenden?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zum-schluss-bash-kann-mehr-als-bash">2.5.3. Zum Schluss: Bash kann mehr als Bash!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#argumente-mit-argparse-verarbeiten">2.5.4. Argumente mit <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verarbeiten</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-und-nutzung-von-argparse">2.5.4.1. Installation und Nutzung von <code class="docutils literal notranslate"><span class="pre">argparse</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-argparse-verwenden">2.5.4.2. Warum <code class="docutils literal notranslate"><span class="pre">argparse</span></code> verwenden?</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dateiberechtigungen-mit-chmod-setzen">2.4.6. Dateiberechtigungen mit <code class="docutils literal notranslate"><span class="pre">chmod</span></code> setzen</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#berechtigungen-verstehen">2.4.6.1. Berechtigungen verstehen</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nutzung-von-chmod">2.4.6.2. Nutzung von <code class="docutils literal notranslate"><span class="pre">chmod</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practice-sicherer-umgang-mit-berechtigungen">2.4.6.3. Best Practice: Sicherer Umgang mit Berechtigungen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dateiberechtigungen-mit-chmod-setzen">2.5.5. Dateiberechtigungen mit <code class="docutils literal notranslate"><span class="pre">chmod</span></code> setzen</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#berechtigungen-verstehen">2.5.5.1. Berechtigungen verstehen</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nutzung-von-chmod">2.5.5.2. Nutzung von <code class="docutils literal notranslate"><span class="pre">chmod</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practice-sicherer-umgang-mit-berechtigungen">2.5.5.3. Best Practice: Sicherer Umgang mit Berechtigungen</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unix-shell-bash-vs-windows">2.5. Unix shell/bash vs. Windows</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#und-noch-vieles-mehr">2.5.1. Und noch vieles mehr.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unix-shell-bash-vs-windows">2.6. Unix shell/bash vs. Windows</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#und-noch-vieles-mehr">2.6.1. Und noch vieles mehr.</a></li>
 </ul>
 </li>
 </ul>

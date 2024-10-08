@@ -1,4 +1,4 @@
-# Git & GitHub
+# Versionskontrolle mit Git
 
 ## Motivation
 
@@ -36,30 +36,46 @@ Die Versionskontrolle ermöglicht es uns, den Verlauf und die Entwicklung eines 
 **Achtung:** Es ist wichtig zu betonen, dass Versionskontrolle **nicht dasselbe ist wie ein Backup**. Obwohl Sie zu früheren Versionen zurückkehren können, ersetzt dies nicht die Notwendigkeit von Backups für Datenverlustszenarien.
 
 
+## Einführung in Git
 
-## Wie funktioniert Git (ungefähr)
+Git wurde 2005 von Linus Torvalds initiiert, ursprünglich als Werkzeug zur Versionskontrolle für die Entwicklung des Linux-Kernels. Es hat sich jedoch schnell zu einem der am weitesten verbreiteten Versionskontrollsysteme weltweit entwickelt und ist heute der Standard im Software- und IT-Bereich.
 
-Git speichert nicht komplette Dateikopien, sondern konzentriert sich auf die Unterschiede zwischen den Versionen. Bei jeder Änderung speichert Git diese als Deltas, also Unterschiede zur vorherigen Version.
+### Ziele von Git
 
+Git wurde mit einigen zentralen Zielen im Hinterkopf entwickelt, darunter:
+
+- **Sicherheit**: Jede Änderung wird sicher und nachvollziehbar gespeichert, sodass der gesamte Verlauf der Änderungen lückenlos dokumentiert ist.
+- **Effizienz**: Git ist darauf optimiert, effizient auch mit großen Projekten und vielen Änderungen zu arbeiten.
+
+### Komplex, aber nur das Nötigste
+
+Obwohl Git sehr mächtig und komplex ist, benötigen die meisten Benutzer*innen nur eine Handvoll grundlegender Funktionen. Diese Kernfunktionen ermöglichen es, Git produktiv zu nutzen, ohne sich mit den tieferen technischen Details auseinandersetzen zu müssen.
+
+### Der Standard in der Softwareentwicklung
+
+In der heutigen Softwareentwicklung ist Git das zentrale Werkzeug für Versionskontrolle. Andere Systeme spielen in der Praxis kaum noch eine Rolle und werden in professionellen Umgebungen selten verwendet. Das bedeutet, dass Git-Kenntnisse in den meisten IT-Berufen und Softwareprojekten unerlässlich sind.
+
+## Wie funktioniert Git?
+
+Git speichert nicht einfach vollständige Kopien von Dateien. Stattdessen konzentriert es sich auf die Unterschiede, die sogenannten "Deltas", zwischen verschiedenen Versionen von Dateien. Dies macht Git besonders effizient, da nur die Änderungen gespeichert werden und nicht jede Datei komplett neu.
 
 
 ![fig_versioning_deltas](../images/fig_versioning_deltas.png)
 
 ## Grundlegender Prozess
 
-Bei Git geht es um den Zyklus von Änderungen, die in drei Phasen auftreten:
+Der grundlegende Git-Workflow basiert auf einem einfachen Zyklus von Änderungen, der sich in drei Phasen unterteilt:
 
-- **Staging**: Auswahl der Änderungen, die Sie im nächsten Schritt speichern möchten.
-- **Commit**: Die ausgewählten Änderungen festhalten und eine Nachricht hinzufügen, die beschreibt, was gemacht wurde.
-- **Push/Pull**: Teilen Sie Ihre Änderungen mit einem entfernten Repository oder holen Sie sich die neuesten Änderungen von dort.
-
+- **Staging**: Hier werden die Änderungen ausgewählt, die im nächsten Commit gesichert werden sollen.
+- **Commit**: Die ausgewählten Änderungen werden mit einer Commit-Nachricht festgehalten, die beschreibt, was geändert wurde.
+- **Push/Pull**: Änderungen werden in ein entferntes Repository hochgeladen (push), oder aktuelle Änderungen von dort heruntergeladen (pull).
 
 
 ![fig_git_basic_process](../images/fig_git_basic_process.png)
 
 ### Branches
 
-Branches sind parallele Versionen eines Projekts. Sie ermöglichen es, an neuen Features oder Ideen zu arbeiten, ohne die  Haupt-"Produktions"-Version des Codes zu beeinflussen. Wenn ein Feature  fertig ist, kann es in den Hauptzweig (meistens "master" oder "main"  genannt) eingefügt (gemerged) werden.
+Branches sind parallele Versionen eines Projekts. Sie ermöglichen es, an neuen Features oder Ideen zu arbeiten, ohne die  Haupt-"Produktions"-Version des Codes zu beeinflussen. Sobald ein Feature fertig ist, wird es in den Hauptzweig – oft "main" genannt – eingefügt (gemerged).
 
 ![fig_git_basic_process_branches](../images/fig_git_basic_process_branches.png)
 
@@ -114,6 +130,122 @@ Da Git in der Softwarebranche weit verbreitet ist, gibt es zahlreiche Ressourcen
 ```{info}
 Allgemein gilt beim Thema Git und GitHub was auch beim Programmieren gilt: Es kann nicht rein theoretisch über Videos, Vorlesungen, Bücher erlernt werden, sondern eigentlich nur über das Umsetzen in der Praxis. Das heißt, es macht durchaus Sinn sich etwas zu zwingen in den kommenden Projekten bewusst auf den Einsatz von Git zu setzen um Erfahrung damit zu sammeln.
 ```
+
+## Live Coding: Git
+
+### Git installieren und einrichten
+
+Nachdem wir eine grundlegende Einführung in Git hatten, geht es nun in den praktischen Teil – Live Coding. Im Folgenden werden wir Git auf Ihrem System installieren und die ersten Konfigurationen vornehmen.
+
+**Git installieren**
+
+Je nach Betriebssystem unterscheidet sich die Installation von Git leicht. Für Windows-Systeme wurde git bereits für das Thema Shell-Scripts installiert ([https://git-scm.com](https://git-scm.com)). Bei MaxOS und Linux ist git oft bereits installiert. Ansonsten finden sich [hier einige Anleitungen](https://carpentries.github.io/workshop-template/install_instructions/#git). 
+
+**Läuft Git?**
+
+Nach der Installation sollten wir überprüfen, ob Git korrekt installiert wurde. Dazu können wir das Terminal öffnen und den folgenden Befehl eingeben:
+```bash
+git version  # oder auch git --version
+```
+Wenn eine Version angezeigt wird, ist Git erfolgreich installiert.
+
+**Git konfigurieren**
+
+Bevor wir mit Git arbeiten, müssen wir einige grundlegende Einstellungen vornehmen, insbesondere Ihren Namen und Ihre E-Mail-Adresse. Diese Informationen werden in jedem Commit protokolliert, sodass Sie und andere Entwickler nachverfolgen können, wer welche Änderungen vorgenommen hat.
+
+Die aktuellen Einstellungen können wir einsehen mit:
+```bash
+git config --list
+```
+
+Zum ändern führen wir die folgenden Befehle im Terminal aus (dabei -Überraschung!- bitte Namen und Mail entsprechend austauschen...).
+
+```bash
+git config --global user.name "Alice B"
+git config --global user.email "abc@def.com"
+```
+Diese Einstellungen gelten global, das heißt, sie werden in allen Ihren Projekten verwendet, die wir mit Git verwalten.
+
+## Repository erstellen
+
+Bevor wir ein Git-Repository erstellen, sollten wir sicherstellen, dass Git korrekt installiert wurde.
+
+1. **Erster Test**: Führen Sie den folgenden Befehl im Terminal aus, um zu prüfen, ob Git funktioniert:
+
+    ```bash
+    git
+    ```
+
+   Wenn Git korrekt installiert ist, sehen Sie eine Liste der verfügbaren Befehle.
+
+---
+
+### Neues Verzeichnis erstellen
+
+Als Nächstes erstellen wir ein Verzeichnis, das wir zu einem Git-Repository machen werden.
+
+2. **Zum Desktop wechseln** (oder an einen anderen Ort Ihrer Wahl):
+
+    ```bash
+    $ cd ~/Desktop
+    ```
+
+3. **Neues Verzeichnis mit dem Namen "recipes" erstellen**:
+
+    ```bash
+    $ mkdir recipes
+    ```
+
+4. **In das neue Verzeichnis wechseln**:
+
+    ```bash
+    $ cd recipes
+    ```
+
+   Wir befinden uns nun im Verzeichnis `recipes`.
+
+---
+
+### Verzeichnis in ein Git-Repository umwandeln
+
+5. Um dieses Verzeichnis in ein Git-Repository zu verwandeln, verwenden Sie den folgenden Befehl:
+
+    ```bash
+    $ git init
+    ```
+
+   Dieser Befehl initialisiert ein neues Git-Repository und erstellt einen versteckten Ordner `.git` im Verzeichnis.
+
+---
+
+### Überprüfen, ob sich etwas geändert hat
+
+6. **Hat sich im Verzeichnis etwas verändert?**
+
+   - Auf den ersten Blick sehen Sie vielleicht keine Änderungen, wenn Sie den Befehl `ls` (Linux/macOS) oder `dir` (Windows) verwenden. Aber Git hat tatsächlich einen versteckten Ordner `.git` erstellt.
+   
+   - Um diesen versteckten Ordner zu sehen, müssen Sie den Befehl `ls -a` (Linux/macOS) oder `dir /a` (Windows) verwenden:
+
+     ```bash
+     $ ls -a   # für Linux/macOS
+     ```
+
+     ```bash
+     $ dir /a  # für Windows
+     ```
+
+     Oder in PowerShell:
+
+     ```bash
+     $ dir -Force
+     ```
+
+Der Ordner `.git` enthält alle Informationen, die Git benötigt, um die Änderungen in Ihrem Projekt zu verfolgen. Er zeigt an, dass das Verzeichnis nun ein Git-Repository ist.
+
+Sie haben jetzt erfolgreich ein neues Git-Repository erstellt! In den nächsten Schritten werden wir sehen, wie man Dateien hinzufügt und Änderungen verfolgt.
+
+
+Anschließend folgen wir grob dem [Kurs der Software Carpentries bei Kapitel 4](https://swcarpentry.github.io/git-novice/04-changes.html).
 
 
 ### Weitere Quellen:

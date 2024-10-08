@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. Git &amp; GitHub &#8212; Data Science Software Development with Python</title>
+    <title>3. Versionskontrolle mit Git &#8212; Data Science Software Development with Python</title>
   
   
   
@@ -183,7 +183,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_introduction.html">1. Einführung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_shell_scripting.html">2. Shell Scripting</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Git &amp; GitHub</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Versionskontrolle mit Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_github.html">4. GitHub</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Code</span></p>
@@ -396,7 +396,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Git & GitHub</h1>
+    <h1>Versionskontrolle mit Git</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -408,20 +408,34 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">3.1. Motivation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-versionskontrolle-version-control">3.2. Warum Versionskontrolle (version control)?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-funktioniert-git-ungefahr">3.3. Wie funktioniert Git (ungefähr)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grundlegender-prozess">3.4. Grundlegender Prozess</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branches">3.4.1. Branches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einfuhrung-in-git">3.3. Einführung in Git</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ziele-von-git">3.3.1. Ziele von Git</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#komplex-aber-nur-das-notigste">3.3.2. Komplex, aber nur das Nötigste</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-standard-in-der-softwareentwicklung">3.3.3. Der Standard in der Softwareentwicklung</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#es-geht-nicht-nur-um-eine-datei">3.5. Es geht nicht nur um eine Datei!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-immer-shell-bash-terminal">3.6. Warum immer Shell/Bash/Terminal?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#guis-und-ides">3.6.1. GUIs und IDEs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#die-vorteile-der-kommandozeile">3.6.2. Die Vorteile der Kommandozeile</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fazit">3.6.3. Fazit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-funktioniert-git">3.4. Wie funktioniert Git?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grundlegender-prozess">3.5. Grundlegender Prozess</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branches">3.5.1. Branches</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rad-nicht-neu-erfinden">3.7. Rad nicht neu erfinden</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-quellen">3.7.1. Weitere Quellen:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#es-geht-nicht-nur-um-eine-datei">3.6. Es geht nicht nur um eine Datei!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-immer-shell-bash-terminal">3.7. Warum immer Shell/Bash/Terminal?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#guis-und-ides">3.7.1. GUIs und IDEs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#die-vorteile-der-kommandozeile">3.7.2. Die Vorteile der Kommandozeile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fazit">3.7.3. Fazit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rad-nicht-neu-erfinden">3.8. Rad nicht neu erfinden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-coding-git">3.9. Live Coding: Git</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git-installieren-und-einrichten">3.9.1. Git installieren und einrichten</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-erstellen">3.10. Repository erstellen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neues-verzeichnis-erstellen">3.10.1. Neues Verzeichnis erstellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verzeichnis-in-ein-git-repository-umwandeln">3.10.2. Verzeichnis in ein Git-Repository umwandeln</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uberprufen-ob-sich-etwas-geandert-hat">3.10.3. Überprüfen, ob sich etwas geändert hat</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-quellen">3.10.4. Weitere Quellen:</a></li>
 </ul>
 </li>
 </ul>
@@ -435,8 +449,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="git-github">
-<h1><span class="section-number">3. </span>Git &amp; GitHub<a class="headerlink" href="#git-github" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="versionskontrolle-mit-git">
+<h1><span class="section-number">3. </span>Versionskontrolle mit Git<a class="headerlink" href="#versionskontrolle-mit-git" title="Link to this heading">#</a></h1>
 <section id="motivation">
 <h2><span class="section-number">3.1. </span>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
 <p>Sicherlich erinnert sich jeder an Zeiten, in denen man an einem größeren Dokument oder Programmcode arbeitete und unterschiedliche Versionen unter diversen Namen speicherte: “Projekt_Final”, “Projekt_Final_v2”, “Projekt_EchtJetztFinal”. Das mag auf den ersten Blick praktikabel erscheinen, insbesondere wenn man allein an einem Projekt arbeitet.
@@ -466,37 +480,57 @@ document.write(`
 </ul>
 <p><strong>Achtung:</strong> Es ist wichtig zu betonen, dass Versionskontrolle <strong>nicht dasselbe ist wie ein Backup</strong>. Obwohl Sie zu früheren Versionen zurückkehren können, ersetzt dies nicht die Notwendigkeit von Backups für Datenverlustszenarien.</p>
 </section>
-<section id="wie-funktioniert-git-ungefahr">
-<h2><span class="section-number">3.3. </span>Wie funktioniert Git (ungefähr)<a class="headerlink" href="#wie-funktioniert-git-ungefahr" title="Link to this heading">#</a></h2>
-<p>Git speichert nicht komplette Dateikopien, sondern konzentriert sich auf die Unterschiede zwischen den Versionen. Bei jeder Änderung speichert Git diese als Deltas, also Unterschiede zur vorherigen Version.</p>
+<section id="einfuhrung-in-git">
+<h2><span class="section-number">3.3. </span>Einführung in Git<a class="headerlink" href="#einfuhrung-in-git" title="Link to this heading">#</a></h2>
+<p>Git wurde 2005 von Linus Torvalds initiiert, ursprünglich als Werkzeug zur Versionskontrolle für die Entwicklung des Linux-Kernels. Es hat sich jedoch schnell zu einem der am weitesten verbreiteten Versionskontrollsysteme weltweit entwickelt und ist heute der Standard im Software- und IT-Bereich.</p>
+<section id="ziele-von-git">
+<h3><span class="section-number">3.3.1. </span>Ziele von Git<a class="headerlink" href="#ziele-von-git" title="Link to this heading">#</a></h3>
+<p>Git wurde mit einigen zentralen Zielen im Hinterkopf entwickelt, darunter:</p>
+<ul class="simple">
+<li><p><strong>Sicherheit</strong>: Jede Änderung wird sicher und nachvollziehbar gespeichert, sodass der gesamte Verlauf der Änderungen lückenlos dokumentiert ist.</p></li>
+<li><p><strong>Effizienz</strong>: Git ist darauf optimiert, effizient auch mit großen Projekten und vielen Änderungen zu arbeiten.</p></li>
+</ul>
+</section>
+<section id="komplex-aber-nur-das-notigste">
+<h3><span class="section-number">3.3.2. </span>Komplex, aber nur das Nötigste<a class="headerlink" href="#komplex-aber-nur-das-notigste" title="Link to this heading">#</a></h3>
+<p>Obwohl Git sehr mächtig und komplex ist, benötigen die meisten Benutzer*innen nur eine Handvoll grundlegender Funktionen. Diese Kernfunktionen ermöglichen es, Git produktiv zu nutzen, ohne sich mit den tieferen technischen Details auseinandersetzen zu müssen.</p>
+</section>
+<section id="der-standard-in-der-softwareentwicklung">
+<h3><span class="section-number">3.3.3. </span>Der Standard in der Softwareentwicklung<a class="headerlink" href="#der-standard-in-der-softwareentwicklung" title="Link to this heading">#</a></h3>
+<p>In der heutigen Softwareentwicklung ist Git das zentrale Werkzeug für Versionskontrolle. Andere Systeme spielen in der Praxis kaum noch eine Rolle und werden in professionellen Umgebungen selten verwendet. Das bedeutet, dass Git-Kenntnisse in den meisten IT-Berufen und Softwareprojekten unerlässlich sind.</p>
+</section>
+</section>
+<section id="wie-funktioniert-git">
+<h2><span class="section-number">3.4. </span>Wie funktioniert Git?<a class="headerlink" href="#wie-funktioniert-git" title="Link to this heading">#</a></h2>
+<p>Git speichert nicht einfach vollständige Kopien von Dateien. Stattdessen konzentriert es sich auf die Unterschiede, die sogenannten “Deltas”, zwischen verschiedenen Versionen von Dateien. Dies macht Git besonders effizient, da nur die Änderungen gespeichert werden und nicht jede Datei komplett neu.</p>
 <p><img alt="fig_versioning_deltas" src="../_images/fig_versioning_deltas.png" /></p>
 </section>
 <section id="grundlegender-prozess">
-<h2><span class="section-number">3.4. </span>Grundlegender Prozess<a class="headerlink" href="#grundlegender-prozess" title="Link to this heading">#</a></h2>
-<p>Bei Git geht es um den Zyklus von Änderungen, die in drei Phasen auftreten:</p>
+<h2><span class="section-number">3.5. </span>Grundlegender Prozess<a class="headerlink" href="#grundlegender-prozess" title="Link to this heading">#</a></h2>
+<p>Der grundlegende Git-Workflow basiert auf einem einfachen Zyklus von Änderungen, der sich in drei Phasen unterteilt:</p>
 <ul class="simple">
-<li><p><strong>Staging</strong>: Auswahl der Änderungen, die Sie im nächsten Schritt speichern möchten.</p></li>
-<li><p><strong>Commit</strong>: Die ausgewählten Änderungen festhalten und eine Nachricht hinzufügen, die beschreibt, was gemacht wurde.</p></li>
-<li><p><strong>Push/Pull</strong>: Teilen Sie Ihre Änderungen mit einem entfernten Repository oder holen Sie sich die neuesten Änderungen von dort.</p></li>
+<li><p><strong>Staging</strong>: Hier werden die Änderungen ausgewählt, die im nächsten Commit gesichert werden sollen.</p></li>
+<li><p><strong>Commit</strong>: Die ausgewählten Änderungen werden mit einer Commit-Nachricht festgehalten, die beschreibt, was geändert wurde.</p></li>
+<li><p><strong>Push/Pull</strong>: Änderungen werden in ein entferntes Repository hochgeladen (push), oder aktuelle Änderungen von dort heruntergeladen (pull).</p></li>
 </ul>
 <p><img alt="fig_git_basic_process" src="../_images/fig_git_basic_process.png" /></p>
 <section id="branches">
-<h3><span class="section-number">3.4.1. </span>Branches<a class="headerlink" href="#branches" title="Link to this heading">#</a></h3>
-<p>Branches sind parallele Versionen eines Projekts. Sie ermöglichen es, an neuen Features oder Ideen zu arbeiten, ohne die  Haupt-“Produktions”-Version des Codes zu beeinflussen. Wenn ein Feature  fertig ist, kann es in den Hauptzweig (meistens “master” oder “main”  genannt) eingefügt (gemerged) werden.</p>
+<h3><span class="section-number">3.5.1. </span>Branches<a class="headerlink" href="#branches" title="Link to this heading">#</a></h3>
+<p>Branches sind parallele Versionen eines Projekts. Sie ermöglichen es, an neuen Features oder Ideen zu arbeiten, ohne die  Haupt-“Produktions”-Version des Codes zu beeinflussen. Sobald ein Feature fertig ist, wird es in den Hauptzweig – oft “main” genannt – eingefügt (gemerged).</p>
 <p><img alt="fig_git_basic_process_branches" src="../_images/fig_git_basic_process_branches.png" /></p>
 </section>
 </section>
 <section id="es-geht-nicht-nur-um-eine-datei">
-<h2><span class="section-number">3.5. </span>Es geht nicht nur um eine Datei!<a class="headerlink" href="#es-geht-nicht-nur-um-eine-datei" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.6. </span>Es geht nicht nur um eine Datei!<a class="headerlink" href="#es-geht-nicht-nur-um-eine-datei" title="Link to this heading">#</a></h2>
 <p>In den Anfangsphasen kann es sein, dass Projekte nur aus einer einzigen Datei bestehen. Aber größere Projekte, insbesondere im Bereich Softwareentwicklung und Datenwissenschaft, bestehen oft aus vielen Dateien und Ordnern. Ein solches Set von Dateien und Ordnern, das unter Versionskontrolle steht, wird als <strong>Repository</strong> bezeichnet.</p>
 <p><strong>Hinweis</strong>: Während Git hervorragend für Quellcode ist, ist es nicht immer ideal für große Datenmengen. Es ist wichtig, die richtigen Werkzeuge für den jeweiligen Job zu verwenden.</p>
 <p><strong>Wichtig:</strong> Versionskontrolle ist kein allgemeines Backup-Tool und sollte nicht ohne besonderen Grund auf (größere) Daten angewendet werden!</p>
 </section>
 <section id="warum-immer-shell-bash-terminal">
-<h2><span class="section-number">3.6. </span>Warum immer Shell/Bash/Terminal?<a class="headerlink" href="#warum-immer-shell-bash-terminal" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.7. </span>Warum immer Shell/Bash/Terminal?<a class="headerlink" href="#warum-immer-shell-bash-terminal" title="Link to this heading">#</a></h2>
 <p>In vielen Anleitungen und Tutorials zum Thema Git wird oft der Umgang mit Git über die Kommandozeile, auch Shell, Bash oder Terminal genannt, gezeigt. Aber warum eigentlich? Gibt es keine alternativen Wege, Git zu nutzen?</p>
 <section id="guis-und-ides">
-<h3><span class="section-number">3.6.1. </span>GUIs und IDEs<a class="headerlink" href="#guis-und-ides" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.7.1. </span>GUIs und IDEs<a class="headerlink" href="#guis-und-ides" title="Link to this heading">#</a></h3>
 <p>Tatsächlich gibt es diverse grafische Benutzeroberflächen (GUIs) für Git. Diese bieten oft eine intuitivere und visuell ansprechendere Erfahrung im Vergleich zur schlichten Kommandozeile:</p>
 <ul class="simple">
 <li><p><strong>Allgemeine GUIs</strong>: Websites wie <a class="reference external" href="https://git-scm.com/downloads/guis">git-scm</a> bieten eine Übersicht über verschiedene GUIs, die für Git verfügbar sind.</p></li>
@@ -506,7 +540,7 @@ document.write(`
 </ul>
 </section>
 <section id="die-vorteile-der-kommandozeile">
-<h3><span class="section-number">3.6.2. </span>Die Vorteile der Kommandozeile<a class="headerlink" href="#die-vorteile-der-kommandozeile" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.7.2. </span>Die Vorteile der Kommandozeile<a class="headerlink" href="#die-vorteile-der-kommandozeile" title="Link to this heading">#</a></h3>
 <p>Obwohl all diese Tools existieren, bevorzugen viele Entwickler immer noch die Kommandozeile. Warum?</p>
 <ol class="arabic simple">
 <li><p><strong>Flexibilität</strong>: Mit der Kommandozeile haben Sie vollen Zugriff auf alle Git-Funktionen. Manche speziellen Befehle sind in GUIs nicht verfügbar oder schwer zu finden.</p></li>
@@ -515,21 +549,121 @@ document.write(`
 </ol>
 </section>
 <section id="fazit">
-<h3><span class="section-number">3.6.3. </span>Fazit<a class="headerlink" href="#fazit" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.7.3. </span>Fazit<a class="headerlink" href="#fazit" title="Link to this heading">#</a></h3>
 <p>Zusätzlich zu all diesen Tools und Methoden kann auch vieles direkt im Webbrowser durchgeführt werden, wenn man z.B. GitHub verwendet. Von einfachem Browsing über das Erstellen von Pull Requests bis hin zur Code-Review – vieles ist direkt im Browser möglich.</p>
 <p>Letztlich geht es darum, das richtige Werkzeug für den jeweiligen Job und den eigenen Komfort zu finden. Es gibt kein “richtig” oder “falsch”, sondern nur unterschiedliche Werkzeuge und Ansätze, die je nach Situation und Vorliebe variieren können.</p>
 </section>
 </section>
 <section id="rad-nicht-neu-erfinden">
-<h2><span class="section-number">3.7. </span>Rad nicht neu erfinden<a class="headerlink" href="#rad-nicht-neu-erfinden" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.8. </span>Rad nicht neu erfinden<a class="headerlink" href="#rad-nicht-neu-erfinden" title="Link to this heading">#</a></h2>
 <p>Da Git in der Softwarebranche weit verbreitet ist, gibt es zahlreiche Ressourcen, um es zu lernen und zu verstehen. Darum wird dies hier im Skript auch nicht ausführlich alles wiederholt. Hier also ein paar Vorschläge mit denen sich das Thema gut erschließen lässt:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.w3schools.com/git/">W3Schools Git Tutorial</a></p></li>
 <li><p><a class="reference external" href="https://www.atlassian.com/git">Atlassian’s Git Guide</a></p></li>
 </ul>
 <p><strong>Empfehlung:</strong> Es kann auch hilfreich sein, interaktive Tutorials oder Kurse zu belegen, um die praktische Anwendung von Git zu üben.</p>
+</section>
+<section id="live-coding-git">
+<h2><span class="section-number">3.9. </span>Live Coding: Git<a class="headerlink" href="#live-coding-git" title="Link to this heading">#</a></h2>
+<section id="git-installieren-und-einrichten">
+<h3><span class="section-number">3.9.1. </span>Git installieren und einrichten<a class="headerlink" href="#git-installieren-und-einrichten" title="Link to this heading">#</a></h3>
+<p>Nachdem wir eine grundlegende Einführung in Git hatten, geht es nun in den praktischen Teil – Live Coding. Im Folgenden werden wir Git auf Ihrem System installieren und die ersten Konfigurationen vornehmen.</p>
+<p><strong>Git installieren</strong></p>
+<p>Je nach Betriebssystem unterscheidet sich die Installation von Git leicht. Für Windows-Systeme wurde git bereits für das Thema Shell-Scripts installiert (<a class="reference external" href="https://git-scm.com">https://git-scm.com</a>). Bei MaxOS und Linux ist git oft bereits installiert. Ansonsten finden sich <a class="reference external" href="https://carpentries.github.io/workshop-template/install_instructions/#git">hier einige Anleitungen</a>.</p>
+<p><strong>Läuft Git?</strong></p>
+<p>Nach der Installation sollten wir überprüfen, ob Git korrekt installiert wurde. Dazu können wir das Terminal öffnen und den folgenden Befehl eingeben:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>version<span class="w">  </span><span class="c1"># oder auch git --version</span>
+</pre></div>
+</div>
+<p>Wenn eine Version angezeigt wird, ist Git erfolgreich installiert.</p>
+<p><strong>Git konfigurieren</strong></p>
+<p>Bevor wir mit Git arbeiten, müssen wir einige grundlegende Einstellungen vornehmen, insbesondere Ihren Namen und Ihre E-Mail-Adresse. Diese Informationen werden in jedem Commit protokolliert, sodass Sie und andere Entwickler nachverfolgen können, wer welche Änderungen vorgenommen hat.</p>
+<p>Die aktuellen Einstellungen können wir einsehen mit:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--list
+</pre></div>
+</div>
+<p>Zum ändern führen wir die folgenden Befehle im Terminal aus (dabei -Überraschung!- bitte Namen und Mail entsprechend austauschen…).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Alice B&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;abc@def.com&quot;</span>
+</pre></div>
+</div>
+<p>Diese Einstellungen gelten global, das heißt, sie werden in allen Ihren Projekten verwendet, die wir mit Git verwalten.</p>
+</section>
+</section>
+<section id="repository-erstellen">
+<h2><span class="section-number">3.10. </span>Repository erstellen<a class="headerlink" href="#repository-erstellen" title="Link to this heading">#</a></h2>
+<p>Bevor wir ein Git-Repository erstellen, sollten wir sicherstellen, dass Git korrekt installiert wurde.</p>
+<ol class="arabic">
+<li><p><strong>Erster Test</strong>: Führen Sie den folgenden Befehl im Terminal aus, um zu prüfen, ob Git funktioniert:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git
+</pre></div>
+</div>
+<p>Wenn Git korrekt installiert ist, sehen Sie eine Liste der verfügbaren Befehle.</p>
+</li>
+</ol>
+<hr class="docutils" />
+<section id="neues-verzeichnis-erstellen">
+<h3><span class="section-number">3.10.1. </span>Neues Verzeichnis erstellen<a class="headerlink" href="#neues-verzeichnis-erstellen" title="Link to this heading">#</a></h3>
+<p>Als Nächstes erstellen wir ein Verzeichnis, das wir zu einem Git-Repository machen werden.</p>
+<ol class="arabic" start="2">
+<li><p><strong>Zum Desktop wechseln</strong> (oder an einen anderen Ort Ihrer Wahl):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/Desktop
+</pre></div>
+</div>
+</li>
+<li><p><strong>Neues Verzeichnis mit dem Namen “recipes” erstellen</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span>recipes
+</pre></div>
+</div>
+</li>
+<li><p><strong>In das neue Verzeichnis wechseln</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>recipes
+</pre></div>
+</div>
+<p>Wir befinden uns nun im Verzeichnis <code class="docutils literal notranslate"><span class="pre">recipes</span></code>.</p>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="verzeichnis-in-ein-git-repository-umwandeln">
+<h3><span class="section-number">3.10.2. </span>Verzeichnis in ein Git-Repository umwandeln<a class="headerlink" href="#verzeichnis-in-ein-git-repository-umwandeln" title="Link to this heading">#</a></h3>
+<ol class="arabic" start="5">
+<li><p>Um dieses Verzeichnis in ein Git-Repository zu verwandeln, verwenden Sie den folgenden Befehl:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>init
+</pre></div>
+</div>
+<p>Dieser Befehl initialisiert ein neues Git-Repository und erstellt einen versteckten Ordner <code class="docutils literal notranslate"><span class="pre">.git</span></code> im Verzeichnis.</p>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="uberprufen-ob-sich-etwas-geandert-hat">
+<h3><span class="section-number">3.10.3. </span>Überprüfen, ob sich etwas geändert hat<a class="headerlink" href="#uberprufen-ob-sich-etwas-geandert-hat" title="Link to this heading">#</a></h3>
+<ol class="arabic" start="6">
+<li><p><strong>Hat sich im Verzeichnis etwas verändert?</strong></p>
+<ul>
+<li><p>Auf den ersten Blick sehen Sie vielleicht keine Änderungen, wenn Sie den Befehl <code class="docutils literal notranslate"><span class="pre">ls</span></code> (Linux/macOS) oder <code class="docutils literal notranslate"><span class="pre">dir</span></code> (Windows) verwenden. Aber Git hat tatsächlich einen versteckten Ordner <code class="docutils literal notranslate"><span class="pre">.git</span></code> erstellt.</p></li>
+<li><p>Um diesen versteckten Ordner zu sehen, müssen Sie den Befehl <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-a</span></code> (Linux/macOS) oder <code class="docutils literal notranslate"><span class="pre">dir</span> <span class="pre">/a</span></code> (Windows) verwenden:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-a<span class="w">   </span><span class="c1"># für Linux/macOS</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>dir<span class="w"> </span>/a<span class="w">  </span><span class="c1"># für Windows</span>
+</pre></div>
+</div>
+<p>Oder in PowerShell:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>dir<span class="w"> </span>-Force
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+<p>Der Ordner <code class="docutils literal notranslate"><span class="pre">.git</span></code> enthält alle Informationen, die Git benötigt, um die Änderungen in Ihrem Projekt zu verfolgen. Er zeigt an, dass das Verzeichnis nun ein Git-Repository ist.</p>
+<p>Sie haben jetzt erfolgreich ein neues Git-Repository erstellt! In den nächsten Schritten werden wir sehen, wie man Dateien hinzufügt und Änderungen verfolgt.</p>
+<p>Anschließend folgen wir grob dem <a class="reference external" href="https://swcarpentry.github.io/git-novice/04-changes.html">Kurs der Software Carpentries bei Kapitel 4</a>.</p>
+</section>
 <section id="weitere-quellen">
-<h3><span class="section-number">3.7.1. </span>Weitere Quellen:<a class="headerlink" href="#weitere-quellen" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.10.4. </span>Weitere Quellen:<a class="headerlink" href="#weitere-quellen" title="Link to this heading">#</a></h3>
 <p>Für die Live Coding Sessions wird Material vom <a class="reference external" href="https://swcarpentry.github.io/git-novice/">Data Carpentry Git Course</a> verwendet. Anders als die Links weiter oben ist das Material aber nicht primär zum Selbststudium gedacht.</p>
 </section>
 </section>
@@ -601,20 +735,34 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">3.1. Motivation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-versionskontrolle-version-control">3.2. Warum Versionskontrolle (version control)?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-funktioniert-git-ungefahr">3.3. Wie funktioniert Git (ungefähr)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grundlegender-prozess">3.4. Grundlegender Prozess</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branches">3.4.1. Branches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einfuhrung-in-git">3.3. Einführung in Git</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ziele-von-git">3.3.1. Ziele von Git</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#komplex-aber-nur-das-notigste">3.3.2. Komplex, aber nur das Nötigste</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-standard-in-der-softwareentwicklung">3.3.3. Der Standard in der Softwareentwicklung</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#es-geht-nicht-nur-um-eine-datei">3.5. Es geht nicht nur um eine Datei!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-immer-shell-bash-terminal">3.6. Warum immer Shell/Bash/Terminal?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#guis-und-ides">3.6.1. GUIs und IDEs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#die-vorteile-der-kommandozeile">3.6.2. Die Vorteile der Kommandozeile</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fazit">3.6.3. Fazit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-funktioniert-git">3.4. Wie funktioniert Git?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grundlegender-prozess">3.5. Grundlegender Prozess</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branches">3.5.1. Branches</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rad-nicht-neu-erfinden">3.7. Rad nicht neu erfinden</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-quellen">3.7.1. Weitere Quellen:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#es-geht-nicht-nur-um-eine-datei">3.6. Es geht nicht nur um eine Datei!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-immer-shell-bash-terminal">3.7. Warum immer Shell/Bash/Terminal?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#guis-und-ides">3.7.1. GUIs und IDEs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#die-vorteile-der-kommandozeile">3.7.2. Die Vorteile der Kommandozeile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fazit">3.7.3. Fazit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rad-nicht-neu-erfinden">3.8. Rad nicht neu erfinden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-coding-git">3.9. Live Coding: Git</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git-installieren-und-einrichten">3.9.1. Git installieren und einrichten</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-erstellen">3.10. Repository erstellen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neues-verzeichnis-erstellen">3.10.1. Neues Verzeichnis erstellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verzeichnis-in-ein-git-repository-umwandeln">3.10.2. Verzeichnis in ein Git-Repository umwandeln</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uberprufen-ob-sich-etwas-geandert-hat">3.10.3. Überprüfen, ob sich etwas geändert hat</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-quellen">3.10.4. Weitere Quellen:</a></li>
 </ul>
 </li>
 </ul>

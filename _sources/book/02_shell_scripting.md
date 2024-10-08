@@ -69,15 +69,15 @@ Eine einfachere Möglichkeit, Bash unter Windows zu nutzen, ist **Git Bash**:
 
 **Für Fortgeschrittene: Bash unter Windows (via WSL)**
 
-Um Bash unter Windows zu nutzen, kannst du das **Windows Subsystem for Linux (WSL)** installieren. Die entsprechenden Schritte findet man in zahlreichen online-Tutorials, z.B. [hier](https://www.howtogeek.com/744328/how-to-install-the-windows-subsystem-for-linux-on-windows-11/) oder [hier](https://learn.microsoft.com/en-us/windows/wsl/install).
+Um Bash unter Windows zu nutzen, kann das **Windows Subsystem for Linux (WSL)** installiert werden. Die entsprechenden Schritte findet man in zahlreichen online-Tutorials, z.B. [hier](https://www.howtogeek.com/744328/how-to-install-the-windows-subsystem-for-linux-on-windows-11/) oder [hier](https://learn.microsoft.com/en-us/windows/wsl/install).
 
 **MacOS: Bash ist vorinstalliert**
 
-Wenn du MacOS nutzt, hast du Glück – Bash ist bereits vorinstalliert. Du kannst einfach das Terminal öffnen und loslegen.
+Bei MacOS ist Bash im Prinzip bereits vorinstalliert. Hier einfach das Terminal öffnen und loslegen.
 
 
 
-### Navigieren im Dateisystem:
+## Navigieren im Dateisystem:
 
 Wir starten langsam und schauen uns erst einmal die Standard-Befehle an um Ordner zu wechseln und deren Inhalt zu sehen:
 
@@ -124,7 +124,7 @@ Das gute an Bash-Befehlen: Man muss sie nicht auswendig lernen! Bei Unsicherheit
 - Und: es gibt keinen Papierkorb!
 ```
 
-### Nächster Schritt: Dateien & Verzeichnisse erstellen und löschen
+### Dateien & Verzeichnisse erstellen, verschieben, umbenennen, kopieren
 
 Mit **bash** können wir Dateien und Verzeichnisse einfach erstellen, anzeigen, umbenennen, kopieren, verschieben oder löschen. Diese Operationen sind nützlich für das Arbeiten mit Dateien auf der Kommandozeile.
 
@@ -142,7 +142,8 @@ Mit **bash** können wir Dateien und Verzeichnisse einfach erstellen, anzeigen, 
 `rm new_dir/` Vorsicht! Dieser Befehl löscht Dateien/Verzeichnisse unwiderruflich! 
 ```
 
-#### Dateien und Verzeichnisse erstellen
+#### Dateien & Verzeichnisse erstellen
+
 **Verzeichnisse erstellen:**
 
 Mit dem Befehl mkdir lassen sich Verzeichnisse schnell erstellen. Beispiel:
@@ -160,16 +161,19 @@ mkdir -p secrets/data
 # Mit Unterverzeichnissen anzeigen
 ls -R
 ```
-Hinweis: Das ist das Gleiche, als ob du im Dateiexplorer ein Verzeichnis erstellst!
+Hinweis: Das ist das Gleiche, als ob im Dateiexplorer ein Verzeichnis erstellt wird!
 
 **Dateien erstellen:**
 
 Um eine Datei zu erstellen, kann ein Texteditor wie nano verwenden werden:
+
 ```bash
 cd secrets
 nano my_diary.txt
 ```
+
 Oder, alternativ kannst auch direkt eine leere Dateien ohne Editor erstellt werden mit `touch`:
+
 ```bash
 touch data/facts1.csv
 touch data/facts2.csv
@@ -245,9 +249,18 @@ rm -i facts3.csv
 
 ### Bash-Skripte
 
-Für komplexere Aufgaben wird die Kommandozeile alleine sehr schnell zu umständlich, daher wechseln wir hier zu Shell oder Bash Skripten. Das sind einfach Textdateien (typischerweise mit `.sh` Endung) in denen wir beliebig umfangreiche Bash-Programme entwerden können. Die Skripte lassen sich aus der Kommanozeile aufrufen mit:
+Für komplexere Aufgaben wird die Kommandozeile alleine sehr schnell zu umständlich, daher wechseln wir hier zu Shell oder Bash Skripten.
+Das sind einfach Textdateien (typischerweise mit `.sh` Endung) in denen wir beliebig umfangreiche Bash-Programme entwerden können.
+Die Skripte lassen sich aus der Kommanozeile aufrufen mit:
 
-```bash my_script.sh```
+```bash
+bash my_script.sh
+```
+
+oder
+```bash
+./my_script.sh
+```
 
 In Form dieser Skripte lassen sich auch die Vielzahl der Möglichkeiten die Bash bietet besser nutzen. Zum Beispiel **Loops**, diese sehen in Bash folgendermaßen aus:
 
@@ -323,8 +336,7 @@ do
     cp new_data.txt new_data_$i.txt
 done
 ```
-
-```
+Anders als bei Python sind hier die Einrückungen nicht nötig. Sie können aber die Lesbarkeit des Skriptes erhöhen.
 
 Vor der Übung haben wir Skripte gesehen die Eingabeparameter übernehmen können mit `$1`, `$2` usw. Für eine unbestimmte Anzahl Eingeabeparameter kann `$@` genutzt werden, hier ein einfaches Beispiel dazu:
 
@@ -363,6 +375,20 @@ fi
 
 Dies wird die entsprechenden Ausgaben erstellen wenn es mit `bash greater.sh 15` bzw. anderen Zahlenwerten ausgeführt wird.
 
+Alternativ super übergabe von Parametern mit dem Aufruf des Skripts können auch innerhalb eines Skriptes User-Eingaben abgefragt werden:
+```bash
+echo -n "Enter a number:"
+read variable
+
+if [[ $variable -gt 10 ]]
+then
+    echo "It is greater than 10!"
+else
+    echo "It is smaller than 10!"
+fi
+```
+
+
 
 ### Zum Schluss: Bash kann mehr als Bash!
 
@@ -378,8 +404,8 @@ else
     bash repeater.sh "okay" $1
 fi
 ```
-
 Dazu muss natürlich das oben angegebene Skript `repeater.sh` im selben Ordner vorliegen.
+
 
 Darüber hinaus hatten wir eingangs gesehen, dass im Hacking-Bereich scheinbar Bash UND Python recht beliebt sind.
 Das hat sicherliche viele Gründe. Einer davon liegt aber sicher auch darin, dass sich beides nämlich auch sehr einfach kombinieren lässt.
@@ -411,7 +437,7 @@ Für komplexere Shell-Skripte reicht es nicht immer aus, nur einfache Positionsp
 
 #### Installation und Nutzung von `argparse`
 
-Da `argparse` ein Standardmodul in Python ist, muss es nicht separat installiert werden. Ein einfaches Beispiel zeigt, wie du mit `argparse` Argumente in deinem Python-Skript verarbeiten kannst:
+Da `argparse` ein Standardmodul in Python ist, muss es nicht separat installiert werden. Ein einfaches Beispiel zeigt, wie mit `argparse` Argumente in einem Python-Skript verarbeiten werden können:
 
 ```python
 import argparse
@@ -441,8 +467,6 @@ python my_script.py --name "Max" --repetitions 5
 - **Benutzerfreundlichkeit**: Skripte werden leichter nutzbar, da sie klar dokumentierte Argumente und Optionen bereitstellen.
 - **Fehlerbehandlung**: `argparse` erkennt und meldet ungültige Eingaben direkt, ohne dass man zusätzlichen Code für die Validierung schreiben muss.
 - **Flexibilität**: Man kann mehrere Argumente und Optionen hinzufügen, um das Skript flexibel an verschiedene Aufgaben anzupassen.
-
-Wenn du Argumente aus der Kommandozeile in deinen Bash-Skripten nutzen möchtest, lohnt es sich, auch eine Lösung wie `argparse` in Betracht zu ziehen, wenn das Skript in Python implementiert wird.
 
 ### Dateiberechtigungen mit `chmod` setzen
 
