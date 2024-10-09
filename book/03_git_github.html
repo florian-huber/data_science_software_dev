@@ -432,10 +432,17 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-erstellen">3.10. Repository erstellen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neues-verzeichnis-erstellen">3.10.1. Neues Verzeichnis erstellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verzeichnis-erstellen">3.10.1. Verzeichnis erstellen</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verzeichnis-in-ein-git-repository-umwandeln">3.10.2. Verzeichnis in ein Git-Repository umwandeln</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uberprufen-ob-sich-etwas-geandert-hat">3.10.3. Überprüfen, ob sich etwas geändert hat</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-quellen">3.10.4. Weitere Quellen:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-coding-1-repository-erstellen-und-erste-anderungen">3.11. Live Coding 1: Repository erstellen und erste Änderungen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-coding-2-anderungen-vornehmen-und-tracken">3.12. Live Coding 2: Änderungen vornehmen und tracken</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anderungen-anzeigen">3.12.1. Änderungen anzeigen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anderungen-committen">3.12.2. Änderungen committen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anderungen-weiterverfolgen">3.12.3. Änderungen weiterverfolgen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-quellen">3.12.4. Weitere Quellen:</a></li>
 </ul>
 </li>
 </ul>
@@ -592,18 +599,8 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 </section>
 <section id="repository-erstellen">
 <h2><span class="section-number">3.10. </span>Repository erstellen<a class="headerlink" href="#repository-erstellen" title="Link to this heading">#</a></h2>
-<p>Bevor wir ein Git-Repository erstellen, sollten wir sicherstellen, dass Git korrekt installiert wurde.</p>
-<ol class="arabic">
-<li><p><strong>Erster Test</strong>: Führen Sie den folgenden Befehl im Terminal aus, um zu prüfen, ob Git funktioniert:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git
-</pre></div>
-</div>
-<p>Wenn Git korrekt installiert ist, sehen Sie eine Liste der verfügbaren Befehle.</p>
-</li>
-</ol>
-<hr class="docutils" />
-<section id="neues-verzeichnis-erstellen">
-<h3><span class="section-number">3.10.1. </span>Neues Verzeichnis erstellen<a class="headerlink" href="#neues-verzeichnis-erstellen" title="Link to this heading">#</a></h3>
+<section id="verzeichnis-erstellen">
+<h3><span class="section-number">3.10.1. </span>Verzeichnis erstellen<a class="headerlink" href="#verzeichnis-erstellen" title="Link to this heading">#</a></h3>
 <p>Als Nächstes erstellen wir ein Verzeichnis, das wir zu einem Git-Repository machen werden.</p>
 <ol class="arabic" start="2">
 <li><p><strong>Zum Desktop wechseln</strong> (oder an einen anderen Ort Ihrer Wahl):</p>
@@ -660,10 +657,334 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 </ol>
 <p>Der Ordner <code class="docutils literal notranslate"><span class="pre">.git</span></code> enthält alle Informationen, die Git benötigt, um die Änderungen in Ihrem Projekt zu verfolgen. Er zeigt an, dass das Verzeichnis nun ein Git-Repository ist.</p>
 <p>Sie haben jetzt erfolgreich ein neues Git-Repository erstellt! In den nächsten Schritten werden wir sehen, wie man Dateien hinzufügt und Änderungen verfolgt.</p>
-<p>Anschließend folgen wir grob dem <a class="reference external" href="https://swcarpentry.github.io/git-novice/04-changes.html">Kurs der Software Carpentries bei Kapitel 4</a>.</p>
+</section>
+</section>
+<section id="live-coding-1-repository-erstellen-und-erste-anderungen">
+<h2><span class="section-number">3.11. </span>Live Coding 1: Repository erstellen und erste Änderungen<a class="headerlink" href="#live-coding-1-repository-erstellen-und-erste-anderungen" title="Link to this heading">#</a></h2>
+<p>Diese Live-Coding-Session basiert auf dem Software Carpentry Kurs “<a class="reference external" href="https://swcarpentry.github.io/git-novice/04-changes.html">Git Novice</a>” und nutzt das dort verfügbare Material (lizenziert unter CC-BY).</p>
+<p>Zuerst stellen wir sicher, dass wir uns im richtigen Verzeichnis befinden. Sie sollten sich im Verzeichnis <code class="docutils literal notranslate"><span class="pre">recipes</span></code> befinden.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/Desktop/recipes
+</pre></div>
+</div>
+<p>Erstellen wir nun eine Datei namens <code class="docutils literal notranslate"><span class="pre">guacamole.md</span></code>, die die Grundstruktur eines Rezepts enthält. Wir verwenden <code class="docutils literal notranslate"><span class="pre">nano</span></code>, um die Datei zu bearbeiten; Sie können jedoch jeden beliebigen Editor verwenden. Dies muss nicht der global konfigurierte <code class="docutils literal notranslate"><span class="pre">core.editor</span></code> sein.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>nano<span class="w"> </span>guacamole.md
+</pre></div>
+</div>
+<p>Geben Sie den folgenden Text in die Datei guacamole.md ein:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Guacamole</span>
+<span class="c1">## Ingredients</span>
+<span class="c1">## Instructions</span>
+</pre></div>
+</div>
+<p>Um sicherzustellen, dass die Datei korrekt erstellt wurde, verwenden wir den Befehl zum Auflisten der Dateien <code class="docutils literal notranslate"><span class="pre">ls</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">guacamole.md</span></code> enthält den oben eingegebenen Text. Sie können dies überprüfen, indem Sie den Inhalt der Datei anzeigen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>guacamole.md
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go"># Guacamole</span>
+<span class="go">## Ingredients</span>
+<span class="go">## Instructions</span>
+</pre></div>
+</div>
+<p>Wenn wir den Status unseres Projekts erneut überprüfen, sagt uns Git, dass es die neue Datei bemerkt hat:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>status
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">On branch main</span>
+
+<span class="go">No commits yet</span>
+
+<span class="go">Untracked files:</span>
+<span class="go">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span>
+
+<span class="go">	guacamole.md</span>
+
+<span class="go">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span>
+</pre></div>
+</div>
+<p>Die Meldung “untracked files” bedeutet, dass es eine Datei im Verzeichnis gibt, die Git noch nicht verfolgt. Wir können Git anweisen, die Datei zu tracken, indem wir <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> verwenden:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>guacamole.md
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">On branch main</span>
+
+<span class="go">No commits yet</span>
+
+<span class="go">Changes to be committed:</span>
+<span class="go">  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)</span>
+
+<span class="go">	new file:   guacamole.md</span>
+</pre></div>
+</div>
+<p>Git weiß jetzt, dass es die Datei guacamole.md tracken soll, aber die Änderungen wurden noch nicht als Commit gespeichert. Um das zu tun, müssen wir einen weiteren Befehl ausführen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Create a template for recipe&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">[main (root-commit) f22b25e] Create a template for recipe</span>
+<span class="go"> 1 file changed, 1 insertion(+)</span>
+<span class="go"> create mode 100644 guacamole.md</span>
+</pre></div>
+</div>
+<p>Mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> speichert Git alles, was mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> vorgemerkt wurde, dauerhaft im speziellen <code class="docutils literal notranslate"><span class="pre">.git</span></code>-Ordner. Diese permanente Kopie nennt man <a class="reference internal" href="#../learners/reference.md#commit"><span class="xref myst">Commit</span></a> (oder <a class="reference internal" href="#../learners/reference.md#revision"><span class="xref myst">Revision</span></a>), und ihre Kurzbezeichnung lautet <code class="docutils literal notranslate"><span class="pre">f22b25e</span></code>. Ihre Commit-Bezeichnung kann sich unterscheiden.</p>
+<p>Wir verwenden das Flag <code class="docutils literal notranslate"><span class="pre">-m</span></code> (für “message”), um eine kurze, beschreibende Nachricht zu hinterlassen, die erklärt, was wir gemacht haben und warum. Wenn wir <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> ohne die Option <code class="docutils literal notranslate"><span class="pre">-m</span></code> ausführen, wird Git den konfigurierten Editor (wie <code class="docutils literal notranslate"><span class="pre">nano</span></code>) öffnen, damit wir eine längere Nachricht schreiben können.</p>
+<p>Wenn wir jetzt <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> ausführen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>status
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">On branch main</span>
+<span class="go">nothing to commit, working tree clean</span>
+</pre></div>
+</div>
+<p>zeigt uns Git an, dass alles aktuell ist. Wenn wir wissen möchten, was wir kürzlich gemacht haben, können wir Git mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> die Historie des Projekts anzeigen lassen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>log
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">commit f22b25e3233b4645dabd0d81e651fe074bd8e73b</span>
+<span class="go">Author: Alice B &lt;abc@def.com&gt;</span>
+<span class="go">Date:   Thu Aug 22 09:51:46 2013 -0400</span>
+
+<span class="go">    Create a template for recipe</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> listet alle Commits in einem Repository in umgekehrter chronologischer Reihenfolge auf. Jeder Commit enthält die vollständige Commit-ID, den Autor, das Erstellungsdatum und die Commit-Nachricht.</p>
+<div class="toggle docutils container">
+<p>Wenn wir <code class="docutils literal notranslate"><span class="pre">ls</span></code> ausführen können wir noch immer nur eine Datei <code class="docutils literal notranslate"><span class="pre">guacamole.md</span></code> sehen. Das liegt daran, dass Git die Informationen zur Datei-Historie in einem speziellen  <code class="docutils literal notranslate"><span class="pre">.git</span></code> Ordner speichert.</p>
+</div>
+<p>Als Nächstes werden wir die Datei <code class="docutils literal notranslate"><span class="pre">guacamole.md</span></code> erweitern, indem wir Zutaten hinzufügen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>nano<span class="w"> </span>guacamole.md
+$<span class="w"> </span>cat<span class="w"> </span>guacamole.md
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go"># Guacamole</span>
+<span class="go">## Ingredients</span>
+<span class="go">* avocado</span>
+<span class="go">* lime</span>
+<span class="go">* salt</span>
+<span class="go">## Instructions</span>
+</pre></div>
+</div>
+<p>Nun zeigt uns <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>, dass eine Datei, die Git bereits kennt, geändert wurde:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>status
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">On branch main</span>
+<span class="go">Changes not staged for commit:</span>
+<span class="go">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span>
+<span class="go">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span>
+
+<span class="go">	modified:   guacamole.md</span>
+</pre></div>
+</div>
+<p>Die letzte Zeile ist entscheidend: “Changes not staged for commit”. Wir haben die Datei geändert, aber Git weiß noch nicht, dass wir diese Änderungen speichern möchten. Das machen wir mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>, und dann speichern wir sie mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>.</p>
+</section>
+<section id="live-coding-2-anderungen-vornehmen-und-tracken">
+<h2><span class="section-number">3.12. </span>Live Coding 2: Änderungen vornehmen und tracken<a class="headerlink" href="#live-coding-2-anderungen-vornehmen-und-tracken" title="Link to this heading">#</a></h2>
+<section id="anderungen-anzeigen">
+<h3><span class="section-number">3.12.1. </span>Änderungen anzeigen<a class="headerlink" href="#anderungen-anzeigen" title="Link to this heading">#</a></h3>
+<p>Nachdem wir einige Änderungen in unserer Datei vorgenommen haben, können wir sehen, welche Änderungen gemacht wurden. Nutzen Sie den folgenden Befehl, um den Unterschied zwischen der alten und der neuen Version der Datei zu sehen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>diff
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">diff --git a/guacamole.md b/guacamole.md</span>
+<span class="go">index df0654a..315bf3a 100644</span>
+<span class="go">--- a/guacamole.md</span>
+<span class="go">+++ b/guacamole.md</span>
+<span class="go">@@ -1,3 +1,6 @@</span>
+<span class="go"> # Guacamole</span>
+<span class="go"> ## Ingredients</span>
+<span class="go">+* avocado</span>
+<span class="go">+* lemon</span>
+<span class="go">+* salt</span>
+<span class="go"> ## Instructions</span>
+</pre></div>
+</div>
+<p>Das Ausgabeformat ist möglicherweise schwer zu lesen, da es eine Serie von Befehlen für Tools wie Editoren und <code class="docutils literal notranslate"><span class="pre">patch</span></code> darstellt, die erklären, wie eine Datei aus der anderen rekonstruiert werden kann. Wenn wir es aufschlüsseln:</p>
+<ol class="arabic simple">
+<li><p>Die erste Zeile zeigt, dass Git eine Ausgabe ähnlich dem Unix <code class="docutils literal notranslate"><span class="pre">diff</span></code> Befehl erzeugt, um die alte und die neue Version der Datei zu vergleichen.</p></li>
+<li><p>Die zweite Zeile zeigt genau, welche Versionen der Datei Git vergleicht; <code class="docutils literal notranslate"><span class="pre">df0654a</span></code> und <code class="docutils literal notranslate"><span class="pre">315bf3a</span></code> sind eindeutige, computer-generierte Bezeichnungen für diese Versionen.</p></li>
+<li><p>Die dritte und vierte Zeile zeigen erneut den Namen der geänderten Datei.</p></li>
+<li><p>Die restlichen Zeilen sind am interessantesten: Sie zeigen die tatsächlichen Unterschiede und die Zeilen, in denen sie auftreten. Das <code class="docutils literal notranslate"><span class="pre">+</span></code> in der ersten Spalte zeigt, wo eine Zeile hinzugefügt wurde.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="anderungen-committen">
+<h3><span class="section-number">3.12.2. </span>Änderungen committen<a class="headerlink" href="#anderungen-committen" title="Link to this heading">#</a></h3>
+<p>Nachdem wir unsere Änderungen überprüft haben, ist es an der Zeit, sie zu committen. Zuerst ein Beispiel, wie es nicht funktionieren sollte:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add basic guacamole&#39;s ingredients&quot;</span>
+$<span class="w"> </span>git<span class="w"> </span>status
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">On branch main</span>
+<span class="go">Changes not staged for commit:</span>
+<span class="go">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span>
+<span class="go">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span>
+
+<span class="go">	modified:   guacamole.md</span>
+
+<span class="go">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span>
+</pre></div>
+</div>
+<p>Ups! Git hat nicht committet, weil wir <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> vorher nicht verwendet haben. Wir beheben das:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>guacamole.md
+$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add basic guacamole&#39;s ingredients&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">[main 34961b1] Add basic guacamole&#39;s ingredient</span>
+<span class="go"> 1 file changed, 3 insertions(+)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Git verlangt, dass wir Dateien zuerst zur Staging Area hinzufügen, bevor sie commitbar sind. Das ermöglicht uns, Änderungen in logischen Portionen zu committen, anstatt alle Änderungen auf einmal zu speichern.</p>
+<hr class="docutils" />
+<div class="toggle docutils container">
+<h2 class="rubric" id="staging-area">Staging Area</h2>
+<p>Wenn Sie Git als eine Serie von Snapshots über die Lebensdauer eines Projekts betrachten, gibt <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> an, <em>was</em> in einem Snapshot enthalten sein soll (indem es Dinge in die Staging Area verschiebt). <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> macht dann tatsächlich den Snapshot und speichert ihn dauerhaft (als Commit). Wenn Sie nichts in der Staging Area haben, wenn Sie <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> eingeben, wird Git Sie auffordern, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></code> oder <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">--all</span></code> zu verwenden, was wie ein Gruppenfoto mit <em>allen</em> wäre. Es ist jedoch fast immer besser, Dateien manuell zur Staging Area hinzuzufügen, um zu vermeiden, dass Sie ungewollte Änderungen committen.</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="anderungen-weiterverfolgen">
+<h3><span class="section-number">3.12.3. </span>Änderungen weiterverfolgen<a class="headerlink" href="#anderungen-weiterverfolgen" title="Link to this heading">#</a></h3>
+<p>Nun werden wir unser Rezept verfeinern, indem wir ‘lemon’ zu ‘lime’ ändern:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>nano<span class="w"> </span>guacamole.md
+$<span class="w"> </span>cat<span class="w"> </span>guacamole.md
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go"># Guacamole</span>
+<span class="go">## Ingredients</span>
+<span class="go">* avocado</span>
+<span class="go">* lime</span>
+<span class="go">* salt</span>
+<span class="go">## Instructions</span>
+</pre></div>
+</div>
+<p>Sehen wir uns den Unterschied an:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>diff
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">diff --git a/guacamole.md b/guacamole.md</span>
+<span class="go">index 315bf3a..b36abfd 100644</span>
+<span class="go">--- a/guacamole.md</span>
+<span class="go">+++ b/guacamole.md</span>
+<span class="go">@@ -1,6 +1,6 @@</span>
+<span class="go"> # Guacamole</span>
+<span class="go"> ## Ingredients</span>
+<span class="go"> * avocado</span>
+<span class="go">-* lemon</span>
+<span class="go">+* lime</span>
+<span class="go"> * salt</span>
+<span class="go"> ## Instructions</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Die Änderungen sehen gut aus. Wir fügen sie zur Staging Area hinzu und überprüfen die Unterschiede, die bereits gestaged wurden:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>guacamole.md
+$<span class="w"> </span>git<span class="w"> </span>diff<span class="w"> </span>--staged
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">diff --git a/guacamole.md b/guacamole.md</span>
+<span class="go">index 315bf3a..b36abfd 100644</span>
+<span class="go">--- a/guacamole.md</span>
+<span class="go">+++ b/guacamole.md</span>
+<span class="go">@@ -1,6 +1,6 @@</span>
+<span class="go"> # Guacamole</span>
+<span class="go"> ## Ingredients</span>
+<span class="go"> * avocado</span>
+<span class="go">-* lemon</span>
+<span class="go">+* lime</span>
+<span class="go"> * salt</span>
+<span class="go"> ## Instructions</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Wir committen die Änderungen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Modify guacamole to the traditional recipe&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">[main 005937f] Modify guacamole to the traditional recipe</span>
+<span class="go"> 1 file changed, 1 insertion(+)</span>
+</pre></div>
+</div>
+<p>Überprüfen wir den Status:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>status
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">On branch main</span>
+<span class="go">nothing to commit, working tree clean</span>
+</pre></div>
+</div>
+<p>Sehen wir uns den Verlauf unserer Änderungen an:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>log
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">commit 005937fbe2a98fb83f0ade869025dc2636b4dad5 (HEAD -&gt; main)</span>
+<span class="go">Author: Alfredo Linguini &lt;a.linguini@ratatouille.fr&gt;</span>
+<span class="go">Date:   Thu Aug 22 10:14:07 2013 -0400</span>
+
+<span class="go">    Modify guacamole to the traditional recipe</span>
+
+<span class="go">commit 34961b159c27df3b475cfe4415d94a6d1fcd064d</span>
+<span class="go">Author: Alfredo Linguini &lt;a.linguini@ratatouille.fr&gt;</span>
+<span class="go">Date:   Thu Aug 22 10:07:21 2013 -0400</span>
+
+<span class="go">    Add basic guacamole&#39;s ingredients</span>
+
+<span class="go">commit f22b25e3233b4645dabd0d81e651fe074bd8e73b</span>
+<span class="go">Author: Alfredo Linguini &lt;a.linguini@ratatouille.fr&gt;</span>
+<span class="go">Date:   Thu Aug 22 09:51:46 2013 -0400</span>
+
+<span class="go">    Create a template for recipe</span>
+</pre></div>
+</div>
+<div class="toggle docutils container">
+<h2 class="rubric" id="word-based-diffing">Word-based diffing</h2>
+<p>Manchmal ist ein zeilenweiser Vergleich nicht ausreichend präzise, insbesondere bei Textdokumenten. Hier hilft die Option <code class="docutils literal notranslate"><span class="pre">--color-words</span></code> von <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code>, die Änderungen farblich hervorhebt.</p>
+</div>
+<hr class="docutils" />
+<div class="toggle docutils container">
+<h2 class="rubric" id="paging-the-log">Paging the Log</h2>
+<p>Wenn der Output von <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> zu lang ist, um auf den Bildschirm zu passen, verwendet Git ein Programm, um die Ausgabe in Seiten zu unterteilen. Die letzte Zeile zeigt ein <code class="docutils literal notranslate"><span class="pre">:</span></code> an, anstatt des üblichen Prompts.</p>
+<ul class="simple">
+<li><p>Um den Pager zu verlassen, drücken Sie <kbd>Q</kbd>.</p></li>
+<li><p>Um zur nächsten Seite zu gelangen, drücken Sie <kbd>Spacebar</kbd>.</p></li>
+<li><p>Um nach einem Wort zu suchen, drücken Sie <kbd>/</kbd>, geben Sie das Suchwort ein und navigieren Sie mit <kbd>N</kbd> durch die Treffer.</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="toggle docutils container">
+<h2 class="rubric" id="log-begrenzen">Log begrenzen</h2>
+<p>Um zu verhindern, dass <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> Ihren gesamten Bildschirm füllt, können Sie die Anzahl der angezeigten Commits mit <code class="docutils literal notranslate"><span class="pre">-N</span></code> begrenzen, wobei <code class="docutils literal notranslate"><span class="pre">N</span></code> die Anzahl der Commits ist, die Sie sehen möchten. Zum Beispiel, um nur den letzten Commit anzuzeigen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>-1
+</pre></div>
+</div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">commit 005937fbe2a98fb83f0ade869025dc2636b4dad5 (HEAD -&gt; main)</span>
+<span class="go">Author: Alfredo Linguini &lt;a.linguini@ratatouille.fr&gt;</span>
+<span class="go">Date:   Thu Aug 22 10:14:07 2013 -0400</span>
+
+<span class="go">   Modify guacamole to the traditional recipe</span>
+</pre></div>
+</div>
+<p>Sie können die Ausgabe auch mit der Option <code class="docutils literal notranslate"><span class="pre">--oneline</span></code> reduzieren:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--oneline
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">005937f (HEAD -&gt; main) Modify guacamole to the traditional recipe</span>
+<span class="go">34961b1 Add basic guacamole&#39;s ingredients</span>
+<span class="go">f22b25e Create a template for recipe</span>
+</pre></div>
+</div>
+<p>Sie können <code class="docutils literal notranslate"><span class="pre">--oneline</span></code> auch mit anderen Optionen kombinieren, z.B. <code class="docutils literal notranslate"><span class="pre">--graph</span></code>, um die Commit-Historie als textbasiertes Diagramm anzuzeigen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>--graph
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">* 005937f (HEAD -&gt; main) Modify guacamole to the traditional recipe</span>
+<span class="go">* 34961b1 Add basic guacamole&#39;s ingredients</span>
+<span class="go">* f22b25e Create a template for recipe</span>
+</pre></div>
+</div>
 </section>
 <section id="weitere-quellen">
-<h3><span class="section-number">3.10.4. </span>Weitere Quellen:<a class="headerlink" href="#weitere-quellen" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.12.4. </span>Weitere Quellen:<a class="headerlink" href="#weitere-quellen" title="Link to this heading">#</a></h3>
 <p>Für die Live Coding Sessions wird Material vom <a class="reference external" href="https://swcarpentry.github.io/git-novice/">Data Carpentry Git Course</a> verwendet. Anders als die Links weiter oben ist das Material aber nicht primär zum Selbststudium gedacht.</p>
 </section>
 </section>
@@ -759,10 +1080,17 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-erstellen">3.10. Repository erstellen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neues-verzeichnis-erstellen">3.10.1. Neues Verzeichnis erstellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verzeichnis-erstellen">3.10.1. Verzeichnis erstellen</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verzeichnis-in-ein-git-repository-umwandeln">3.10.2. Verzeichnis in ein Git-Repository umwandeln</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uberprufen-ob-sich-etwas-geandert-hat">3.10.3. Überprüfen, ob sich etwas geändert hat</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-quellen">3.10.4. Weitere Quellen:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-coding-1-repository-erstellen-und-erste-anderungen">3.11. Live Coding 1: Repository erstellen und erste Änderungen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-coding-2-anderungen-vornehmen-und-tracken">3.12. Live Coding 2: Änderungen vornehmen und tracken</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anderungen-anzeigen">3.12.1. Änderungen anzeigen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anderungen-committen">3.12.2. Änderungen committen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anderungen-weiterverfolgen">3.12.3. Änderungen weiterverfolgen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-quellen">3.12.4. Weitere Quellen:</a></li>
 </ul>
 </li>
 </ul>
