@@ -628,6 +628,282 @@ $ git log --oneline --graph
 ```
 
 
+### Änderungen zurücknehmen
+
+Manchmal wollen wir eine Änderung zurücknehmen, die wir bereits committed haben. Git bietet uns dafür eine mächtige Möglichkeit: den `git revert` Befehl. Dieser erstellt einen neuen Commit, der die Änderungen eines vorherigen Commits rückgängig macht.
+
+#### Beispiel: Eine fehlerhafte Änderung rückgängig machen
+
+Angenommen, wir haben die `guacamole.md` Datei wie folgt geändert, aber die Änderungen waren falsch:
+
+```bash
+$ nano guacamole.md
+```
+
+```output
+# Guacamole
+## Ingredients
+* avocado
+* lime
+* salt
+* Something wrong
+## Instructions
+```
+
+Nun committen wir die fehlerhafte Änderung:
+
+```bash
+$ git add guacamole.md
+$ git commit -m "Add a mistake to guacamole"
+```
+
+Um diese Änderung rückgängig zu machen, verwenden wir `git revert`:
+
+```bash
+$ git revert HEAD
+```
+
+Dies erstellt einen neuen Commit, der die Änderungen des letzten Commits (HEAD) zurücksetzt. Der Inhalt der Datei wird wieder in den ursprünglichen Zustand versetzt, bevor die fehlerhafte Änderung gemacht wurde.
+
+### Unterschiede zwischen Commits anzeigen
+
+Es ist oft nützlich, zu sehen, was zwischen verschiedenen Commits geändert wurde. Das können wir mit `git diff` tun. Um die Unterschiede zwischen dem aktuellen Zustand der Dateien und dem letzten Commit anzuzeigen, verwenden wir:
+
+```bash
+$ git diff HEAD~1
+```
+
+Dies zeigt uns die Unterschiede zwischen dem aktuellen Commit und dem vorherigen Commit an (HEAD~1).
+
+Sie können auch den spezifischen Hash eines Commits verwenden, um die Änderungen zu sehen:
+
+```bash
+$ git diff <commit_hash>
+```
+
+### Zurück zu einem vorherigen Commit
+
+Wenn wir zu einem bestimmten Punkt in der Geschichte des Projekts zurückkehren wollen, können wir den `git checkout` Befehl verwenden. Zum Beispiel, um zur Version des Projekts von einem bestimmten Commit zurückzukehren:
+
+```bash
+$ git checkout <commit_hash>
+```
+
+Nun befinden Sie sich in einem "detached HEAD" Zustand, d.h., Sie sind an einem bestimmten Punkt in der Projektgeschichte, können aber keine neuen Commits auf dem Hauptzweig machen, bis Sie wieder zu einem Branch zurückkehren. Um zurück zu einem Branch wie "main" zu wechseln, verwenden Sie:
+
+```bash
+$ git checkout main
+```
+
+
+
+## Branches
+
+Branches sind ein zentrales Konzept in Git, das es uns ermöglicht, verschiedene Versionen eines Projekts gleichzeitig zu bearbeiten. Sie erlauben es, an neuen Features oder Ideen zu arbeiten, ohne die Hauptversion des Projekts zu beeinflussen. Das bedeutet, dass Änderungen in einem isolierten Bereich vorgenommen werden können, den man später mit der Hauptversion (meist "main") zusammenführen kann.
+
+### Wie funktionieren Branches?
+
+In Git ist jeder Branch eine eigenständige Version des Projekts. Der Hauptbranch in den meisten Repositories heißt `main` (früher oft `master`). Wenn Sie an einem neuen Feature oder einer neuen Funktion arbeiten möchten, erstellen Sie einen neuen Branch und führen Ihre Änderungen dort durch. Sobald die Arbeit abgeschlossen ist, können Sie den Branch wieder in `main` mergen.
+
+Ein häufiger Workflow sieht so aus:
+
+1. **Neuen Branch erstellen**: Dies geschieht mit `git branch`.
+2. **Zum neuen Branch wechseln**: Mit `git checkout` oder `git switch` können Sie zwischen den Branches hin- und herwechseln.
+3. **Änderungen im neuen Branch vornehmen und committen**.
+4. **Den Branch wieder in `main` mergen**.
+
+### Wo sind wir: Aktuellen Branch anzeigen
+
+Um zu sehen, in welchem Branch Sie sich gerade befinden, verwenden Sie den folgenden Befehl:
+
+```bash
+$ git branch
+```
+
+Dieser Befehl zeigt eine Liste aller Branches im Repository an. Der aktive Branch wird mit einem Sternchen (*) markiert.
+
+### Neuen Branch erstellen und wechseln
+
+Erstellen Sie einen neuen Branch mit dem Namen `develop`, um an einem neuen Feature zu arbeiten:
+
+```bash
+$ git branch develop
+```
+
+Dieser Befehl erstellt den neuen Branch, wechselt jedoch nicht automatisch in diesen. Um in den neuen Branch zu wechseln, verwenden wir:
+
+```bash
+$ git checkout develop
+```
+
+Nun arbeiten Sie im `develop` Branch.
+
+### Neues Rezept erstellen
+
+Um zu demonstrieren, dass wir uns in einem isolierten Branch befinden, erstellen wir eine neue Datei namens `burrito.md`, die ein neues Rezept enthält:
+
+```bash
+$ touch burrito.md
+$ nano burrito.md
+```
+
+Fügen Sie den folgenden Inhalt hinzu:
+
+```
+# Burrito
+## Ingredients
+* tortilla
+* beans
+* rice
+* cheese
+## Instructions
+```
+
+Dann fügen wir die Datei zur Staging Area hinzu und committen sie:
+
+```bash
+$ git add burrito.md
+$ git commit -m "Add burrito recipe"
+```
+
+Wenn wir jetzt `ls` verwenden, um die Dateien im Verzeichnis aufzulisten:
+
+```bash
+$ ls
+```
+
+werden wir sehen, dass die Datei `burrito.md` existiert. Wenn wir jedoch zurück in den `main` Branch wechseln:
+
+```bash
+$ git checkout main
+```
+
+und die Dateien erneut auflisten, werden wir feststellen, dass `burrito.md` nicht vorhanden ist:
+
+```bash
+$ ls
+```
+
+Das liegt daran, dass die Datei nur im `develop` Branch existiert. Um diese Änderung auch im `main` Branch zu haben, müssen wir die Branches zusammenführen.
+
+### Branches zusammenführen
+
+Um die Änderungen aus `develop` in `main` zu mergen, wechseln wir zuerst in den `main` Branch und führen dann den Merge durch:
+
+```bash
+$ git checkout main
+$ git merge develop
+```
+
+Nun sind die Änderungen aus `develop` in `main` enthalten, einschließlich der Datei `burrito.md`.
+
+### Merge-Konflikte
+
+Ein Merge funktioniert nicht immer reibungslos. Wenn Änderungen in beiden Branches an derselben Stelle in einer Datei vorgenommen wurden, entsteht ein **Merge-Konflikt**. Git fordert uns dann auf, den Konflikt manuell zu lösen.
+
+#### Beispiel für einen Merge-Konflikt
+
+1. Wechseln Sie in den `main` Branch und ändern Sie die `guacamole.md` Datei:
+
+```bash
+$ git checkout main
+$ nano guacamole.md
+```
+
+Ändern Sie `lime` zu `lemon`:
+
+```output
+# Guacamole
+## Ingredients
+* avocado
+* lemon
+* salt
+## Instructions
+```
+
+Committen Sie die Änderung:
+
+```bash
+$ git add guacamole.md
+$ git commit -m "Change lime to lemon"
+```
+
+2. Wechseln Sie in den `develop` Branch und machen Sie eine andere Änderung in derselben Datei:
+
+```bash
+$ git checkout develop
+$ nano guacamole.md
+```
+
+Ändern Sie `lime` zu `lime or lemon`:
+
+```output
+# Guacamole
+## Ingredients
+* avocado
+* lime or lemon
+* salt
+## Instructions
+```
+
+Committen Sie auch diese Änderung:
+
+```bash
+$ git add guacamole.md
+$ git commit -m "Update guacamole to allow lime or lemon"
+```
+
+3. Nun versuchen Sie, `develop` in `main` zu mergen:
+
+```bash
+$ git checkout main
+$ git merge develop
+```
+
+Git meldet einen Merge-Konflikt und zeigt an, dass die `guacamole.md` Datei Konflikte enthält:
+
+```output
+Auto-merging guacamole.md
+CONFLICT (content): Merge conflict in guacamole.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+4. Öffnen Sie die Datei `guacamole.md`, um den Konflikt zu sehen:
+
+```bash
+$ nano guacamole.md
+```
+
+Git zeigt den Konflikt so an:
+
+```output
+* avocado
+<<<<<<< HEAD
+* lemon
+=======
+* lime or lemon
+>>>>>>> develop
+* salt
+```
+
+Die Zeilen zwischen `<<<<<<< HEAD` und `=======` stammen aus dem `main` Branch, und die Zeilen zwischen `=======` und `>>>>>>> develop` stammen aus dem `develop` Branch. Sie müssen den Konflikt manuell lösen, indem Sie entscheiden, welche Änderung Sie übernehmen möchten, oder beide zusammenführen. In diesem Fall könnten wir die Änderung wie folgt auflösen:
+
+```output
+* avocado
+* lime or lemon
+* salt
+```
+
+5. Nachdem Sie den Konflikt gelöst haben, müssen Sie die Datei erneut zur Staging Area hinzufügen und den Merge committen:
+
+```bash
+$ git add guacamole.md
+$ git commit -m "Resolve merge conflict"
+```
+
+Der Konflikt ist nun behoben, und der Merge wurde erfolgreich abgeschlossen.
+
+
 
 
 

@@ -56,9 +56,9 @@ File [0;32m~/micromamba/envs/python_software_dev/lib/python3.12/site-packages/n
 
 [0;31mTypingError[0m: Failed in nopython mode pipeline (step: nopython frontend)
 [1m[1mnon-precise type pyobject[0m
-[0m[1mDuring: typing of argument at /tmp/ipykernel_3304/1526091316.py (7)[0m
+[0m[1mDuring: typing of argument at /tmp/ipykernel_3135/1526091316.py (7)[0m
 [1m
-File "../../../../../../tmp/ipykernel_3304/1526091316.py", line 7:[0m
+File "../../../../../../tmp/ipykernel_3135/1526091316.py", line 7:[0m
 [1m<source missing, REPL/exec in use?>[0m 
 
 This error may have been caused by the following argument(s):

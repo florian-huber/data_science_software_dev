@@ -442,7 +442,25 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anderungen-anzeigen">3.12.1. Änderungen anzeigen</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anderungen-committen">3.12.2. Änderungen committen</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anderungen-weiterverfolgen">3.12.3. Änderungen weiterverfolgen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-quellen">3.12.4. Weitere Quellen:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anderungen-zurucknehmen">3.12.4. Änderungen zurücknehmen</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-eine-fehlerhafte-anderung-ruckgangig-machen">3.12.4.1. Beispiel: Eine fehlerhafte Änderung rückgängig machen</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unterschiede-zwischen-commits-anzeigen">3.12.5. Unterschiede zwischen Commits anzeigen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zuruck-zu-einem-vorherigen-commit">3.12.6. Zurück zu einem vorherigen Commit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.13. Branches</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-funktionieren-branches">3.13.1. Wie funktionieren Branches?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wo-sind-wir-aktuellen-branch-anzeigen">3.13.2. Wo sind wir: Aktuellen Branch anzeigen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuen-branch-erstellen-und-wechseln">3.13.3. Neuen Branch erstellen und wechseln</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neues-rezept-erstellen">3.13.4. Neues Rezept erstellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branches-zusammenfuhren">3.13.5. Branches zusammenführen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-konflikte">3.13.6. Merge-Konflikte</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-fur-einen-merge-konflikt">3.13.6.1. Beispiel für einen Merge-Konflikt</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-quellen">3.13.7. Weitere Quellen:</a></li>
 </ul>
 </li>
 </ul>
@@ -983,8 +1001,233 @@ $<span class="w"> </span>git<span class="w"> </span>diff<span class="w"> </span>
 </pre></div>
 </div>
 </section>
+<section id="anderungen-zurucknehmen">
+<h3><span class="section-number">3.12.4. </span>Änderungen zurücknehmen<a class="headerlink" href="#anderungen-zurucknehmen" title="Link to this heading">#</a></h3>
+<p>Manchmal wollen wir eine Änderung zurücknehmen, die wir bereits committed haben. Git bietet uns dafür eine mächtige Möglichkeit: den <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">revert</span></code> Befehl. Dieser erstellt einen neuen Commit, der die Änderungen eines vorherigen Commits rückgängig macht.</p>
+<section id="beispiel-eine-fehlerhafte-anderung-ruckgangig-machen">
+<h4><span class="section-number">3.12.4.1. </span>Beispiel: Eine fehlerhafte Änderung rückgängig machen<a class="headerlink" href="#beispiel-eine-fehlerhafte-anderung-ruckgangig-machen" title="Link to this heading">#</a></h4>
+<p>Angenommen, wir haben die <code class="docutils literal notranslate"><span class="pre">guacamole.md</span></code> Datei wie folgt geändert, aber die Änderungen waren falsch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>nano<span class="w"> </span>guacamole.md
+</pre></div>
+</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go"># Guacamole</span>
+<span class="go">## Ingredients</span>
+<span class="go">* avocado</span>
+<span class="go">* lime</span>
+<span class="go">* salt</span>
+<span class="go">* Something wrong</span>
+<span class="go">## Instructions</span>
+</pre></div>
+</div>
+<p>Nun committen wir die fehlerhafte Änderung:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>guacamole.md
+$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add a mistake to guacamole&quot;</span>
+</pre></div>
+</div>
+<p>Um diese Änderung rückgängig zu machen, verwenden wir <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">revert</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>revert<span class="w"> </span>HEAD
+</pre></div>
+</div>
+<p>Dies erstellt einen neuen Commit, der die Änderungen des letzten Commits (HEAD) zurücksetzt. Der Inhalt der Datei wird wieder in den ursprünglichen Zustand versetzt, bevor die fehlerhafte Änderung gemacht wurde.</p>
+</section>
+</section>
+<section id="unterschiede-zwischen-commits-anzeigen">
+<h3><span class="section-number">3.12.5. </span>Unterschiede zwischen Commits anzeigen<a class="headerlink" href="#unterschiede-zwischen-commits-anzeigen" title="Link to this heading">#</a></h3>
+<p>Es ist oft nützlich, zu sehen, was zwischen verschiedenen Commits geändert wurde. Das können wir mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> tun. Um die Unterschiede zwischen dem aktuellen Zustand der Dateien und dem letzten Commit anzuzeigen, verwenden wir:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>diff<span class="w"> </span>HEAD~1
+</pre></div>
+</div>
+<p>Dies zeigt uns die Unterschiede zwischen dem aktuellen Commit und dem vorherigen Commit an (HEAD~1).</p>
+<p>Sie können auch den spezifischen Hash eines Commits verwenden, um die Änderungen zu sehen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>diff<span class="w"> </span>&lt;commit_hash&gt;
+</pre></div>
+</div>
+</section>
+<section id="zuruck-zu-einem-vorherigen-commit">
+<h3><span class="section-number">3.12.6. </span>Zurück zu einem vorherigen Commit<a class="headerlink" href="#zuruck-zu-einem-vorherigen-commit" title="Link to this heading">#</a></h3>
+<p>Wenn wir zu einem bestimmten Punkt in der Geschichte des Projekts zurückkehren wollen, können wir den <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code> Befehl verwenden. Zum Beispiel, um zur Version des Projekts von einem bestimmten Commit zurückzukehren:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>&lt;commit_hash&gt;
+</pre></div>
+</div>
+<p>Nun befinden Sie sich in einem “detached HEAD” Zustand, d.h., Sie sind an einem bestimmten Punkt in der Projektgeschichte, können aber keine neuen Commits auf dem Hauptzweig machen, bis Sie wieder zu einem Branch zurückkehren. Um zurück zu einem Branch wie “main” zu wechseln, verwenden Sie:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>main
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id1">
+<h2><span class="section-number">3.13. </span>Branches<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Branches sind ein zentrales Konzept in Git, das es uns ermöglicht, verschiedene Versionen eines Projekts gleichzeitig zu bearbeiten. Sie erlauben es, an neuen Features oder Ideen zu arbeiten, ohne die Hauptversion des Projekts zu beeinflussen. Das bedeutet, dass Änderungen in einem isolierten Bereich vorgenommen werden können, den man später mit der Hauptversion (meist “main”) zusammenführen kann.</p>
+<section id="wie-funktionieren-branches">
+<h3><span class="section-number">3.13.1. </span>Wie funktionieren Branches?<a class="headerlink" href="#wie-funktionieren-branches" title="Link to this heading">#</a></h3>
+<p>In Git ist jeder Branch eine eigenständige Version des Projekts. Der Hauptbranch in den meisten Repositories heißt <code class="docutils literal notranslate"><span class="pre">main</span></code> (früher oft <code class="docutils literal notranslate"><span class="pre">master</span></code>). Wenn Sie an einem neuen Feature oder einer neuen Funktion arbeiten möchten, erstellen Sie einen neuen Branch und führen Ihre Änderungen dort durch. Sobald die Arbeit abgeschlossen ist, können Sie den Branch wieder in <code class="docutils literal notranslate"><span class="pre">main</span></code> mergen.</p>
+<p>Ein häufiger Workflow sieht so aus:</p>
+<ol class="arabic simple">
+<li><p><strong>Neuen Branch erstellen</strong>: Dies geschieht mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span></code>.</p></li>
+<li><p><strong>Zum neuen Branch wechseln</strong>: Mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code> oder <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">switch</span></code> können Sie zwischen den Branches hin- und herwechseln.</p></li>
+<li><p><strong>Änderungen im neuen Branch vornehmen und committen</strong>.</p></li>
+<li><p><strong>Den Branch wieder in <code class="docutils literal notranslate"><span class="pre">main</span></code> mergen</strong>.</p></li>
+</ol>
+</section>
+<section id="wo-sind-wir-aktuellen-branch-anzeigen">
+<h3><span class="section-number">3.13.2. </span>Wo sind wir: Aktuellen Branch anzeigen<a class="headerlink" href="#wo-sind-wir-aktuellen-branch-anzeigen" title="Link to this heading">#</a></h3>
+<p>Um zu sehen, in welchem Branch Sie sich gerade befinden, verwenden Sie den folgenden Befehl:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>branch
+</pre></div>
+</div>
+<p>Dieser Befehl zeigt eine Liste aller Branches im Repository an. Der aktive Branch wird mit einem Sternchen (*) markiert.</p>
+</section>
+<section id="neuen-branch-erstellen-und-wechseln">
+<h3><span class="section-number">3.13.3. </span>Neuen Branch erstellen und wechseln<a class="headerlink" href="#neuen-branch-erstellen-und-wechseln" title="Link to this heading">#</a></h3>
+<p>Erstellen Sie einen neuen Branch mit dem Namen <code class="docutils literal notranslate"><span class="pre">develop</span></code>, um an einem neuen Feature zu arbeiten:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>develop
+</pre></div>
+</div>
+<p>Dieser Befehl erstellt den neuen Branch, wechselt jedoch nicht automatisch in diesen. Um in den neuen Branch zu wechseln, verwenden wir:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>develop
+</pre></div>
+</div>
+<p>Nun arbeiten Sie im <code class="docutils literal notranslate"><span class="pre">develop</span></code> Branch.</p>
+</section>
+<section id="neues-rezept-erstellen">
+<h3><span class="section-number">3.13.4. </span>Neues Rezept erstellen<a class="headerlink" href="#neues-rezept-erstellen" title="Link to this heading">#</a></h3>
+<p>Um zu demonstrieren, dass wir uns in einem isolierten Branch befinden, erstellen wir eine neue Datei namens <code class="docutils literal notranslate"><span class="pre">burrito.md</span></code>, die ein neues Rezept enthält:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>touch<span class="w"> </span>burrito.md
+$<span class="w"> </span>nano<span class="w"> </span>burrito.md
+</pre></div>
+</div>
+<p>Fügen Sie den folgenden Inhalt hinzu:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Burrito</span>
+<span class="c1">## Ingredients</span>
+<span class="o">*</span> <span class="n">tortilla</span>
+<span class="o">*</span> <span class="n">beans</span>
+<span class="o">*</span> <span class="n">rice</span>
+<span class="o">*</span> <span class="n">cheese</span>
+<span class="c1">## Instructions</span>
+</pre></div>
+</div>
+<p>Dann fügen wir die Datei zur Staging Area hinzu und committen sie:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>burrito.md
+$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add burrito recipe&quot;</span>
+</pre></div>
+</div>
+<p>Wenn wir jetzt <code class="docutils literal notranslate"><span class="pre">ls</span></code> verwenden, um die Dateien im Verzeichnis aufzulisten:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls
+</pre></div>
+</div>
+<p>werden wir sehen, dass die Datei <code class="docutils literal notranslate"><span class="pre">burrito.md</span></code> existiert. Wenn wir jedoch zurück in den <code class="docutils literal notranslate"><span class="pre">main</span></code> Branch wechseln:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>main
+</pre></div>
+</div>
+<p>und die Dateien erneut auflisten, werden wir feststellen, dass <code class="docutils literal notranslate"><span class="pre">burrito.md</span></code> nicht vorhanden ist:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls
+</pre></div>
+</div>
+<p>Das liegt daran, dass die Datei nur im <code class="docutils literal notranslate"><span class="pre">develop</span></code> Branch existiert. Um diese Änderung auch im <code class="docutils literal notranslate"><span class="pre">main</span></code> Branch zu haben, müssen wir die Branches zusammenführen.</p>
+</section>
+<section id="branches-zusammenfuhren">
+<h3><span class="section-number">3.13.5. </span>Branches zusammenführen<a class="headerlink" href="#branches-zusammenfuhren" title="Link to this heading">#</a></h3>
+<p>Um die Änderungen aus <code class="docutils literal notranslate"><span class="pre">develop</span></code> in <code class="docutils literal notranslate"><span class="pre">main</span></code> zu mergen, wechseln wir zuerst in den <code class="docutils literal notranslate"><span class="pre">main</span></code> Branch und führen dann den Merge durch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>main
+$<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span>develop
+</pre></div>
+</div>
+<p>Nun sind die Änderungen aus <code class="docutils literal notranslate"><span class="pre">develop</span></code> in <code class="docutils literal notranslate"><span class="pre">main</span></code> enthalten, einschließlich der Datei <code class="docutils literal notranslate"><span class="pre">burrito.md</span></code>.</p>
+</section>
+<section id="merge-konflikte">
+<h3><span class="section-number">3.13.6. </span>Merge-Konflikte<a class="headerlink" href="#merge-konflikte" title="Link to this heading">#</a></h3>
+<p>Ein Merge funktioniert nicht immer reibungslos. Wenn Änderungen in beiden Branches an derselben Stelle in einer Datei vorgenommen wurden, entsteht ein <strong>Merge-Konflikt</strong>. Git fordert uns dann auf, den Konflikt manuell zu lösen.</p>
+<section id="beispiel-fur-einen-merge-konflikt">
+<h4><span class="section-number">3.13.6.1. </span>Beispiel für einen Merge-Konflikt<a class="headerlink" href="#beispiel-fur-einen-merge-konflikt" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Wechseln Sie in den <code class="docutils literal notranslate"><span class="pre">main</span></code> Branch und ändern Sie die <code class="docutils literal notranslate"><span class="pre">guacamole.md</span></code> Datei:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>main
+$<span class="w"> </span>nano<span class="w"> </span>guacamole.md
+</pre></div>
+</div>
+<p>Ändern Sie <code class="docutils literal notranslate"><span class="pre">lime</span></code> zu <code class="docutils literal notranslate"><span class="pre">lemon</span></code>:</p>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go"># Guacamole</span>
+<span class="go">## Ingredients</span>
+<span class="go">* avocado</span>
+<span class="go">* lemon</span>
+<span class="go">* salt</span>
+<span class="go">## Instructions</span>
+</pre></div>
+</div>
+<p>Committen Sie die Änderung:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>guacamole.md
+$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Change lime to lemon&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Wechseln Sie in den <code class="docutils literal notranslate"><span class="pre">develop</span></code> Branch und machen Sie eine andere Änderung in derselben Datei:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>develop
+$<span class="w"> </span>nano<span class="w"> </span>guacamole.md
+</pre></div>
+</div>
+<p>Ändern Sie <code class="docutils literal notranslate"><span class="pre">lime</span></code> zu <code class="docutils literal notranslate"><span class="pre">lime</span> <span class="pre">or</span> <span class="pre">lemon</span></code>:</p>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go"># Guacamole</span>
+<span class="go">## Ingredients</span>
+<span class="go">* avocado</span>
+<span class="go">* lime or lemon</span>
+<span class="go">* salt</span>
+<span class="go">## Instructions</span>
+</pre></div>
+</div>
+<p>Committen Sie auch diese Änderung:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>guacamole.md
+$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Update guacamole to allow lime or lemon&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Nun versuchen Sie, <code class="docutils literal notranslate"><span class="pre">develop</span></code> in <code class="docutils literal notranslate"><span class="pre">main</span></code> zu mergen:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>main
+$<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span>develop
+</pre></div>
+</div>
+<p>Git meldet einen Merge-Konflikt und zeigt an, dass die <code class="docutils literal notranslate"><span class="pre">guacamole.md</span></code> Datei Konflikte enthält:</p>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Auto-merging guacamole.md</span>
+<span class="go">CONFLICT (content): Merge conflict in guacamole.md</span>
+<span class="go">Automatic merge failed; fix conflicts and then commit the result.</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Öffnen Sie die Datei <code class="docutils literal notranslate"><span class="pre">guacamole.md</span></code>, um den Konflikt zu sehen:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>nano<span class="w"> </span>guacamole.md
+</pre></div>
+</div>
+<p>Git zeigt den Konflikt so an:</p>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">* avocado</span>
+<span class="go">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
+<span class="go">* lemon</span>
+<span class="go">=======</span>
+<span class="go">* lime or lemon</span>
+<span class="go">&gt;&gt;&gt;&gt;&gt;&gt;&gt; develop</span>
+<span class="go">* salt</span>
+</pre></div>
+</div>
+<p>Die Zeilen zwischen <code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="pre">HEAD</span></code> und <code class="docutils literal notranslate"><span class="pre">=======</span></code> stammen aus dem <code class="docutils literal notranslate"><span class="pre">main</span></code> Branch, und die Zeilen zwischen <code class="docutils literal notranslate"><span class="pre">=======</span></code> und <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="pre">develop</span></code> stammen aus dem <code class="docutils literal notranslate"><span class="pre">develop</span></code> Branch. Sie müssen den Konflikt manuell lösen, indem Sie entscheiden, welche Änderung Sie übernehmen möchten, oder beide zusammenführen. In diesem Fall könnten wir die Änderung wie folgt auflösen:</p>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">* avocado</span>
+<span class="go">* lime or lemon</span>
+<span class="go">* salt</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Nachdem Sie den Konflikt gelöst haben, müssen Sie die Datei erneut zur Staging Area hinzufügen und den Merge committen:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>guacamole.md
+$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Resolve merge conflict&quot;</span>
+</pre></div>
+</div>
+<p>Der Konflikt ist nun behoben, und der Merge wurde erfolgreich abgeschlossen.</p>
+</section>
+</section>
 <section id="weitere-quellen">
-<h3><span class="section-number">3.12.4. </span>Weitere Quellen:<a class="headerlink" href="#weitere-quellen" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.13.7. </span>Weitere Quellen:<a class="headerlink" href="#weitere-quellen" title="Link to this heading">#</a></h3>
 <p>Für die Live Coding Sessions wird Material vom <a class="reference external" href="https://swcarpentry.github.io/git-novice/">Data Carpentry Git Course</a> verwendet. Anders als die Links weiter oben ist das Material aber nicht primär zum Selbststudium gedacht.</p>
 </section>
 </section>
@@ -1090,7 +1333,25 @@ $<span class="w"> </span>git<span class="w"> </span>diff<span class="w"> </span>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anderungen-anzeigen">3.12.1. Änderungen anzeigen</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anderungen-committen">3.12.2. Änderungen committen</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anderungen-weiterverfolgen">3.12.3. Änderungen weiterverfolgen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-quellen">3.12.4. Weitere Quellen:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anderungen-zurucknehmen">3.12.4. Änderungen zurücknehmen</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-eine-fehlerhafte-anderung-ruckgangig-machen">3.12.4.1. Beispiel: Eine fehlerhafte Änderung rückgängig machen</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unterschiede-zwischen-commits-anzeigen">3.12.5. Unterschiede zwischen Commits anzeigen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zuruck-zu-einem-vorherigen-commit">3.12.6. Zurück zu einem vorherigen Commit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.13. Branches</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-funktionieren-branches">3.13.1. Wie funktionieren Branches?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wo-sind-wir-aktuellen-branch-anzeigen">3.13.2. Wo sind wir: Aktuellen Branch anzeigen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuen-branch-erstellen-und-wechseln">3.13.3. Neuen Branch erstellen und wechseln</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neues-rezept-erstellen">3.13.4. Neues Rezept erstellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branches-zusammenfuhren">3.13.5. Branches zusammenführen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-konflikte">3.13.6. Merge-Konflikte</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-fur-einen-merge-konflikt">3.13.6.1. Beispiel für einen Merge-Konflikt</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-quellen">3.13.7. Weitere Quellen:</a></li>
 </ul>
 </li>
 </ul>
