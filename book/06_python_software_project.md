@@ -51,22 +51,28 @@ Ein Environment ist eine isolierte Umgebung, in der du bestimmte Pakete und Bibl
 Um ein Environment mit Conda zu erstellen, kannst du die `environment.yaml`-Datei verwenden. Hier ist ein Beispiel:
 
 ```yaml
-name: dummy_data_science_env
+name: dummy_project
 channels:
   - conda-forge
 dependencies:
   - python=3.12
   - ruff
+  - black
 ```
 
-- **name:** Der Name deines Environments (in diesem Beispiel: `dummy_data_science_env`).
+- **name:** Der Name deines Environments (in diesem Beispiel: `dummy_projectv`).
 - **channels:** Gibt die Quellen an, aus denen die Pakete installiert werden (hier: `conda-forge`).
 - **dependencies:** Liste der zu installierenden Pakete (z.B. Python in Version 3.12 und das Tool `ruff` für den Code-Stil).
 
 **Erstellen des Environments mit der `environment.yaml`:**
+Die Yaml-Datei `environments.yaml` dient uns als ein Rezept zum erstellen passender Conda-Environments. Mit diesem Rezept können wir über conda das entsprechende Environment generieren über den Befehl:
+
 ```bash
 conda env create -f environment.yaml
 ```
+
+Anschließend müssen wir nur noch in das Environment wechseln mit `conda activate dummy_project` und können nun darin arbeiten. Dort haben wir Python 3.12 vorliegen, was wir schnell mit `python --version` überprüfen können. Wir müssten auch die beiden genannten Bibliotheken `ruff` und `black` vorfinden wenn wir `pip list` oder `conda list` ausführen.
+
 
 ### 2. Nächster Schritt: Erstellung eines Repositories mit Cookiecutter
 
