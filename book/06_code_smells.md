@@ -6,17 +6,20 @@
 
 ------
 
-### **What is a Code Smell?**
+## Was ist ein Code Smell?
 
-Code smells, known in German as "Codegeruch," refers to symptoms in the codebase which indicate deeper problems in the software's design or structure. Although the code might work functionally, these "smells" often make the code less readable and can introduce risks when future changes are needed.
+Code Smells, auf Deutsch "Codegeruch," sind Symptome im Code, die auf tiefere Probleme im Design oder in der Struktur der Software hinweisen. Obwohl der Code funktional korrekt sein kann, machen diese „Gerüche“ den Code oft schwerer lesbar und können Risiken bergen, wenn zukünftig Änderungen vorgenommen werden müssen.
 
-From a bird's eye perspective, issues in the code can range from overtly critical (such as syntax errors and bugs) to subtle yet potentially damaging in the long run, like formatting errors and code smells.
+Allgemein gilt: Probleme im Code reichen von offensichtlichen, kritischen Fehlern (wie Syntaxfehlern und Bugs) bis hin zu subtileren, machmal sogar eher kosmetischen Problemen reichen, wie z.B. kleinere Formatierungsfehler. Wir hatten im Linting Teil bereits besprochen, dass auch Formatierung sehr stark zur Lesbarkeit und damit langfristig auch direkt zur Code-Qualität beiträgt. Code Smells sind oft grundlegendere Probleme als viele kleinere Formatierungsfragen, aber stellen auch keine akuten Fehler dar wie etwas "Bugs" oder Syntaxfehler. 
 
-------
+Es ist wichtig zu verstehen, dass ein Code Smell nicht zwangsläufig einen direkten Fehler darstellt, sondern vielmehr ein Hinweis auf eine schlechte Implementierung oder ein Designproblem ist, das möglicherweise später zu echten Fehlern führen kann. Oft entstehen diese durch unzureichendes Refactoring, Zeitdruck oder fehlendes Wissen über Best Practices.
 
-#### **Example & Live Coding Exercise:**
+![Urgency of Code Smells](../images/fig_urgency_code_smells.png)
 
-**Task:** Identify the problems or non-ideal patterns in the following code and then discuss and improve it with your fellow students.
+
+### **Beispiel & Live-Coding-Übung:**
+
+**Aufgabe:** Identifiziere die Probleme oder nicht-idealen Muster im folgenden Code und diskutiere Verbesserungen gemeinsam mit deinen Kommilitonen.
 
 ```python
 print("How good do you feel today? (from 1=horrible to 10=perfect)?")
@@ -42,15 +45,16 @@ except:
     print("You need to enter a number from 1 to 10.")
 ```
 
-------
+---
 
-### **Common Code Smells**
+## **Häufige Code Smells**
 
-1. **Duplicated Code**
+### **Duplizierter Code**
 
-   A prominent smell in the provided code was duplication. The principle of **DRY (Don't Repeat Yourself)** emphasizes that each piece of your application should have a single representation in the codebase.
+   Ein prominenter Code Smell im obigen Beispiel ist die Duplizierung. Das Prinzip **DRY (Don't Repeat Yourself)** betont, dass jedes Element in einer Anwendung nur eine einzige Repräsentation im Code haben sollte. Duplizierter Code ist nicht nur unübersichtlich, sondern kann auch zu Fehlern führen, wenn Änderungen an mehreren Stellen vorgenommen werden müssen.
 
-   **Solution for the Above Example:**
+**Refactored Code:**
+Eine mögliche refaktorisierte Lösung wäre:
 
 ```python
 def get_user_input(prompt_message):
@@ -72,42 +76,80 @@ feeling_today = get_user_input("How good do you feel today? (from 1=horrible to 
 course_opinion = get_user_input("How do you like this course? (from 1=hate it to 10=love it)?")
 ```
 
-**Why Avoid Duplicated Code?**
+Hier wurde durch das Erstellen einer Funktion (`get_user_input()`) die Code-Dopplung vermieden. Es geht aber weniger um das reine Einsparen von Codezeilen, sondern vielmehr darum, dass es jetzt *einen*, statt vieler, vielleicht auch verstreuter, Instanzen gibt die wir zentral kontrollieren, anpassen, erweitern können.
 
-- Increases code size unnecessarily
-- Introduces more spots for potential bugs
-- Makes the code harder to maintain
 
-**When Should We Refactor?**
+Wir könnten den Code jetzt zum Beispiel sehr leicht erweitern und von zwei auf sehr viel mehr Fragen ausweiten!
+```python
+def get_user_input(prompt_message):
+    """Get user input and test for numbers."""
+    print(prompt_message)
+    user_input = input("Your answer:")
+    if user_input == "":
+        print("I got no input...")
+        return None
+    try:
+        value = int(user_input)
+        if value not in range(1, 11):
+            raise ValueError("Only numbers between 1 and 10 are allowed.")
+        return value
+    except:
+        print("You need to enter a number from 1 to 10.")
+        return None
 
-A general rule of thumb is the **Rule of Three**: If you are writing similar code for the third time, it's an indication that refactoring might be in order.
+user_inputs = []
+for question in questions:
+    user_inputs.append(get_user_input(question))
+```
 
-**Magic Numbers**
+Hier wäre `questions` einfach eine Liste mit Fragen.
 
-These are numbers directly used in the code without any explanatory name or context. Using named constants can make the code more readable and maintainable.
 
-**Example:**
+**Warum sollte man duplizierten Code vermeiden?**
+
+- Erhöht unnötig die Codebasis und macht sie schwerer überschaubar
+- Schafft zusätzliche Fehlerquellen
+- Erschwert die Wartung des Codes
+
+**Zusätzliche Risiken von dupliziertem Code:**
+
+- Änderungen oder Bugfixes müssen an mehreren Stellen im Code vorgenommen werden, was den Aufwand erhöht und das Risiko erhöht, dass an einer Stelle etwas übersehen wird.
+- Bei der Erweiterung oder Refaktorisierung des Codes müssen alle Vorkommen duplizierter Abschnitte berücksichtigt werden, was zu Inkonsistenzen führen kann.
+
+
+**Wann sollten wir unseren Code überarbeiten?**
+
+
+Eine allgemeine Faustregel ist die **Regel der Drei**: Wenn du ähnlichen Code zum dritten Mal schreibst, ist das ein Hinweis darauf, dass eine Refaktorisierung sinnvoll sein könnte.
+
+
+### Magische Zahlen
+
+Dies sind Zahlen, die direkt im Code verwendet werden, ohne eine erklärende Bezeichnung oder einen Kontext. Die Verwendung von benannten Konstanten kann den Code lesbarer und wartbarer machen.
+
+**Beispiel:**
 
 ```python
 sensor_signal = sensor_signal - 181.247
 ```
 
-**Better:**
+**Besser:**
 
 ```python
-MEASURED_SENSOR_OFFSET = 181.247  # last calibrated: 17.4.2022
+GEMESSENER_SENSOR_OFFSET = 181.247  # letzte Kalibrierung: 17.4.2022
 ...
-sensor_signal = sensor_signal - MEASURED_SENSOR_OFFSET
+sensor_signal = sensor_signal - GEMESSENER_SENSOR_OFFSET
 ```
 
-**Dead Code / Redundant Code**
+### Toter Code / Redundanter Code
 
-Code that is no longer used or can never be executed is just cluttering the codebase, making it harder to read and maintain.
+Code, der nicht mehr verwendet wird oder niemals ausgeführt werden kann, stellt nur Ballast in der Codebasis dar und erschwert das Lesen und die Wartung.
 
-**Example:**
+**Beispiel:**
 
 ```python
 import random
+
 def coin_flip():
     if random.randint(0, 1):
         return "Heads!"
@@ -116,19 +158,19 @@ def coin_flip():
     return "The coin landed on its edge!"
 ```
 
-The last return statement is unreachable and hence redundant.
+Die letzte `return`-Anweisung ist unerreichbar und somit redundant.
 
-### Common smell: code too complex to read
+### Zu komplexer Code
 
-Complexity in code is not just about how many lines of code you have or how big your functions are. It's about how difficult it is to understand, maintain, and extend the code. This complexity is often introduced through various coding patterns that might seem harmless or even "efficient" at first glance but can lead to maintenance nightmares in the long run.
+Komplexität im Code bezieht sich nicht nur darauf, wie viele Zeilen der Code hat oder wie groß die Funktionen sind. Es geht darum, wie schwer es ist, den Code zu verstehen, zu warten und zu erweitern. Diese Komplexität wird oft durch verschiedene Programmiermuster eingeführt, die auf den ersten Blick harmlos oder sogar „effizient“ erscheinen, aber langfristig zu Wartungsproblemen führen können.
 
-------
+---
 
-#### **Deeply Nested Code**
+#### Tief verschachtelter Code
 
-One major source of complexity is code that is nested too deeply. Deeply nested code is hard to read and understand because you have to keep track of which conditions or loops each line of code is part of.
+Eine häufige Quelle für Komplexität ist zu tief verschachtelter Code. Tief verschachtelter Code ist schwer zu lesen und zu verstehen, da man sich merken muss, zu welchen Bedingungen oder Schleifen jede Zeile gehört.
 
-**Example:**
+**Beispiel:**
 
 ```python
 while True:
@@ -149,13 +191,13 @@ while True:
                     print("Let's see what we got:", element)
 ```
 
-**Step-by-step fix:**
+**Schritt-für-Schritt-Optimierung:**
 
-1. Flatten the code by returning early or breaking out of loops early.
-2. Use built-in functions and libraries where possible.
-3. Avoid redundant checks.
+1. Den Code flacher gestalten, indem man frühzeitig `return` verwendet oder frühzeitig aus Schleifen ausbricht.
+2. Eingebaute Funktionen und Bibliotheken nutzen, wo immer möglich.
+3. Überflüssige Prüfungen vermeiden.
 
-**Improved Code:**
+**Verbesserter Code:**
 
 ```python
 def process_elements(input_lst):
@@ -177,13 +219,13 @@ def process_elements(input_lst):
 process_elements(input_lst)
 ```
 
-------
+---
 
-#### **Cryptic Logic and Negations**
+#### **Unklare Logik und Negationen**
 
-Code with unclear logic, especially involving negations, can be very challenging to understand.
+Code mit unklarer Logik, besonders bei der Verwendung von Negationen, kann sehr schwer verständlich sein.
 
-**Example:**
+**Beispiel:**
 
 ```python
 if not my_number != 6 or not my_number != 66:
@@ -192,9 +234,9 @@ else:
     print("All good.")
 ```
 
-**Fix:** Avoid double negatives and try to make the condition as clear as possible.
+**Optimierung:** Doppelte Verneinungen vermeiden und versuchen, die Bedingung so klar wie möglich zu formulieren.
 
-**Improved Code:**
+**Verbesserter Code:**
 
 ```python
 if my_number == 6 or my_number == 66:
@@ -203,22 +245,22 @@ else:
     print("All good.")
 ```
 
-------
+---
 
-#### **Proper Use of `return` and `break`**
+#### **Richtiger Einsatz von `return` und `break`**
 
-Using `return` and `break` judiciously can help you avoid unnecessary `elif` and `else` blocks, making the code clearer.
+Der gezielte Einsatz von `return` und `break` kann helfen, unnötige `elif`- und `else`-Blöcke zu vermeiden, was den Code klarer und übersichtlicher macht.
 
-For instance, instead of having multiple `elif` or `else` blocks, you can simply `return` from a function or `break` out of a loop once you know that no further processing is needed.
+Anstatt mehrere `elif`- oder `else`-Blöcke zu verwenden, kann man einfach aus einer Funktion `return` oder aus einer Schleife `break`, sobald klar ist, dass keine weitere Verarbeitung erforderlich ist.
 
-------
+---
 
-#### **Lengthy Functions**
+#### **Lange Funktionen**
 
-Functions that are too long are hard to understand, debug, and test. A function should ideally do one thing and do it well.
+Funktionen, die zu lang sind, sind schwer zu verstehen, zu debuggen und zu testen. Eine Funktion sollte idealerweise nur eine Sache tun und diese gut.
 
-**Tips to handle long functions:**
+**Tipps zum Umgang mit langen Funktionen:**
 
-1. **Break down the function**: If a function is doing multiple things, try to split it into multiple smaller functions, each with a clear purpose.
-2. **Use helper functions**: If there are repetitive tasks within a function, consider using helper functions.
-3. **Keep related code together**: Ensure that related lines of code are grouped together, making it easier to understand the function's flow.
+1. **Funktion aufteilen**: Wenn eine Funktion mehrere Aufgaben übernimmt, versuche, sie in mehrere kleinere Funktionen mit klar definierten Aufgaben zu zerlegen.
+2. **Hilfsfunktionen nutzen**: Wenn es innerhalb einer Funktion wiederkehrende Aufgaben gibt, erwäge die Verwendung von Hilfsfunktionen.
+3. **Zusammengehörige Codeabschnitte gruppieren**: Achte darauf, dass zusammengehörige Codezeilen beieinander bleiben, um den Ablauf der Funktion leichter verständlich zu machen.
