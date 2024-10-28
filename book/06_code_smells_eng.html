@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7. Code Smells &#8212; Data Science Software Development with Python</title>
+    <title>Code Smells &#8212; Data Science Software Development with Python</title>
   
   
   
@@ -60,11 +60,9 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'book/06_code_smells';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/06_code_smells_eng';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. Python Software Projekt" href="06_python_software_project.html" />
-    <link rel="prev" title="6. Linting" href="06_linting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -115,6 +113,8 @@
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -176,10 +176,10 @@
 <li class="toctree-l1"><a class="reference internal" href="04_github.html">4. GitHub</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Code</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="05_clean_code.html">5. Cleaner Code, Better Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06_linting.html">6. Linting</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Code Smells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_code_smells.html">7. Code Smells</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06_python_software_project.html">8. Python Software Projekt</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition and First Exploration</span></p>
@@ -271,7 +271,7 @@
       
       
       
-      <li><a href="https://github.com/florian-huber/data_science_software_dev/issues/new?title=Issue%20on%20page%20%2Fbook/06_code_smells.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/florian-huber/data_science_software_dev/issues/new?title=Issue%20on%20page%20%2Fbook/06_code_smells_eng.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -301,7 +301,7 @@
       
       
       
-      <li><a href="../_sources/book/06_code_smells.md" target="_blank"
+      <li><a href="../_sources/book/06_code_smells_eng.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -387,21 +387,16 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-ein-code-smell">7.1. Was ist ein Code Smell?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-live-coding-ubung">7.1.1. <strong>Beispiel &amp; Live-Coding-Übung:</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-code-smell"><strong>What is a Code Smell?</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-live-coding-exercise"><strong>Example &amp; Live Coding Exercise:</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#haufige-code-smells">7.2. <strong>Häufige Code Smells</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#duplizierter-code">7.2.1. <strong>Duplizierter Code</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#magische-zahlen">7.2.2. Magische Zahlen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toter-code-redundanter-code">7.2.3. Toter Code / Redundanter Code</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zu-komplexer-code">7.2.4. Zu komplexer Code</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tief-verschachtelter-code">7.2.4.1. Tief verschachtelter Code</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unklare-logik-und-negationen">7.2.4.2. <strong>Unklare Logik und Negationen</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#richtiger-einsatz-von-return-und-break">7.2.4.3. <strong>Richtiger Einsatz von <code class="docutils literal notranslate"><span class="pre">return</span></code> und <code class="docutils literal notranslate"><span class="pre">break</span></code></strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lange-funktionen">7.2.4.4. <strong>Lange Funktionen</strong></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-code-smells"><strong>Common Code Smells</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-smell-code-too-complex-to-read">Common smell: code too complex to read</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deeply-nested-code"><strong>Deeply Nested Code</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cryptic-logic-and-negations"><strong>Cryptic Logic and Negations</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proper-use-of-return-and-break"><strong>Proper Use of <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lengthy-functions"><strong>Lengthy Functions</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -416,21 +411,20 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="code-smells">
-<h1><span class="section-number">7. </span>Code Smells<a class="headerlink" href="#code-smells" title="Link to this heading">#</a></h1>
+<h1>Code Smells<a class="headerlink" href="#code-smells" title="Link to this heading">#</a></h1>
 <p><strong>Quote:</strong> “You know you are working on clean code when each routine you read turns out to be pretty much what you expected. You can call it beautiful code when the code also makes it look like the language was made for the problem.”</p>
 <ul class="simple">
 <li><p><strong>Ward Cunningham</strong></p></li>
 </ul>
 <hr class="docutils" />
-<section id="was-ist-ein-code-smell">
-<h2><span class="section-number">7.1. </span>Was ist ein Code Smell?<a class="headerlink" href="#was-ist-ein-code-smell" title="Link to this heading">#</a></h2>
-<p>Code Smells, auf Deutsch “Codegeruch,” sind Symptome im Code, die auf tiefere Probleme im Design oder in der Struktur der Software hinweisen. Obwohl der Code funktional korrekt sein kann, machen diese „Gerüche“ den Code oft schwerer lesbar und können Risiken bergen, wenn zukünftig Änderungen vorgenommen werden müssen.</p>
-<p>Allgemein gilt: Probleme im Code reichen von offensichtlichen, kritischen Fehlern (wie Syntaxfehlern und Bugs) bis hin zu subtileren, machmal sogar eher kosmetischen Problemen reichen, wie z.B. kleinere Formatierungsfehler. Wir hatten im Linting Teil bereits besprochen, dass auch Formatierung sehr stark zur Lesbarkeit und damit langfristig auch direkt zur Code-Qualität beiträgt. Code Smells sind oft grundlegendere Probleme als viele kleinere Formatierungsfragen, aber stellen auch keine akuten Fehler dar wie etwas “Bugs” oder Syntaxfehler.</p>
-<p>Es ist wichtig zu verstehen, dass ein Code Smell nicht zwangsläufig einen direkten Fehler darstellt, sondern vielmehr ein Hinweis auf eine schlechte Implementierung oder ein Designproblem ist, das möglicherweise später zu echten Fehlern führen kann. Oft entstehen diese durch unzureichendes Refactoring, Zeitdruck oder fehlendes Wissen über Best Practices.</p>
-<p><img alt="Urgency of Code Smells" src="../_images/fig_urgency_code_smells.png" /></p>
-<section id="beispiel-live-coding-ubung">
-<h3><span class="section-number">7.1.1. </span><strong>Beispiel &amp; Live-Coding-Übung:</strong><a class="headerlink" href="#beispiel-live-coding-ubung" title="Link to this heading">#</a></h3>
-<p><strong>Aufgabe:</strong> Identifiziere die Probleme oder nicht-idealen Muster im folgenden Code und diskutiere Verbesserungen gemeinsam mit deinen Kommilitonen.</p>
+<section id="what-is-a-code-smell">
+<h2><strong>What is a Code Smell?</strong><a class="headerlink" href="#what-is-a-code-smell" title="Link to this heading">#</a></h2>
+<p>Code smells, or “Codegeruch” in German, are symptoms in the codebase that indicate deeper issues in the software’s design or structure. Although the code might function correctly, these “smells” often make it less readable and can pose risks when changes are needed in the future.</p>
+<p>From a high-level perspective, issues in code can range from overtly critical (such as syntax errors and bugs) to more subtle but potentially damaging ones in the long term, like formatting inconsistencies and code smells.</p>
+<hr class="docutils" />
+<section id="example-live-coding-exercise">
+<h3><strong>Example &amp; Live Coding Exercise:</strong><a class="headerlink" href="#example-live-coding-exercise" title="Link to this heading">#</a></h3>
+<p><strong>Task:</strong> Identify the problems or non-ideal patterns in the following code and then discuss and improve it with your fellow students.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;How good do you feel today? (from 1=horrible to 10=perfect)?&quot;</span><span class="p">)</span>
 <span class="n">user_input1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your answer:&quot;</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">user_input1</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
@@ -454,16 +448,17 @@
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You need to enter a number from 1 to 10.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-</section>
 <hr class="docutils" />
-<section id="haufige-code-smells">
-<h2><span class="section-number">7.2. </span><strong>Häufige Code Smells</strong><a class="headerlink" href="#haufige-code-smells" title="Link to this heading">#</a></h2>
-<section id="duplizierter-code">
-<h3><span class="section-number">7.2.1. </span><strong>Duplizierter Code</strong><a class="headerlink" href="#duplizierter-code" title="Link to this heading">#</a></h3>
-<p>Ein prominenter Code Smell im obigen Beispiel ist die Duplizierung. Das Prinzip <strong>DRY (Don’t Repeat Yourself)</strong> betont, dass jedes Element in einer Anwendung nur eine einzige Repräsentation im Code haben sollte. Duplizierter Code ist nicht nur unübersichtlich, sondern kann auch zu Fehlern führen, wenn Änderungen an mehreren Stellen vorgenommen werden müssen.</p>
-<p><strong>Refactored Code:</strong>
-Eine mögliche refaktorisierte Lösung wäre:</p>
+</section>
+</section>
+<section id="common-code-smells">
+<h2><strong>Common Code Smells</strong><a class="headerlink" href="#common-code-smells" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p><strong>Duplicated Code</strong></p>
+<p>A prominent smell in the provided code was duplication. The principle of <strong>DRY (Don’t Repeat Yourself)</strong> emphasizes that each piece of your application should have a single representation in the codebase.</p>
+<p><strong>Refactored Solution:</strong></p>
+</li>
+</ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_user_input</span><span class="p">(</span><span class="n">prompt_message</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">prompt_message</span><span class="p">)</span>
     <span class="n">user_input</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your answer:&quot;</span><span class="p">)</span>
@@ -483,64 +478,30 @@ Eine mögliche refaktorisierte Lösung wäre:</p>
 <span class="n">course_opinion</span> <span class="o">=</span> <span class="n">get_user_input</span><span class="p">(</span><span class="s2">&quot;How do you like this course? (from 1=hate it to 10=love it)?&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Hier wurde durch das Erstellen einer Funktion (<code class="docutils literal notranslate"><span class="pre">get_user_input()</span></code>) die Code-Dopplung vermieden. Es geht aber weniger um das reine Einsparen von Codezeilen, sondern vielmehr darum, dass es jetzt <em>einen</em>, statt vieler, vielleicht auch verstreuter, Instanzen gibt die wir zentral kontrollieren, anpassen, erweitern können.</p>
-<p>Wir könnten den Code jetzt zum Beispiel sehr leicht erweitern und von zwei auf sehr viel mehr Fragen ausweiten!</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_user_input</span><span class="p">(</span><span class="n">prompt_message</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get user input and test for numbers.&quot;&quot;&quot;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">prompt_message</span><span class="p">)</span>
-    <span class="n">user_input</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Your answer:&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">user_input</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I got no input...&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">None</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Only numbers between 1 and 10 are allowed.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">value</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You need to enter a number from 1 to 10.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">None</span>
-
-<span class="n">user_inputs</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">question</span> <span class="ow">in</span> <span class="n">questions</span><span class="p">:</span>
-    <span class="n">user_inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_user_input</span><span class="p">(</span><span class="n">question</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>Hier wäre <code class="docutils literal notranslate"><span class="pre">questions</span></code> einfach eine Liste mit Fragen.</p>
-<p><strong>Warum sollte man duplizierten Code vermeiden?</strong></p>
+<p><strong>Why Avoid Duplicated Code?</strong></p>
 <ul class="simple">
-<li><p>Erhöht unnötig die Codebasis und macht sie schwerer überschaubar</p></li>
-<li><p>Schafft zusätzliche Fehlerquellen</p></li>
-<li><p>Erschwert die Wartung des Codes</p></li>
+<li><p>Increases code size unnecessarily</p></li>
+<li><p>Introduces more spots for potential bugs</p></li>
+<li><p>Makes the code harder to maintain</p></li>
 </ul>
-<p><strong>Zusätzliche Risiken von dupliziertem Code:</strong></p>
-<ul class="simple">
-<li><p>Änderungen oder Bugfixes müssen an mehreren Stellen im Code vorgenommen werden, was den Aufwand erhöht und das Risiko erhöht, dass an einer Stelle etwas übersehen wird.</p></li>
-<li><p>Bei der Erweiterung oder Refaktorisierung des Codes müssen alle Vorkommen duplizierter Abschnitte berücksichtigt werden, was zu Inkonsistenzen führen kann.</p></li>
-</ul>
-<p><strong>Wann sollten wir unseren Code überarbeiten?</strong></p>
-<p>Eine allgemeine Faustregel ist die <strong>Regel der Drei</strong>: Wenn du ähnlichen Code zum dritten Mal schreibst, ist das ein Hinweis darauf, dass eine Refaktorisierung sinnvoll sein könnte.</p>
-</section>
-<section id="magische-zahlen">
-<h3><span class="section-number">7.2.2. </span>Magische Zahlen<a class="headerlink" href="#magische-zahlen" title="Link to this heading">#</a></h3>
-<p>Dies sind Zahlen, die direkt im Code verwendet werden, ohne eine erklärende Bezeichnung oder einen Kontext. Die Verwendung von benannten Konstanten kann den Code lesbarer und wartbarer machen.</p>
-<p><strong>Beispiel:</strong></p>
+<p><strong>When Should We Refactor?</strong></p>
+<p>A general rule of thumb is the <strong>Rule of Three</strong>: If you are writing similar code for the third time, it’s an indication that refactoring might be in order.</p>
+<p><strong>Magic Numbers</strong></p>
+<p>These are numbers directly used in the code without any explanatory name or context. Using named constants can make the code more readable and maintainable.</p>
+<p><strong>Example:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sensor_signal</span> <span class="o">=</span> <span class="n">sensor_signal</span> <span class="o">-</span> <span class="mf">181.247</span>
 </pre></div>
 </div>
-<p><strong>Besser:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">GEMESSENER_SENSOR_OFFSET</span> <span class="o">=</span> <span class="mf">181.247</span>  <span class="c1"># letzte Kalibrierung: 17.4.2022</span>
+<p><strong>Better:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">MEASURED_SENSOR_OFFSET</span> <span class="o">=</span> <span class="mf">181.247</span>  <span class="c1"># last calibrated: 17.4.2022</span>
 <span class="o">...</span>
-<span class="n">sensor_signal</span> <span class="o">=</span> <span class="n">sensor_signal</span> <span class="o">-</span> <span class="n">GEMESSENER_SENSOR_OFFSET</span>
+<span class="n">sensor_signal</span> <span class="o">=</span> <span class="n">sensor_signal</span> <span class="o">-</span> <span class="n">MEASURED_SENSOR_OFFSET</span>
 </pre></div>
 </div>
-</section>
-<section id="toter-code-redundanter-code">
-<h3><span class="section-number">7.2.3. </span>Toter Code / Redundanter Code<a class="headerlink" href="#toter-code-redundanter-code" title="Link to this heading">#</a></h3>
-<p>Code, der nicht mehr verwendet wird oder niemals ausgeführt werden kann, stellt nur Ballast in der Codebasis dar und erschwert das Lesen und die Wartung.</p>
-<p><strong>Beispiel:</strong></p>
+<p><strong>Dead Code / Redundant Code</strong></p>
+<p>Code that is no longer used or can never be executed is just cluttering the codebase, making it harder to read and maintain.</p>
+<p><strong>Example:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-
 <span class="k">def</span> <span class="nf">coin_flip</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;Heads!&quot;</span>
@@ -549,16 +510,16 @@ Eine mögliche refaktorisierte Lösung wäre:</p>
     <span class="k">return</span> <span class="s2">&quot;The coin landed on its edge!&quot;</span>
 </pre></div>
 </div>
-<p>Die letzte <code class="docutils literal notranslate"><span class="pre">return</span></code>-Anweisung ist unerreichbar und somit redundant.</p>
+<p>The last return statement is unreachable and hence redundant.</p>
 </section>
-<section id="zu-komplexer-code">
-<h3><span class="section-number">7.2.4. </span>Zu komplexer Code<a class="headerlink" href="#zu-komplexer-code" title="Link to this heading">#</a></h3>
-<p>Komplexität im Code bezieht sich nicht nur darauf, wie viele Zeilen der Code hat oder wie groß die Funktionen sind. Es geht darum, wie schwer es ist, den Code zu verstehen, zu warten und zu erweitern. Diese Komplexität wird oft durch verschiedene Programmiermuster eingeführt, die auf den ersten Blick harmlos oder sogar „effizient“ erscheinen, aber langfristig zu Wartungsproblemen führen können.</p>
+<section id="common-smell-code-too-complex-to-read">
+<h2>Common smell: code too complex to read<a class="headerlink" href="#common-smell-code-too-complex-to-read" title="Link to this heading">#</a></h2>
+<p>Complexity in code is not just about how many lines of code you have or how big your functions are. It’s about how difficult it is to understand, maintain, and extend the code. This complexity is often introduced through various coding patterns that might seem harmless or even “efficient” at first glance but can lead to maintenance nightmares in the long run.</p>
 <hr class="docutils" />
-<section id="tief-verschachtelter-code">
-<h4><span class="section-number">7.2.4.1. </span>Tief verschachtelter Code<a class="headerlink" href="#tief-verschachtelter-code" title="Link to this heading">#</a></h4>
-<p>Eine häufige Quelle für Komplexität ist zu tief verschachtelter Code. Tief verschachtelter Code ist schwer zu lesen und zu verstehen, da man sich merken muss, zu welchen Bedingungen oder Schleifen jede Zeile gehört.</p>
-<p><strong>Beispiel:</strong></p>
+<section id="deeply-nested-code">
+<h3><strong>Deeply Nested Code</strong><a class="headerlink" href="#deeply-nested-code" title="Link to this heading">#</a></h3>
+<p>One major source of complexity is code that is nested too deeply. Deeply nested code is hard to read and understand because you have to keep track of which conditions or loops each line of code is part of.</p>
+<p><strong>Example:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">input_lst</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">break</span>
@@ -577,13 +538,13 @@ Eine mögliche refaktorisierte Lösung wäre:</p>
                     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Let&#39;s see what we got:&quot;</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Schritt-für-Schritt-Optimierung:</strong></p>
+<p><strong>Step-by-step fix:</strong></p>
 <ol class="arabic simple">
-<li><p>Den Code flacher gestalten, indem man frühzeitig <code class="docutils literal notranslate"><span class="pre">return</span></code> verwendet oder frühzeitig aus Schleifen ausbricht.</p></li>
-<li><p>Eingebaute Funktionen und Bibliotheken nutzen, wo immer möglich.</p></li>
-<li><p>Überflüssige Prüfungen vermeiden.</p></li>
+<li><p>Flatten the code by returning early or breaking out of loops early.</p></li>
+<li><p>Use built-in functions and libraries where possible.</p></li>
+<li><p>Avoid redundant checks.</p></li>
 </ol>
-<p><strong>Verbesserter Code:</strong></p>
+<p><strong>Improved Code:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">process_elements</span><span class="p">(</span><span class="n">input_lst</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">input_lst</span><span class="p">:</span>
         <span class="k">return</span>
@@ -605,18 +566,18 @@ Eine mögliche refaktorisierte Lösung wäre:</p>
 </div>
 </section>
 <hr class="docutils" />
-<section id="unklare-logik-und-negationen">
-<h4><span class="section-number">7.2.4.2. </span><strong>Unklare Logik und Negationen</strong><a class="headerlink" href="#unklare-logik-und-negationen" title="Link to this heading">#</a></h4>
-<p>Code mit unklarer Logik, besonders bei der Verwendung von Negationen, kann sehr schwer verständlich sein.</p>
-<p><strong>Beispiel:</strong></p>
+<section id="cryptic-logic-and-negations">
+<h3><strong>Cryptic Logic and Negations</strong><a class="headerlink" href="#cryptic-logic-and-negations" title="Link to this heading">#</a></h3>
+<p>Code with unclear logic, especially involving negations, can be very challenging to understand.</p>
+<p><strong>Example:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">my_number</span> <span class="o">!=</span> <span class="mi">6</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">my_number</span> <span class="o">!=</span> <span class="mi">66</span><span class="p">:</span>
     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Oh oh!&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All good.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Optimierung:</strong> Doppelte Verneinungen vermeiden und versuchen, die Bedingung so klar wie möglich zu formulieren.</p>
-<p><strong>Verbesserter Code:</strong></p>
+<p><strong>Fix:</strong> Avoid double negatives and try to make the condition as clear as possible.</p>
+<p><strong>Improved Code:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">my_number</span> <span class="o">==</span> <span class="mi">6</span> <span class="ow">or</span> <span class="n">my_number</span> <span class="o">==</span> <span class="mi">66</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Oh oh!&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
@@ -625,22 +586,21 @@ Eine mögliche refaktorisierte Lösung wäre:</p>
 </div>
 </section>
 <hr class="docutils" />
-<section id="richtiger-einsatz-von-return-und-break">
-<h4><span class="section-number">7.2.4.3. </span><strong>Richtiger Einsatz von <code class="docutils literal notranslate"><span class="pre">return</span></code> und <code class="docutils literal notranslate"><span class="pre">break</span></code></strong><a class="headerlink" href="#richtiger-einsatz-von-return-und-break" title="Link to this heading">#</a></h4>
-<p>Der gezielte Einsatz von <code class="docutils literal notranslate"><span class="pre">return</span></code> und <code class="docutils literal notranslate"><span class="pre">break</span></code> kann helfen, unnötige <code class="docutils literal notranslate"><span class="pre">elif</span></code>- und <code class="docutils literal notranslate"><span class="pre">else</span></code>-Blöcke zu vermeiden, was den Code klarer und übersichtlicher macht.</p>
-<p>Anstatt mehrere <code class="docutils literal notranslate"><span class="pre">elif</span></code>- oder <code class="docutils literal notranslate"><span class="pre">else</span></code>-Blöcke zu verwenden, kann man einfach aus einer Funktion <code class="docutils literal notranslate"><span class="pre">return</span></code> oder aus einer Schleife <code class="docutils literal notranslate"><span class="pre">break</span></code>, sobald klar ist, dass keine weitere Verarbeitung erforderlich ist.</p>
+<section id="proper-use-of-return-and-break">
+<h3><strong>Proper Use of <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code></strong><a class="headerlink" href="#proper-use-of-return-and-break" title="Link to this heading">#</a></h3>
+<p>Using <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code> judiciously can help you avoid unnecessary <code class="docutils literal notranslate"><span class="pre">elif</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> blocks, making the code clearer.</p>
+<p>For instance, instead of having multiple <code class="docutils literal notranslate"><span class="pre">elif</span></code> or <code class="docutils literal notranslate"><span class="pre">else</span></code> blocks, you can simply <code class="docutils literal notranslate"><span class="pre">return</span></code> from a function or <code class="docutils literal notranslate"><span class="pre">break</span></code> out of a loop once you know that no further processing is needed.</p>
 </section>
 <hr class="docutils" />
-<section id="lange-funktionen">
-<h4><span class="section-number">7.2.4.4. </span><strong>Lange Funktionen</strong><a class="headerlink" href="#lange-funktionen" title="Link to this heading">#</a></h4>
-<p>Funktionen, die zu lang sind, sind schwer zu verstehen, zu debuggen und zu testen. Eine Funktion sollte idealerweise nur eine Sache tun und diese gut.</p>
-<p><strong>Tipps zum Umgang mit langen Funktionen:</strong></p>
+<section id="lengthy-functions">
+<h3><strong>Lengthy Functions</strong><a class="headerlink" href="#lengthy-functions" title="Link to this heading">#</a></h3>
+<p>Functions that are too long are hard to understand, debug, and test. A function should ideally do one thing and do it well.</p>
+<p><strong>Tips to handle long functions:</strong></p>
 <ol class="arabic simple">
-<li><p><strong>Funktion aufteilen</strong>: Wenn eine Funktion mehrere Aufgaben übernimmt, versuche, sie in mehrere kleinere Funktionen mit klar definierten Aufgaben zu zerlegen.</p></li>
-<li><p><strong>Hilfsfunktionen nutzen</strong>: Wenn es innerhalb einer Funktion wiederkehrende Aufgaben gibt, erwäge die Verwendung von Hilfsfunktionen.</p></li>
-<li><p><strong>Zusammengehörige Codeabschnitte gruppieren</strong>: Achte darauf, dass zusammengehörige Codezeilen beieinander bleiben, um den Ablauf der Funktion leichter verständlich zu machen.</p></li>
+<li><p><strong>Break down the function</strong>: If a function is doing multiple things, try to split it into multiple smaller functions, each with a clear purpose.</p></li>
+<li><p><strong>Use helper functions</strong>: If there are repetitive tasks within a function, consider using helper functions.</p></li>
+<li><p><strong>Keep related code together</strong>: Ensure that related lines of code are grouped together, making it easier to understand the function’s flow.</p></li>
 </ol>
-</section>
 </section>
 </section>
 </section>
@@ -675,24 +635,6 @@ Eine mögliche refaktorisierte Lösung wäre:</p>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="06_linting.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Linting</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="06_python_software_project.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Python Software Projekt</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -710,21 +652,16 @@ Eine mögliche refaktorisierte Lösung wäre:</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-ein-code-smell">7.1. Was ist ein Code Smell?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-live-coding-ubung">7.1.1. <strong>Beispiel &amp; Live-Coding-Übung:</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-code-smell"><strong>What is a Code Smell?</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-live-coding-exercise"><strong>Example &amp; Live Coding Exercise:</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#haufige-code-smells">7.2. <strong>Häufige Code Smells</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#duplizierter-code">7.2.1. <strong>Duplizierter Code</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#magische-zahlen">7.2.2. Magische Zahlen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toter-code-redundanter-code">7.2.3. Toter Code / Redundanter Code</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zu-komplexer-code">7.2.4. Zu komplexer Code</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tief-verschachtelter-code">7.2.4.1. Tief verschachtelter Code</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unklare-logik-und-negationen">7.2.4.2. <strong>Unklare Logik und Negationen</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#richtiger-einsatz-von-return-und-break">7.2.4.3. <strong>Richtiger Einsatz von <code class="docutils literal notranslate"><span class="pre">return</span></code> und <code class="docutils literal notranslate"><span class="pre">break</span></code></strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lange-funktionen">7.2.4.4. <strong>Lange Funktionen</strong></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-code-smells"><strong>Common Code Smells</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-smell-code-too-complex-to-read">Common smell: code too complex to read</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deeply-nested-code"><strong>Deeply Nested Code</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cryptic-logic-and-negations"><strong>Cryptic Logic and Negations</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proper-use-of-return-and-break"><strong>Proper Use of <code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lengthy-functions"><strong>Lengthy Functions</strong></a></li>
 </ul>
 </li>
 </ul>
