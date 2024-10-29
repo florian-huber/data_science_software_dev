@@ -559,22 +559,34 @@ Eine mögliche refaktorisierte Lösung wäre:</p>
 <h4><span class="section-number">7.2.4.1. </span>Tief verschachtelter Code<a class="headerlink" href="#tief-verschachtelter-code" title="Link to this heading">#</a></h4>
 <p>Eine häufige Quelle für Komplexität ist zu tief verschachtelter Code. Tief verschachtelter Code ist schwer zu lesen und zu verstehen, da man sich merken muss, zu welchen Bedingungen oder Schleifen jede Zeile gehört.</p>
 <p><strong>Beispiel:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">input_lst</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">break</span>
-    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_lst</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">input_lst</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">element</span> <span class="o">!=</span> <span class="s2">&quot;stop&quot;</span> <span class="ow">and</span> <span class="n">element</span> <span class="o">!=</span> <span class="s2">&quot;Stop&quot;</span><span class="p">:</span>
-                    <span class="k">try</span><span class="p">:</span>
-                        <span class="n">got_number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-                    <span class="k">except</span><span class="p">:</span>
-                        <span class="n">got_number</span> <span class="o">=</span> <span class="kc">False</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">process_elements</span><span class="p">(</span><span class="n">input_lst</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">input_lst</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_lst</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">input_lst</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
+                    <span class="k">if</span> <span class="n">element</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;stop&quot;</span><span class="p">:</span>
+                        <span class="k">try</span><span class="p">:</span>
+                            <span class="n">got_number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+                        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                            <span class="n">got_number</span> <span class="o">=</span> <span class="kc">False</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">got_number</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Got a positive number!&quot;</span><span class="p">)</span>
+                            <span class="k">elif</span> <span class="n">got_number</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Got zero.&quot;</span><span class="p">)</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Got a negative number.&quot;</span><span class="p">)</span>
                     <span class="k">else</span><span class="p">:</span>
-                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OK. Stop!&quot;</span><span class="p">)</span>
-                        <span class="k">break</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Let&#39;s see what we got:&quot;</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found stop command:&quot;</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;List is too short to process.&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+
+<span class="c1"># Use this function</span>
+<span class="n">input_lst</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;-2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;stop&quot;</span><span class="p">]</span>
+<span class="n">process_elements</span><span class="p">(</span><span class="n">input_lst</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Schritt-für-Schritt-Optimierung:</strong></p>
@@ -585,21 +597,44 @@ Eine mögliche refaktorisierte Lösung wäre:</p>
 </ol>
 <p><strong>Verbesserter Code:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">process_elements</span><span class="p">(</span><span class="n">input_lst</span><span class="p">):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">input_lst</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">input_lst</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span>
-
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_lst</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;List is too short to process.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    
     <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">input_lst</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">element</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;stop&quot;</span><span class="p">,</span> <span class="s2">&quot;Stop&quot;</span><span class="p">]:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OK. Stop!&quot;</span><span class="p">)</span>
-            <span class="k">break</span>
+        <span class="n">process_element</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">_</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Let&#39;s see what we got:&quot;</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
-            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                <span class="k">pass</span>
+<span class="k">def</span> <span class="nf">process_element</span><span class="p">(</span><span class="n">element</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
+        <span class="k">return</span>
+    
+    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">element</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;stop&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found stop command:&quot;</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
+        <span class="k">return</span>
+    
+    <span class="n">number</span> <span class="o">=</span> <span class="n">parse_number</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">print_number_info</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
 
+<span class="k">def</span> <span class="nf">parse_number</span><span class="p">(</span><span class="n">element</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">print_number_info</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Got a positive number!&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">number</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Got zero.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Got a negative number.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Use this function</span>
+<span class="n">input_lst</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;-2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;stop&quot;</span><span class="p">]</span>
 <span class="n">process_elements</span><span class="p">(</span><span class="n">input_lst</span><span class="p">)</span>
 </pre></div>
 </div>

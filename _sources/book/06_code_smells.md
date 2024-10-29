@@ -173,22 +173,34 @@ Eine häufige Quelle für Komplexität ist zu tief verschachtelter Code. Tief ve
 **Beispiel:**
 
 ```python
-while True:
-    if input_lst is None:
-        break
-    elif len(input_lst) > 1:
-        for element in input_lst:
-            if isinstance(element, str) or isinstance(element, int):
-                if element != "stop" and element != "Stop":
-                    try:
-                        got_number = int(element)
-                    except:
-                        got_number = False
+def process_elements(input_lst):
+    while True:
+        if input_lst is None:
+            break
+        elif len(input_lst) > 1:
+            for element in input_lst:
+                if isinstance(element, (str, int)):
+                    if element.lower() != "stop":
+                        try:
+                            got_number = int(element)
+                        except ValueError:
+                            got_number = False
+                        else:
+                            if got_number > 0:
+                                print("Got a positive number!")
+                            elif got_number == 0:
+                                print("Got zero.")
+                            else:
+                                print("Got a negative number.")
                     else:
-                        print("OK. Stop!")
-                        break
-                else:
-                    print("Let's see what we got:", element)
+                        print("Found stop command:", element)
+        else:
+            print("List is too short to process.")
+        break
+
+# Use this function
+input_lst = ["1", "-2", "3", "stop"]
+process_elements(input_lst)
 ```
 
 **Schritt-für-Schritt-Optimierung:**
@@ -201,21 +213,44 @@ while True:
 
 ```python
 def process_elements(input_lst):
-    if not input_lst:
+    if input_lst is None:
         return
-
+    
+    if len(input_lst) <= 1:
+        print("List is too short to process.")
+        return
+    
     for element in input_lst:
-        if element in ["stop", "Stop"]:
-            print("OK. Stop!")
-            break
+        process_element(element)
 
-        if isinstance(element, (str, int)):
-            try:
-                _ = int(element)
-                print("Let's see what we got:", element)
-            except ValueError:
-                pass
+def process_element(element):
+    if not isinstance(element, (str, int)):
+        return
+    
+    if str(element).lower() == "stop":
+        print("Found stop command:", element)
+        return
+    
+    number = parse_number(element)
+    if number is not None:
+        print_number_info(number)
 
+def parse_number(element):
+    try:
+        return int(element)
+    except ValueError:
+        return None
+
+def print_number_info(number):
+    if number > 0:
+        print("Got a positive number!")
+    elif number == 0:
+        print("Got zero.")
+    else:
+        print("Got a negative number.")
+
+# Use this function
+input_lst = ["1", "-2", "3", "stop"]
 process_elements(input_lst)
 ```
 
