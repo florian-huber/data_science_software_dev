@@ -184,7 +184,7 @@ def process_elements(input_lst):
                         try:
                             got_number = int(element)
                         except ValueError:
-                            got_number = False
+                            got_number = None
                         else:
                             if got_number > 0:
                                 print("Got a positive number!")

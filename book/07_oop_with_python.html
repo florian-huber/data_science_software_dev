@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4. GitHub &#8212; Data Science Software Development with Python</title>
+    <title>9. Code Design &amp; Grundlagen der Objektorientierten Programmierung (OOP) &#8212; Data Science Software Development with Python</title>
   
   
   
@@ -60,11 +60,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'book/04_github';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/07_oop_with_python';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5. Cleaner Code, Better Code" href="05_clean_code.html" />
-    <link rel="prev" title="3. Versionskontrolle mit Git" href="03_git_github.html" />
+    <link rel="next" title="10. Code Testing with Python" href="06_testing.html" />
+    <link rel="prev" title="8. Python Software Projekt" href="06_python_software_project.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -169,11 +169,11 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_introduction.html">1. Einführung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_shell_scripting.html">2. Shell Scripting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_git_github.html">3. Versionskontrolle mit Git</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_github.html">4. GitHub</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Code</span></p>
 <ul class="nav bd-sidenav">
@@ -182,9 +182,9 @@
 <li class="toctree-l1"><a class="reference internal" href="06_code_smells.html">7. Code Smells</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Software Project</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="06_python_software_project.html">8. Python Software Projekt</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_oop_with_python.html">9. Code Design &amp; Grundlagen der Objektorientierten Programmierung (OOP)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Code Design &amp; Grundlagen der Objektorientierten Programmierung (OOP)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Testing and Continuous Integration</span></p>
 <ul class="nav bd-sidenav">
@@ -275,7 +275,7 @@
       
       
       
-      <li><a href="https://github.com/florian-huber/data_science_software_dev/issues/new?title=Issue%20on%20page%20%2Fbook/04_github.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/florian-huber/data_science_software_dev/issues/new?title=Issue%20on%20page%20%2Fbook/07_oop_with_python.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -305,7 +305,7 @@
       
       
       
-      <li><a href="../_sources/book/04_github.md" target="_blank"
+      <li><a href="../_sources/book/07_oop_with_python.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -381,7 +381,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>GitHub</h1>
+    <h1>Code Design & Grundlagen der Objektorientierten Programmierung (OOP)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -391,16 +391,13 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kurzer-vergleich">4.1. Kurzer Vergleich</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#achtung-github-ist-eine-fur-alle-einsehbare-visitenkarte">4.2. Achtung: GitHub ist eine für alle einsehbare Visitenkarte!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grundlegender-prozess">4.3. Grundlegender Prozess</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lokal-vs-remote">4.3.1. Lokal vs. Remote</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-in-teams-centralized-workflow">4.3.2. Working in Teams: Centralized Workflow</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-in-teams-fork-based-workflow">4.3.3. Working in Teams: Fork-based Workflow</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pull-request">4.3.4. Pull Request</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teil-1-wiederholung-der-oop-grundlagen">9.1. Teil 1: Wiederholung der OOP-Grundlagen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klasse-vs-instanz">9.1.1. 1. Klasse vs. Instanz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wichtige-punkte">9.1.2. Wichtige Punkte:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klasse-in-python">9.1.3. 2. Klasse in Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methoden-und-attribute">9.1.4. 3. Methoden und Attribute</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">4.4. Getting started</a></li>
 </ul>
             </nav>
         </div>
@@ -412,77 +409,112 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="github">
-<h1><span class="section-number">4. </span>GitHub<a class="headerlink" href="#github" title="Link to this heading">#</a></h1>
-<p>Während <strong>Git</strong> als dezentrales Versionskontrollsystem dient, das in erster Linie lokal auf dem Computer eines Entwicklers betrieben wird, kommt der wahre Mehrwert von Git häufig erst dann zur Geltung, wenn es in Verbindung mit einem zentralen Repository-Hosting-Service verwendet wird. Hier treten Plattformen wie <strong>GitHub</strong>, <strong>GitLab</strong> und <strong>Bitbucket</strong> in Erscheinung.</p>
-<section id="kurzer-vergleich">
-<h2><span class="section-number">4.1. </span>Kurzer Vergleich<a class="headerlink" href="#kurzer-vergleich" title="Link to this heading">#</a></h2>
+  <section id="code-design-grundlagen-der-objektorientierten-programmierung-oop">
+<h1><span class="section-number">9. </span>Code Design &amp; Grundlagen der Objektorientierten Programmierung (OOP)<a class="headerlink" href="#code-design-grundlagen-der-objektorientierten-programmierung-oop" title="Link to this heading">#</a></h1>
+<section id="teil-1-wiederholung-der-oop-grundlagen">
+<h2><span class="section-number">9.1. </span>Teil 1: Wiederholung der OOP-Grundlagen<a class="headerlink" href="#teil-1-wiederholung-der-oop-grundlagen" title="Link to this heading">#</a></h2>
+<section id="klasse-vs-instanz">
+<h3><span class="section-number">9.1.1. </span>1. Klasse vs. Instanz<a class="headerlink" href="#klasse-vs-instanz" title="Link to this heading">#</a></h3>
+<p>In der objektorientierten Programmierung (OOP) sind <strong>Klassen</strong> und <strong>Instanzen</strong> zwei grundlegende Konzepte, die es uns ermöglichen, Code strukturiert und modular zu organisieren.</p>
 <ul class="simple">
-<li><p><strong>GitHub</strong>: Eine der populärsten Plattformen für das Hosting von Git-Repositories. Sie bietet eine benutzerfreundliche Oberfläche, integrierte Issue-Tracking-Tools und einen lebhaften Marktplatz für Erweiterungen. Mit der jüngsten Übernahme durch Microsoft hat GitHub auch eine enge Integration in viele Microsoft-Produkte, insbesondere Visual Studio, erhalten.</p></li>
-<li><p><strong>GitLab</strong>: Ein Open-Source-Git-Repository-Manager, der sowohl als selbst gehostete Lösung als auch in einer Cloud-basierten Version verfügbar ist. GitLab bietet viele fortschrittliche Features, insbesondere im Bereich der CI/CD-Integration. Durch die Möglichkeit des eigenen Hostings wird es oft innerhalb von Firmen verwendet.</p></li>
-<li><p><strong>Bitbucket</strong>: Ursprünglich von Atlassian entwickelt und bietet eine tiefe Integration mit anderen Atlassian-Produkten wie JIRA und Confluence. Es unterstützt sowohl Git als auch Mercurial und wird in vielen Unternehmen eingesetzt.</p></li>
+<li><p><strong>Klasse</strong>: Eine Vorlage oder ein Bauplan zur Erstellung von Objekten. Eine Klasse definiert eine Reihe von Attributen und Methoden, die die erstellten Objekte haben werden.</p></li>
+<li><p><strong>Instanz</strong>: Ein spezifisches Objekt, das aus einer Klasse erstellt wurde. Jede Instanz hat ihre eigenen Daten, basierend auf der Struktur der Klasse.</p></li>
 </ul>
-<p>Für den Zweck dieser Veranstaltung werden wir uns auf <strong>GitHub</strong> konzentrieren.</p>
+<p>Stellen wir uns zur Verdeutlichung eine Klasse namens <code class="docutils literal notranslate"><span class="pre">Bike</span></code> vor. Diese Klasse definiert die Struktur und Eigenschaften eines Fahrrads im Allgemeinen, wie z. B. die Farbe, das Modell und Methoden wie <code class="docutils literal notranslate"><span class="pre">fahren()</span></code> und <code class="docutils literal notranslate"><span class="pre">stoppen()</span></code>. Die Klasse selbst ist jedoch kein Fahrrad, das man fahren kann. Stattdessen erstellt man <strong>Instanzen</strong> der <code class="docutils literal notranslate"><span class="pre">Bike</span></code>-Klasse—also individuelle Fahrräder mit spezifischen Attributen, wie ein rotes Mountainbike oder ein blaues Rennrad.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definition einer einfachen Klasse in Python</span>
+<span class="k">class</span> <span class="nc">Bike</span><span class="p">:</span>
+    <span class="c1"># Klassenattribut</span>
+    <span class="n">wheels</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Alle Fahrräder haben 2 Räder</span>
+    
+    <span class="c1"># Konstruktor-Methode</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="c1"># Instanzattribute</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+
+<span class="c1"># Erstellen von Instanzen der Bike-Klasse</span>
+<span class="n">bike1</span> <span class="o">=</span> <span class="n">Bike</span><span class="p">(</span><span class="s2">&quot;rot&quot;</span><span class="p">,</span> <span class="s2">&quot;Mountainbike&quot;</span><span class="p">)</span>
+<span class="n">bike2</span> <span class="o">=</span> <span class="n">Bike</span><span class="p">(</span><span class="s2">&quot;blau&quot;</span><span class="p">,</span> <span class="s2">&quot;Rennrad&quot;</span><span class="p">)</span>
+
+<span class="c1"># Zugriff auf Instanzattribute</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bike1</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>  <span class="c1"># Ausgabe: rot</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bike2</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>  <span class="c1"># Ausgabe: blau</span>
+
+<span class="c1"># Zugriff auf ein Klassenattribut</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Bike</span><span class="o">.</span><span class="n">wheels</span><span class="p">)</span>  <span class="c1"># Ausgabe: 2</span>
+</pre></div>
+</div>
 </section>
-<section id="achtung-github-ist-eine-fur-alle-einsehbare-visitenkarte">
-<h2><span class="section-number">4.2. </span>Achtung: GitHub ist eine für alle einsehbare Visitenkarte!<a class="headerlink" href="#achtung-github-ist-eine-fur-alle-einsehbare-visitenkarte" title="Link to this heading">#</a></h2>
-<p>Ein öffentliches GitHub-Repository kann viel über einen Entwickler aussagen. Es dient oft als Portfolio für zukünftige Arbeitgeber oder für die Gemeinschaft.</p>
+<section id="wichtige-punkte">
+<h3><span class="section-number">9.1.2. </span>Wichtige Punkte:<a class="headerlink" href="#wichtige-punkte" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Mit einem aktiven GitHub-Account könnt ihr demonstrieren, dass ihr engagierte und ernstzunehmende Programmierer*innen seid – oder eben auch das Gegenteil, wenn das Repository vernachlässigt wird.</p></li>
-<li><p>Bei Vorstellungsgesprächen kann euer GitHub-Profil als Beweis für eure Fähigkeiten und Erfahrungen im Umgang mit Softwareentwicklung dienen.</p></li>
-</ul>
-</section>
-<section id="grundlegender-prozess">
-<h2><span class="section-number">4.3. </span>Grundlegender Prozess<a class="headerlink" href="#grundlegender-prozess" title="Link to this heading">#</a></h2>
-<section id="lokal-vs-remote">
-<h3><span class="section-number">4.3.1. </span>Lokal vs. Remote<a class="headerlink" href="#lokal-vs-remote" title="Link to this heading">#</a></h3>
-<p>Mit Git arbeitet man zunächst lokal auf dem eigenen Computer (lokales Repository). Wenn man dann Änderungen mit anderen teilen möchte oder eine sichere Kopie seiner Arbeit in der Cloud haben möchte, “pusht” man die Änderungen zu einem Remote-Repository, z.B. auf GitHub.</p>
-<p><img alt="GitHub Areas and Remote" src="../_images/fig_github_areas_remote.png" /></p>
-<p>Um das lokale Repository mit der online Repository abzugleichen werden wir v.a. die folgenden Befehle nutzen</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> - damit werden die neuen Commits ins online Repository verschoben</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> - damit werden neue Commits aus dem online ins lokale Working Directory verschoben.
-(Achtung, d.h. es werden eventuell gerade erst bearbeitete Änderungen von uns überschrieben, daher vor git pull darauf achten, dass alle Änderungen bereits zu Git hinzugefügt wurden –&gt; <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>)</p></li>
-</ul>
-</section>
-<section id="working-in-teams-centralized-workflow">
-<h3><span class="section-number">4.3.2. </span>Working in Teams: Centralized Workflow<a class="headerlink" href="#working-in-teams-centralized-workflow" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Bei diesem Ansatz haben alle Teammitglieder Schreibzugriff auf das zentrale Repository.</p></li>
-<li><p>Die Entwicklung erfolgt hauptsächlich über verschiedene Branches, wobei jeder Branch eine bestimmte Aufgabe oder ein Feature repräsentiert.</p></li>
-<li><p>Nachdem die Arbeit in einem Branch abgeschlossen ist, wird er in den Hauptbranch (oft “master” oder “main” genannt) gemerged.
-In der Regel geschieht dies über einen Pull Request um sowohl die Dokumentation als auch die Qualität des Projektes zu verbessern.</p></li>
-</ul>
-<p><img alt="Centralized Github Workflow" src="../_images/fig_github_centralized_workflow.png" /></p>
-</section>
-<section id="working-in-teams-fork-based-workflow">
-<h3><span class="section-number">4.3.3. </span>Working in Teams: Fork-based Workflow<a class="headerlink" href="#working-in-teams-fork-based-workflow" title="Link to this heading">#</a></h3>
-<p>Dieser Workflow wird vor allem in großen Projekten verwendet, insbesondere bei Community- oder Open-Source-Projekten.</p>
-<ul class="simple">
-<li><p>Jeder Entwickler erstellt einen “Fork” des Hauptrepositories, was im Wesentlichen eine Kopie des Repositories ist, aber unabhängig von dem Original.</p></li>
-<li><p>Entwickler führen Änderungen in ihrem eigenen Fork durch und wenn sie bereit sind, ihre Änderungen mit dem Hauptrepository zu teilen, erstellen sie einen “Pull Request”.</p></li>
-<li><p>Ein “Pull Request” ist eine Anfrage, Änderungen aus dem Fork in das Hauptrepository zu übernehmen. Es bietet auch eine Plattform für Code-Reviews und Diskussionen, bevor die Änderungen übernommen werden.</p></li>
-</ul>
-<p><img alt="Fork-based Github Workflow" src="../_images/fig_github_fork-based_workflow.png" /></p>
-<p>In diesem Fall ist die Struktur der Abläufe in Git noch einen Schritt komplexer. Es gibt nun nicht mehr nur unsere lokale Kopie sowie <code class="docutils literal notranslate"><span class="pre">origin</span></code> (Remote Repository im eigenen GitHub Account, oder Remote Repository mit umfangreichen Schreibrechten), sondern auch noch <code class="docutils literal notranslate"><span class="pre">upstream</span></code> als weiteres Remote Repository. Letzteres ist in der Regel das “Hauptrepository”, also nach außen der zentrale Anlaufpunkt. In vielen Fällen haben Nutzer*innen auch gar keine direkten Schreibrechte für dieses Repository, z.B. bei großen Community-Projekten. Der hier beschriebene Workflow wird aber auch genutzt um einem beliebigen auf GitHub stehenden Repository eigene Änderungen vorschlagen zu können (wenn dies die jeweiligen Rechteinhaber*innen wünschen).</p>
-<p><img alt="GitHub Areas and Remote" src="../_images/fig_github_areas_remote_fork.png" /></p>
-</section>
-<section id="pull-request">
-<h3><span class="section-number">4.3.4. </span>Pull Request<a class="headerlink" href="#pull-request" title="Link to this heading">#</a></h3>
-<p><strong>Pull</strong> <strong>Requests</strong> sind ein zentraler Prozess auf GitHub (oder anderen online Repository Plattformen) um Code-Änderungen besser beurteilen und einbringen zu können.</p>
-<p>Auch wenn „pull“ im Namen steckt, könnte man das Ganze im Sinne von git auch als Push oder Merge sehen. Wichtig ist: eine Änderung des Codes soll stattfinden.</p>
-<ul class="simple">
-<li><p>Entwickler*in programmiert ein neues Feature in ihrem eigenen Repository (und/oder einem eigenen Branch).</p></li>
-<li><p>Pull Request ist eine Anfrage ob der veränderte Code in das zentrale online Repository eingebracht werden kann.</p></li>
-<li><p>Entwickler*innen begutachten und diskutieren die Änderungen (–&gt; Code Review!). Weitere Änderungen können eingebaut werden.</p></li>
-<li><p>Wenn Verantwortliche/r („maintainer“) einverstanden ist wird der neue Code „gemerged“.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Bike</span></code> ist die <strong>Klasse</strong>. Sie stellt die Struktur bereit: <code class="docutils literal notranslate"><span class="pre">wheels</span></code>, <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">model</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bike1</span></code> und <code class="docutils literal notranslate"><span class="pre">bike2</span></code> sind <strong>Instanzen</strong> der <code class="docutils literal notranslate"><span class="pre">Bike</span></code>-Klasse, jede mit eigenen <code class="docutils literal notranslate"><span class="pre">color</span></code>- und <code class="docutils literal notranslate"><span class="pre">model</span></code>-Attributen.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wheels</span></code> ist ein <strong>Klassenattribut</strong>, das von allen Instanzen geteilt wird. Eine Änderung in der Klasse würde sich auf alle Instanzen auswirken.</p></li>
 </ul>
 </section>
+<section id="klasse-in-python">
+<h3><span class="section-number">9.1.3. </span>2. Klasse in Python<a class="headerlink" href="#klasse-in-python" title="Link to this heading">#</a></h3>
+<p>Eine <strong>Klasse</strong> in Python wird mit dem Schlüsselwort <code class="docutils literal notranslate"><span class="pre">class</span></code> definiert. Sie enthält normalerweise eine Konstruktor-Methode, <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, die aufgerufen wird, wenn eine neue Instanz erstellt wird. Der Konstruktor ermöglicht es, initiale Attribute für jede Instanz festzulegen.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Animal</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">species</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>  <span class="c1"># Instanzattribut</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">species</span> <span class="o">=</span> <span class="n">species</span>  <span class="c1"># Instanzattribut</span>
+
+<span class="c1"># Erstellen von Instanzen der Animal-Klasse</span>
+<span class="n">animal1</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="s2">&quot;Leo&quot;</span><span class="p">,</span> <span class="s2">&quot;Löwe&quot;</span><span class="p">)</span>
+<span class="n">animal2</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="s2">&quot;Bella&quot;</span><span class="p">,</span> <span class="s2">&quot;Elefant&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">animal1</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>  <span class="c1"># Ausgabe: Leo</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">animal2</span><span class="o">.</span><span class="n">species</span><span class="p">)</span>  <span class="c1"># Ausgabe: Elefant</span>
+</pre></div>
+</div>
+<p>In diesem Beispiel:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> und <code class="docutils literal notranslate"><span class="pre">species</span></code> sind <strong>Instanzattribute</strong>—spezifisch für jede Instanz (<code class="docutils literal notranslate"><span class="pre">animal1</span></code> und <code class="docutils literal notranslate"><span class="pre">animal2</span></code>).</p></li>
+<li><p>Jede Instanz hat eigene Daten, aber beide teilen die Struktur der <code class="docutils literal notranslate"><span class="pre">Animal</span></code>-Klasse.</p></li>
+</ul>
 </section>
-<section id="getting-started">
-<h2><span class="section-number">4.4. </span>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
-<p>Wie auch zu Git, findet ihr im Netz viele Tutorials und Informationen zum Arbeiten mit GitHub.
-Zum Beispiel die <a class="reference external" href="https://docs.github.com/en/get-started">Einführungsseiten GitHub</a>.</p>
+<section id="methoden-und-attribute">
+<h3><span class="section-number">9.1.4. </span>3. Methoden und Attribute<a class="headerlink" href="#methoden-und-attribute" title="Link to this heading">#</a></h3>
+<p><strong>Attribute</strong> sind die Daten, die in einer Instanz gespeichert sind, während <strong>Methoden</strong> Funktionen sind, die in einer Klasse definiert werden und auf Instanzen der Klasse operieren.</p>
+<p>Es gibt zwei Hauptarten von Attributen:</p>
+<ul class="simple">
+<li><p><strong>Instanzattribute</strong>: Spezifisch für jede Instanz. Sie werden im <code class="docutils literal notranslate"><span class="pre">__init__</span></code>-Methodenblock über <code class="docutils literal notranslate"><span class="pre">self</span></code> definiert.</p></li>
+<li><p><strong>Klassenattribute</strong>: Werden von allen Instanzen der Klasse geteilt.</p></li>
+</ul>
+<p><strong>Methoden</strong> sind Funktionen, die in einer Klasse definiert werden und normalerweise verwendet werden, um Instanzdaten zu ändern oder Aktionen auszuführen, die mit der Klasse in Verbindung stehen.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
+    <span class="c1"># Klassenattribut</span>
+    <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.1415</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="c1"># Instanzattribut</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+    
+    <span class="c1"># Methode zur Berechnung der Fläche</span>
+    <span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Circle</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># Methode zur Berechnung des Umfangs</span>
+    <span class="k">def</span> <span class="nf">calculate_circumference</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">Circle</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span>
+
+<span class="c1"># Erstellen einer Instanz der Circle-Klasse</span>
+<span class="n">circle1</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Aufruf von Methoden auf der Instanz</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">circle1</span><span class="o">.</span><span class="n">calculate_area</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">circle1</span><span class="o">.</span><span class="n">calculate_circumference</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>In diesem Beispiel:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pi</span></code> ist ein <strong>Klassenattribut</strong>, das für alle Kreise gleich ist.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">radius</span></code> ist ein <strong>Instanzattribut</strong>, das bei der Initialisierung festgelegt wird.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calculate_area</span></code> und <code class="docutils literal notranslate"><span class="pre">calculate_circumference</span></code> sind <strong>Methoden</strong>, die auf den Daten der Instanz arbeiten und sowohl Klassen- als auch Instanzattribute verwenden.</p></li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -517,20 +549,20 @@ Zum Beispiel die <a class="reference external" href="https://docs.github.com/en/
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="03_git_github.html"
+       href="06_python_software_project.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Versionskontrolle mit Git</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Python Software Projekt</p>
       </div>
     </a>
     <a class="right-next"
-       href="05_clean_code.html"
+       href="06_testing.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Cleaner Code, Better Code</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Code Testing with Python</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -551,16 +583,13 @@ Zum Beispiel die <a class="reference external" href="https://docs.github.com/en/
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kurzer-vergleich">4.1. Kurzer Vergleich</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#achtung-github-ist-eine-fur-alle-einsehbare-visitenkarte">4.2. Achtung: GitHub ist eine für alle einsehbare Visitenkarte!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grundlegender-prozess">4.3. Grundlegender Prozess</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lokal-vs-remote">4.3.1. Lokal vs. Remote</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-in-teams-centralized-workflow">4.3.2. Working in Teams: Centralized Workflow</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-in-teams-fork-based-workflow">4.3.3. Working in Teams: Fork-based Workflow</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pull-request">4.3.4. Pull Request</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teil-1-wiederholung-der-oop-grundlagen">9.1. Teil 1: Wiederholung der OOP-Grundlagen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klasse-vs-instanz">9.1.1. 1. Klasse vs. Instanz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wichtige-punkte">9.1.2. Wichtige Punkte:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klasse-in-python">9.1.3. 2. Klasse in Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methoden-und-attribute">9.1.4. 3. Methoden und Attribute</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">4.4. Getting started</a></li>
 </ul>
   </nav></div>
 

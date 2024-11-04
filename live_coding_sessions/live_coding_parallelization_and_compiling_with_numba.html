@@ -182,13 +182,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../book/05_clean_code.html">5. Cleaner Code, Better Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../book/06_linting.html">6. Linting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../book/06_code_smells.html">7. Code Smells</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/06_python_software_project.html">8. Python Software Projekt</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition and First Exploration</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Software Project</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../book/06_testing.html">9. Code Testing with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/07_continuous_integration.html">10. Introduction to Continuous Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/07_testing_2.html">11. Code Testing (2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/06_python_software_project.html">8. Python Software Projekt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/07_oop_with_python.html">9. Code Design &amp; Grundlagen der Objektorientierten Programmierung (OOP)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Testing and Continuous Integration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../book/06_testing.html">10. Code Testing with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/07_continuous_integration.html">11. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/07_testing_2.html">12. Code Testing (2)</a></li>
 
 
 
@@ -507,7 +511,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>115 ms ± 377 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>115 ms ± 380 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -531,7 +535,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>388 ms ± 30 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>336 ms ± 9.06 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -548,7 +552,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.3 ms ± 260 μs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.9 ms ± 402 μs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -581,7 +585,7 @@ First, it does not require to rethink the problem to convert it into a vectorize
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>143 ns ± 0.759 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>132 ns ± 1.06 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -594,7 +598,7 @@ First, it does not require to rethink the problem to convert it into a vectorize
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>133 ns ± 0.456 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>132 ns ± 1.09 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -607,8 +611,8 @@ First, it does not require to rethink the problem to convert it into a vectorize
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 40.6 ms, sys: 80 μs, total: 40.6 ms
-Wall time: 40.4 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 41.6 ms, sys: 244 μs, total: 41.8 ms
+Wall time: 41.5 ms
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>499999999500000000
@@ -672,9 +676,9 @@ In general Numba supports the following:</p>
 
 <span class="nn">TypingError: Failed</span> in <span class="ni">nopython mode pipeline </span><span class="nt">(step: nopython frontend)</span>
 <span class="n">non</span><span class="o">-</span><span class="n">precise</span> <span class="nb">type</span> <span class="n">pyobject</span>
-<span class="ne">During</span>: typing of argument at /tmp/ipykernel_3173/1526091316.py (7)
+<span class="ne">During</span>: typing of argument at /tmp/ipykernel_3261/1526091316.py (7)
 
-<span class="n">File</span> <span class="s2">&quot;../../../../../../tmp/ipykernel_3173/1526091316.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">7</span><span class="p">:</span>
+<span class="n">File</span> <span class="s2">&quot;../../../../../../tmp/ipykernel_3261/1526091316.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">7</span><span class="p">:</span>
 <span class="o">&lt;</span><span class="n">source</span> <span class="n">missing</span><span class="p">,</span> <span class="n">REPL</span><span class="o">/</span><span class="n">exec</span> <span class="ow">in</span> <span class="n">use</span><span class="err">?</span><span class="o">&gt;</span> 
 
 <span class="n">This</span> <span class="n">error</span> <span class="n">may</span> <span class="n">have</span> <span class="n">been</span> <span class="n">caused</span> <span class="n">by</span> <span class="n">the</span> <span class="n">following</span> <span class="n">argument</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
