@@ -19,7 +19,7 @@ parts:
     chapters:
     - file: book/06_python_software_project
     - file: book/07_oop_with_python
-    - file: book/07_oop_with_python_2
+    - file: book/08_oop_with_python_2
   - caption: Testing and Continuous Integration
     numbered: true
     chapters:
