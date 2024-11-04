@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>11. Introduction to Continuous Integration &#8212; Data Science Software Development with Python</title>
+    <title>12. Introduction to Continuous Integration &#8212; Data Science Software Development with Python</title>
   
   
   
@@ -63,8 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/07_continuous_integration';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="12. Code Testing (2)" href="07_testing_2.html" />
-    <link rel="prev" title="10. Code Testing with Python" href="06_testing.html" />
+    <link rel="next" title="13. Code Testing (2)" href="07_testing_2.html" />
+    <link rel="prev" title="11. Code Testing with Python" href="06_testing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -181,16 +181,17 @@
 <li class="toctree-l1"><a class="reference internal" href="06_linting.html">6. Linting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06_code_smells.html">7. Code Smells</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Software Project</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Code Design &amp; Grundlagen der Objektorientierten Programmierung (OOP)</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="06_python_software_project.html">8. Python Software Projekt</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_oop_with_python.html">9. Code Design &amp; Grundlagen der Objektorientierten Programmierung (OOP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_oop_with_python.html">9. Wiederholung der OOP-Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_oop_with_python_2.html">10. Einige Fortgeschrittene Konzepte in der OOP</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Testing and Continuous Integration</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="06_testing.html">10. Code Testing with Python</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Introduction to Continuous Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">12. Code Testing (2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_testing.html">11. Code Testing with Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">13. Code Testing (2)</a></li>
 
 
 
@@ -391,27 +392,27 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">11.1. 1. Introduction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-continuous-integration">11.1.1. What is Continuous Integration?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose-and-benefits">11.1.2. Purpose and Benefits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">12.1. 1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-continuous-integration">12.1.1. What is Continuous Integration?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose-and-benefits">12.1.2. Purpose and Benefits</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-a-github-actions-workflow">11.2. 2. Setting up a GitHub Actions Workflow</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-workflow-file">11.2.1. Creating a Workflow File</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-workflow-triggers">11.2.2. Understanding Workflow Triggers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-a-github-actions-workflow">12.2. 2. Setting up a GitHub Actions Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-workflow-file">12.2.1. Creating a Workflow File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-workflow-triggers">12.2.2. Understanding Workflow Triggers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-and-setting-events">11.3. 3. Handling and Setting Events</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#event-types">11.3.1. Event Types</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-event-triggers">11.3.2. Configuring Event Triggers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-and-setting-events">12.3. 3. Handling and Setting Events</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#event-types">12.3.1. Event Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-event-triggers">12.3.2. Configuring Event Triggers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-matrix-strategy-for-testing-multiple-environments">11.4. 4. Using the Matrix Strategy for Testing Multiple Environments</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-matrix-strategy">11.4.1. The Matrix Strategy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-configuration">11.4.2. Example Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-matrix-strategy-for-testing-multiple-environments">12.4. 4. Using the Matrix Strategy for Testing Multiple Environments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-matrix-strategy">12.4.1. The Matrix Strategy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-configuration">12.4.2. Example Configuration</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">11.5. 5. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">12.5. 5. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -424,15 +425,15 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-continuous-integration">
-<h1><span class="section-number">11. </span>Introduction to Continuous Integration<a class="headerlink" href="#introduction-to-continuous-integration" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">12. </span>Introduction to Continuous Integration<a class="headerlink" href="#introduction-to-continuous-integration" title="Link to this heading">#</a></h1>
 <section id="introduction">
-<h2><span class="section-number">11.1. </span>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.1. </span>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <section id="what-is-continuous-integration">
-<h3><span class="section-number">11.1.1. </span>What is Continuous Integration?<a class="headerlink" href="#what-is-continuous-integration" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.1.1. </span>What is Continuous Integration?<a class="headerlink" href="#what-is-continuous-integration" title="Link to this heading">#</a></h3>
 <p>Continuous Integration (CI) is a development practice where developers frequently integrate their code into a shared repository, usually several times a day. Each integration is automatically verified by an automated build and testing process, allowing teams to detect problems early.</p>
 </section>
 <section id="purpose-and-benefits">
-<h3><span class="section-number">11.1.2. </span>Purpose and Benefits<a class="headerlink" href="#purpose-and-benefits" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.1.2. </span>Purpose and Benefits<a class="headerlink" href="#purpose-and-benefits" title="Link to this heading">#</a></h3>
 <p>The primary purpose of CI is to provide rapid feedback so that if a defect is introduced into the code base, it can be identified and corrected as soon as possible. CI has several key benefits:</p>
 <ul class="simple">
 <li><p><strong>Early Bug Detection:</strong> Bugs are detected and fixed early in development, reducing costs.</p></li>
@@ -443,10 +444,10 @@
 </section>
 </section>
 <section id="setting-up-a-github-actions-workflow">
-<h2><span class="section-number">11.2. </span>2. Setting up a GitHub Actions Workflow<a class="headerlink" href="#setting-up-a-github-actions-workflow" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.2. </span>2. Setting up a GitHub Actions Workflow<a class="headerlink" href="#setting-up-a-github-actions-workflow" title="Link to this heading">#</a></h2>
 <p>GitHub Actions is a CI/CD (Continuous Integration/Continuous Deployment) platform that allows the automation of software workflows. Using GitHub Actions in Python projects involves several steps:</p>
 <section id="creating-a-workflow-file">
-<h3><span class="section-number">11.2.1. </span>Creating a Workflow File<a class="headerlink" href="#creating-a-workflow-file" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.2.1. </span>Creating a Workflow File<a class="headerlink" href="#creating-a-workflow-file" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>Workflows are defined in <code class="docutils literal notranslate"><span class="pre">.yml</span></code> or <code class="docutils literal notranslate"><span class="pre">.yaml</span></code> files in the <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code> directory of your repository.</p></li>
 <li><p>A simple workflow file can start with the following structure:</p></li>
@@ -484,7 +485,7 @@
 </ul>
 </section>
 <section id="understanding-workflow-triggers">
-<h3><span class="section-number">11.2.2. </span>Understanding Workflow Triggers<a class="headerlink" href="#understanding-workflow-triggers" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.2.2. </span>Understanding Workflow Triggers<a class="headerlink" href="#understanding-workflow-triggers" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Workflows can be triggered by various events such as <code class="docutils literal notranslate"><span class="pre">push</span></code> or <code class="docutils literal notranslate"><span class="pre">pull_request</span></code> to the repository.</p></li>
 <li><p>You can also schedule workflows using the <code class="docutils literal notranslate"><span class="pre">schedule</span></code> event or trigger them manually with the <code class="docutils literal notranslate"><span class="pre">workflow_dispatch</span></code> event.</p></li>
@@ -492,9 +493,9 @@
 </section>
 </section>
 <section id="handling-and-setting-events">
-<h2><span class="section-number">11.3. </span>3. Handling and Setting Events<a class="headerlink" href="#handling-and-setting-events" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.3. </span>3. Handling and Setting Events<a class="headerlink" href="#handling-and-setting-events" title="Link to this heading">#</a></h2>
 <section id="event-types">
-<h3><span class="section-number">11.3.1. </span>Event Types<a class="headerlink" href="#event-types" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.3.1. </span>Event Types<a class="headerlink" href="#event-types" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Push Event:</strong> Triggers the workflow on every push to the repository.</p></li>
 <li><p><strong>Pull Request Event:</strong> Triggers the workflow whenever a pull request is made to specified branches.</p></li>
@@ -503,7 +504,7 @@
 </ul>
 </section>
 <section id="configuring-event-triggers">
-<h3><span class="section-number">11.3.2. </span>Configuring Event Triggers<a class="headerlink" href="#configuring-event-triggers" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.3.2. </span>Configuring Event Triggers<a class="headerlink" href="#configuring-event-triggers" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>To specify an event trigger, use the <code class="docutils literal notranslate"><span class="pre">on</span></code> keyword in your workflow file. For example:</p></li>
 <li><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">on</span><span class="p">:</span>
@@ -519,15 +520,15 @@
 </section>
 </section>
 <section id="using-the-matrix-strategy-for-testing-multiple-environments">
-<h2><span class="section-number">11.4. </span>4. Using the Matrix Strategy for Testing Multiple Environments<a class="headerlink" href="#using-the-matrix-strategy-for-testing-multiple-environments" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.4. </span>4. Using the Matrix Strategy for Testing Multiple Environments<a class="headerlink" href="#using-the-matrix-strategy-for-testing-multiple-environments" title="Link to this heading">#</a></h2>
 <section id="the-matrix-strategy">
-<h3><span class="section-number">11.4.1. </span>The Matrix Strategy<a class="headerlink" href="#the-matrix-strategy" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.4.1. </span>The Matrix Strategy<a class="headerlink" href="#the-matrix-strategy" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The matrix strategy in GitHub Actions allows you to run jobs across multiple operating systems, versions, and other configurations.</p></li>
 </ul>
 </section>
 <section id="example-configuration">
-<h3><span class="section-number">11.4.2. </span>Example Configuration<a class="headerlink" href="#example-configuration" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.4.2. </span>Example Configuration<a class="headerlink" href="#example-configuration" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>To test across different operating systems and Python versions, modify the <code class="docutils literal notranslate"><span class="pre">jobs</span></code> section:</p></li>
 <li><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">jobs</span><span class="p">:</span>
@@ -552,7 +553,7 @@
 </section>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">11.5. </span>5. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.5. </span>5. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Continuous Integration, particularly when integrated with tools like GitHub Actions, is a powerful practice for improving the quality and efficiency of software development projects. By understanding and utilizing CI, teams can significantly reduce integration problems, leading to more robust and reliable software. For Python projects, GitHub Actions offers a flexible and easy-to-use platform for implementing CI workflows, ensuring code quality across various environments.</p>
 </section>
 </section>
@@ -593,7 +594,7 @@
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Code Testing with Python</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Code Testing with Python</p>
       </div>
     </a>
     <a class="right-next"
@@ -601,7 +602,7 @@
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>Code Testing (2)</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Code Testing (2)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -622,27 +623,27 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">11.1. 1. Introduction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-continuous-integration">11.1.1. What is Continuous Integration?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose-and-benefits">11.1.2. Purpose and Benefits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">12.1. 1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-continuous-integration">12.1.1. What is Continuous Integration?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose-and-benefits">12.1.2. Purpose and Benefits</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-a-github-actions-workflow">11.2. 2. Setting up a GitHub Actions Workflow</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-workflow-file">11.2.1. Creating a Workflow File</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-workflow-triggers">11.2.2. Understanding Workflow Triggers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-a-github-actions-workflow">12.2. 2. Setting up a GitHub Actions Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-workflow-file">12.2.1. Creating a Workflow File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-workflow-triggers">12.2.2. Understanding Workflow Triggers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-and-setting-events">11.3. 3. Handling and Setting Events</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#event-types">11.3.1. Event Types</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-event-triggers">11.3.2. Configuring Event Triggers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-and-setting-events">12.3. 3. Handling and Setting Events</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#event-types">12.3.1. Event Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-event-triggers">12.3.2. Configuring Event Triggers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-matrix-strategy-for-testing-multiple-environments">11.4. 4. Using the Matrix Strategy for Testing Multiple Environments</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-matrix-strategy">11.4.1. The Matrix Strategy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-configuration">11.4.2. Example Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-matrix-strategy-for-testing-multiple-environments">12.4. 4. Using the Matrix Strategy for Testing Multiple Environments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-matrix-strategy">12.4.1. The Matrix Strategy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-configuration">12.4.2. Example Configuration</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">11.5. 5. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">12.5. 5. Conclusion</a></li>
 </ul>
   </nav></div>
 

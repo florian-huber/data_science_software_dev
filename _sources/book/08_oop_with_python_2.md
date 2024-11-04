@@ -1,6 +1,6 @@
-### Teil 2: Fortgeschrittene Konzepte in der OOP
+# Einige Fortgeschrittene Konzepte in der OOP
 
-#### 1. Getter und Setter
+## Getter und Setter
 
 In Python ermöglichen **Getter** und **Setter** den kontrollierten Zugriff auf Attribute eines Objekts. Dies ist besonders nützlich, wenn man sicherstellen möchte, dass nur gültige Werte zugewiesen werden. Python bietet dafür das Konzept der `@property`-Dekoratoren.
 
@@ -28,13 +28,13 @@ In diesem Beispiel:
 - Der **Getter** gibt den Wert von `self._level` zurück.
 - Der **Setter** stellt sicher, dass `new_level` ein Integer ist, bevor es dem Attribut zugewiesen wird. Andernfalls wird eine Fehlermeldung ausgegeben.
 
-#### 2. Dekoratoren
+## Dekoratoren
 
 **Dekoratoren** sind spezielle Funktionen, die andere Funktionen oder Methoden verändern. In OOP werden sie oft für Getter und Setter verwendet, aber sie können auch zur Modifikation des Verhaltens anderer Methoden dienen. Der `@property`-Dekorator verwandelt eine Methode in ein Attribut, und der `@level.setter`-Dekorator definiert eine zugehörige Setter-Methode.
 
 Dekoratoren sind ein wichtiges Konzept in Python, da sie eine elegante Möglichkeit bieten, Code zu wiederverwenden und die Funktionalität zu erweitern, ohne die ursprüngliche Funktion oder Methode zu verändern.
 
-#### 3. Private und versteckte Attribute
+## Private und versteckte Attribute
 
 In Python wird durch das Präfix `_` oder `__` angezeigt, dass ein Attribut oder eine Methode **privat** oder **versteckt** ist, d.h., sie sollen nur innerhalb der Klasse verwendet werden.
 
@@ -53,7 +53,7 @@ print(secret._hidden)           # Möglich, aber sollte vermieden werden
 print(secret._Secret__very_hidden)  # Zugriff durch Namensänderung möglich
 ```
 
-#### 4. Magische Methoden (Dunder-Methoden)
+## Magische Methoden (Dunder-Methoden)
 
 **Magische Methoden** (auch **Dunder-Methoden** genannt, da sie durch doppelte Unterstriche umgeben sind, wie `__init__`, `__str__`, etc.) erlauben es, das Verhalten von Python-Operatoren und Funktionen für benutzerdefinierte Klassen zu definieren.
 
@@ -84,7 +84,7 @@ print(len(book))
 
 Hier definieren wir `__str__` für die String-Darstellung und `__len__`, um die Anzahl der Seiten anzugeben.
 
-#### 5. Ausblick: OOP vs. Funktionale Programmierung
+## Ausblick: OOP vs. Funktionale Programmierung
 
 Python unterstützt sowohl die **objektorientierte** als auch die **funktionale Programmierung**. Beide Ansätze haben ihre Stärken, und es gibt keine allgemeingültige Antwort auf die Frage, welcher Ansatz besser ist. Oft hängt es von der Problemstellung ab:
 
@@ -93,7 +93,7 @@ Python unterstützt sowohl die **objektorientierte** als auch die **funktionale 
 
 Beide Paradigmen können in Python kombiniert werden, um robuste und gut strukturierte Lösungen zu entwickeln.
 
-#### Gute Gründe für die Nutzung von OOP:
+### Gute Gründe für die Nutzung von OOP:
 
 Bisher war die Antwort auf die Frage warum wir OOP nutzen sollten ehrlicherweise oft: "Weil ich OOP lernen will/muss...".
 
