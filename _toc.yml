@@ -14,8 +14,12 @@ parts:
     - file: book/05_clean_code
     - file: book/06_linting
     - file: book/06_code_smells
+  - caption: Python Software Project
+    numbered: true
+    chapters:
     - file: book/06_python_software_project
-  - caption: Data Acquisition and First Exploration
+    - file: book/07_oop_with_python
+  - caption: Testing and Continuous Integration
     numbered: true
     chapters:
     - file: book/06_testing
