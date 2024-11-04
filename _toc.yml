@@ -14,7 +14,7 @@ parts:
     - file: book/05_clean_code
     - file: book/06_linting
     - file: book/06_code_smells
-  - caption: Python Software Project
+  - caption: Code Design & Grundlagen der Objektorientierten Programmierung (OOP)
     numbered: true
     chapters:
     - file: book/06_python_software_project

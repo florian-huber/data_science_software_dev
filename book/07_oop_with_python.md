@@ -1,8 +1,6 @@
-## Code Design & Grundlagen der Objektorientierten Programmierung (OOP)
+# Wiederholung der OOP-Grundlagen
 
-### Teil 1: Wiederholung der OOP-Grundlagen
-
-#### 1. Klasse vs. Instanz
+## Klasse vs. Instanz
 
 In der objektorientierten Programmierung (OOP) sind **Klassen** und **Instanzen** zwei grundlegende Konzepte, die es uns ermöglichen, Code strukturiert und modular zu organisieren.
 
@@ -35,12 +33,12 @@ print(bike2.color)  # Ausgabe: blau
 print(Bike.wheels)  # Ausgabe: 2
 ```
 
-#### Wichtige Punkte:
+### Wichtige Punkte:
 - `Bike` ist die **Klasse**. Sie stellt die Struktur bereit: `wheels`, `color`, `model`.
 - `bike1` und `bike2` sind **Instanzen** der `Bike`-Klasse, jede mit eigenen `color`- und `model`-Attributen.
 - `wheels` ist ein **Klassenattribut**, das von allen Instanzen geteilt wird. Eine Änderung in der Klasse würde sich auf alle Instanzen auswirken.
 
-#### 2. Klasse in Python
+## Klasse in Python
 
 Eine **Klasse** in Python wird mit dem Schlüsselwort `class` definiert. Sie enthält normalerweise eine Konstruktor-Methode, `__init__`, die aufgerufen wird, wenn eine neue Instanz erstellt wird. Der Konstruktor ermöglicht es, initiale Attribute für jede Instanz festzulegen.
 
@@ -62,7 +60,7 @@ In diesem Beispiel:
 - `name` und `species` sind **Instanzattribute**—spezifisch für jede Instanz (`animal1` und `animal2`).
 - Jede Instanz hat eigene Daten, aber beide teilen die Struktur der `Animal`-Klasse.
 
-#### 3. Methoden und Attribute
+## Methoden und Attribute
 
 **Attribute** sind die Daten, die in einer Instanz gespeichert sind, während **Methoden** Funktionen sind, die in einer Klasse definiert werden und auf Instanzen der Klasse operieren.
 
