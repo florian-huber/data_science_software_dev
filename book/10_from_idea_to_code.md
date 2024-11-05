@@ -2,7 +2,14 @@
 
 Beim Programmieren gibt es oft einen sehr starken Impuls "einfach loszulegen", also direkt mit dem Schreiben von Code zu beginnen. Bei kleineren Aufgaben, z.B. Übungsaufgaben, ist das in der Regel auch OK. Sobald es aber um ein größeres Programm geht ist es nicht nur sinnvoll, sondern oft fast unverzichtbar zuerst ein Konzept oder ein Code Design zu erstellen. Gerade bei komplexen Aufgaben, ist es aber gar nicht so leicht sich eine erste Vorstellung davon zu machen wie der Code aufgebaut sein sollte. 
 
-Anstatt allgemeine Best Practices und Prinzipien anzuschauen, ist das Ziel hier, dass wir anhand eines konkreten Beispiels einmal durchspielen wie wir von einer Idee zum Code kommen können. Wir hangelnd uns dazu aber entlang etablierter Entwurfsphasen entlang. Diese werden jetzt zuerst sehr knapp eingeführt.
+Anstatt uns lange allgemeine Best Practices und Prinzipien anzuschauen, ist das Ziel hier, dass wir anhand eines konkreten Beispiels einmal durchspielen wie wir von einer Idee zum Code kommen können. Wir hangelnd uns dazu aber entlang etablierter Entwurfsphasen entlang. Diese werden wir aber zuerst zumindest kurz einführen müssen um den generellen Ablauf zu verstehen.
+
+Es gibt viele verschiedene Beschreibungen typischer Softwareentwicklungs-Prozesse. Sehr bekannt ist der *Unified Software Development Process* (oder *Unified Process*), von dem es viele Variationen gibt wie z.B. den [*Rational Unified Process*](https://en.wikipedia.org/wiki/Rational_unified_process) oder den [*Agile Unified Process*](https://en.wikipedia.org/wiki/Agile_unified_process).
+
+
+
+
+
 Hier ist eine kurze Übersicht der allgemeinen Entwicklungsphasen, die in einer Einführung verwendet werden könnte:
 
 ## Entwicklungsphasen von der Idee zum Code
