@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>14. Code Testing with Python &#8212; Data Science Software Development with Python</title>
+    <title>12. Code Testing with Python &#8212; Data Science Software Development with Python</title>
   
   
   
@@ -63,8 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/06_testing';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="15. Introduction to Continuous Integration" href="07_continuous_integration.html" />
-    <link rel="prev" title="13. Python Software Projekt" href="11_python_software_project.html" />
+    <link rel="next" title="13. Introduction to Continuous Integration" href="07_continuous_integration.html" />
+    <link rel="prev" title="11. Python Software Projekt" href="11_python_software_project.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -186,15 +186,13 @@
 <li class="toctree-l1"><a class="reference internal" href="08_oop_with_python.html">8. Wiederholung der OOP-Grundlagen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09_oop_with_python_2.html">9. Einige Fortgeschrittene Konzepte in der OOP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_from_idea_to_code.html">10. From Idea to Code</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="11_python_software_project.html">13. Python Software Projekt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_python_software_project.html">11. Python Software Projekt</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Testing and Continuous Integration</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. Code Testing with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">15. Introduction to Continuous Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">16. Code Testing (2)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Code Testing with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">13. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">14. Code Testing (2)</a></li>
 
 
 
@@ -395,18 +393,18 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-necessity-of-testing">14.1. 1. The Necessity of Testing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-different-types-of-errors">14.1.1. Understanding Different Types of Errors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-myth-of-100-bug-free-software">14.1.2. The Myth of 100% Bug-Free Software</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-necessity-of-testing">12.1. 1. The Necessity of Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-different-types-of-errors">12.1.1. Understanding Different Types of Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-myth-of-100-bug-free-software">12.1.2. The Myth of 100% Bug-Free Software</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-testing">14.2. 2. What is Testing?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-vs-automated-testing">14.2.1. Manual vs. Automated Testing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#white-box-vs-black-box-testing">14.2.2. White Box vs. Black Box Testing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-testing">14.2.3. Types of Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-testing">12.2. 2. What is Testing?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-vs-automated-testing">12.2.1. Manual vs. Automated Testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#white-box-vs-black-box-testing">12.2.2. White Box vs. Black Box Testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-testing">12.2.3. Types of Testing</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">14.3. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">12.3. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -419,12 +417,12 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="code-testing-with-python">
-<h1><span class="section-number">14. </span>Code Testing with Python<a class="headerlink" href="#code-testing-with-python" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">12. </span>Code Testing with Python<a class="headerlink" href="#code-testing-with-python" title="Link to this heading">#</a></h1>
 <p>Testing is an integral part of software development, ensuring that code functions correctly and meets specified requirements. It’s crucial to understand that even well-written and properly formatted code is not inherently error-free. In this expanded introduction, we’ll delve deeper into the necessity of testing, types of errors, the reality of bug-free software, and different testing methodologies.</p>
 <section id="the-necessity-of-testing">
-<h2><span class="section-number">14.1. </span>1. The Necessity of Testing<a class="headerlink" href="#the-necessity-of-testing" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.1. </span>1. The Necessity of Testing<a class="headerlink" href="#the-necessity-of-testing" title="Link to this heading">#</a></h2>
 <section id="understanding-different-types-of-errors">
-<h3><span class="section-number">14.1.1. </span>Understanding Different Types of Errors<a class="headerlink" href="#understanding-different-types-of-errors" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.1.1. </span>Understanding Different Types of Errors<a class="headerlink" href="#understanding-different-types-of-errors" title="Link to this heading">#</a></h3>
 <p>In programming, errors generally fall into three categories:</p>
 <ul class="simple">
 <li><p><strong>Syntax Errors</strong>: These are grammatical errors in the code that prevent the program from running. They are usually the easiest to detect and fix.</p></li>
@@ -433,7 +431,7 @@
 </ul>
 </section>
 <section id="the-myth-of-100-bug-free-software">
-<h3><span class="section-number">14.1.2. </span>The Myth of 100% Bug-Free Software<a class="headerlink" href="#the-myth-of-100-bug-free-software" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.1.2. </span>The Myth of 100% Bug-Free Software<a class="headerlink" href="#the-myth-of-100-bug-free-software" title="Link to this heading">#</a></h3>
 <p>The concept of completely error-free software is more of a theoretical ideal than a practical reality. Studies suggest that typical software can have between 15 to 50 mistakes per 1,000 lines of code. Even well-tested software might have about 1 error per 1,000 lines. To put this in perspective, consider the size of some well-known software:</p>
 <ul class="simple">
 <li><p>MATLAB: Approximately 100,000 lines of code.</p></li>
@@ -443,24 +441,24 @@
 </section>
 </section>
 <section id="what-is-testing">
-<h2><span class="section-number">14.2. </span>2. What is Testing?<a class="headerlink" href="#what-is-testing" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.2. </span>2. What is Testing?<a class="headerlink" href="#what-is-testing" title="Link to this heading">#</a></h2>
 <p>Testing in software development is the process of evaluating a system or its components with the intent to find whether it satisfies the specified requirements. It involves executing a system component to identify any gaps, errors, or missing requirements in contrast to the actual requirements.</p>
 <section id="manual-vs-automated-testing">
-<h3><span class="section-number">14.2.1. </span>Manual vs. Automated Testing<a class="headerlink" href="#manual-vs-automated-testing" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.2.1. </span>Manual vs. Automated Testing<a class="headerlink" href="#manual-vs-automated-testing" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Manual Testing</strong>: This involves human testers playing the role of end-users and using all features of the application to ensure correct behavior.</p></li>
 <li><p><strong>Automated Testing</strong>: Uses software tools to run tests automatically, manage test data, and utilize results to improve software quality. It’s faster and more reliable for repetitive tasks.</p></li>
 </ul>
 </section>
 <section id="white-box-vs-black-box-testing">
-<h3><span class="section-number">14.2.2. </span>White Box vs. Black Box Testing<a class="headerlink" href="#white-box-vs-black-box-testing" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.2.2. </span>White Box vs. Black Box Testing<a class="headerlink" href="#white-box-vs-black-box-testing" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>White Box Testing</strong>: Also known as clear box or glass box testing, focuses on the internal structures or workings of an application, as opposed to its functionality. It requires detailed programming skills.</p></li>
 <li><p><strong>Black Box Testing</strong>: Focuses on the functionality of the software without peering into its internal structures or workings. This approach tests the software from the user’s perspective.</p></li>
 </ul>
 </section>
 <section id="types-of-testing">
-<h3><span class="section-number">14.2.3. </span>Types of Testing<a class="headerlink" href="#types-of-testing" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.2.3. </span>Types of Testing<a class="headerlink" href="#types-of-testing" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Acceptance Testing</strong>: Determines if the system satisfies the user and business requirements.</p></li>
 <li><p><strong>System Testing</strong>: Checks the complete integrated system to evaluate the system’s compliance with its specified requirements.</p></li>
@@ -470,7 +468,7 @@
 </section>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">14.3. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.3. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Testing, in its various forms, is an essential practice in software development. It helps in identifying and fixing bugs before the software product is deployed, reducing the likelihood of failures and ensuring software quality. While achieving a completely bug-free application might be an unattainable goal, thorough testing can significantly reduce the number of defects and enhance the reliability and performance of the software product.</p>
 </section>
 </section>
@@ -511,7 +509,7 @@
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Python Software Projekt</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Python Software Projekt</p>
       </div>
     </a>
     <a class="right-next"
@@ -519,7 +517,7 @@
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">15. </span>Introduction to Continuous Integration</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Introduction to Continuous Integration</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -540,18 +538,18 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-necessity-of-testing">14.1. 1. The Necessity of Testing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-different-types-of-errors">14.1.1. Understanding Different Types of Errors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-myth-of-100-bug-free-software">14.1.2. The Myth of 100% Bug-Free Software</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-necessity-of-testing">12.1. 1. The Necessity of Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-different-types-of-errors">12.1.1. Understanding Different Types of Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-myth-of-100-bug-free-software">12.1.2. The Myth of 100% Bug-Free Software</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-testing">14.2. 2. What is Testing?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-vs-automated-testing">14.2.1. Manual vs. Automated Testing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#white-box-vs-black-box-testing">14.2.2. White Box vs. Black Box Testing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-testing">14.2.3. Types of Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-testing">12.2. 2. What is Testing?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-vs-automated-testing">12.2.1. Manual vs. Automated Testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#white-box-vs-black-box-testing">12.2.2. White Box vs. Black Box Testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-testing">12.2.3. Types of Testing</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">14.3. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">12.3. Conclusion</a></li>
 </ul>
   </nav></div>
 

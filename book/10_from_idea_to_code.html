@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/10_from_idea_to_code';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="13. Python Software Projekt" href="11_python_software_project.html" />
+    <link rel="next" title="11. Python Software Projekt" href="11_python_software_project.html" />
     <link rel="prev" title="9. Einige Fortgeschrittene Konzepte in der OOP" href="09_oop_with_python_2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -186,15 +186,13 @@
 <li class="toctree-l1"><a class="reference internal" href="08_oop_with_python.html">8. Wiederholung der OOP-Grundlagen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09_oop_with_python_2.html">9. Einige Fortgeschrittene Konzepte in der OOP</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">10. From Idea to Code</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="11_python_software_project.html">13. Python Software Projekt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_python_software_project.html">11. Python Software Projekt</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Testing and Continuous Integration</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="06_testing.html">14. Code Testing with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">15. Introduction to Continuous Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">16. Code Testing (2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_testing.html">12. Code Testing with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">13. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">14. Code Testing (2)</a></li>
 
 
 
@@ -395,26 +393,34 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">10. From Idea to Code</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#entwicklungsphasen-von-der-idee-zum-code">11. Entwicklungsphasen von der Idee zum Code</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#building-an-ascii-scatter-plot-tool-in-python">12. Building an ASCII Scatter Plot Tool in Python</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-1-anforderungsanalyse-anwendungsfalle">12.1. Phase 1: Anforderungsanalyse &amp; Anwendungsfälle</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ziele">12.1.1. <strong>Ziele</strong>:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anwendungsfall">12.1.2. <strong>Anwendungsfall</strong>:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entwicklungsphasen-von-der-idee-zum-code">10.1. Entwicklungsphasen von der Idee zum Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problemdefinition-und-anforderungsanalyse">10.1.1. Problemdefinition und Anforderungsanalyse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-losungsplanung">10.1.2. High-Level Lösungsplanung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zerlegung-des-problems-in-komponenten">10.1.3. Zerlegung des Problems in Komponenten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detailliertes-design-mit-flussdiagrammen-und-diagrammen">10.1.4. Detailliertes Design mit Flussdiagrammen und Diagrammen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-von-schnittstellen-und-interaktionen">10.1.5. Definition von Schnittstellen und Interaktionen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementierungsplanung">10.1.6. Implementierungsplanung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uberprufung-und-feedback">10.1.7. Überprüfung und Feedback</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erlauterung-und-ausrichtung-an-best-practices">10.1.8. Erläuterung und Ausrichtung an Best Practices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zusatzliche-tipps">10.1.9. Zusätzliche Tipps</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-2-konzeptionelles-modell">12.2. Phase 2: Konzeptionelles Modell</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-3-zerlegung-abstraktion">12.3. <strong>Phase 3: Zerlegung &amp; Abstraktion</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-4-entwurfsmuster">12.4. <strong>Phase 4: Entwurfsmuster</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-5-pseudocode-und-flussdiagramme">12.5. <strong>Phase 5: Pseudocode und Flussdiagramme</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-6-prototyping-und-feedback">12.6. <strong>Phase 6: Prototyping und Feedback</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-7-iterative-verbesserung">12.7. <strong>Phase 7: Iterative Verbesserung</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endprodukt">12.8. <strong>Endprodukt</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-der-lektion">12.9. <strong>Zusammenfassung der Lektion</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-python-beispiel">10.2. Praktisches Python Beispiel</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.2.1. Problemdefinition und Anforderungsanalyse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.2.2. High-Level Lösungsplanung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.2.3. Zerlegung des Problems in Komponenten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.2.4. Detailliertes Design mit Flussdiagrammen und Diagrammen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.2.5. Definition von Schnittstellen und Interaktionen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10.2.6. Implementierungsplanung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">10.2.7. Überprüfung und Feedback</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ausblick">10.2.8. Ausblick</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-an-ascii-scatter-plot-tool-in-python">10.3. Building an ASCII Scatter Plot Tool in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endprodukt">10.3.1. Endprodukt</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -425,13 +431,414 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="from-idea-to-code">
+  <section class="tex2jax_ignore mathjax_ignore" id="from-idea-to-code">
 <h1><span class="section-number">10. </span>From Idea to Code<a class="headerlink" href="#from-idea-to-code" title="Link to this heading">#</a></h1>
-<p>Anstatt allgemeine Best Practices und Prinzipien anzuschauen, ist das Ziel hier, dass wir anhand eines konkreten Beispiels einmal durchspielen wie wir von einer Idee zum Code kommen können. Wir hangelnd uns dazu aber entlang etablierter Entwurfsphasen entlang. Diese werden jetzt zuerst sehr knapp eingeführt.
-Hier ist eine kurze Übersicht der allgemeinen Entwicklungsphasen, die in einer Einführung verwendet werden könnte:</p>
-</section>
+<p>Beim Programmieren gibt es oft einen sehr starken Impuls “einfach loszulegen”, also direkt mit dem Schreiben von Code zu beginnen. Bei kleineren Aufgaben, z.B. Übungsaufgaben, ist das in der Regel auch OK. Sobald es aber um ein größeres Programm geht ist es nicht nur sinnvoll, sondern oft fast unverzichtbar zuerst ein Konzept oder ein Code Design zu erstellen. Gerade bei komplexen Aufgaben, ist es aber gar nicht so leicht sich eine erste Vorstellung davon zu machen wie der Code aufgebaut sein sollte.</p>
+<p>Anstatt uns lange allgemeine Best Practices und Prinzipien anzuschauen, ist das Ziel hier, dass wir anhand eines konkreten Beispiels einmal durchspielen wie wir von einer Idee zum Code kommen können. Wir hangelnd uns dazu aber entlang etablierter Entwurfsphasen entlang. Diese werden wir aber zuerst zumindest kurz einführen müssen um den generellen Ablauf zu verstehen.</p>
+<p>Es gibt viele verschiedene Beschreibungen typischer Softwareentwicklungs-Prozesse. Sehr bekannt ist der <em>Unified Software Development Process</em> (oder <em>Unified Process</em>), von dem es viele Variationen gibt wie z.B. den <a class="reference external" href="https://en.wikipedia.org/wiki/Rational_unified_process"><em>Rational Unified Process</em></a> oder den <a class="reference external" href="https://en.wikipedia.org/wiki/Agile_unified_process"><em>Agile Unified Process</em></a>. Eine Variante de Unified Process wird auf <a class="reference external" href="https://www.geeksforgeeks.org/unified-process-in-ooad/">geeksforgeeks.org</a> dargestellt.</p>
+<p>Im folgenden halten wir uns nicht an einen spezifischen dieser Prozesse, sondern geben nur eine (an vielen Stellen vereinfachte) Struktur vor mit deren Hilfe sich ein Code Design erstellen lässt.</p>
 <section id="entwicklungsphasen-von-der-idee-zum-code">
-<h1><span class="section-number">11. </span>Entwicklungsphasen von der Idee zum Code<a class="headerlink" href="#entwicklungsphasen-von-der-idee-zum-code" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">10.1. </span>Entwicklungsphasen von der Idee zum Code<a class="headerlink" href="#entwicklungsphasen-von-der-idee-zum-code" title="Link to this heading">#</a></h2>
+<p>Absolut, für Data-Science-Studenten mit begrenzter Softwareentwicklungserfahrung ist es wichtig, einen klaren und praktischen Prozess zu vermitteln, der den Übergang von einer Idee zu einem konkreten Softwaredesign erleichtert. Das Ziel ist, ihnen zu helfen, ihre Problemlösungsansätze systematisch in strukturierten Code umzusetzen. Hier ist ein vereinfachter, aber professioneller Workflow, der sich an aktuellen Best Practices in der Softwareentwicklung orientiert:</p>
+<section id="problemdefinition-und-anforderungsanalyse">
+<h3><span class="section-number">10.1.1. </span>Problemdefinition und Anforderungsanalyse<a class="headerlink" href="#problemdefinition-und-anforderungsanalyse" title="Link to this heading">#</a></h3>
+<p><strong>Ziel</strong>: Klare Verständigung darüber, was gelöst werden muss.</p>
+<p><strong>Aktivitäten</strong>:</p>
+<ul class="simple">
+<li><p><strong>Definieren des Problems</strong>:</p></li>
+<li><p>Formuliere die Problemstellung in eigenen Worten.</p></li>
+<li><p>Identifiziere die Kernziele und Einschränkungen.</p></li>
+<li><p><strong>Anforderungen sammeln</strong>:</p></li>
+<li><p>Bestimme, welche Eingaben benötigt werden.</p></li>
+<li><p>Definiere die erwarteten Ausgaben oder Ergebnisse.</p></li>
+<li><p>Berücksichtige spezifische Leistungs- oder Benutzerfreundlichkeitsanforderungen.</p></li>
+</ul>
+<p><strong>Ergebnis</strong>:</p>
+<ul class="simple">
+<li><p>Eine klare, präzise Problemstellung.</p></li>
+<li><p>Eine Liste funktionaler Anforderungen (was die Software tun soll).</p></li>
+<li><p>Eine Liste nicht-funktionaler Anforderungen (Leistung, Benutzerfreundlichkeit usw.).</p></li>
+</ul>
+</section>
+<section id="high-level-losungsplanung">
+<h3><span class="section-number">10.1.2. </span>High-Level Lösungsplanung<a class="headerlink" href="#high-level-losungsplanung" title="Link to this heading">#</a></h3>
+<p><strong>Ziel</strong>: Einen allgemeinen Ansatz zur Lösung des Problems skizzieren.</p>
+<p><strong>Aktivitäten</strong>:</p>
+<ul class="simple">
+<li><p><strong>Lösungen brainstormen</strong>:</p></li>
+<li><p>Überlege mögliche Methoden oder Algorithmen, die das Problem adressieren können.</p></li>
+<li><p>Bewerte die Vor- und Nachteile jedes Ansatzes.</p></li>
+<li><p><strong>Ansatz auswählen</strong>:</p></li>
+<li><p>Wähle den am besten geeigneten Lösungsweg basierend auf Machbarkeit und Anforderungen.</p></li>
+</ul>
+<p><strong>Ergebnis</strong>:</p>
+<ul class="simple">
+<li><p>Ein ausgewählter Lösungsansatz.</p></li>
+<li><p>Begründung für die Auswahl dieses Ansatzes.</p></li>
+</ul>
+</section>
+<section id="zerlegung-des-problems-in-komponenten">
+<h3><span class="section-number">10.1.3. </span>Zerlegung des Problems in Komponenten<a class="headerlink" href="#zerlegung-des-problems-in-komponenten" title="Link to this heading">#</a></h3>
+<p><strong>Ziel</strong>: Die Lösung in handhabbare Teile aufteilen.</p>
+<p><strong>Aktivitäten</strong>:</p>
+<ul class="simple">
+<li><p><strong>Identifizierung der Hauptaufgaben</strong>:</p></li>
+<li><p>Liste die Hauptaufgaben oder Schritte auf, die zur Umsetzung der Lösung erforderlich sind.</p></li>
+<li><p>Gruppiere verwandte Aufgaben zusammen.</p></li>
+<li><p><strong>Definition von Modulen oder Funktionen</strong>:</p></li>
+<li><p>Entscheide für jede Aufgabengruppe, ob sie eine Funktion, Methode oder Klasse sein sollte.</p></li>
+<li><p>Weisen jedem Modul klare Verantwortlichkeiten zu.</p></li>
+</ul>
+<p><strong>Ergebnis</strong>:</p>
+<ul class="simple">
+<li><p>Eine Liste von Modulen, Funktionen oder Klassen mit zugewiesenen Verantwortlichkeiten.</p></li>
+<li><p>Eine hierarchische Struktur, die zeigt, wie die Komponenten interagieren.</p></li>
+</ul>
+</section>
+<section id="detailliertes-design-mit-flussdiagrammen-und-diagrammen">
+<h3><span class="section-number">10.1.4. </span>Detailliertes Design mit Flussdiagrammen und Diagrammen<a class="headerlink" href="#detailliertes-design-mit-flussdiagrammen-und-diagrammen" title="Link to this heading">#</a></h3>
+<p><strong>Ziel</strong>: Die Logik und Struktur der Software visualisieren.</p>
+<p><strong>Aktivitäten</strong>:</p>
+<ul class="simple">
+<li><p><strong>Erstellung von Flussdiagrammen</strong>:</p></li>
+<li><p>Zeichne Flussdiagramme für komplexe Funktionen oder Prozesse.</p></li>
+<li><p>Verwende standardisierte Symbole, um Operationen, Entscheidungen und Datenfluss darzustellen.</p></li>
+<li><p><strong>Skizzierung von Klassendiagrammen (bei Verwendung von OOP)</strong>:</p></li>
+<li><p>Identifiziere Klassen, ihre Attribute und Methoden.</p></li>
+<li><p>Definiere Beziehungen zwischen Klassen (Vererbung, Assoziation).</p></li>
+<li><p><strong>Design von Datenstrukturen</strong>:</p></li>
+<li><p>Entscheide über die benötigten Datenstrukturen (Listen, Dictionaries, benutzerdefinierte Objekte).</p></li>
+<li><p>Stelle sicher, dass sie mit den Datentypen der Eingaben und Ausgaben übereinstimmen.</p></li>
+</ul>
+<p><strong>Ergebnis</strong>:</p>
+<ul class="simple">
+<li><p>Detaillierte Flussdiagramme, die die Programmlogik veranschaulichen.</p></li>
+<li><p>Klassendiagramme, die die Struktur der Klassen und ihre Beziehungen zeigen.</p></li>
+<li><p>Definitionen der Datenstrukturen.</p></li>
+</ul>
+</section>
+<section id="definition-von-schnittstellen-und-interaktionen">
+<h3><span class="section-number">10.1.5. </span>Definition von Schnittstellen und Interaktionen<a class="headerlink" href="#definition-von-schnittstellen-und-interaktionen" title="Link to this heading">#</a></h3>
+<p><strong>Ziel</strong>: Spezifizieren, wie die verschiedenen Komponenten kommunizieren.</p>
+<p><strong>Aktivitäten</strong>:</p>
+<ul class="simple">
+<li><p><strong>Schnittstellendesign</strong>:</p></li>
+<li><p>Definiere Funktionssignaturen (Eingabeparameter und Rückgabetypen).</p></li>
+<li><p>Spezifiziere Methodenschnittstellen für Klassen.</p></li>
+<li><p><strong>Interaktionsdiagramme (optional)</strong>:</p></li>
+<li><p>Verwende Sequenzdiagramme, um Interaktionen über die Zeit darzustellen.</p></li>
+<li><p>Kläre die Reihenfolge von Operationen und den Datenfluss zwischen Komponenten.</p></li>
+</ul>
+<p><strong>Ergebnis</strong>:</p>
+<ul class="simple">
+<li><p>Gut definierte Schnittstellen für alle Module.</p></li>
+<li><p>Klare Verständnis der Komponenteninteraktionen.</p></li>
+</ul>
+</section>
+<section id="implementierungsplanung">
+<h3><span class="section-number">10.1.6. </span>Implementierungsplanung<a class="headerlink" href="#implementierungsplanung" title="Link to this heading">#</a></h3>
+<p><strong>Ziel</strong>: Sich mit einem klaren Fahrplan auf die Codierungsphase vorbereiten.</p>
+<p><strong>Aktivitäten</strong>:</p>
+<ul class="simple">
+<li><p><strong>Priorisierung der Entwicklungstasks</strong>:</p></li>
+<li><p>Ordne Tasks basierend auf Abhängigkeiten und Wichtigkeit.</p></li>
+<li><p>Setze Meilensteine für schrittweisen Fortschritt.</p></li>
+<li><p><strong>Einrichtung von Tools und Umgebung</strong>:</p></li>
+<li><p>Wähle die Programmiersprache und Bibliotheken aus.</p></li>
+<li><p>Richte Entwicklungsumgebungen und Versionskontrollsysteme ein.</p></li>
+<li><p><strong>Teststrategie</strong>:</p></li>
+<li><p>Plane, wie jede Komponente getestet werden soll (Unit-Tests, Integrationstests).</p></li>
+<li><p>Entscheide über Testfälle zur Validierung der Funktionalität.</p></li>
+</ul>
+<p><strong>Ergebnis</strong>:</p>
+<ul class="simple">
+<li><p>Ein Schritt-für-Schritt-Implementierungsplan.</p></li>
+<li><p>Entwicklungsumgebung bereit für die Codierung.</p></li>
+<li><p>Erste Entwürfe des Testplans.</p></li>
+</ul>
+</section>
+<section id="uberprufung-und-feedback">
+<h3><span class="section-number">10.1.7. </span>Überprüfung und Feedback<a class="headerlink" href="#uberprufung-und-feedback" title="Link to this heading">#</a></h3>
+<p><strong>Ziel</strong>: Das Design vor der Implementierung validieren.</p>
+<p><strong>Aktivitäten</strong>:</p>
+<ul class="simple">
+<li><p><strong>Peer Review</strong>:</p></li>
+<li><p>Präsentiere das Design Kommilitonen oder Dozenten.</p></li>
+<li><p>Diskutiere mögliche Probleme oder Verbesserungen.</p></li>
+<li><p><strong>Verfeinerung</strong>:</p></li>
+<li><p>Integriere Feedback in das Design.</p></li>
+<li><p>Kläre alle unklaren Teile des Designs.</p></li>
+</ul>
+<p><strong>Ergebnis</strong>:</p>
+<ul class="simple">
+<li><p>Verbessertes und validiertes Design.</p></li>
+<li><p>Erhöhtes Vertrauen in den geplanten Ansatz.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="erlauterung-und-ausrichtung-an-best-practices">
+<h3><span class="section-number">10.1.8. </span>Erläuterung und Ausrichtung an Best Practices<a class="headerlink" href="#erlauterung-und-ausrichtung-an-best-practices" title="Link to this heading">#</a></h3>
+<p>Dieser vereinfachte Prozess spiegelt wesentliche Phasen der professionellen Softwareentwicklung wider, ist aber für Software-Development-Anfänger angepasst:</p>
+<ul class="simple">
+<li><p><strong>Betont das Verständnis</strong>: Beginnend mit der Problemdefinition wird ein tiefes Verständnis sichergestellt, bevor mit dem Codieren begonnen wird.</p></li>
+<li><p><strong>Modulares Design</strong>: Die Aufteilung des Problems in Komponenten entspricht dem Prinzip der Modularität und verbessert die Wartbarkeit des Codes.</p></li>
+<li><p><strong>Visualisierungstools</strong>: Die Verwendung von Flussdiagrammen und Diagrammen hilft bei der Planung und Kommunikation komplexer Logik.</p></li>
+<li><p><strong>Iteratives Feedback</strong>: Die Einbindung von Überprüfungsphasen spiegelt agile Praktiken wider und fördert Anpassungsfähigkeit und kontinuierliche Verbesserung.</p></li>
+<li><p><strong>Vorbereitung auf die Implementierung</strong>: Vorausplanung ebnet den Weg für effizientes Codieren und Testen.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="zusatzliche-tipps">
+<h3><span class="section-number">10.1.9. </span>Zusätzliche Tipps<a class="headerlink" href="#zusatzliche-tipps" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Halte es einfach</strong>: Fokussiere dich auf Klarheit statt Komplexität. Einfache Designs sind leichter zu implementieren und zu debuggen.</p></li>
+<li><p><strong>Dokumentiere dein Design</strong>: Selbst informelle Notizen und Skizzen können während des Codierens wertvoll sein.</p></li>
+<li><p><strong>Bleibe flexibel</strong>: Sei bereit, dein Design anzupassen, wenn du während der Implementierung mehr erfährst.</p></li>
+<li><p><strong>Suche Zusammenarbeit</strong>: Die besten Code Designs entstehen oft über Austausch und Zusammenarbeit.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="praktisches-python-beispiel">
+<h2><span class="section-number">10.2. </span>Praktisches Python Beispiel<a class="headerlink" href="#praktisches-python-beispiel" title="Link to this heading">#</a></h2>
+<p>Wenden wir diesen Prozess auf ein konkretes Projekt an: <strong>Erstellung eines ASCII-Scatterplots</strong></p>
+<section id="id1">
+<h3><span class="section-number">10.2.1. </span>Problemdefinition und Anforderungsanalyse<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Problem</strong>: Entwicklung eines Programms, das x- und y-Koordinaten aus einer CSV-Datei lädt und ein Scatterplot als ASCII-Grafik darstellt.</p></li>
+<li><p><strong>Funktionale Anforderungen</strong>:</p>
+<ul>
+<li><p>Laden von Daten aus einer CSV-Datei mit “x” und “y” Spalten.</p></li>
+<li><p>Skalierung der Koordinaten, um sie an ein ASCII-Raster anzupassen.</p></li>
+<li><p>Darstellung der Datenpunkte im Raster mit einem spezifischen Zeichen.</p></li>
+<li><p>Hinzufügen von Achsen zum Raster.</p></li>
+</ul>
+</li>
+<li><p><strong>Nicht-funktionale Anforderungen</strong>:</p>
+<ul>
+<li><p>Anpassbare Rastergröße und Zeichen.</p></li>
+<li><p>Effiziente Verarbeitung und Skalierung der Daten.</p></li>
+<li><p>Klare und lesbare Ausgabe auf der Konsole.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id2">
+<h3><span class="section-number">10.2.2. </span>High-Level Lösungsplanung<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Ansatz</strong>: Implementierung einer Python-Klasse <code class="docutils literal notranslate"><span class="pre">AsciiScatterPlot</span></code>, die alle erforderlichen Funktionen kapselt:</p>
+<ul>
+<li><p>Laden und Validieren der CSV-Daten.</p></li>
+<li><p>Skalierung der Koordinaten entsprechend der Rastergröße und des Seitenverhältnisses.</p></li>
+<li><p>Erstellung des Rasters und Hinzufügen von Achsen.</p></li>
+<li><p>Plotten der Datenpunkte auf dem Raster.</p></li>
+<li><p>Ausgabe des Rasters auf der Konsole.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h3><span class="section-number">10.2.3. </span>Zerlegung des Problems in Komponenten<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Module/Funktionen</strong>:</p>
+<ul>
+<li><p><strong>Initialisierung</strong>: <code class="docutils literal notranslate"><span class="pre">__init__(char,</span> <span class="pre">width,</span> <span class="pre">height,</span> <span class="pre">aspect_ratio)</span></code></p>
+<ul>
+<li><p>Initialisiert das Raster und die Parameter.</p></li>
+</ul>
+</li>
+<li><p><strong>Datenladen</strong>: <code class="docutils literal notranslate"><span class="pre">load_csv(filepath)</span></code></p>
+<ul>
+<li><p>Lädt die CSV-Datei und überprüft das Vorhandensein von “x” und “y” Spalten.</p></li>
+</ul>
+</li>
+<li><p><strong>Koordinatenskalierung</strong>: <code class="docutils literal notranslate"><span class="pre">scale_coordinates(data)</span></code></p>
+<ul>
+<li><p>Skaliert die Koordinaten, um sie an die Rasterdimensionen anzupassen.</p></li>
+</ul>
+</li>
+<li><p><strong>Achsen hinzufügen</strong>: <code class="docutils literal notranslate"><span class="pre">add_axes()</span></code></p>
+<ul>
+<li><p>Fügt x- und y-Achsen zum Raster hinzu.</p></li>
+</ul>
+</li>
+<li><p><strong>Punkte plotten</strong>: <code class="docutils literal notranslate"><span class="pre">plot_points(scaled_coords)</span></code></p>
+<ul>
+<li><p>Platziert die Datenpunkte auf dem Raster.</p></li>
+</ul>
+</li>
+<li><p><strong>Anzeigen</strong>: <code class="docutils literal notranslate"><span class="pre">display()</span></code></p>
+<ul>
+<li><p>Gibt das Raster auf der Konsole aus.</p></li>
+</ul>
+</li>
+<li><p><strong>Gesamtprozess</strong>: <code class="docutils literal notranslate"><span class="pre">plot_from_csv(filepath)</span></code></p>
+<ul>
+<li><p>Führt alle Schritte aus, um das Scatterplot zu erstellen.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id4">
+<h3><span class="section-number">10.2.4. </span>Detailliertes Design mit Flussdiagrammen und Diagrammen<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Klassendiagramm</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+------------------------+</span>
+<span class="o">|</span>     <span class="n">AsciiScatterPlot</span>   <span class="o">|</span>
+<span class="o">+------------------------+</span>
+<span class="o">|</span> <span class="o">-</span> <span class="n">char</span><span class="p">:</span> <span class="nb">str</span>            <span class="o">|</span>
+<span class="o">|</span> <span class="o">-</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span>           <span class="o">|</span>
+<span class="o">|</span> <span class="o">-</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span>          <span class="o">|</span>
+<span class="o">|</span> <span class="o">-</span> <span class="n">aspect_ratio</span><span class="p">:</span> <span class="nb">float</span>  <span class="o">|</span>
+<span class="o">|</span> <span class="o">-</span> <span class="n">grid</span><span class="p">:</span> <span class="nb">list</span>           <span class="o">|</span>
+<span class="o">+------------------------+</span>
+<span class="o">|</span> <span class="o">+</span> <span class="fm">__init__</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>        <span class="o">|</span>
+<span class="o">|</span> <span class="o">+</span> <span class="n">load_csv</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>   <span class="o">|</span>
+<span class="o">|</span> <span class="o">+</span> <span class="n">scale_coordinates</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">|</span>
+<span class="o">|</span> <span class="o">+</span> <span class="n">add_axes</span><span class="p">()</span>           <span class="o">|</span>
+<span class="o">|</span> <span class="o">+</span> <span class="n">plot_points</span><span class="p">(</span><span class="n">scaled_coords</span><span class="p">)</span><span class="o">|</span>
+<span class="o">|</span> <span class="o">+</span> <span class="n">display</span><span class="p">()</span>            <span class="o">|</span>
+<span class="o">|</span> <span class="o">+</span> <span class="n">plot_from_csv</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span><span class="o">|</span>
+<span class="o">+------------------------+</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Flussdiagramm für <code class="docutils literal notranslate"><span class="pre">plot_from_csv(filepath)</span></code></strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Start</span>
+  <span class="o">|</span>
+  <span class="n">v</span>
+<span class="n">load_csv</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+  <span class="o">|</span>
+  <span class="n">v</span>
+<span class="n">scale_coordinates</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+  <span class="o">|</span>
+  <span class="n">v</span>
+<span class="n">add_axes</span><span class="p">()</span>
+  <span class="o">|</span>
+  <span class="n">v</span>
+<span class="n">plot_points</span><span class="p">(</span><span class="n">scaled_coords</span><span class="p">)</span>
+  <span class="o">|</span>
+  <span class="n">v</span>
+<span class="n">display</span><span class="p">()</span>
+  <span class="o">|</span>
+  <span class="n">v</span>
+<span class="n">Ende</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Datenstrukturen</strong>:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">data</span></code></strong>: Pandas DataFrame mit den Originalkoordinaten.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">scaled_coords</span></code></strong>: Pandas DataFrame mit den skalierten Koordinaten.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">grid</span></code></strong>: 2D-Liste, die das ASCII-Raster repräsentiert.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id5">
+<h3><span class="section-number">10.2.5. </span>Definition von Schnittstellen und Interaktionen<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Methodenschnittstellen</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(char=&quot;*&quot;,</span> <span class="pre">width=50,</span> <span class="pre">height=50,</span> <span class="pre">aspect_ratio=2.0)</span></code></p>
+<ul>
+<li><p>Initialisiert das Raster mit den gegebenen Parametern.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">load_csv(filepath)</span> <span class="pre">-&gt;</span> <span class="pre">DataFrame</span></code></p>
+<ul>
+<li><p>Lädt die CSV-Datei und gibt die “x” und “y” Daten zurück.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale_coordinates(data)</span> <span class="pre">-&gt;</span> <span class="pre">DataFrame</span></code></p>
+<ul>
+<li><p>Skaliert die Daten und gibt die skalierten Koordinaten zurück.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_axes()</span></code></p>
+<ul>
+<li><p>Fügt Achsen zum Raster hinzu.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_points(scaled_coords)</span></code></p>
+<ul>
+<li><p>Plottet die Punkte auf dem Raster.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">display()</span></code></p>
+<ul>
+<li><p>Gibt das Raster auf der Konsole aus.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_from_csv(filepath)</span></code></p>
+<ul>
+<li><p>Führt den gesamten Prozess aus.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Interaktionen</strong>:</p>
+<ul>
+<li><p>Die Methode <code class="docutils literal notranslate"><span class="pre">plot_from_csv</span></code> orchestriert den Ablauf, indem sie die anderen Methoden aufruft.</p></li>
+<li><p>Daten fließen von <code class="docutils literal notranslate"><span class="pre">load_csv</span></code> zu <code class="docutils literal notranslate"><span class="pre">scale_coordinates</span></code> zu <code class="docutils literal notranslate"><span class="pre">plot_points</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id6">
+<h3><span class="section-number">10.2.6. </span>Implementierungsplanung<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>In vielen Fällen, besonders bei Projekten die im Team bearbeitet werden kann (und soll) die Implementierungsplanung natürlich kein streng linearer Ablaufplan sein. Die folgende Reihenfolge ist an vielen Stellen beliebig, wichtig daran ist vor allem kleinschrittige Aufgaben zu definieren und im Team zu verteilen und zu bearbeiten.</p>
+<ul class="simple">
+<li><p><strong>Entwicklungsschritte</strong>:</p>
+<ol class="arabic simple">
+<li><p>Implementiere die Initialisierung und die Erstellung des leeren Rasters.</p></li>
+<li><p>Implementiere <code class="docutils literal notranslate"><span class="pre">load_csv</span></code>, um die Daten zu laden und zu validieren.</p></li>
+<li><p>Implementiere <code class="docutils literal notranslate"><span class="pre">scale_coordinates</span></code>, um die Daten an die Rastergröße anzupassen.</p></li>
+<li><p>Implementiere <code class="docutils literal notranslate"><span class="pre">add_axes</span></code>, um die Achsen zum Raster hinzuzufügen.</p></li>
+<li><p>Implementiere <code class="docutils literal notranslate"><span class="pre">plot_points</span></code>, um die Datenpunkte zu platzieren.</p></li>
+<li><p>Implementiere <code class="docutils literal notranslate"><span class="pre">display</span></code>, um das Raster auszugeben.</p></li>
+<li><p>Teste jede Methode einzeln mit Beispieldaten.</p></li>
+<li><p>Führe alles in <code class="docutils literal notranslate"><span class="pre">plot_from_csv</span></code> zusammen und teste den gesamten Ablauf.</p></li>
+</ol>
+</li>
+<li><p><strong>Tools</strong>:</p>
+<ul>
+<li><p>Programmiersprache: Python</p></li>
+<li><p>Bibliotheken: Pandas für Datenmanipulation</p></li>
+<li><p>Entwicklungsumgebung: Jupyter Notebook oder IDE</p></li>
+<li><p>Versionskontrolle: Git (optional)</p></li>
+</ul>
+</li>
+<li><p><strong>Teststrategie</strong>:</p>
+<ul>
+<li><p>Erstelle kleine CSV-Dateien mit bekannten Daten zum Testen.</p></li>
+<li><p>Überprüfe die Ausgabe visuell, um sicherzustellen, dass das Scatterplot korrekt dargestellt wird.</p></li>
+<li><p>Teste Randfälle, z.B. leere Daten, sehr große oder kleine Werte.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id7">
+<h3><span class="section-number">10.2.7. </span>Überprüfung und Feedback<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Peer Review</strong>:</p>
+<ul>
+<li><p>Präsentation des Designs und Codes an Kommilitonen oder den Dozenten.</p></li>
+<li><p>Einholen von Feedback zur Benutzerfreundlichkeit und Codequalität.</p></li>
+</ul>
+</li>
+<li><p><strong>Verfeinerung</strong>:</p>
+<ul>
+<li><p>Verbesserungen basierend auf Feedback implementieren, z.B. Fehlerbehandlung, zusätzliche Funktionen (z.B. unterschiedliche Zeichen für verschiedene Datenpunkte).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="ausblick">
+<h3><span class="section-number">10.2.8. </span>Ausblick<a class="headerlink" href="#ausblick" title="Link to this heading">#</a></h3>
+<p>Wir kommen in folgenden Teilen zu weiteren Möglichkeiten die die eigentliche Implementierung begleiten können wie z.B. Testing.</p>
 <ol class="arabic simple">
 <li><p><strong>Anforderungsanalyse</strong></p>
 <ul class="simple">
@@ -442,7 +849,7 @@ Hier ist eine kurze Übersicht der allgemeinen Entwicklungsphasen, die in einer 
 <li><p><strong>Konzeptionelles Modell</strong></p>
 <ul class="simple">
 <li><p><strong>Ziel</strong>: Ein Modell entwickeln, das die Kernkomponenten und deren Beziehungen skizziert.</p></li>
-<li><p><strong>Schritte</strong>: Hauptelemente und deren Verantwortlichkeiten identifizieren; oft durch Diagramme (z. B. UML) unterstützt.</p></li>
+<li><p><strong>Schritte</strong>: Hauptelemente und deren Verantwortlichkeiten identifizieren; oft durch Diagramme unterstützt.</p></li>
 </ul>
 </li>
 <li><p><strong>Zerlegung und Abstraktion</strong></p>
@@ -451,16 +858,10 @@ Hier ist eine kurze Übersicht der allgemeinen Entwicklungsphasen, die in einer 
 <li><p><strong>Schritte</strong>: Jedes Teilmodul für eine bestimmte Aufgabe definieren, z. B. Daten laden, verarbeiten und darstellen.</p></li>
 </ul>
 </li>
-<li><p><strong>Entwurfsmuster</strong></p>
-<ul class="simple">
-<li><p><strong>Ziel</strong>: Wiederverwendbare Lösungen für wiederkehrende Probleme finden.</p></li>
-<li><p><strong>Schritte</strong>: Geeignete Entwurfsmuster auswählen und in das Design einfügen. <strong>Das haben wir bisher praktisch noch nicht behandelt und werden wir in dieser Lektion darum überspringen.</strong></p></li>
-</ul>
-</li>
 <li><p><strong>Pseudocode und Flussdiagramme</strong></p>
 <ul class="simple">
 <li><p><strong>Ziel</strong>: Den Ablauf des Programms skizzieren, ohne sich um den eigentlichen Code zu kümmern.</p></li>
-<li><p><strong>Schritte</strong>: Pseudocode schreiben oder Flussdiagramme erstellen, um die Logik des Programms klar darzustellen.</p></li>
+<li><p><strong>Schritte</strong>: Pseudocode schreiben und/oder Flussdiagramme erstellen, um die Logik des Programms klar darzustellen.</p></li>
 </ul>
 </li>
 <li><p><strong>Prototyping und Feedback</strong></p>
@@ -476,145 +877,25 @@ Hier ist eine kurze Übersicht der allgemeinen Entwicklungsphasen, die in einer 
 </ul>
 </li>
 </ol>
+<p>Diese sechs Phasen sind nur eine Möglichkeit den Prozess einzuteilen. Außerdem darf man sich das Ganze nicht als einen streng linearen Prozess vorstellen. Viele der Phasen können auch parallel in Angriff genommen werden, oder es häufig auch Gründe wieder zu einer “früheren” Phase zurückzukehren, z.B. weil an einer Stelle Unstimmigkeiten oder Unvereinbarkeiten entdeckt werden.</p>
+</section>
 </section>
 <section id="building-an-ascii-scatter-plot-tool-in-python">
-<h1><span class="section-number">12. </span>Building an ASCII Scatter Plot Tool in Python<a class="headerlink" href="#building-an-ascii-scatter-plot-tool-in-python" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">10.3. </span>Building an ASCII Scatter Plot Tool in Python<a class="headerlink" href="#building-an-ascii-scatter-plot-tool-in-python" title="Link to this heading">#</a></h2>
 <p><strong>Problemstellung</strong></p>
 <p>Wir wollen ein Python-Tool erstellen, das:</p>
 <ol class="arabic simple">
 <li><p>x- und y-Koordinaten aus einer CSV-Datei lädt.</p></li>
-<li><p>Ein ASCII-Streudiagramm in der Konsole anzeigt, wobei ein Zeichen unserer Wahl verwendet wird (z. B. “*”, “x”, “o”).</p></li>
-<li><p>Das Seitenverhältnis der Zeichen berücksichtigt, da ASCII-Zeichen typischerweise höher als breit sind.</p></li>
+<li><p>Ein ASCII-Scatter-Plot in der Konsole anzeigt, wobei ein Zeichen unserer Wahl verwendet wird
+(z. B. “*”, “x”, “o”).</p></li>
 <li><p>Einfache x- und y-Achsen hinzufügt, um das Diagramm lesbarer zu machen.</p></li>
 </ol>
+<hr class="docutils" />
 <p><strong>Phasen der Entwicklung</strong></p>
-<p>Wir gehen die einzelnen Phasen Schritt für Schritt durch und wenden sie auf unser ASCII-Streudiagramm-Tool an.</p>
-<section id="phase-1-anforderungsanalyse-anwendungsfalle">
-<h2><span class="section-number">12.1. </span>Phase 1: Anforderungsanalyse &amp; Anwendungsfälle<a class="headerlink" href="#phase-1-anforderungsanalyse-anwendungsfalle" title="Link to this heading">#</a></h2>
-<section id="ziele">
-<h3><span class="section-number">12.1.1. </span><strong>Ziele</strong>:<a class="headerlink" href="#ziele" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Hauptziel</strong>: Visualisierung von <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code>-Koordinaten in einem einfachen ASCII-Streudiagrammformat.</p></li>
-<li><p><strong>Detaillierte Anforderungen</strong>:</p>
-<ul>
-<li><p>Daten aus einer CSV-Datei mit den Spalten <code class="docutils literal notranslate"><span class="pre">x</span></code> und <code class="docutils literal notranslate"><span class="pre">y</span></code> laden.</p></li>
-<li><p>Koordinaten auf einem ASCII-Raster skalieren und anzeigen.</p></li>
-<li><p>Anpassbare Zeichen zur Darstellung der Punkte verwenden.</p></li>
-<li><p>Das nicht-quadratische Seitenverhältnis der Zeichen berücksichtigen.</p></li>
-<li><p>x- und y-Achsen hinzufügen, um die Lesbarkeit zu verbessern.</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="anwendungsfall">
-<h3><span class="section-number">12.1.2. </span><strong>Anwendungsfall</strong>:<a class="headerlink" href="#anwendungsfall" title="Link to this heading">#</a></h3>
-<p>Angenommen, ein Data Scientist hat eine CSV-Datei mit <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code>-Koordinaten und benötigt eine schnelle Möglichkeit, die Daten zu visualisieren. Dieses ASCII-Diagramm bietet eine einfache, textbasierte Lösung, die besonders in Umgebungen ohne grafische Tools nützlich ist.</p>
-</section>
-</section>
-<hr class="docutils" />
-<section id="phase-2-konzeptionelles-modell">
-<h2><span class="section-number">12.2. </span>Phase 2: Konzeptionelles Modell<a class="headerlink" href="#phase-2-konzeptionelles-modell" title="Link to this heading">#</a></h2>
-<p><strong>Hauptkomponenten</strong>:</p>
-<ul class="simple">
-<li><p><strong>CSV-Leser</strong>: Lädt <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code>-Daten aus einer Datei und überprüft, ob diese Spalten vorhanden sind.</p></li>
-<li><p><strong>Skalierer</strong>: Passt die Koordinatenwerte an, um sie in ein ASCII-Raster einer bestimmten Größe einzufügen. Dabei wird das Seitenverhältnis des Zeichens berücksichtigt, um Verzerrungen zu vermeiden.</p></li>
-<li><p><strong>Plotter</strong>: Ordnet jede Koordinate der richtigen Position im ASCII-Raster zu.</p></li>
-<li><p><strong>Anzeigemodul</strong>: Gibt das fertige ASCII-Diagramm in der Konsole aus.</p></li>
-</ul>
-<p><strong>Klassenstruktur</strong>:
-Wir entscheiden uns, diese Komponenten in einer <code class="docutils literal notranslate"><span class="pre">AsciiScatterPlot</span></code>-Klasse zusammenzufassen. Diese Klasse verwaltet alle Schritte an einem Ort und ermöglicht eine einfache Anpassung und Wiederverwendung. Hier ist ein Überblick:</p>
-<ul class="simple">
-<li><p><strong>Attribute</strong>:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">char</span></code> – Das Zeichen für die Darstellung der Punkte.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">width</span></code>, <code class="docutils literal notranslate"><span class="pre">height</span></code> – Dimensionen des ASCII-Rasters.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">aspect_ratio</span></code> – Passt die Skalierung an, um Unterschiede in der Höhe/Breite der Zeichen zu berücksichtigen.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">grid</span></code> – Eine 2D-Liste, die das ASCII-Raster darstellt.</p></li>
-</ul>
-</li>
-<li><p><strong>Methoden</strong>:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> – Lädt CSV-Daten und überprüft <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code>-Spalten.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">scale_coordinates()</span></code> – Skaliert die Koordinaten so, dass sie ins Raster passen.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">plot_points()</span></code> – Ordnet die skalierten Koordinaten im Raster an.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">add_axes()</span></code> – Fügt x- und y-Achsen zum Raster hinzu.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">display()</span></code> – Gibt das fertige Raster in der Konsole aus.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">plot_from_csv()</span></code> – Hauptfunktion, um alle Schritte in Sequenz auszuführen.</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="phase-3-zerlegung-abstraktion">
-<h2><span class="section-number">12.3. </span><strong>Phase 3: Zerlegung &amp; Abstraktion</strong><a class="headerlink" href="#phase-3-zerlegung-abstraktion" title="Link to this heading">#</a></h2>
-<p>Jede Funktion in der Klasse erfüllt eine spezifische Aufgabe:</p>
-<ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">load_csv()</span></code></strong>: Diese Funktion verwendet <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, um die CSV-Datei zu laden und sicherzustellen, dass die <code class="docutils literal notranslate"><span class="pre">x</span></code>- und <code class="docutils literal notranslate"><span class="pre">y</span></code>-Spalten vorhanden sind.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">scale_coordinates()</span></code></strong>: Passt die <code class="docutils literal notranslate"><span class="pre">x</span></code>- und <code class="docutils literal notranslate"><span class="pre">y</span></code>-Werte so an, dass sie in die Rasterdimensionen passen. Die Skalierung hält die Koordinaten proportional zum Raster, während das Seitenverhältnis sicherstellt, dass jeder Punkt an der richtigen Stelle angezeigt wird.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">plot_points()</span></code></strong>: Diese Methode ordnet die skalierten Koordinaten dem Raster zu, wobei das angegebene Zeichen für jeden Punkt verwendet wird.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">add_axes()</span></code></strong>: Diese Funktion fügt einfache x- und y-Achsen hinzu, um das Diagramm besser interpretierbar zu machen.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">display()</span></code></strong>: Gibt das Raster Zeile für Zeile in der Konsole aus und simuliert so ein 2D-Streudiagramm im ASCII-Format.</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="phase-4-entwurfsmuster">
-<h2><span class="section-number">12.4. </span><strong>Phase 4: Entwurfsmuster</strong><a class="headerlink" href="#phase-4-entwurfsmuster" title="Link to this heading">#</a></h2>
-<p>Wir haben uns bisher noch nicht umfangreich mit Design Patterns beschäftigt und benötigen das für dieses einfache Beispiel hier auch nicht unbedingt. Design Patterns sind allerdings im Bereich Software Development sehr verbreitet und stellen wichtige Konzepte dar. Einige Beispiele mit Python sind <a class="reference external" href="https://python-patterns.guide/">hier</a> zu finden.</p>
-</section>
-<hr class="docutils" />
-<section id="phase-5-pseudocode-und-flussdiagramme">
-<h2><span class="section-number">12.5. </span><strong>Phase 5: Pseudocode und Flussdiagramme</strong><a class="headerlink" href="#phase-5-pseudocode-und-flussdiagramme" title="Link to this heading">#</a></h2>
-<p><strong>Pseudocode</strong>:</p>
-<div class="highlight-plaintext notranslate"><div class="highlight"><pre><span></span>1. Initialisiere AsciiScatterPlot mit dem angegebenen Zeichen, den Rastermaßen und dem Seitenverhältnis.
-2. Lade die CSV-Datei mit x-, y-Koordinaten mit load_csv().
-3. Skaliere die Koordinaten so, dass sie ins ASCII-Raster passen, mit scale_coordinates().
-4. Füge x- und y-Achsen zum Raster hinzu mit add_axes().
-5. Ordne die skalierten Koordinaten im Raster an mit plot_points().
-6. Gib das Raster in der Konsole aus mit display().
-</pre></div>
-</div>
-<p><strong>Flussdiagramm</strong>:</p>
-<ol class="arabic simple">
-<li><p><strong>Start</strong> → <strong>Klasse initialisieren</strong> → <strong>CSV laden</strong></p></li>
-<li><p>Wenn <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code>-Spalten vorhanden sind:</p>
-<ul class="simple">
-<li><p>→ <strong>Koordinaten skalieren</strong></p></li>
-<li><p>→ <strong>Achsen hinzufügen</strong></p></li>
-<li><p>→ <strong>Koordinaten ins Raster einfügen</strong></p></li>
-<li><p>→ <strong>Raster anzeigen</strong></p></li>
-<li><p>→ <strong>Ende</strong></p></li>
-</ul>
-</li>
-<li><p>Andernfalls:</p>
-<ul class="simple">
-<li><p><strong>Fehler</strong>: Ungültige CSV-Datei</p></li>
-</ul>
-</li>
-</ol>
-</section>
-<hr class="docutils" />
-<section id="phase-6-prototyping-und-feedback">
-<h2><span class="section-number">12.6. </span><strong>Phase 6: Prototyping und Feedback</strong><a class="headerlink" href="#phase-6-prototyping-und-feedback" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Wir starten mit einem Prototyp, der die CSV-Datei lädt und die Koordinaten skaliert.</p></li>
-<li><p>In der ersten Version implementieren wir keine Anpassungen des Seitenverhältnisses oder Achsen. Stattdessen konzentrieren wir uns darauf, die Punkte direkt zu laden, zu skalieren und anzuzeigen.</p></li>
-<li><p>Nach dem Testen der Grundfunktionalität fügen wir die Behandlung des Seitenverhältnisses und Achsen hinzu, um einen verfeinerten Prototyp zu erstellen.</p></li>
-</ul>
-</section>
-<section id="phase-7-iterative-verbesserung">
-<h2><span class="section-number">12.7. </span><strong>Phase 7: Iterative Verbesserung</strong><a class="headerlink" href="#phase-7-iterative-verbesserung" title="Link to this heading">#</a></h2>
-<p>Verfeinerungen umfassen:</p>
-<ol class="arabic simple">
-<li><p><strong>Seitenverhältnis</strong>: Die <code class="docutils literal notranslate"><span class="pre">width</span></code> wird basierend auf dem angegebenen <code class="docutils literal notranslate"><span class="pre">aspect_ratio</span></code> angepasst, um das Erscheinungsbild des Diagramms zu verbessern.</p></li>
-<li><p><strong>Achsen</strong>: Fügen Sie x- und y-Achsen hinzu, um das Diagramm leichter interpretierbar zu machen.</p></li>
-<li><p><strong>Vereinfachungen</strong>: Wir optimieren den Code, indem wir <code class="docutils literal notranslate"><span class="pre">clip</span></code> und <code class="docutils literal notranslate"><span class="pre">round</span></code> in den Skalierungsprozess einbinden, um saubere, begrenzte Koordinaten ohne komplexe Überprüfungen zu gewährleisten.</p></li>
-</ol>
-</section>
 <hr class="docutils" />
 <section id="endprodukt">
-<h2><span class="section-number">12.8. </span><strong>Endprodukt</strong><a class="headerlink" href="#endprodukt" title="Link to this heading">#</a></h2>
-<p>Der resultierende Code ist jetzt einsatzbereit und getestet. Er kann jede CSV-Datei mit <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code>-Koordinaten laden und ein sauberes ASCII-Streudiagramm mit klaren Achsen in der Konsole darstellen.</p>
-<p>Hier eine mögliche Lösung.</p>
+<h3><span class="section-number">10.3.1. </span>Endprodukt<a class="headerlink" href="#endprodukt" title="Link to this heading">#</a></h3>
+<p>Hier eine mögliche Lösung. Der folgende Code kann jede CSV-Datei mit <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code>-Koordinaten laden und ein sauberes ASCII-Scatterplot mit klaren Achsen in der Konsole darstellen.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 
@@ -706,15 +987,6 @@ Wir entscheiden uns, diese Komponenten in einer <code class="docutils literal no
 </pre></div>
 </div>
 </section>
-<hr class="docutils" />
-<section id="zusammenfassung-der-lektion">
-<h2><span class="section-number">12.9. </span><strong>Zusammenfassung der Lektion</strong><a class="headerlink" href="#zusammenfassung-der-lektion" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><strong>Von der Idee zum Code</strong>: Wir haben gezeigt, wie wir von einer einfachen Idee zu einem strukturierten, wiederverwendbaren Python-Tool gelangen.</p></li>
-<li><p><strong>Strukturierte Phasen</strong>: Jede Entwicklungsphase hilft, die Idee weiter zu verfeinern und in funktionsfähigen Code umzuwandeln.</p></li>
-<li><p><strong>Anwendung von Abstraktionen und Mustern</strong>: Das Problem in kleinere Teile zu zerlegen und Entwurfsmuster zu verwenden, macht komplexe Probleme besser handhabbar.</p></li>
-<li><p><strong>Iterative Verbesserung</strong>: Kleine Prototypen ermöglichen Testen, Verfeinern und Verbessern, was zu einem ausgereiften Endprodukt führt.</p></li>
-</ol>
 </section>
 </section>
 
@@ -762,7 +1034,7 @@ Wir entscheiden uns, diese Komponenten in einer <code class="docutils literal no
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Python Software Projekt</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Python Software Projekt</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -783,26 +1055,34 @@ Wir entscheiden uns, diese Komponenten in einer <code class="docutils literal no
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">10. From Idea to Code</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#entwicklungsphasen-von-der-idee-zum-code">11. Entwicklungsphasen von der Idee zum Code</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#building-an-ascii-scatter-plot-tool-in-python">12. Building an ASCII Scatter Plot Tool in Python</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-1-anforderungsanalyse-anwendungsfalle">12.1. Phase 1: Anforderungsanalyse &amp; Anwendungsfälle</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ziele">12.1.1. <strong>Ziele</strong>:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anwendungsfall">12.1.2. <strong>Anwendungsfall</strong>:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entwicklungsphasen-von-der-idee-zum-code">10.1. Entwicklungsphasen von der Idee zum Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problemdefinition-und-anforderungsanalyse">10.1.1. Problemdefinition und Anforderungsanalyse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-losungsplanung">10.1.2. High-Level Lösungsplanung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zerlegung-des-problems-in-komponenten">10.1.3. Zerlegung des Problems in Komponenten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detailliertes-design-mit-flussdiagrammen-und-diagrammen">10.1.4. Detailliertes Design mit Flussdiagrammen und Diagrammen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-von-schnittstellen-und-interaktionen">10.1.5. Definition von Schnittstellen und Interaktionen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementierungsplanung">10.1.6. Implementierungsplanung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uberprufung-und-feedback">10.1.7. Überprüfung und Feedback</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erlauterung-und-ausrichtung-an-best-practices">10.1.8. Erläuterung und Ausrichtung an Best Practices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zusatzliche-tipps">10.1.9. Zusätzliche Tipps</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-2-konzeptionelles-modell">12.2. Phase 2: Konzeptionelles Modell</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-3-zerlegung-abstraktion">12.3. <strong>Phase 3: Zerlegung &amp; Abstraktion</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-4-entwurfsmuster">12.4. <strong>Phase 4: Entwurfsmuster</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-5-pseudocode-und-flussdiagramme">12.5. <strong>Phase 5: Pseudocode und Flussdiagramme</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-6-prototyping-und-feedback">12.6. <strong>Phase 6: Prototyping und Feedback</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-7-iterative-verbesserung">12.7. <strong>Phase 7: Iterative Verbesserung</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endprodukt">12.8. <strong>Endprodukt</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-der-lektion">12.9. <strong>Zusammenfassung der Lektion</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-python-beispiel">10.2. Praktisches Python Beispiel</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.2.1. Problemdefinition und Anforderungsanalyse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.2.2. High-Level Lösungsplanung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.2.3. Zerlegung des Problems in Komponenten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.2.4. Detailliertes Design mit Flussdiagrammen und Diagrammen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.2.5. Definition von Schnittstellen und Interaktionen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10.2.6. Implementierungsplanung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">10.2.7. Überprüfung und Feedback</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ausblick">10.2.8. Ausblick</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-an-ascii-scatter-plot-tool-in-python">10.3. Building an ASCII Scatter Plot Tool in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endprodukt">10.3.1. Endprodukt</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
