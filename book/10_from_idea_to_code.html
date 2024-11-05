@@ -1,0 +1,859 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>10. From Idea to Code &#8212; Data Science Software Development with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/10_from_idea_to_code';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="13. Python Software Projekt" href="11_python_software_project.html" />
+    <link rel="prev" title="9. Einige Fortgeschrittene Konzepte in der OOP" href="09_oop_with_python_2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="cover.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/cover_mini.png" class="logo__image only-light" alt="Data Science Software Development with Python - Home"/>
+    <img src="../_static/cover_mini.png" class="logo__image only-dark pst-js-only" alt="Data Science Software Development with Python - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="cover.html">
+                    Software Development für Data Scientists (mit Python)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_introduction.html">1. Einführung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_shell_scripting.html">2. Shell Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_git_github.html">3. Versionskontrolle mit Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_github.html">4. GitHub</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="05_clean_code.html">5. Cleaner Code, Better Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_linting.html">6. Linting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_code_smells.html">7. Code Smells</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Code Design &amp; Grundlagen der Objektorientierten Programmierung (OOP)</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="08_oop_with_python.html">8. Wiederholung der OOP-Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_oop_with_python_2.html">9. Einige Fortgeschrittene Konzepte in der OOP</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. From Idea to Code</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="11_python_software_project.html">13. Python Software Projekt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Testing and Continuous Integration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="06_testing.html">14. Code Testing with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">15. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">16. Code Testing (2)</a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Source Code and Contributions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="github.html">Source Code on GitHub</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/florian-huber/data_science_software_dev" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/florian-huber/data_science_software_dev/issues/new?title=Issue%20on%20page%20%2Fbook/10_from_idea_to_code.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/10_from_idea_to_code.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>From Idea to Code</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">10. From Idea to Code</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#entwicklungsphasen-von-der-idee-zum-code">11. Entwicklungsphasen von der Idee zum Code</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#building-an-ascii-scatter-plot-tool-in-python">12. Building an ASCII Scatter Plot Tool in Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-1-anforderungsanalyse-anwendungsfalle">12.1. Phase 1: Anforderungsanalyse &amp; Anwendungsfälle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ziele">12.1.1. <strong>Ziele</strong>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anwendungsfall">12.1.2. <strong>Anwendungsfall</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-2-konzeptionelles-modell">12.2. Phase 2: Konzeptionelles Modell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-3-zerlegung-abstraktion">12.3. <strong>Phase 3: Zerlegung &amp; Abstraktion</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-4-entwurfsmuster">12.4. <strong>Phase 4: Entwurfsmuster</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-5-pseudocode-und-flussdiagramme">12.5. <strong>Phase 5: Pseudocode und Flussdiagramme</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-6-prototyping-und-feedback">12.6. <strong>Phase 6: Prototyping und Feedback</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-7-iterative-verbesserung">12.7. <strong>Phase 7: Iterative Verbesserung</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endprodukt">12.8. <strong>Endprodukt</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-der-lektion">12.9. <strong>Zusammenfassung der Lektion</strong></a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="from-idea-to-code">
+<h1><span class="section-number">10. </span>From Idea to Code<a class="headerlink" href="#from-idea-to-code" title="Link to this heading">#</a></h1>
+<p>Anstatt allgemeine Best Practices und Prinzipien anzuschauen, ist das Ziel hier, dass wir anhand eines konkreten Beispiels einmal durchspielen wie wir von einer Idee zum Code kommen können. Wir hangelnd uns dazu aber entlang etablierter Entwurfsphasen entlang. Diese werden jetzt zuerst sehr knapp eingeführt.
+Hier ist eine kurze Übersicht der allgemeinen Entwicklungsphasen, die in einer Einführung verwendet werden könnte:</p>
+</section>
+<section id="entwicklungsphasen-von-der-idee-zum-code">
+<h1><span class="section-number">11. </span>Entwicklungsphasen von der Idee zum Code<a class="headerlink" href="#entwicklungsphasen-von-der-idee-zum-code" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><strong>Anforderungsanalyse</strong></p>
+<ul class="simple">
+<li><p><strong>Ziel</strong>: Verständnis dafür gewinnen, was das Programm erreichen soll.</p></li>
+<li><p><strong>Schritte</strong>: Anforderungen und Zielvorgaben klären, häufige Anwendungsfälle (<em>Use cases</em>) durchdenken und dokumentieren.</p></li>
+</ul>
+</li>
+<li><p><strong>Konzeptionelles Modell</strong></p>
+<ul class="simple">
+<li><p><strong>Ziel</strong>: Ein Modell entwickeln, das die Kernkomponenten und deren Beziehungen skizziert.</p></li>
+<li><p><strong>Schritte</strong>: Hauptelemente und deren Verantwortlichkeiten identifizieren; oft durch Diagramme (z. B. UML) unterstützt.</p></li>
+</ul>
+</li>
+<li><p><strong>Zerlegung und Abstraktion</strong></p>
+<ul class="simple">
+<li><p><strong>Ziel</strong>: Das Problem in kleinere, überschaubare Teile aufteilen und logisch strukturieren.</p></li>
+<li><p><strong>Schritte</strong>: Jedes Teilmodul für eine bestimmte Aufgabe definieren, z. B. Daten laden, verarbeiten und darstellen.</p></li>
+</ul>
+</li>
+<li><p><strong>Entwurfsmuster</strong></p>
+<ul class="simple">
+<li><p><strong>Ziel</strong>: Wiederverwendbare Lösungen für wiederkehrende Probleme finden.</p></li>
+<li><p><strong>Schritte</strong>: Geeignete Entwurfsmuster auswählen und in das Design einfügen. <strong>Das haben wir bisher praktisch noch nicht behandelt und werden wir in dieser Lektion darum überspringen.</strong></p></li>
+</ul>
+</li>
+<li><p><strong>Pseudocode und Flussdiagramme</strong></p>
+<ul class="simple">
+<li><p><strong>Ziel</strong>: Den Ablauf des Programms skizzieren, ohne sich um den eigentlichen Code zu kümmern.</p></li>
+<li><p><strong>Schritte</strong>: Pseudocode schreiben oder Flussdiagramme erstellen, um die Logik des Programms klar darzustellen.</p></li>
+</ul>
+</li>
+<li><p><strong>Prototyping und Feedback</strong></p>
+<ul class="simple">
+<li><p><strong>Ziel</strong>: Eine erste, einfache Version des Programms entwickeln und testen.</p></li>
+<li><p><strong>Schritte</strong>: Kernfunktionen implementieren, testen und auf Basis des Feedbacks weiter verbessern.</p></li>
+</ul>
+</li>
+<li><p><strong>Iterative Verfeinerung</strong></p>
+<ul class="simple">
+<li><p><strong>Ziel</strong>: Das Programm kontinuierlich verbessern und verfeinern.</p></li>
+<li><p><strong>Schritte</strong>: Rückmeldungen und Tests nutzen, um die Struktur, Logik und Benutzerfreundlichkeit des Programms zu optimieren.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="building-an-ascii-scatter-plot-tool-in-python">
+<h1><span class="section-number">12. </span>Building an ASCII Scatter Plot Tool in Python<a class="headerlink" href="#building-an-ascii-scatter-plot-tool-in-python" title="Link to this heading">#</a></h1>
+<p><strong>Problemstellung</strong></p>
+<p>Wir wollen ein Python-Tool erstellen, das:</p>
+<ol class="arabic simple">
+<li><p>x- und y-Koordinaten aus einer CSV-Datei lädt.</p></li>
+<li><p>Ein ASCII-Streudiagramm in der Konsole anzeigt, wobei ein Zeichen unserer Wahl verwendet wird (z. B. “*”, “x”, “o”).</p></li>
+<li><p>Das Seitenverhältnis der Zeichen berücksichtigt, da ASCII-Zeichen typischerweise höher als breit sind.</p></li>
+<li><p>Einfache x- und y-Achsen hinzufügt, um das Diagramm lesbarer zu machen.</p></li>
+</ol>
+<p><strong>Phasen der Entwicklung</strong></p>
+<p>Wir gehen die einzelnen Phasen Schritt für Schritt durch und wenden sie auf unser ASCII-Streudiagramm-Tool an.</p>
+<section id="phase-1-anforderungsanalyse-anwendungsfalle">
+<h2><span class="section-number">12.1. </span>Phase 1: Anforderungsanalyse &amp; Anwendungsfälle<a class="headerlink" href="#phase-1-anforderungsanalyse-anwendungsfalle" title="Link to this heading">#</a></h2>
+<section id="ziele">
+<h3><span class="section-number">12.1.1. </span><strong>Ziele</strong>:<a class="headerlink" href="#ziele" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Hauptziel</strong>: Visualisierung von <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code>-Koordinaten in einem einfachen ASCII-Streudiagrammformat.</p></li>
+<li><p><strong>Detaillierte Anforderungen</strong>:</p>
+<ul>
+<li><p>Daten aus einer CSV-Datei mit den Spalten <code class="docutils literal notranslate"><span class="pre">x</span></code> und <code class="docutils literal notranslate"><span class="pre">y</span></code> laden.</p></li>
+<li><p>Koordinaten auf einem ASCII-Raster skalieren und anzeigen.</p></li>
+<li><p>Anpassbare Zeichen zur Darstellung der Punkte verwenden.</p></li>
+<li><p>Das nicht-quadratische Seitenverhältnis der Zeichen berücksichtigen.</p></li>
+<li><p>x- und y-Achsen hinzufügen, um die Lesbarkeit zu verbessern.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="anwendungsfall">
+<h3><span class="section-number">12.1.2. </span><strong>Anwendungsfall</strong>:<a class="headerlink" href="#anwendungsfall" title="Link to this heading">#</a></h3>
+<p>Angenommen, ein Data Scientist hat eine CSV-Datei mit <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code>-Koordinaten und benötigt eine schnelle Möglichkeit, die Daten zu visualisieren. Dieses ASCII-Diagramm bietet eine einfache, textbasierte Lösung, die besonders in Umgebungen ohne grafische Tools nützlich ist.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="phase-2-konzeptionelles-modell">
+<h2><span class="section-number">12.2. </span>Phase 2: Konzeptionelles Modell<a class="headerlink" href="#phase-2-konzeptionelles-modell" title="Link to this heading">#</a></h2>
+<p><strong>Hauptkomponenten</strong>:</p>
+<ul class="simple">
+<li><p><strong>CSV-Leser</strong>: Lädt <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code>-Daten aus einer Datei und überprüft, ob diese Spalten vorhanden sind.</p></li>
+<li><p><strong>Skalierer</strong>: Passt die Koordinatenwerte an, um sie in ein ASCII-Raster einer bestimmten Größe einzufügen. Dabei wird das Seitenverhältnis des Zeichens berücksichtigt, um Verzerrungen zu vermeiden.</p></li>
+<li><p><strong>Plotter</strong>: Ordnet jede Koordinate der richtigen Position im ASCII-Raster zu.</p></li>
+<li><p><strong>Anzeigemodul</strong>: Gibt das fertige ASCII-Diagramm in der Konsole aus.</p></li>
+</ul>
+<p><strong>Klassenstruktur</strong>:
+Wir entscheiden uns, diese Komponenten in einer <code class="docutils literal notranslate"><span class="pre">AsciiScatterPlot</span></code>-Klasse zusammenzufassen. Diese Klasse verwaltet alle Schritte an einem Ort und ermöglicht eine einfache Anpassung und Wiederverwendung. Hier ist ein Überblick:</p>
+<ul class="simple">
+<li><p><strong>Attribute</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">char</span></code> – Das Zeichen für die Darstellung der Punkte.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">width</span></code>, <code class="docutils literal notranslate"><span class="pre">height</span></code> – Dimensionen des ASCII-Rasters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aspect_ratio</span></code> – Passt die Skalierung an, um Unterschiede in der Höhe/Breite der Zeichen zu berücksichtigen.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grid</span></code> – Eine 2D-Liste, die das ASCII-Raster darstellt.</p></li>
+</ul>
+</li>
+<li><p><strong>Methoden</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">load_csv()</span></code> – Lädt CSV-Daten und überprüft <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code>-Spalten.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale_coordinates()</span></code> – Skaliert die Koordinaten so, dass sie ins Raster passen.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_points()</span></code> – Ordnet die skalierten Koordinaten im Raster an.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_axes()</span></code> – Fügt x- und y-Achsen zum Raster hinzu.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">display()</span></code> – Gibt das fertige Raster in der Konsole aus.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_from_csv()</span></code> – Hauptfunktion, um alle Schritte in Sequenz auszuführen.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="phase-3-zerlegung-abstraktion">
+<h2><span class="section-number">12.3. </span><strong>Phase 3: Zerlegung &amp; Abstraktion</strong><a class="headerlink" href="#phase-3-zerlegung-abstraktion" title="Link to this heading">#</a></h2>
+<p>Jede Funktion in der Klasse erfüllt eine spezifische Aufgabe:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">load_csv()</span></code></strong>: Diese Funktion verwendet <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, um die CSV-Datei zu laden und sicherzustellen, dass die <code class="docutils literal notranslate"><span class="pre">x</span></code>- und <code class="docutils literal notranslate"><span class="pre">y</span></code>-Spalten vorhanden sind.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">scale_coordinates()</span></code></strong>: Passt die <code class="docutils literal notranslate"><span class="pre">x</span></code>- und <code class="docutils literal notranslate"><span class="pre">y</span></code>-Werte so an, dass sie in die Rasterdimensionen passen. Die Skalierung hält die Koordinaten proportional zum Raster, während das Seitenverhältnis sicherstellt, dass jeder Punkt an der richtigen Stelle angezeigt wird.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">plot_points()</span></code></strong>: Diese Methode ordnet die skalierten Koordinaten dem Raster zu, wobei das angegebene Zeichen für jeden Punkt verwendet wird.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">add_axes()</span></code></strong>: Diese Funktion fügt einfache x- und y-Achsen hinzu, um das Diagramm besser interpretierbar zu machen.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">display()</span></code></strong>: Gibt das Raster Zeile für Zeile in der Konsole aus und simuliert so ein 2D-Streudiagramm im ASCII-Format.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="phase-4-entwurfsmuster">
+<h2><span class="section-number">12.4. </span><strong>Phase 4: Entwurfsmuster</strong><a class="headerlink" href="#phase-4-entwurfsmuster" title="Link to this heading">#</a></h2>
+<p>Wir haben uns bisher noch nicht umfangreich mit Design Patterns beschäftigt und benötigen das für dieses einfache Beispiel hier auch nicht unbedingt. Design Patterns sind allerdings im Bereich Software Development sehr verbreitet und stellen wichtige Konzepte dar. Einige Beispiele mit Python sind <a class="reference external" href="https://python-patterns.guide/">hier</a> zu finden.</p>
+</section>
+<hr class="docutils" />
+<section id="phase-5-pseudocode-und-flussdiagramme">
+<h2><span class="section-number">12.5. </span><strong>Phase 5: Pseudocode und Flussdiagramme</strong><a class="headerlink" href="#phase-5-pseudocode-und-flussdiagramme" title="Link to this heading">#</a></h2>
+<p><strong>Pseudocode</strong>:</p>
+<div class="highlight-plaintext notranslate"><div class="highlight"><pre><span></span>1. Initialisiere AsciiScatterPlot mit dem angegebenen Zeichen, den Rastermaßen und dem Seitenverhältnis.
+2. Lade die CSV-Datei mit x-, y-Koordinaten mit load_csv().
+3. Skaliere die Koordinaten so, dass sie ins ASCII-Raster passen, mit scale_coordinates().
+4. Füge x- und y-Achsen zum Raster hinzu mit add_axes().
+5. Ordne die skalierten Koordinaten im Raster an mit plot_points().
+6. Gib das Raster in der Konsole aus mit display().
+</pre></div>
+</div>
+<p><strong>Flussdiagramm</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>Start</strong> → <strong>Klasse initialisieren</strong> → <strong>CSV laden</strong></p></li>
+<li><p>Wenn <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code>-Spalten vorhanden sind:</p>
+<ul class="simple">
+<li><p>→ <strong>Koordinaten skalieren</strong></p></li>
+<li><p>→ <strong>Achsen hinzufügen</strong></p></li>
+<li><p>→ <strong>Koordinaten ins Raster einfügen</strong></p></li>
+<li><p>→ <strong>Raster anzeigen</strong></p></li>
+<li><p>→ <strong>Ende</strong></p></li>
+</ul>
+</li>
+<li><p>Andernfalls:</p>
+<ul class="simple">
+<li><p><strong>Fehler</strong>: Ungültige CSV-Datei</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="phase-6-prototyping-und-feedback">
+<h2><span class="section-number">12.6. </span><strong>Phase 6: Prototyping und Feedback</strong><a class="headerlink" href="#phase-6-prototyping-und-feedback" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Wir starten mit einem Prototyp, der die CSV-Datei lädt und die Koordinaten skaliert.</p></li>
+<li><p>In der ersten Version implementieren wir keine Anpassungen des Seitenverhältnisses oder Achsen. Stattdessen konzentrieren wir uns darauf, die Punkte direkt zu laden, zu skalieren und anzuzeigen.</p></li>
+<li><p>Nach dem Testen der Grundfunktionalität fügen wir die Behandlung des Seitenverhältnisses und Achsen hinzu, um einen verfeinerten Prototyp zu erstellen.</p></li>
+</ul>
+</section>
+<section id="phase-7-iterative-verbesserung">
+<h2><span class="section-number">12.7. </span><strong>Phase 7: Iterative Verbesserung</strong><a class="headerlink" href="#phase-7-iterative-verbesserung" title="Link to this heading">#</a></h2>
+<p>Verfeinerungen umfassen:</p>
+<ol class="arabic simple">
+<li><p><strong>Seitenverhältnis</strong>: Die <code class="docutils literal notranslate"><span class="pre">width</span></code> wird basierend auf dem angegebenen <code class="docutils literal notranslate"><span class="pre">aspect_ratio</span></code> angepasst, um das Erscheinungsbild des Diagramms zu verbessern.</p></li>
+<li><p><strong>Achsen</strong>: Fügen Sie x- und y-Achsen hinzu, um das Diagramm leichter interpretierbar zu machen.</p></li>
+<li><p><strong>Vereinfachungen</strong>: Wir optimieren den Code, indem wir <code class="docutils literal notranslate"><span class="pre">clip</span></code> und <code class="docutils literal notranslate"><span class="pre">round</span></code> in den Skalierungsprozess einbinden, um saubere, begrenzte Koordinaten ohne komplexe Überprüfungen zu gewährleisten.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="endprodukt">
+<h2><span class="section-number">12.8. </span><strong>Endprodukt</strong><a class="headerlink" href="#endprodukt" title="Link to this heading">#</a></h2>
+<p>Der resultierende Code ist jetzt einsatzbereit und getestet. Er kann jede CSV-Datei mit <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code>-Koordinaten laden und ein sauberes ASCII-Streudiagramm mit klaren Achsen in der Konsole darstellen.</p>
+<p>Hier eine mögliche Lösung.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+
+<span class="k">class</span> <span class="nc">AsciiScatterPlot</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">char</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">aspect_ratio</span><span class="o">=</span><span class="mf">2.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the ASCII scatter plot with specified character, grid dimensions, and aspect ratio.</span>
+<span class="sd">        - char: The character used to represent each point.</span>
+<span class="sd">        - width: Width of the ASCII grid.</span>
+<span class="sd">        - height: Height of the ASCII grid.</span>
+<span class="sd">        - aspect_ratio: Adjusts scaling for the difference in character dimensions.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">char</span> <span class="o">=</span> <span class="n">char</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">width</span> <span class="o">*</span> <span class="n">aspect_ratio</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot; &quot;</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_axes</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">load_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Loads CSV data with columns x and y.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">col</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">]):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;CSV file must contain &#39;x&#39; and &#39;y&#39; columns.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">[[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">]]</span>
+
+    <span class="k">def</span> <span class="nf">scale_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Scales coordinates to fit the ASCII grid.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+        <span class="c1"># Scale x and y to the grid dimensions</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;x_scaled&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">x_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x_max</span> <span class="o">-</span> <span class="n">x_min</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;y_scaled&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">y_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">y_max</span> <span class="o">-</span> <span class="n">y_min</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Rounding coordinates to nearest integer grid point and clamping to grid boundaries</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;x_scaled&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;x_scaled&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">()</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;y_scaled&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;y_scaled&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">()</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">data</span><span class="p">[[</span><span class="s2">&quot;x_scaled&quot;</span><span class="p">,</span> <span class="s2">&quot;y_scaled&quot;</span><span class="p">]]</span>
+
+    <span class="k">def</span> <span class="nf">add_axes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds x and y axes to the grid.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># X-axis</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span>
+
+        <span class="c1"># Y-axis</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;|&quot;</span>
+
+        <span class="c1"># Origin point</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;+&quot;</span>
+
+    <span class="k">def</span> <span class="nf">plot_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scaled_coords</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Maps scaled coordinates onto the ASCII grid.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="n">scaled_coords</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="c1"># Invert y to plot from top to bottom</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">char</span>
+
+    <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Prints the ASCII grid to the console.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">plot_from_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        High-level function to load, scale, plot, and display the scatter plot from a CSV file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_csv</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+        <span class="n">scaled_coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_coordinates</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plot_points</span><span class="p">(</span><span class="n">scaled_coords</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+
+<span class="c1"># Usage example</span>
+<span class="n">plotter</span> <span class="o">=</span> <span class="n">AsciiScatterPlot</span><span class="p">(</span><span class="n">char</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">aspect_ratio</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+
+<span class="c1"># Assuming &#39;data.csv&#39; contains x, y coordinates</span>
+<span class="n">plotter</span><span class="o">.</span><span class="n">plot_from_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="zusammenfassung-der-lektion">
+<h2><span class="section-number">12.9. </span><strong>Zusammenfassung der Lektion</strong><a class="headerlink" href="#zusammenfassung-der-lektion" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Von der Idee zum Code</strong>: Wir haben gezeigt, wie wir von einer einfachen Idee zu einem strukturierten, wiederverwendbaren Python-Tool gelangen.</p></li>
+<li><p><strong>Strukturierte Phasen</strong>: Jede Entwicklungsphase hilft, die Idee weiter zu verfeinern und in funktionsfähigen Code umzuwandeln.</p></li>
+<li><p><strong>Anwendung von Abstraktionen und Mustern</strong>: Das Problem in kleinere Teile zu zerlegen und Entwurfsmuster zu verwenden, macht komplexe Probleme besser handhabbar.</p></li>
+<li><p><strong>Iterative Verbesserung</strong>: Kleine Prototypen ermöglichen Testen, Verfeinern und Verbessern, was zu einem ausgereiften Endprodukt führt.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="09_oop_with_python_2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Einige Fortgeschrittene Konzepte in der OOP</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="11_python_software_project.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Python Software Projekt</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">10. From Idea to Code</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#entwicklungsphasen-von-der-idee-zum-code">11. Entwicklungsphasen von der Idee zum Code</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#building-an-ascii-scatter-plot-tool-in-python">12. Building an ASCII Scatter Plot Tool in Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-1-anforderungsanalyse-anwendungsfalle">12.1. Phase 1: Anforderungsanalyse &amp; Anwendungsfälle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ziele">12.1.1. <strong>Ziele</strong>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anwendungsfall">12.1.2. <strong>Anwendungsfall</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-2-konzeptionelles-modell">12.2. Phase 2: Konzeptionelles Modell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-3-zerlegung-abstraktion">12.3. <strong>Phase 3: Zerlegung &amp; Abstraktion</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-4-entwurfsmuster">12.4. <strong>Phase 4: Entwurfsmuster</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-5-pseudocode-und-flussdiagramme">12.5. <strong>Phase 5: Pseudocode und Flussdiagramme</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-6-prototyping-und-feedback">12.6. <strong>Phase 6: Prototyping und Feedback</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-7-iterative-verbesserung">12.7. <strong>Phase 7: Iterative Verbesserung</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endprodukt">12.8. <strong>Endprodukt</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-der-lektion">12.9. <strong>Zusammenfassung der Lektion</strong></a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Florian Huber
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

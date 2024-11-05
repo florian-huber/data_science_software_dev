@@ -95,10 +95,23 @@ Beide Paradigmen können in Python kombiniert werden, um robuste und gut struktu
 
 ### Gute Gründe für die Nutzung von OOP:
 
-Bisher war die Antwort auf die Frage warum wir OOP nutzen sollten ehrlicherweise oft: "Weil ich OOP lernen will/muss...".
+Bisher war die Antwort auf die Frage warum wir OOP nutzen sollten ehrlicherweise oft: "Weil ich OOP lernen will/muss".
 
-Besser in der Praxis:
+Bessere Gründe in der Praxis wären:
 - Wenn es den Code einfacher und verständlicher macht.
 - Wenn das Code Design stark auf OOP hinweist.
 - Vor allem bei umfangreicheren Programmen.
 - Wenn die angestrebte Nutzung (z. B. API-Entwicklung) OOP verlangt.
+
+Ein großer Vorteil von OOP ist, dass es damit häufig der Schritt von Konzept zu Code Design als intuitiver empfunden wird. Das liegt daran, dass Klassen, Methoden, Attribute eine gute Grundstruktur bilden um Konzepte darauf abzubilden. Ein mögliches Vorgehen wäre hier z.B. das von John Zelle beschriebene {cite}`zelle_python_2016`:
+
+1. Suche nach geeigneten Kandidaten Set von Objekten
+(Oft Substantive und nichts was einfach als normaler Datentyp implementiert werden kann)
+2. Welche Variablen brauchen die Instanzen --> Attributes
+3. Welche Operationen sind nötig --> Methods (Alle Operationen auf den Daten sollten über Methoden ausführbar sein)
+4. Design der aufwendigeren Methoden
+5. Iteratives Design! (Coding geht eigentlich nie ohne ein wenig Trial & Error)
+6. Probiere Alternativen
+7. Halte es einfach.
+
+Wir kommen darauf zurück im Kapitel zum Code Design.
