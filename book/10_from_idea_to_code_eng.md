@@ -1,10 +1,9 @@
 ## From Idea to Code - Building an ASCII Scatter Plot Tool in Python
 
-### Overview
-
 In this lesson, we’ll go through a concrete example to develop an ASCII scatter plot tool in Python. We'll start with a concept and work through each development phase to build a functional program. This approach demonstrates how to systematically break down an idea and implement it step-by-step.
 
-### **Problem Statement**
+**Problem Statement**
+
 We want to create a Python tool that:
 1. Loads x, y coordinate data from a CSV file.
 2. Displays an ASCII scatter plot in the console, using a character of our choice (e.g., "*", "x", "o").

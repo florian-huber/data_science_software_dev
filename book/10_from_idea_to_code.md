@@ -1,4 +1,6 @@
-## From Idea to Code
+# From Idea to Code
+
+Beim Programmieren gibt es oft einen sehr starken Impuls "einfach loszulegen", also direkt mit dem Schreiben von Code zu beginnen. Bei kleineren Aufgaben, z.B. Übungsaufgaben, ist das in der Regel auch OK. Sobald es aber um ein größeres Programm geht ist es nicht nur sinnvoll, sondern oft fast unverzichtbar zuerst ein Konzept oder ein Code Design zu erstellen. Gerade bei komplexen Aufgaben, ist es aber gar nicht so leicht sich eine erste Vorstellung davon zu machen wie der Code aufgebaut sein sollte. 
 
 Anstatt allgemeine Best Practices und Prinzipien anzuschauen, ist das Ziel hier, dass wir anhand eines konkreten Beispiels einmal durchspielen wie wir von einer Idee zum Code kommen können. Wir hangelnd uns dazu aber entlang etablierter Entwurfsphasen entlang. Diese werden jetzt zuerst sehr knapp eingeführt.
 Hier ist eine kurze Übersicht der allgemeinen Entwicklungsphasen, die in einer Einführung verwendet werden könnte:
@@ -6,58 +8,49 @@ Hier ist eine kurze Übersicht der allgemeinen Entwicklungsphasen, die in einer 
 ## Entwicklungsphasen von der Idee zum Code
 
 1. **Anforderungsanalyse**
-
    - **Ziel**: Verständnis dafür gewinnen, was das Programm erreichen soll.
    - **Schritte**: Anforderungen und Zielvorgaben klären, häufige Anwendungsfälle (*Use cases*) durchdenken und dokumentieren.
-
 2. **Konzeptionelles Modell**
 
    - **Ziel**: Ein Modell entwickeln, das die Kernkomponenten und deren Beziehungen skizziert.
-   - **Schritte**: Hauptelemente und deren Verantwortlichkeiten identifizieren; oft durch Diagramme (z. B. UML) unterstützt.
-
+   - **Schritte**: Hauptelemente und deren Verantwortlichkeiten identifizieren; oft durch Diagramme unterstützt.
 3. **Zerlegung und Abstraktion**
 
    - **Ziel**: Das Problem in kleinere, überschaubare Teile aufteilen und logisch strukturieren.
    - **Schritte**: Jedes Teilmodul für eine bestimmte Aufgabe definieren, z. B. Daten laden, verarbeiten und darstellen.
-
-4. **Entwurfsmuster**
-
-   - **Ziel**: Wiederverwendbare Lösungen für wiederkehrende Probleme finden.
-   - **Schritte**: Geeignete Entwurfsmuster auswählen und in das Design einfügen. **Das haben wir bisher praktisch noch nicht behandelt und werden wir in dieser Lektion darum überspringen.**
-
 5. **Pseudocode und Flussdiagramme**
-
    - **Ziel**: Den Ablauf des Programms skizzieren, ohne sich um den eigentlichen Code zu kümmern.
-   - **Schritte**: Pseudocode schreiben oder Flussdiagramme erstellen, um die Logik des Programms klar darzustellen.
-
+   - **Schritte**: Pseudocode schreiben und/oder Flussdiagramme erstellen, um die Logik des Programms klar darzustellen.
 6. **Prototyping und Feedback**
-
    - **Ziel**: Eine erste, einfache Version des Programms entwickeln und testen.
    - **Schritte**: Kernfunktionen implementieren, testen und auf Basis des Feedbacks weiter verbessern.
-
 7. **Iterative Verfeinerung**
-
    - **Ziel**: Das Programm kontinuierlich verbessern und verfeinern.
    - **Schritte**: Rückmeldungen und Tests nutzen, um die Struktur, Logik und Benutzerfreundlichkeit des Programms zu optimieren.
+
+Diese sechs Phasen sind nur eine Möglichkeit den Prozess einzuteilen. Außerdem darf man sich das Ganze nicht als einen streng linearen Prozess vorstellen. Viele der Phasen können auch parallel in Angriff genommen werden, oder es häufig auch Gründe wieder zu einer "früheren" Phase zurückzukehren, z.B. weil an einer Stelle Unstimmigkeiten oder Unvereinbarkeiten entdeckt werden.
 
 ## Building an ASCII Scatter Plot Tool in Python
 
 **Problemstellung**
 
 Wir wollen ein Python-Tool erstellen, das:
+
 1. x- und y-Koordinaten aus einer CSV-Datei lädt.
-2. Ein ASCII-Streudiagramm in der Konsole anzeigt, wobei ein Zeichen unserer Wahl verwendet wird (z. B. "*", "x", "o").
-3. Das Seitenverhältnis der Zeichen berücksichtigt, da ASCII-Zeichen typischerweise höher als breit sind.
-4. Einfache x- und y-Achsen hinzufügt, um das Diagramm lesbarer zu machen.
+2. Ein ASCII-Scatter-Plot in der Konsole anzeigt, wobei ein Zeichen unserer Wahl verwendet wird 
+   (z. B. "*", "x", "o").
+3. Einfache x- und y-Achsen hinzufügt, um das Diagramm lesbarer zu machen.
+
+---
 
 **Phasen der Entwicklung**
 
-Wir gehen die einzelnen Phasen Schritt für Schritt durch und wenden sie auf unser ASCII-Streudiagramm-Tool an.
+Wir gehen die einzelnen Phasen Schritt für Schritt durch und wenden sie auf unser ASCII-Scatterplot-Tool an.
 
 ### Phase 1: Anforderungsanalyse & Anwendungsfälle
 
 #### **Ziele**:
-- **Hauptziel**: Visualisierung von `x, y`-Koordinaten in einem einfachen ASCII-Streudiagrammformat.
+- **Hauptziel**: Visualisierung von `x, y`-Koordinaten in einem einfachen ASCII-Scatterplotformat.
 - **Detaillierte Anforderungen**:
   - Daten aus einer CSV-Datei mit den Spalten `x` und `y` laden.
   - Koordinaten auf einem ASCII-Raster skalieren und anzeigen.
@@ -78,6 +71,20 @@ Angenommen, ein Data Scientist hat eine CSV-Datei mit `x, y`-Koordinaten und ben
 - **Plotter**: Ordnet jede Koordinate der richtigen Position im ASCII-Raster zu.
 - **Anzeigemodul**: Gibt das fertige ASCII-Diagramm in der Konsole aus.
 
+---
+
+### Phase 3: Zerlegung & Abstraktion
+
+Jede Funktion in der Klasse erfüllt eine spezifische Aufgabe:
+
+- **`load_csv()`**: Diese Funktion verwendet `pandas`, um die CSV-Datei zu laden und sicherzustellen, dass die `x`- und `y`-Spalten vorhanden sind.
+- **`scale_coordinates()`**: Passt die `x`- und `y`-Werte so an, dass sie in die Rasterdimensionen passen. Die Skalierung hält die Koordinaten proportional zum Raster, während das Seitenverhältnis sicherstellt, dass jeder Punkt an der richtigen Stelle angezeigt wird.
+- **`plot_points()`**: Diese Methode ordnet die skalierten Koordinaten dem Raster zu, wobei das angegebene Zeichen für jeden Punkt verwendet wird.
+- **`add_axes()`**: Diese Funktion fügt einfache x- und y-Achsen hinzu, um das Diagramm besser interpretierbar zu machen.
+- **`display()`**: Gibt das Raster Zeile für Zeile in der Konsole aus und simuliert so ein 2D-Scatterplot im ASCII-Format.
+
+Wir können in dieser Phase, zumindest für ein so recht einfaches Problem, auch schon unsere Klassen/Methoden/Attribute (für OOP) oder Funktionen (für Functional Programming) weiter definieren.
+
 **Klassenstruktur**:
 Wir entscheiden uns, diese Komponenten in einer `AsciiScatterPlot`-Klasse zusammenzufassen. Diese Klasse verwaltet alle Schritte an einem Ort und ermöglicht eine einfache Anpassung und Wiederverwendung. Hier ist ein Überblick:
 
@@ -94,27 +101,7 @@ Wir entscheiden uns, diese Komponenten in einer `AsciiScatterPlot`-Klasse zusamm
   - `display()` – Gibt das fertige Raster in der Konsole aus.
   - `plot_from_csv()` – Hauptfunktion, um alle Schritte in Sequenz auszuführen.
 
----
-
-### **Phase 3: Zerlegung & Abstraktion**
-
-Jede Funktion in der Klasse erfüllt eine spezifische Aufgabe:
-
-- **`load_csv()`**: Diese Funktion verwendet `pandas`, um die CSV-Datei zu laden und sicherzustellen, dass die `x`- und `y`-Spalten vorhanden sind.
-- **`scale_coordinates()`**: Passt die `x`- und `y`-Werte so an, dass sie in die Rasterdimensionen passen. Die Skalierung hält die Koordinaten proportional zum Raster, während das Seitenverhältnis sicherstellt, dass jeder Punkt an der richtigen Stelle angezeigt wird.
-- **`plot_points()`**: Diese Methode ordnet die skalierten Koordinaten dem Raster zu, wobei das angegebene Zeichen für jeden Punkt verwendet wird.
-- **`add_axes()`**: Diese Funktion fügt einfache x- und y-Achsen hinzu, um das Diagramm besser interpretierbar zu machen.
-- **`display()`**: Gibt das Raster Zeile für Zeile in der Konsole aus und simuliert so ein 2D-Streudiagramm im ASCII-Format.
-
----
-
-### **Phase 4: Entwurfsmuster**
-
-Wir haben uns bisher noch nicht umfangreich mit Design Patterns beschäftigt und benötigen das für dieses einfache Beispiel hier auch nicht unbedingt. Design Patterns sind allerdings im Bereich Software Development sehr verbreitet und stellen wichtige Konzepte dar. Einige Beispiele mit Python sind [hier](https://python-patterns.guide/) zu finden.
-
----
-
-### **Phase 5: Pseudocode und Flussdiagramme**
+### Phase 4: Pseudocode und Flussdiagramme
 
 **Pseudocode**:
 ```plaintext
@@ -140,13 +127,13 @@ Wir haben uns bisher noch nicht umfangreich mit Design Patterns beschäftigt und
 
 ---
 
-### **Phase 6: Prototyping und Feedback**
+### Phase 5: Prototyping und Feedback
 
 - Wir starten mit einem Prototyp, der die CSV-Datei lädt und die Koordinaten skaliert.
 - In der ersten Version implementieren wir keine Anpassungen des Seitenverhältnisses oder Achsen. Stattdessen konzentrieren wir uns darauf, die Punkte direkt zu laden, zu skalieren und anzuzeigen.
 - Nach dem Testen der Grundfunktionalität fügen wir die Behandlung des Seitenverhältnisses und Achsen hinzu, um einen verfeinerten Prototyp zu erstellen.
 
-### **Phase 7: Iterative Verbesserung**
+### Phase 6: Iterative Verbesserung
 
 Verfeinerungen umfassen:
 
@@ -156,9 +143,9 @@ Verfeinerungen umfassen:
 
 ---
 
-### **Endprodukt**
+### Endprodukt
 
-Der resultierende Code ist jetzt einsatzbereit und getestet. Er kann jede CSV-Datei mit `x, y`-Koordinaten laden und ein sauberes ASCII-Streudiagramm mit klaren Achsen in der Konsole darstellen.
+Der resultierende Code ist jetzt einsatzbereit und getestet. Er kann jede CSV-Datei mit `x, y`-Koordinaten laden und ein sauberes ASCII-Scatterplot mit klaren Achsen in der Konsole darstellen.
 
 Hier eine mögliche Lösung.
 
@@ -254,10 +241,9 @@ plotter.plot_from_csv("data.csv")
 ```
 
 
-
 ---
 
-### **Zusammenfassung der Lektion**
+### Zusammenfassung der Lektion
 
 1. **Von der Idee zum Code**: Wir haben gezeigt, wie wir von einer einfachen Idee zu einem strukturierten, wiederverwendbaren Python-Tool gelangen.
 2. **Strukturierte Phasen**: Jede Entwicklungsphase hilft, die Idee weiter zu verfeinern und in funktionsfähigen Code umzuwandeln.
