@@ -131,7 +131,7 @@ Absolut, für Data-Science-Studenten mit begrenzter Softwareentwicklungserfahrun
 - Entwicklungsumgebung bereit für die Codierung.
 - Erste Entwürfe des Testplans.
 
-Überprüfung und Feedback
+### Überprüfung und Feedback
 
 **Ziel**: Das Design vor der Implementierung validieren.
 
