@@ -1,47 +1,47 @@
-# Code Testing with Python
+# Warum brauchen wir Testing?
 
-Testing is an integral part of software development, ensuring that code functions correctly and meets specified requirements. It's crucial to understand that even well-written and properly formatted code is not inherently error-free. In this expanded introduction, we'll delve deeper into the necessity of testing, types of errors, the reality of bug-free software, and different testing methodologies.
+Das Testen ist ein integraler Bestandteil der Softwareentwicklung und stellt sicher, dass der Code korrekt funktioniert und die festgelegten Anforderungen erfüllt. Es ist wichtig zu verstehen, dass selbst gut geschriebener und korrekt formatierter Code nicht automatisch fehlerfrei ist. In dieser erweiterten Einführung werden wir die Notwendigkeit des Testens, verschiedene Fehlerarten, die Realität fehlerfreier Software und unterschiedliche Testmethoden genauer beleuchten.
 
-### 1. The Necessity of Testing
+## Die Notwendigkeit des Testens
 
-#### Understanding Different Types of Errors
+### Verständnis der verschiedenen Fehlertypen
 
-In programming, errors generally fall into three categories:
+In der Programmierung lassen sich Fehler allgemein in drei Kategorien einteilen:
 
-- **Syntax Errors**: These are grammatical errors in the code that prevent the program from running. They are usually the easiest to detect and fix.
-- **Exceptions**: These are runtime errors that occur due to anomalous situations while the program is executing, like trying to divide by zero.
-- **Semantic Errors**: The most insidious, these errors involve logic flaws. The program runs without crashing but produces incorrect results.
+- **Syntaxfehler**: Dies sind grammatikalische Fehler im Code, die verhindern, dass das Programm ausgeführt wird. Sie sind normalerweise am einfachsten zu erkennen und zu beheben.
+- **Ausnahmen**: Dies sind Laufzeitfehler, die aufgrund von Anomalien während der Programmausführung auftreten, wie etwa der Versuch, durch Null zu teilen.
+- **Semantische Fehler**: Diese sind am schwerwiegendsten und betreffen logische Fehler. Das Programm stürzt nicht ab, liefert aber falsche Ergebnisse.
 
-#### The Myth of 100% Bug-Free Software
+### Der Mythos der 100% fehlerfreien Software
 
-The concept of completely error-free software is more of a theoretical ideal than a practical reality. Studies suggest that typical software can have between 15 to 50 mistakes per 1,000 lines of code. Even well-tested software might have about 1 error per 1,000 lines. To put this in perspective, consider the size of some well-known software:
+Das Konzept völlig fehlerfreier Software ist eher ein theoretisches Ideal als eine praktische Realität. Studien legen nahe, dass typische Software zwischen 10 und 100 Fehler (oder Defekte) pro 1.000 Codezeilen aufweist {cite}`phipps1999comparing`{cite}`lipow1982number`. Dies hängt natürlich stark von der Art der Software, dem Codierungsstil und der verwendeten Programmiersprache ab. Bei Java zum Beispiel liegen die typischen Zahlen bei 50-80 Defekten pro 1.000 Codezeilen und 3 bis 10 Fehlern pro 1.000 Zeilen {cite}`phipps1999comparing` (für C++ waren diese Zahlen deutlich höher!). Selbst gut getestete Software könnte etwa einen Fehler pro 1.000 Zeilen aufweisen. Um dies in Perspektive zu setzen, betrachten wir die Größe einiger bekannter Software:
 
-- MATLAB: Approximately 100,000 lines of code.
-- Linux Kernel or Microsoft Office: About 10 million lines of code.
+- MATLAB: Ungefähr 100.000 Codezeilen.
+- Linux-Kernel oder Microsoft Office: Etwa 10 Millionen Codezeilen.
 
-Given these figures, it's clear that errors are inevitable in software development. These errors can have serious consequences, as exemplified by the Ariane 5 rocket failure in 1996 due to a software bug.
+Angesichts dieser Zahlen ist klar, dass Fehler in der Softwareentwicklung unvermeidlich sind. Diese Fehler können schwerwiegende Folgen haben, wie das Beispiel des Ariane-5-Raketenversagens im Jahr 1996 aufgrund eines Softwarefehlers zeigt.
 
-### 2. What is Testing?
+### Was ist Testen?
 
-Testing in software development is the process of evaluating a system or its components with the intent to find whether it satisfies the specified requirements. It involves executing a system component to identify any gaps, errors, or missing requirements in contrast to the actual requirements.
+Das Testen in der Softwareentwicklung ist der Prozess der Bewertung eines Systems oder seiner Komponenten, um festzustellen, ob es die festgelegten Anforderungen erfüllt. Es umfasst die Ausführung einer Systemkomponente, um Lücken, Fehler oder fehlende Anforderungen im Vergleich zu den tatsächlichen Anforderungen zu identifizieren.
 
-#### Manual vs. Automated Testing
+#### Manuelles vs. automatisiertes Testen
 
-- **Manual Testing**: This involves human testers playing the role of end-users and using all features of the application to ensure correct behavior.
-- **Automated Testing**: Uses software tools to run tests automatically, manage test data, and utilize results to improve software quality. It's faster and more reliable for repetitive tasks.
+- **Manuelles Testen**: Dabei spielen menschliche Tester die Rolle der Endbenutzer und nutzen alle Funktionen der Anwendung, um korrektes Verhalten sicherzustellen.
+- **Automatisiertes Testen**: Hier werden Softwaretools verwendet, um Tests automatisch auszuführen, Testdaten zu verwalten und Ergebnisse zur Verbesserung der Softwarequalität zu nutzen. Es ist schneller und zuverlässiger für sich wiederholende Aufgaben.
 
-#### White Box vs. Black Box Testing
+#### White-Box- vs. Black-Box-Testing
 
-- **White Box Testing**: Also known as clear box or glass box testing, focuses on the internal structures or workings of an application, as opposed to its functionality. It requires detailed programming skills.
-- **Black Box Testing**: Focuses on the functionality of the software without peering into its internal structures or workings. This approach tests the software from the user's perspective.
+- **White-Box-Testen**: Auch als Clear-Box- oder Glass-Box-Testen bekannt, konzentriert es sich auf die internen Strukturen oder Funktionsweisen einer Anwendung im Gegensatz zu deren Funktionalität. Es erfordert detaillierte Programmierkenntnisse.
+- **Black-Box-Testen**: Konzentriert sich auf die Funktionalität der Software, ohne die internen Strukturen oder Funktionsweisen zu betrachten. Dieser Ansatz testet die Software aus der Perspektive des Benutzers.
 
-#### Types of Testing
+#### Testarten
 
-- **Acceptance Testing**: Determines if the system satisfies the user and business requirements.
-- **System Testing**: Checks the complete integrated system to evaluate the system's compliance with its specified requirements.
-- **Integration Testing**: Focuses on the interfaces between units/components to ensure that they work together correctly.
-- **Unit Testing**: Involves testing individual components or units of a program to verify that each unit performs as designed. It is often the first level of testing and forms the basis for later testing levels.
+- **Akzeptanztest**: Bestimmt, ob das System die Benutzer- und Geschäftsanforderungen erfüllt.
+- **Systemtest**: Überprüft das vollständig integrierte System, um die Konformität des Systems mit den festgelegten Anforderungen zu bewerten.
+- **Integrationstest**: Konzentriert sich auf die Schnittstellen zwischen Einheiten/Komponenten, um sicherzustellen, dass sie korrekt zusammenarbeiten.
+- **Unit-Test**: Umfasst das Testen einzelner Komponenten oder Einheiten eines Programms, um zu überprüfen, ob jede Einheit wie vorgesehen funktioniert. Es ist oft die erste Teststufe und bildet die Grundlage für spätere Teststufen.
 
-### Conclusion
+### Fazit
 
-Testing, in its various forms, is an essential practice in software development. It helps in identifying and fixing bugs before the software product is deployed, reducing the likelihood of failures and ensuring software quality. While achieving a completely bug-free application might be an unattainable goal, thorough testing can significantly reduce the number of defects and enhance the reliability and performance of the software product.
+Das Testen in seinen verschiedenen Formen ist eine wesentliche Praxis in der Softwareentwicklung. Es hilft, Fehler zu identifizieren und zu beheben, bevor das Softwareprodukt bereitgestellt wird, reduziert die Wahrscheinlichkeit von Ausfällen und stellt die Qualität der Software sicher. Während es vielleicht unerreichbar ist, eine vollständig fehlerfreie Anwendung zu erstellen, kann gründliches Testen die Anzahl der Defekte erheblich reduzieren und die Zuverlässigkeit und Leistung des Softwareprodukts verbessern.
