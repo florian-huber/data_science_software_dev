@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. Einführung &#8212; Data Science Software Development with Python</title>
+    <title>Introduction to Testing &#8212; Data Science Software Development with Python</title>
   
   
   
@@ -60,11 +60,9 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'book/01_introduction';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/06_testing_eng';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. Shell Scripting" href="02_shell_scripting.html" />
-    <link rel="prev" title="Software Development für Data Scientists (mit Python)" href="cover.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -115,6 +113,8 @@
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -169,8 +169,8 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Einführung</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_introduction.html">1. Einführung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_shell_scripting.html">2. Shell Scripting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_git_github.html">3. Versionskontrolle mit Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_github.html">4. GitHub</a></li>
@@ -278,7 +278,7 @@
       
       
       
-      <li><a href="https://github.com/florian-huber/data_science_software_dev/issues/new?title=Issue%20on%20page%20%2Fbook/01_introduction.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/florian-huber/data_science_software_dev/issues/new?title=Issue%20on%20page%20%2Fbook/06_testing_eng.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -308,7 +308,7 @@
       
       
       
-      <li><a href="../_sources/book/01_introduction.md" target="_blank"
+      <li><a href="../_sources/book/06_testing_eng.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -384,7 +384,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Einführung</h1>
+    <h1>Introduction to Testing</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -394,9 +394,16 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grenzen-des-notebooks">1.1. Grenzen des Notebooks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-serious">1.1.1. Getting serious</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-limits">1.1.2. Performance-Limits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-necessity-of-testing">The Necessity of Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-different-types-of-errors">Understanding Different Types of Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-myth-of-100-bug-free-software">The Myth of 100% Bug-Free Software</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-testing">What is Testing?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-vs-automated-testing">Manual vs. Automated Testing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#white-box-vs-black-box-testing">White Box vs. Black Box Testing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-testing">Types of Testing</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
 </li>
 </ul>
@@ -410,48 +417,59 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="einfuhrung">
-<h1><span class="section-number">1. </span>Einführung<a class="headerlink" href="#einfuhrung" title="Link to this heading">#</a></h1>
-<p>Dieses Skript begleitet den Kurs “Data Science und AI Infrastrukturen” im Studiengang DAISY an der <a class="reference external" href="https://www.hs-duesseldorf.de/">Hochschule Düsseldorf</a>.</p>
-<p>Bisher (1. und 2. Semester) haben wir, z.B. in der <a class="reference external" href="https://florian-huber.github.io/python-introduction/">Einführung Programmieren</a> und in der <a class="reference external" href="https://florian-huber.github.io/data_science_course/">Einführung Data Science</a> mit Hilfe von Python, zahlreichen Python Bibliotheken und Jupyter Notebooks komplette Data Science Workflows umgesetzt. Die Vorteile von dieser Art zu arbeiten liegen auf der Hand:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-testing">
+<h1>Introduction to Testing<a class="headerlink" href="#introduction-to-testing" title="Link to this heading">#</a></h1>
+<p>Testing is an integral part of software development, ensuring that code functions correctly and meets specified requirements. It’s crucial to understand that even well-written and properly formatted code is not inherently error-free. In this expanded introduction, we’ll delve deeper into the necessity of testing, types of errors, the reality of bug-free software, and different testing methodologies.</p>
+<section id="the-necessity-of-testing">
+<h2>The Necessity of Testing<a class="headerlink" href="#the-necessity-of-testing" title="Link to this heading">#</a></h2>
+<section id="understanding-different-types-of-errors">
+<h3>Understanding Different Types of Errors<a class="headerlink" href="#understanding-different-types-of-errors" title="Link to this heading">#</a></h3>
+<p>In programming, errors generally fall into three categories:</p>
 <ul class="simple">
-<li><p>schnelle Umsetzbarkeit</p></li>
-<li><p>Kompletter Ablauf von Datenimport bis hin zu den Visualisierungen in einer Umgebung</p></li>
-<li><p>Kann gleichzeitig zur Dokumentation des Prozesses und der Ergebnisse dienen</p></li>
-<li><p>Wiederausführbar mit Möglichkeit einzelne Code-Zellen jederzeit anzupassen und zu ergänzen</p></li>
-<li><p>Damit: sehr zügiges, dynamisches Arbeiten möglich.</p></li>
+<li><p><strong>Syntax Errors</strong>: These are grammatical errors in the code that prevent the program from running. They are usually the easiest to detect and fix.</p></li>
+<li><p><strong>Exceptions</strong>: These are runtime errors that occur due to anomalous situations while the program is executing, like trying to divide by zero.</p></li>
+<li><p><strong>Semantic Errors</strong>: The most insidious, these errors involve logic flaws. The program runs without crashing but produces incorrect results.</p></li>
 </ul>
-<p>Ideal für den Data Science Prozess!</p>
-<p>Oder doch nicht?</p>
-<section id="grenzen-des-notebooks">
-<h2><span class="section-number">1.1. </span>Grenzen des Notebooks<a class="headerlink" href="#grenzen-des-notebooks" title="Link to this heading">#</a></h2>
-<p>Jupyter Notebooks sind für viele Anwendungen im Data Science Bereich sehr nützlich und werden darum aus gutem Grund in der Praxis sehr häufig verwendet. Besonders geeignet sind Jupyter Notebooks für das schnelle Testen und Erkunden (“Prototyping”). Wenn sie sehr ordentlich erstellt werden, eignen sie auch sehr gut um Prozesse zu dokumentieren (Stichwort: “Literate Programming”).</p>
-<p>Allerdings hat diese Form zu arbeiten einige sehr wichtige Begrenzungen!
-Wer schon häufig mit anderen im Team gearbeitet hat, wird möglicherweise schon festgestellt haben, das es nicht besonders einfach ist mit mehreren Leuten gemeinsam an Jupyter Notebooks zu arbeiten. Und auch wenn sauber erstelltes und dokumentiertes Notebook gut lesbar sein kann, bedeutete das noch lange nicht, dass es auch bei anderen im Team direkt ausführbar ist.
-Wir kommen also recht schnell an Grenzen, ab denen Jupyter Notebooks nicht mehr nutzbar, oder zumindest nicht sehr praktisch sind. Genau in diesen Bereich möchten wir uns in diesem Kurs vortasten. Es geht um das Erlernen und Anwenden von Schlüsseltechniken die euch erlauben werden, professionelle Data Science Workflows zu entwickeln und zu implementieren die deutlich den Rahmen von Jupyter Notebooks sprengen, sei es durch höhere Komplexität, erhöhte Verlässlichkeit und Reproduzierbarkeit, oder stark verbesserte Performance.</p>
-<section id="getting-serious">
-<h3><span class="section-number">1.1.1. </span>Getting serious<a class="headerlink" href="#getting-serious" title="Link to this heading">#</a></h3>
-<p>Falls es unser Ziel war, nur einmalig bestimmte Analysen durchzuführen, Korrelationen zu finden, eine erste Aussage zu treffen etc., dann kann es gut sein, dass ein komplettes Data Science Projekt vollständig in Jupyter Notebook(s) umsetzbar ist. Das fertige Notebook und die damit generierten Grafiken sind quasi unser Endprodukt und wir können unser Projekt danach abschließen.</p>
-<p>Häufig geht ein Projekt aber deutlich weiter, etwa wenn:</p>
-<ul class="simple">
-<li><p>eine Analyse auf verschiedenen Datensätzen, durch verschiedene Personen, oder zu verschiedenen Zeitpunkten erneut durchgeführt werden soll (Stichwort: “Reproduzierbarkeit”)</p></li>
-<li><p>ein Produkt das Ziel des Projektes ist. Zum Beispiel ein Machine Learning Modell das später in einer bestimmten Software verwendet werden soll. Oder eine Web-App, ein Dashboard, eine Erkennungsmethode usw.</p></li>
-<li><p>die Abläufe/Analysen in eine umfangreicher Software (oder auch ein umfangreicheren Workflow) eingefügt werden sollen.</p></li>
-<li><p>weitere Optimierungsschritte nötig sind</p></li>
-</ul>
-<p>Um auf diese Stufe zu kommen müssen wir uns mit einigen Aspekten aus dem Bereich Softwareentwicklung vertraut machen. Wichtige Ziele sind dabei:</p>
-<ul class="simple">
-<li><p>Code schreiben der verlässlich ist (ausgibt was er soll).</p></li>
-<li><p>Code schreiben der nachhaltig funktioniert (also nicht mehr: “auf meinem Rechner lief aber alles…”).</p></li>
-<li><p>Code mit mehreren Leuten entwickeln.</p></li>
-<li><p>Code optimieren.</p></li>
-</ul>
-<p>Für alle diese Punkte sind Jupyter Notebooks nicht gut geeignet.</p>
-<p>Eine weiter Grenze der Notebooks sind</p>
 </section>
-<section id="performance-limits">
-<h3><span class="section-number">1.1.2. </span>Performance-Limits<a class="headerlink" href="#performance-limits" title="Link to this heading">#</a></h3>
-<p>Notebooks funktionieren gut solange sie nicht mehr als die frei verfügbaren Ressourcen unseres Computers  in Anspruch nehmen. D.h. nur soviel Arbeitsspeicher wie vorhanden und nur soviel CPU/GPU das wir nicht tagelang auf Berechnungen warten müssen. Je nach Bereich und Aufgabe werden diese Grenzen aber oft sehr schnell gesprengt!</p>
+<section id="the-myth-of-100-bug-free-software">
+<h3>The Myth of 100% Bug-Free Software<a class="headerlink" href="#the-myth-of-100-bug-free-software" title="Link to this heading">#</a></h3>
+<p>The concept of completely error-free software is more of a theoretical ideal than a practical reality. Studies suggest that typical software will have between 10 to 100 mistakes (or defects) per 1,000 lines of code <span id="id1">[<a class="reference internal" href="bibliography.html#id5" title="Geoffrey Phipps. Comparing observed bug and productivity rates for java and c++. Software: Practice and Experience, 29(4):345–358, 1999.">Phipps, 1999</a>]</span><span id="id2">[<a class="reference internal" href="bibliography.html#id4" title="Myron Lipow. Number of faults per line of code. IEEE Transactions on software Engineering, pages 437–439, 1982.">Lipow, 1982</a>]</span>. This of course largely depends on the type of software, the coding style and the use programming language. For Java, for instance, typical numbers are 50-80 defects per 1000 lines of code and 3 to 10 bugs per 1000 lines of code <span id="id3">[<a class="reference internal" href="bibliography.html#id5" title="Geoffrey Phipps. Comparing observed bug and productivity rates for java and c++. Software: Practice and Experience, 29(4):345–358, 1999.">Phipps, 1999</a>]</span> (for C++ those numbers were much higher!). Even well-tested software might have about 1 error per 1,000 lines. To put this in perspective, consider the size of some well-known software:</p>
+<ul class="simple">
+<li><p>MATLAB: Approximately 100,000 lines of code.</p></li>
+<li><p>Linux Kernel or Microsoft Office: About 10 million lines of code.</p></li>
+</ul>
+<p>Given these figures, it’s clear that errors are inevitable in software development. These errors can have serious consequences, as exemplified by the Ariane 5 rocket failure in 1996 due to a software bug.</p>
+</section>
+<section id="what-is-testing">
+<h3>What is Testing?<a class="headerlink" href="#what-is-testing" title="Link to this heading">#</a></h3>
+<p>Testing in software development is the process of evaluating a system or its components with the intent to find whether it satisfies the specified requirements. It involves executing a system component to identify any gaps, errors, or missing requirements in contrast to the actual requirements.</p>
+<section id="manual-vs-automated-testing">
+<h4>Manual vs. Automated Testing<a class="headerlink" href="#manual-vs-automated-testing" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Manual Testing</strong>: This involves human testers playing the role of end-users and using all features of the application to ensure correct behavior.</p></li>
+<li><p><strong>Automated Testing</strong>: Uses software tools to run tests automatically, manage test data, and utilize results to improve software quality. It’s faster and more reliable for repetitive tasks.</p></li>
+</ul>
+</section>
+<section id="white-box-vs-black-box-testing">
+<h4>White Box vs. Black Box Testing<a class="headerlink" href="#white-box-vs-black-box-testing" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>White Box Testing</strong>: Also known as clear box or glass box testing, focuses on the internal structures or workings of an application, as opposed to its functionality. It requires detailed programming skills.</p></li>
+<li><p><strong>Black Box Testing</strong>: Focuses on the functionality of the software without peering into its internal structures or workings. This approach tests the software from the user’s perspective.</p></li>
+</ul>
+</section>
+<section id="types-of-testing">
+<h4>Types of Testing<a class="headerlink" href="#types-of-testing" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Acceptance Testing</strong>: Determines if the system satisfies the user and business requirements.</p></li>
+<li><p><strong>System Testing</strong>: Checks the complete integrated system to evaluate the system’s compliance with its specified requirements.</p></li>
+<li><p><strong>Integration Testing</strong>: Focuses on the interfaces between units/components to ensure that they work together correctly.</p></li>
+<li><p><strong>Unit Testing</strong>: Involves testing individual components or units of a program to verify that each unit performs as designed. It is often the first level of testing and forms the basis for later testing levels.</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusion">
+<h3>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h3>
+<p>Testing, in its various forms, is an essential practice in software development. It helps in identifying and fixing bugs before the software product is deployed, reducing the likelihood of failures and ensuring software quality. While achieving a completely bug-free application might be an unattainable goal, thorough testing can significantly reduce the number of defects and enhance the reliability and performance of the software product.</p>
 </section>
 </section>
 </section>
@@ -486,24 +504,6 @@ Wir kommen also recht schnell an Grenzen, ab denen Jupyter Notebooks nicht mehr 
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="cover.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Software Development für Data Scientists (mit Python)</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="02_shell_scripting.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Shell Scripting</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -521,9 +521,16 @@ Wir kommen also recht schnell an Grenzen, ab denen Jupyter Notebooks nicht mehr 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grenzen-des-notebooks">1.1. Grenzen des Notebooks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-serious">1.1.1. Getting serious</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-limits">1.1.2. Performance-Limits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-necessity-of-testing">The Necessity of Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-different-types-of-errors">Understanding Different Types of Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-myth-of-100-bug-free-software">The Myth of 100% Bug-Free Software</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-testing">What is Testing?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-vs-automated-testing">Manual vs. Automated Testing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#white-box-vs-black-box-testing">White Box vs. Black Box Testing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-testing">Types of Testing</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
 </li>
 </ul>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>12. Code Testing with Python &#8212; Data Science Software Development with Python</title>
+    <title>12. Warum brauchen wir Testing? &#8212; Data Science Software Development with Python</title>
   
   
   
@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/06_testing';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="13. Introduction to Continuous Integration" href="07_continuous_integration.html" />
+    <link rel="next" title="13. Live Coding Einführung in das Testen von Code" href="07_testing_live_coding.html" />
     <link rel="prev" title="11. Python Software Projekt" href="11_python_software_project.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -190,9 +190,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Testing and Continuous Integration</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Code Testing with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">13. Introduction to Continuous Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">14. Code Testing (2)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Warum brauchen wir Testing?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_live_coding.html">13. Live Coding Einführung in das Testen von Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">14. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">15. Code Testing (2)</a></li>
 
 
 
@@ -383,7 +384,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Code Testing with Python</h1>
+    <h1>Warum brauchen wir Testing?</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -393,18 +394,18 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-necessity-of-testing">12.1. 1. The Necessity of Testing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-different-types-of-errors">12.1.1. Understanding Different Types of Errors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-myth-of-100-bug-free-software">12.1.2. The Myth of 100% Bug-Free Software</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-notwendigkeit-des-testens">12.1. Die Notwendigkeit des Testens</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verstandnis-der-verschiedenen-fehlertypen">12.1.1. Verständnis der verschiedenen Fehlertypen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-mythos-der-100-fehlerfreien-software">12.1.2. Der Mythos der 100% fehlerfreien Software</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-testen">12.1.3. Was ist Testen?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#manuelles-vs-automatisiertes-testen">12.1.3.1. Manuelles vs. automatisiertes Testen</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#white-box-vs-black-box-testing">12.1.3.2. White-Box- vs. Black-Box-Testing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#testarten">12.1.3.3. Testarten</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-testing">12.2. 2. What is Testing?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-vs-automated-testing">12.2.1. Manual vs. Automated Testing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#white-box-vs-black-box-testing">12.2.2. White Box vs. Black Box Testing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-testing">12.2.3. Types of Testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fazit">12.1.4. Fazit</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">12.3. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -416,60 +417,60 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="code-testing-with-python">
-<h1><span class="section-number">12. </span>Code Testing with Python<a class="headerlink" href="#code-testing-with-python" title="Link to this heading">#</a></h1>
-<p>Testing is an integral part of software development, ensuring that code functions correctly and meets specified requirements. It’s crucial to understand that even well-written and properly formatted code is not inherently error-free. In this expanded introduction, we’ll delve deeper into the necessity of testing, types of errors, the reality of bug-free software, and different testing methodologies.</p>
-<section id="the-necessity-of-testing">
-<h2><span class="section-number">12.1. </span>1. The Necessity of Testing<a class="headerlink" href="#the-necessity-of-testing" title="Link to this heading">#</a></h2>
-<section id="understanding-different-types-of-errors">
-<h3><span class="section-number">12.1.1. </span>Understanding Different Types of Errors<a class="headerlink" href="#understanding-different-types-of-errors" title="Link to this heading">#</a></h3>
-<p>In programming, errors generally fall into three categories:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="warum-brauchen-wir-testing">
+<h1><span class="section-number">12. </span>Warum brauchen wir Testing?<a class="headerlink" href="#warum-brauchen-wir-testing" title="Link to this heading">#</a></h1>
+<p>Das Testen ist ein integraler Bestandteil der Softwareentwicklung und stellt sicher, dass der Code korrekt funktioniert und die festgelegten Anforderungen erfüllt. Es ist wichtig zu verstehen, dass selbst gut geschriebener und korrekt formatierter Code nicht automatisch fehlerfrei ist. In dieser erweiterten Einführung werden wir die Notwendigkeit des Testens, verschiedene Fehlerarten, die Realität fehlerfreier Software und unterschiedliche Testmethoden genauer beleuchten.</p>
+<section id="die-notwendigkeit-des-testens">
+<h2><span class="section-number">12.1. </span>Die Notwendigkeit des Testens<a class="headerlink" href="#die-notwendigkeit-des-testens" title="Link to this heading">#</a></h2>
+<section id="verstandnis-der-verschiedenen-fehlertypen">
+<h3><span class="section-number">12.1.1. </span>Verständnis der verschiedenen Fehlertypen<a class="headerlink" href="#verstandnis-der-verschiedenen-fehlertypen" title="Link to this heading">#</a></h3>
+<p>In der Programmierung lassen sich Fehler allgemein in drei Kategorien einteilen:</p>
 <ul class="simple">
-<li><p><strong>Syntax Errors</strong>: These are grammatical errors in the code that prevent the program from running. They are usually the easiest to detect and fix.</p></li>
-<li><p><strong>Exceptions</strong>: These are runtime errors that occur due to anomalous situations while the program is executing, like trying to divide by zero.</p></li>
-<li><p><strong>Semantic Errors</strong>: The most insidious, these errors involve logic flaws. The program runs without crashing but produces incorrect results.</p></li>
+<li><p><strong>Syntaxfehler</strong>: Dies sind grammatikalische Fehler im Code, die verhindern, dass das Programm ausgeführt wird. Sie sind normalerweise am einfachsten zu erkennen und zu beheben.</p></li>
+<li><p><strong>Ausnahmen</strong>: Dies sind Laufzeitfehler, die aufgrund von Anomalien während der Programmausführung auftreten, wie etwa der Versuch, durch Null zu teilen.</p></li>
+<li><p><strong>Semantische Fehler</strong>: Diese sind am schwerwiegendsten und betreffen logische Fehler. Das Programm stürzt nicht ab, liefert aber falsche Ergebnisse.</p></li>
 </ul>
 </section>
-<section id="the-myth-of-100-bug-free-software">
-<h3><span class="section-number">12.1.2. </span>The Myth of 100% Bug-Free Software<a class="headerlink" href="#the-myth-of-100-bug-free-software" title="Link to this heading">#</a></h3>
-<p>The concept of completely error-free software is more of a theoretical ideal than a practical reality. Studies suggest that typical software can have between 15 to 50 mistakes per 1,000 lines of code. Even well-tested software might have about 1 error per 1,000 lines. To put this in perspective, consider the size of some well-known software:</p>
+<section id="der-mythos-der-100-fehlerfreien-software">
+<h3><span class="section-number">12.1.2. </span>Der Mythos der 100% fehlerfreien Software<a class="headerlink" href="#der-mythos-der-100-fehlerfreien-software" title="Link to this heading">#</a></h3>
+<p>Das Konzept völlig fehlerfreier Software ist eher ein theoretisches Ideal als eine praktische Realität. Studien legen nahe, dass typische Software zwischen 10 und 100 Fehler (oder Defekte) pro 1.000 Codezeilen aufweist <span id="id1">[<a class="reference internal" href="bibliography.html#id5" title="Geoffrey Phipps. Comparing observed bug and productivity rates for java and c++. Software: Practice and Experience, 29(4):345–358, 1999.">Phipps, 1999</a>]</span><span id="id2">[<a class="reference internal" href="bibliography.html#id4" title="Myron Lipow. Number of faults per line of code. IEEE Transactions on software Engineering, pages 437–439, 1982.">Lipow, 1982</a>]</span>. Dies hängt natürlich stark von der Art der Software, dem Codierungsstil und der verwendeten Programmiersprache ab. Bei Java zum Beispiel liegen die typischen Zahlen bei 50-80 Defekten pro 1.000 Codezeilen und 3 bis 10 Fehlern pro 1.000 Zeilen <span id="id3">[<a class="reference internal" href="bibliography.html#id5" title="Geoffrey Phipps. Comparing observed bug and productivity rates for java and c++. Software: Practice and Experience, 29(4):345–358, 1999.">Phipps, 1999</a>]</span> (für C++ waren diese Zahlen deutlich höher!). Selbst gut getestete Software könnte etwa einen Fehler pro 1.000 Zeilen aufweisen. Um dies in Perspektive zu setzen, betrachten wir die Größe einiger bekannter Software:</p>
 <ul class="simple">
-<li><p>MATLAB: Approximately 100,000 lines of code.</p></li>
-<li><p>Linux Kernel or Microsoft Office: About 10 million lines of code.</p></li>
+<li><p>MATLAB: Ungefähr 100.000 Codezeilen.</p></li>
+<li><p>Linux-Kernel oder Microsoft Office: Etwa 10 Millionen Codezeilen.</p></li>
 </ul>
-<p>Given these figures, it’s clear that errors are inevitable in software development. These errors can have serious consequences, as exemplified by the Ariane 5 rocket failure in 1996 due to a software bug.</p>
+<p>Angesichts dieser Zahlen ist klar, dass Fehler in der Softwareentwicklung unvermeidlich sind. Diese Fehler können schwerwiegende Folgen haben, wie das Beispiel des Ariane-5-Raketenversagens im Jahr 1996 aufgrund eines Softwarefehlers zeigt.</p>
 </section>
-</section>
-<section id="what-is-testing">
-<h2><span class="section-number">12.2. </span>2. What is Testing?<a class="headerlink" href="#what-is-testing" title="Link to this heading">#</a></h2>
-<p>Testing in software development is the process of evaluating a system or its components with the intent to find whether it satisfies the specified requirements. It involves executing a system component to identify any gaps, errors, or missing requirements in contrast to the actual requirements.</p>
-<section id="manual-vs-automated-testing">
-<h3><span class="section-number">12.2.1. </span>Manual vs. Automated Testing<a class="headerlink" href="#manual-vs-automated-testing" title="Link to this heading">#</a></h3>
+<section id="was-ist-testen">
+<h3><span class="section-number">12.1.3. </span>Was ist Testen?<a class="headerlink" href="#was-ist-testen" title="Link to this heading">#</a></h3>
+<p>Das Testen in der Softwareentwicklung ist der Prozess der Bewertung eines Systems oder seiner Komponenten, um festzustellen, ob es die festgelegten Anforderungen erfüllt. Es umfasst die Ausführung einer Systemkomponente, um Lücken, Fehler oder fehlende Anforderungen im Vergleich zu den tatsächlichen Anforderungen zu identifizieren.</p>
+<section id="manuelles-vs-automatisiertes-testen">
+<h4><span class="section-number">12.1.3.1. </span>Manuelles vs. automatisiertes Testen<a class="headerlink" href="#manuelles-vs-automatisiertes-testen" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p><strong>Manual Testing</strong>: This involves human testers playing the role of end-users and using all features of the application to ensure correct behavior.</p></li>
-<li><p><strong>Automated Testing</strong>: Uses software tools to run tests automatically, manage test data, and utilize results to improve software quality. It’s faster and more reliable for repetitive tasks.</p></li>
+<li><p><strong>Manuelles Testen</strong>: Dabei spielen menschliche Tester die Rolle der Endbenutzer und nutzen alle Funktionen der Anwendung, um korrektes Verhalten sicherzustellen.</p></li>
+<li><p><strong>Automatisiertes Testen</strong>: Hier werden Softwaretools verwendet, um Tests automatisch auszuführen, Testdaten zu verwalten und Ergebnisse zur Verbesserung der Softwarequalität zu nutzen. Es ist schneller und zuverlässiger für sich wiederholende Aufgaben.</p></li>
 </ul>
 </section>
 <section id="white-box-vs-black-box-testing">
-<h3><span class="section-number">12.2.2. </span>White Box vs. Black Box Testing<a class="headerlink" href="#white-box-vs-black-box-testing" title="Link to this heading">#</a></h3>
+<h4><span class="section-number">12.1.3.2. </span>White-Box- vs. Black-Box-Testing<a class="headerlink" href="#white-box-vs-black-box-testing" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p><strong>White Box Testing</strong>: Also known as clear box or glass box testing, focuses on the internal structures or workings of an application, as opposed to its functionality. It requires detailed programming skills.</p></li>
-<li><p><strong>Black Box Testing</strong>: Focuses on the functionality of the software without peering into its internal structures or workings. This approach tests the software from the user’s perspective.</p></li>
+<li><p><strong>White-Box-Testen</strong>: Auch als Clear-Box- oder Glass-Box-Testen bekannt, konzentriert es sich auf die internen Strukturen oder Funktionsweisen einer Anwendung im Gegensatz zu deren Funktionalität. Es erfordert detaillierte Programmierkenntnisse.</p></li>
+<li><p><strong>Black-Box-Testen</strong>: Konzentriert sich auf die Funktionalität der Software, ohne die internen Strukturen oder Funktionsweisen zu betrachten. Dieser Ansatz testet die Software aus der Perspektive des Benutzers.</p></li>
 </ul>
 </section>
-<section id="types-of-testing">
-<h3><span class="section-number">12.2.3. </span>Types of Testing<a class="headerlink" href="#types-of-testing" title="Link to this heading">#</a></h3>
+<section id="testarten">
+<h4><span class="section-number">12.1.3.3. </span>Testarten<a class="headerlink" href="#testarten" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p><strong>Acceptance Testing</strong>: Determines if the system satisfies the user and business requirements.</p></li>
-<li><p><strong>System Testing</strong>: Checks the complete integrated system to evaluate the system’s compliance with its specified requirements.</p></li>
-<li><p><strong>Integration Testing</strong>: Focuses on the interfaces between units/components to ensure that they work together correctly.</p></li>
-<li><p><strong>Unit Testing</strong>: Involves testing individual components or units of a program to verify that each unit performs as designed. It is often the first level of testing and forms the basis for later testing levels.</p></li>
+<li><p><strong>Akzeptanztest</strong>: Bestimmt, ob das System die Benutzer- und Geschäftsanforderungen erfüllt.</p></li>
+<li><p><strong>Systemtest</strong>: Überprüft das vollständig integrierte System, um die Konformität des Systems mit den festgelegten Anforderungen zu bewerten.</p></li>
+<li><p><strong>Integrationstest</strong>: Konzentriert sich auf die Schnittstellen zwischen Einheiten/Komponenten, um sicherzustellen, dass sie korrekt zusammenarbeiten.</p></li>
+<li><p><strong>Unit-Test</strong>: Umfasst das Testen einzelner Komponenten oder Einheiten eines Programms, um zu überprüfen, ob jede Einheit wie vorgesehen funktioniert. Es ist oft die erste Teststufe und bildet die Grundlage für spätere Teststufen.</p></li>
 </ul>
 </section>
 </section>
-<section id="conclusion">
-<h2><span class="section-number">12.3. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<p>Testing, in its various forms, is an essential practice in software development. It helps in identifying and fixing bugs before the software product is deployed, reducing the likelihood of failures and ensuring software quality. While achieving a completely bug-free application might be an unattainable goal, thorough testing can significantly reduce the number of defects and enhance the reliability and performance of the software product.</p>
+<section id="fazit">
+<h3><span class="section-number">12.1.4. </span>Fazit<a class="headerlink" href="#fazit" title="Link to this heading">#</a></h3>
+<p>Das Testen in seinen verschiedenen Formen ist eine wesentliche Praxis in der Softwareentwicklung. Es hilft, Fehler zu identifizieren und zu beheben, bevor das Softwareprodukt bereitgestellt wird, reduziert die Wahrscheinlichkeit von Ausfällen und stellt die Qualität der Software sicher. Während es vielleicht unerreichbar ist, eine vollständig fehlerfreie Anwendung zu erstellen, kann gründliches Testen die Anzahl der Defekte erheblich reduzieren und die Zuverlässigkeit und Leistung des Softwareprodukts verbessern.</p>
+</section>
 </section>
 </section>
 
@@ -513,11 +514,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="07_continuous_integration.html"
+       href="07_testing_live_coding.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Introduction to Continuous Integration</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Live Coding Einführung in das Testen von Code</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -538,18 +539,18 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-necessity-of-testing">12.1. 1. The Necessity of Testing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-different-types-of-errors">12.1.1. Understanding Different Types of Errors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-myth-of-100-bug-free-software">12.1.2. The Myth of 100% Bug-Free Software</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-notwendigkeit-des-testens">12.1. Die Notwendigkeit des Testens</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verstandnis-der-verschiedenen-fehlertypen">12.1.1. Verständnis der verschiedenen Fehlertypen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-mythos-der-100-fehlerfreien-software">12.1.2. Der Mythos der 100% fehlerfreien Software</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-testen">12.1.3. Was ist Testen?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#manuelles-vs-automatisiertes-testen">12.1.3.1. Manuelles vs. automatisiertes Testen</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#white-box-vs-black-box-testing">12.1.3.2. White-Box- vs. Black-Box-Testing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#testarten">12.1.3.3. Testarten</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-testing">12.2. 2. What is Testing?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-vs-automated-testing">12.2.1. Manual vs. Automated Testing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#white-box-vs-black-box-testing">12.2.2. White Box vs. Black Box Testing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-testing">12.2.3. Types of Testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fazit">12.1.4. Fazit</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">12.3. Conclusion</a></li>
 </ul>
   </nav></div>
 
