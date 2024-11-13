@@ -25,6 +25,7 @@ parts:
     numbered: true
     chapters:
     - file: book/06_testing
+    - file: book/07_testing_live_coding
     - file: book/07_continuous_integration
     - file: book/07_testing_2
   - caption: References
