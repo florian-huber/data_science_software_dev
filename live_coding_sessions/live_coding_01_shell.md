@@ -113,7 +113,7 @@ mkdir one long name
 ls
 ```
 
-Dies erstelle drei Ordner (one/, long/, und name/).
+Dies erstellt drei einzelne Ordner (one, long, und name).
 
 ### Verzeichnisse löschen
 
@@ -177,7 +177,7 @@ For-Loop:
 ```bash
 for Variable in {1..5}
 do
-    echo $Variable$
+    echo $Variable
 done
 ```
 
