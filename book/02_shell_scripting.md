@@ -81,7 +81,7 @@ Bei MacOS ist Bash im Prinzip bereits vorinstalliert. Hier einfach das Terminal 
 
 Wir starten langsam und schauen uns erst einmal die Standard-Befehle an um Ordner zu wechseln und deren Inhalt zu sehen:
 
-- `pwd` gibt den aktuellen Ordner an in dem wir uns befinden. Unter Linux sieht das typischerweise aus wie `/homer/itsme`, bei Windows eher wie `C:\Users\itsme`.
+- `pwd` gibt den aktuellen Ordner an in dem wir uns befinden. Unter Linux sieht das typischerweise aus wie `/home/itsme`, bei Windows eher wie `C:\Users\itsme`.
 - `ls`(für list/listing) zeigt den Inhalt des aktuellen Verzeichnisses auf.
 - mit `cd foldername` gehe ich in einen Ordner namens "foldername", mit `cd ..` gehe ich wieder einen Ordner tiefer zurück
 - mit `--help` können Hinweise zu den möglichen Parametern abgefragt werden, z.B. `ls --help`.
