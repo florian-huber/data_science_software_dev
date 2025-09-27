@@ -31,7 +31,7 @@ Was machen die Einstellungen `-l` ("L" nicht "1") oder die Kombination aus `-l` 
 
 ### Übung:
 
-Findet über die Hilfe (`--help`) heraus wie alle Dateien alphabetisch mit ?
+Findet über die Hilfe (`--help`) heraus wie alle Dateien der Größe nach (absteigend) sortiert werden können.
 
 ## Verzeichnisse erstellen
 
