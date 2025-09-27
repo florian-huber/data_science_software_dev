@@ -25,13 +25,17 @@ ls -r
 Was machen die Einstellungen `-l` ("L" nicht "1") oder die Kombination aus `-l` und `-h` zusammen?
 
 ### Lösung:
-
 - `-l` --> long listing format
 - `-h` --> "human readable", z.B. 5.3k statt 5369
 
 ### Übung:
 
-Findet über die Hilfe (`--help`) heraus wie alle Dateien der Größe nach (absteigend) sortiert werden können.
+Findet über die Hilfe (`--help`) heraus wie alle Dateien **aufsteigend** der Größe nach sortiert werden können.
+
+### Lösung:
+- `-l` --> long listing format
+- `-S` --> sort by file size, largest first
+- `-r` -->  reverse order while sorting
 
 ## Verzeichnisse erstellen
 
@@ -48,6 +52,12 @@ ls -R
 ```
 
 **Hinweis**: Das ist das GLEICHE wie mit dem Explorer ein Verzeichnis zu erstellen!
+
+## Verzeichnisse wechseln
+```bash
+cd new_dir
+cd .. <-- eine Ebene hoch wechseln
+```
 
 ### Dateien erstellen
 
