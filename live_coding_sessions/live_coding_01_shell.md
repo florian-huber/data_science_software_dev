@@ -193,6 +193,12 @@ done
 ### Shell-Skripte
 
 Längere Code-Teile im Shell einzugeben ist nervig und macht darum auch niemand. Dazu verwenden wir **Shell-Skripte**, also Textdateien (mit `.sh` Endung) die den Bash Code enthalten.
+Shell-Skripte sollten immer damit beginnen, um welche Art von Shell Skript es sich handelt:
+```bash
+#!/bin/bash <-- legt Bash fest
+
+# hier beginnt der eigentliche Shell Code...
+```
 
 Ausgeführt werden solche Shell-Skripte z.B. mit
 ```bash
