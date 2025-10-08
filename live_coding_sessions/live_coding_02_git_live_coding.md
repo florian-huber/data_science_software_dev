@@ -1,6 +1,6 @@
 # Live Coding: git & GitHub
 
-(Erstellt auf Grundlage des Carpentry Git Kurses: https://carpentries-incubator.github.io/git-novice-branch-pr/)
+(Erstellt auf Grundlage des [Carpentry Git Kurses](https://carpentries-incubator.github.io/git-novice-branch-pr/))
 
 ## Git installieren
 #### Windows:
