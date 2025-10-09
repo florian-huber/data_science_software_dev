@@ -71,14 +71,24 @@ https://carpentries-incubator.github.io/git-novice-branch-pr/02-setup/
 ### 1. Eigenes Projekt erstellen!
 
 - Erstellt ein eigenes Repository: "solar_system"
-  (Description = "HSD GitHub Crashkurs", Private, + add README)git
+  (Description = "HSD GitHub Crashkurs", Visibility = Private, add README = True)git
+
+#### Option 1: VSCode
+- Erstellt eine lokale Copy: In VSCode `Clone Git Repository` und gebt ein: `https://github.com/<MY_GITHUB_USERNAME>/<MY_REPOSITORY_NAME>.git`
+- Es öffnet sich ein Fenster zu Anmeldung und ihr meldet euch einmalig an
+- Öffnet das VSCode Terminal (`Ctrl+Shift+ö`) und schaut euch die remote settings an: `git remote -v`
+- Erstellt einen Ordner `planets/`
+- Erstellt darin eine Datei `mars.py` und kopiert Code
+- Staged eure Änderungen, committed die Änderungen und pushed die Änderungen
+
 
 - Erstellt eine lokale Copy mit `git clone`
   `git clone https://github.com/<MY_GITHUB_USERNAME>/<MY_REPOSITORY_NAME>.git`
   (erstellt eine Kopie und setzt den `remote` auf euer GitHub Repository)
 - Schaut euch die Remote-Settings an: `git remote -v`
 - Erstellt bei euch auf dem Rechner den Ordner `planets/`
-- Erstellt darin eine Datei `mars.py` und kopiert Code 
+- Erstellt darin eine Datei `mars.py` und kopiert Code
+- Staged eure Änderungen, committed die Änderungen und pushed die Änderungen mit `git add .`, `git commit -m "DEINE COMMIT MSG"`, `git push origin main`
 
 
 
