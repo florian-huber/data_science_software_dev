@@ -1,7 +1,7 @@
 # Linting
 
 **Was ist Linting?**
-Linting ist der Prozess des Überprüfens des Quellcodes auf programmatische und stilistische Fehler. Ein "Linter" ist ein Tool, das den Code automatisch überprüft und häufige Fehler oder Abweichungen von Stilrichtlinien meldet. In Python gibt es verschiedene Linter, wobei einige der bekanntesten `pylint`, `flake8`, `black` und `ruff` sind. Insbesondere `pylint` und `flake8` waren über viele Jahre sehr verbreitet in der Python Community und laufen im Hintergrund in vielen Python-Bibliotheken. Hier konzentrieren wir uns aber auf die zwei etwas neueren Linter `ruff` und `black` die zunehmend Einzug halten und vielen Entwickler*innen als moderner und leistungsfähiger gelten.
+Linting ist der Prozess des Überprüfens des Quellcodes auf programmatische und stilistische Fehler. Ein "Linter" ist ein Tool, das den Code automatisch überprüft und häufige Fehler oder Abweichungen von Stilrichtlinien meldet. In Python gibt es verschiedene Linter, z.B. `pylint` oder `flake8`, aber zunehmend v.a. `black` und `ruff`. Hier konzentrieren wir uns auch auf die zwei etwas neueren Linter `ruff` und `black` die zunehmend Einzug halten und vielen Entwickler*innen als moderner und leistungsfähiger gelten.
 
 **Code Beispiel**
 

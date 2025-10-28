@@ -2,12 +2,37 @@
 
 Last time we developed the first pieces of a simple blackjack game.
 
-This included two main functions:
+### Expanding the Game: Adding a CardDeck Class
 
-1. `count_cards(cards)`, which we already developed
-2. `play_game(names)`, which we develop in this session
+To practice Object-Oriented Programming (OOP) and further modularize our code, we introduce a `CardDeck` class which we will write into a new file, e.g., `main_classes.py`.
+
+A class is useful to handle the cards in our game, because it has internal state (the attributes) that allow "memorize" the current state. In our case this can be used to describe the available number and order of cards in the deck.
 
 ```python
+import random
+
+class CardDeck:
+    def __init__(self, num_copies=4):
+        self.cards = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"] * num_copies
+    
+    def shuffle(self):
+        random.shuffle(self.cards)
+
+    def draw_cards(self, num_cards):
+        cards = []
+        for _ in range(num_cards):
+            cards.append(self.cards.pop())
+        return cards
+```
+
+
+Last time we developed the function `count_cards()`. Here is a simple variant of a `play_game()` function that now uses the CardDeck and the existing function to build a minimal version of a blackjack game.
+
+
+```python
+from main_classes import CardDeck
+
+
 def count_cards(cards):
     """Counts the total value of the given cards in a blackjack game."""
     card_values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6,
@@ -26,14 +51,7 @@ def count_cards(cards):
 
     return total
 
-def play_game(names):
-    """Game logic for blackjack."""
-    # Placeholder for game logic
-```
 
-A simple realization of a the play_game() function could look like this:
-
-```python
 def play_game():
     """A game of Blackjack with multiple players."""
     num_players = int(input("Enter the number of players: "))
@@ -85,57 +103,84 @@ There is a lot of room for improvements, but it is enough to illustrate how such
 Now to the testing. We already implemented tests for the `count_cards()` function last week.
 
 ```python
-def test_count_cards_no_aces():
-    assert count_cards(['2', '3', '4']) == 9
-
-def test_count_cards_with_aces():
-    assert count_cards(['A', '3', '4']) == 18
-    assert count_cards(["A", "A"]) == 12
-    assert count_cards(["Q", "A"]) == 21
-    assert count_cards(["5", "5", "A"]) == 21
-
-def test_more_than_21():
-    assert count_cards(["5", "10", "K", "7"]) > 21
-```
-
-### Using Decorators for Efficient Testing
-
-Decorators in Python can be used to streamline tests, particularly with `pytest.mark.parametrize`. This allows for testing multiple scenarios with a single test function.
-
-Example:
-
-```python
 import pytest
+from blackjack import count_cards
 
-@pytest.mark.parametrize("cards, score", [("A34", 18), ("AA9", 21), ...])
+
+def test_count_cards():
+    assert count_cards(["2", "3", "4"]) == 9
+
+@pytest.mark.parametrize("cards, score", 
+                         [(["A", "Q"], 21),
+                          (["A", "5", "5"], 21),
+                          (["A", "9"], 20),
+                          (["A", "A", "7"], 19)
+                          ]
+                         )
 def test_count_cards_with_aces(cards, score):
     assert count_cards(cards) == score
+
+def test_more_than_21():
+    assert count_cards(["10", "J", "Q"]) > 21
+
+def test_unknown_cards():
+    with pytest.raises(ValueError) as error:
+        count_cards(["X"])
+    assert "Invalid card: X" in str(error.value)
 ```
 
-### Expanding the Game: Adding a CardDeck Class
 
-To practice Object-Oriented Programming (OOP) and further modularize our code, we introduced a `CardDeck` class which we will write into a new file, e.g., `main_classes.py`.
 
-A class is useful to handle the cards in our game, because it has internal state (the attributes) that allow "memorize" the current state. In our case this can be used to describe the available number and order of cards in the deck.
+## Instructor-task: 
 
-```python
-import random
+Create a repository and place those files in respective folders and push.
 
-class CardDeck:
-    def __init__(self, num_copies=4):
-        self.cards = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"] * num_copies
-    
-    def shuffle(self):
-        random.shuffle(self.cards)
+--> Everyone can then fork this and clone it to have a local copy.
 
-    def draw_cards(self, num_cards):
-        cards = []
-        for _ in range(num_cards):
-            cards.append(self.cards.pop())
-        return cards
+
+
+
+
+### Trouble with folders
+
+We now place those files in separate folders, which is good practice. So, for instance, a `casino` folder with `blackjack.py` and `main_classes.py` and a seperate `tests` folder.
+
+The structure of our projects is now
+project/
+│
+├── casino/
+│   ├── __init__.py
+│   ├── blackjack.py
+│   ├── main_classes.py
+│
+├── tests/
+│   ├── __init__.py
+│   ├── test_blackjack.py
+│
+└── README.md
+
+
+Try: `pytest`
+
+This no longer works.
+At this point we have to add an empty `__init__.py` file in both the tests and the `casino` folder. This indicates to the Python interpreter that those folders are "modules" from which we can also import. Do do so, we can adjust the imports to `from casino.blackjack import count_cards` in our test file. 
+
+Does this work now?
+
+Not fully, we also have to change the import in the blackjack game to `from casino.main_classes import CardDeck`. Then, the test should work (hopefully).
+
+There is **more trouble coming** though.
+Try now to execute the `blackjack.py` file. This will probably give you an error saying `ModuleNotFoundError: No module named 'casino'" error.`. 
+
+There are some workarounds for this, but none of them is really nice (IMHO). So it's better to avoid such execution directly from a .py-file once we build a Python package. But you can still run the code with the following command from the project root folder:
+```bash
+python -m casino.blackjack
 ```
 
-Once this class is designed or even written, we can start to add tests. This time in a new, separate file that we can name `test_main_classes.py`:
+
+
+### Coding part:
+It is now time to also add tests for the `CardDeck` class which I placed in the file `main_classes.py`. So we will start with a new file called `test_main_classes.py`:
 
 ```python
 import pytest
@@ -175,6 +220,7 @@ def test_card_deck_empty():
 
 We can again run all our tests by simply executing `pytest` in the terminal (from our project folder). 
 
+
 ### How to test the `play_game()` function?
 
 This function is a bit more tricky to test, because in a real game there are multiple user inputs. And there is a lot of random events (card shuffling etc.), so that in reality each game looks different.
@@ -185,8 +231,8 @@ One such test could look like:
 
 ```python
 import pytest
-from main_functions import play_game
-from main_classes import CardDeck
+from casino.blackjack import play_game
+from casino.main_classes import CardDeck
 from io import StringIO
 
 def test_single_player_blackjack(monkeypatch):
@@ -220,3 +266,47 @@ def test_single_player_blackjack(monkeypatch):
     assert "Winner(s): Player 1" in output.getvalue()
 ```
 
+
+### Task:
+By the way: what happens if all players exceed 21 points? Ever tested this?
+
+
+
+
+
+
+
+
+
+## Continuous Integration
+
+Here a pipeline to use:
+
+```yaml
+name: Our first Python CI
+on:
+  push:
+    branches: [ "main" ] 
+
+jobs:
+  My-first-CI:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.12
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install ruff pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi 
+    - name: Linting with Ruff
+      run: ruff check .
+    - name: Test with pytest
+      run: pytest
+
+```
+
+A good tool to check your yaml file is: https://yamlchecker.com/
