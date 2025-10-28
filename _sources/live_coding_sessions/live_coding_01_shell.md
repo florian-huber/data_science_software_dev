@@ -25,13 +25,17 @@ ls -r
 Was machen die Einstellungen `-l` ("L" nicht "1") oder die Kombination aus `-l` und `-h` zusammen?
 
 ### Lösung:
-
 - `-l` --> long listing format
 - `-h` --> "human readable", z.B. 5.3k statt 5369
 
 ### Übung:
 
-Findet über die Hilfe (`--help`) heraus wie alle Dateien alphabetisch mit ?
+Findet über die Hilfe (`--help`) heraus wie alle Dateien **aufsteigend** der Größe nach sortiert werden können.
+
+### Lösung:
+- `-l` --> long listing format
+- `-S` --> sort by file size, largest first
+- `-r` -->  reverse order while sorting
 
 ## Verzeichnisse erstellen
 
@@ -48,6 +52,12 @@ ls -R
 ```
 
 **Hinweis**: Das ist das GLEICHE wie mit dem Explorer ein Verzeichnis zu erstellen!
+
+## Verzeichnisse wechseln
+```bash
+cd new_dir
+cd .. <-- eine Ebene hoch wechseln
+```
 
 ### Dateien erstellen
 
@@ -103,7 +113,7 @@ mkdir one long name
 ls
 ```
 
-Dies erstelle drei Ordner (one/, long/, und name/).
+Dies erstellt drei einzelne Ordner (one, long, und name).
 
 ### Verzeichnisse löschen
 
@@ -167,7 +177,7 @@ For-Loop:
 ```bash
 for Variable in {1..5}
 do
-    echo $Variable$
+    echo $Variable
 done
 ```
 
@@ -183,6 +193,12 @@ done
 ### Shell-Skripte
 
 Längere Code-Teile im Shell einzugeben ist nervig und macht darum auch niemand. Dazu verwenden wir **Shell-Skripte**, also Textdateien (mit `.sh` Endung) die den Bash Code enthalten.
+Shell-Skripte sollten immer damit beginnen, um welche Art von Shell Skript es sich handelt:
+```bash
+#!/bin/bash <-- legt Bash fest
+
+# hier beginnt der eigentliche Shell Code...
+```
 
 Ausgeführt werden solche Shell-Skripte z.B. mit
 ```bash

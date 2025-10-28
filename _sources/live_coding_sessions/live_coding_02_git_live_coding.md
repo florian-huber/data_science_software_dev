@@ -1,8 +1,23 @@
 # Live Coding: git & GitHub
 
-(Erstellt auf Grundlage des Carpentry Git Kurses: https://carpentries-incubator.github.io/git-novice-branch-pr/)
+(Erstellt auf Grundlage des [Carpentry Git Kurses](https://carpentries-incubator.github.io/git-novice-branch-pr/))
 
-- git installieren
+## Git installieren
+#### Windows:
+[Hier](https://git-scm.com/downloads/win) herunterladen & installieren
+
+#### macOS:
+Um git zu installieren gibt es zwei Möglichkeiten:
+1. Mit dem Paketmanager [homebrew](https://brew.sh/). Dazu im launchpad/spotlight die app *terminal* öffnen und folgende Befehle ausführen:
+    1. wenn homebrew noch nicht installiert ist:
+`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+    2. Terminal schließen und wieder öffnen
+    3. git installieren: `brew install git`
+2. oder mit den xcode command line tools. Dazu im launchpad/spotlight die app *terminal* öffnen und folgendes eingeben:
+`xcode-select --install`
+
+
+## Erste Schritte
 - Läuft git? --> `git version`
 - Einrichten:
   `git config --global user.name "Alice B"`
@@ -21,7 +36,6 @@
 
 (Teil des Materials wurde adaptiert von: https://carpentries-incubator.github.io/git-novice-branch-pr/03-create/)
 
-Erster Test: Ist git richtig installiert --> `git` im Terminal ausführen.
 
 #### Neues Projekt starten
 
@@ -46,7 +60,7 @@ Erster Test: Ist git richtig installiert --> `git` im Terminal ausführen.
 
 - --> Neuer Ordner `.git` wurde erstellt. Darin wird die Projektgeschichte gespeichert. 
 
-#### Erste Datei erzeugen
+#### Erste Datei erzeugen und mit git tracken
 
 ```
 $ nano mars.txt
@@ -99,7 +113,9 @@ Changes to be committed:
 	new file:   mars.txt
 ```
 
-Git weiß nun, dass es `mars.txt` verfolgen soll, hat diese  Änderungen jedoch noch nicht als Commit festgehalten. Um das zu tun,  müssen wir noch einen Befehl ausführen:
+Git weiß nun, dass es `mars.txt` verfolgen soll, hat diese  Änderungen jedoch noch nicht als Commit festgehalten. Um das zu tun, müssen wir noch einen Befehl ausführen:
+
+##### Git commit
 
 ```
 $ git commit -m "Start notes on Mars as a base"
@@ -118,7 +134,7 @@ Danach --> `git status`
 
 
 
-#### log
+##### Git log
 
 Wenn wir wissen wollen, was wir kürzlich gemacht haben, können wir Git bitten, uns die Historie des Projekts mit `git log` zu zeigen:
 
@@ -140,7 +156,7 @@ git log --oneline
 
 
 
-#### OK, das Ganze nochmal
+#### Datei verändern und aktualisieren
 
 Jetzt fügen wir der Datei `mars.txt` eine weitere Zeile hinzu.
 

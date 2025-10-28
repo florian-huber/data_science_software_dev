@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -67,7 +64,6 @@
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -83,8 +79,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -92,6 +99,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -99,8 +107,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -118,8 +126,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -149,17 +156,21 @@
     
     
     <img src="../_static/cover_mini.png" class="logo__image only-light" alt="Data Science Software Development with Python - Home"/>
-    <img src="../_static/cover_mini.png" class="logo__image only-dark pst-js-only" alt="Data Science Software Development with Python - Home"/>
+    <script>document.write(`<img src="../_static/cover_mini.png" class="logo__image only-dark" alt="Data Science Software Development with Python - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -183,19 +194,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../book/06_linting.html">6. Linting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../book/07_code_smells.html">7. Code Smells</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Library / Repository Struktur</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../book/05_virtual_environments.html">8. Einführung: Python-Umgebungen für Data-Science-Projekte (venv, Miniconda/Mamba, Anaconda)</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Code Design &amp; Grundlagen der Objektorientierten Programmierung (OOP)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../book/08_oop_with_python.html">8. Wiederholung der OOP-Grundlagen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/09_oop_with_python_2.html">9. Einige Fortgeschrittene Konzepte in der OOP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/10_from_idea_to_code.html">10. From Idea to Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/11_python_software_project.html">11. Python Software Projekt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/08_oop_with_python.html">9. Wiederholung der OOP-Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/09_oop_with_python_2.html">10. Einige Fortgeschrittene Konzepte in der OOP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/10_from_idea_to_code.html">11. From Idea to Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/11_python_software_project.html">12. Python Software Projekt</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Testing and Continuous Integration</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../book/06_testing.html">12. Warum brauchen wir Testing?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/07_testing_live_coding.html">13. Live Coding Einführung in das Testen von Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/07_continuous_integration.html">14. Introduction to Continuous Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/07_testing_2.html">15. Code Testing (2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/06_testing.html">13. Warum brauchen wir Testing?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/07_testing_live_coding.html">14. Live Coding Einführung in das Testen von Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/07_continuous_integration.html">15. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/07_testing_2.html">16. Code Testing (2)</a></li>
 
 
 
@@ -412,16 +427,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -478,13 +501,13 @@
 <h1>Speed it up! Part II<a class="headerlink" href="#speed-it-up-part-ii" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">numba</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numba</span>
 <span class="c1">#import dask.array as da</span>
 <span class="c1">#from joblib import Parallel, delayed</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 </pre></div>
 </div>
 </div>
@@ -514,14 +537,14 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>118 ms ± 459 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>109 ms ± 342 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum_range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sum_range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the sum of the numbers in the range [0, N).&quot;&quot;&quot;</span>
     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
@@ -538,7 +561,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>314 ms ± 10 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>345 ms ± 9.06 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -548,14 +571,14 @@
 <h2>Numpy version:<a class="headerlink" href="#numpy-version" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="o">%</span><span class="k">timeit</span> np.arange(10**7).sum()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.6 ms ± 151 μs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.3 ms ± 120 μs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -568,10 +591,10 @@ First, it does not require to rethink the problem to convert it into a vectorize
 <p>Second, the numpy solution is not very elegant here and has a huge downside: it requires writing a full array of all numbers from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(10^7\)</span> to memory, while the Python (and the numba) version only keep track of the one value stored in <code class="docutils literal notranslate"><span class="pre">total</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numba</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numba</span>
 
 <span class="nd">@numba</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">sum_range_numba</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sum_range_numba</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the sum of the numbers in the range [0, N).&quot;&quot;&quot;</span>
     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
@@ -588,7 +611,7 @@ First, it does not require to rethink the problem to convert it into a vectorize
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>133 ns ± 0.475 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>132 ns ± 0.387 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -601,7 +624,7 @@ First, it does not require to rethink the problem to convert it into a vectorize
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>132 ns ± 0.594 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>134 ns ± 1.39 ns per loop (mean ± std. dev. of 7 runs, 10,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -614,8 +637,8 @@ First, it does not require to rethink the problem to convert it into a vectorize
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 40.8 ms, sys: 114 μs, total: 41 ms
-Wall time: 40.7 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 32.4 ms, sys: 922 μs, total: 33.3 ms
+Wall time: 33.1 ms
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>499999999500000000
@@ -640,14 +663,14 @@ In general Numba supports the following:</p>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
                    <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">],</span>
                   <span class="p">})</span>
 
 <span class="nd">@numba</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">get_max</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_max</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 
 <span class="n">get_max</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
@@ -659,33 +682,35 @@ In general Numba supports the following:</p>
 <span class="ne">TypingError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">11</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="nd">@numba</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="k">def</span> <span class="nf">get_max</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_max</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">get_max</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
-<span class="nn">File ~/micromamba/envs/python_software_dev/lib/python3.12/site-packages/numba/core/dispatcher.py:423,</span> in <span class="ni">_DispatcherBase._compile_for_args</span><span class="nt">(self, *args, **kws)</span>
-<span class="g g-Whitespace">    </span><span class="mi">419</span>         <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="si">}</span><span class="s2"> </span><span class="se">\n\n</span><span class="s2">This error may have been caused &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">420</span>                <span class="sa">f</span><span class="s2">&quot;by the following argument(s):</span><span class="se">\n</span><span class="si">{</span><span class="n">args_str</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">421</span>         <span class="n">e</span><span class="o">.</span><span class="n">patch_message</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">423</span>     <span class="n">error_rewrite</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s1">&#39;typing&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">424</span> <span class="k">except</span> <span class="n">errors</span><span class="o">.</span><span class="n">UnsupportedError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">425</span>     <span class="c1"># Something unsupported is present in the user code, add help info</span>
-<span class="g g-Whitespace">    </span><span class="mi">426</span>     <span class="n">error_rewrite</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s1">&#39;unsupported_error&#39;</span><span class="p">)</span>
+<span class="nn">File ~/micromamba/envs/python_software_dev/lib/python3.12/site-packages/numba/core/dispatcher.py:424,</span> in <span class="ni">_DispatcherBase._compile_for_args</span><span class="nt">(self, *args, **kws)</span>
+<span class="g g-Whitespace">    </span><span class="mi">420</span>         <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="si">}</span><span class="s2"> </span><span class="se">\n\n</span><span class="s2">This error may have been caused &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">421</span>                <span class="sa">f</span><span class="s2">&quot;by the following argument(s):</span><span class="se">\n</span><span class="si">{</span><span class="n">args_str</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">422</span>         <span class="n">e</span><span class="o">.</span><span class="n">patch_message</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">424</span>     <span class="n">error_rewrite</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s1">&#39;typing&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">425</span> <span class="k">except</span> <span class="n">errors</span><span class="o">.</span><span class="n">UnsupportedError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">426</span>     <span class="c1"># Something unsupported is present in the user code, add help info</span>
+<span class="g g-Whitespace">    </span><span class="mi">427</span>     <span class="n">error_rewrite</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s1">&#39;unsupported_error&#39;</span><span class="p">)</span>
 
-<span class="nn">File ~/micromamba/envs/python_software_dev/lib/python3.12/site-packages/numba/core/dispatcher.py:364,</span> in <span class="ni">_DispatcherBase._compile_for_args.&lt;locals&gt;.error_rewrite</span><span class="nt">(e, issue_type)</span>
-<span class="g g-Whitespace">    </span><span class="mi">362</span>     <span class="k">raise</span> <span class="n">e</span>
-<span class="g g-Whitespace">    </span><span class="mi">363</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">364</span>     <span class="k">raise</span> <span class="n">e</span><span class="o">.</span><span class="n">with_traceback</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="nn">File ~/micromamba/envs/python_software_dev/lib/python3.12/site-packages/numba/core/dispatcher.py:365,</span> in <span class="ni">_DispatcherBase._compile_for_args.&lt;locals&gt;.error_rewrite</span><span class="nt">(e, issue_type)</span>
+<span class="g g-Whitespace">    </span><span class="mi">363</span>     <span class="k">raise</span> <span class="n">e</span>
+<span class="g g-Whitespace">    </span><span class="mi">364</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">365</span>     <span class="k">raise</span> <span class="n">e</span><span class="o">.</span><span class="n">with_traceback</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 
 <span class="nn">TypingError: Failed</span> in <span class="ni">nopython mode pipeline </span><span class="nt">(step: nopython frontend)</span>
 <span class="n">non</span><span class="o">-</span><span class="n">precise</span> <span class="nb">type</span> <span class="n">pyobject</span>
-<span class="ne">During</span>: typing of argument at /tmp/ipykernel_3237/1526091316.py (7)
+<span class="ne">During</span>: typing of argument at /tmp/ipykernel_3567/1526091316.py (7)
 
-<span class="n">File</span> <span class="s2">&quot;../../../../../../tmp/ipykernel_3237/1526091316.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">7</span><span class="p">:</span>
-<span class="o">&lt;</span><span class="n">source</span> <span class="n">missing</span><span class="p">,</span> <span class="n">REPL</span><span class="o">/</span><span class="n">exec</span> <span class="ow">in</span> <span class="n">use</span><span class="err">?</span><span class="o">&gt;</span> 
+<span class="n">File</span> <span class="s2">&quot;../../../../../../tmp/ipykernel_3567/1526091316.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">7</span><span class="p">:</span>
+<span class="o">&lt;</span><span class="n">source</span> <span class="n">missing</span><span class="p">,</span> <span class="n">REPL</span><span class="o">/</span><span class="n">exec</span> <span class="ow">in</span> <span class="n">use</span><span class="err">?</span><span class="o">&gt;</span>
+
+<span class="ne">During</span>: Pass nopython_type_inference 
 
 <span class="n">This</span> <span class="n">error</span> <span class="n">may</span> <span class="n">have</span> <span class="n">been</span> <span class="n">caused</span> <span class="n">by</span> <span class="n">the</span> <span class="n">following</span> <span class="n">argument</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-<span class="o">-</span> <span class="n">argument</span> <span class="mi">0</span><span class="p">:</span> <span class="n">Cannot</span> <span class="n">determine</span> <span class="n">Numba</span> <span class="nb">type</span> <span class="n">of</span> <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span><span class="s1">&#39;&gt;</span>
+<span class="o">-</span> <span class="n">argument</span> <span class="mi">0</span><span class="p">:</span> <span class="n">Cannot</span> <span class="n">determine</span> <span class="n">Numba</span> <span class="nb">type</span> <span class="n">of</span> <span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">&#39;</span><span class="nc">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span><span class="s1">&#39;&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -693,7 +718,7 @@ In general Numba supports the following:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@numba</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">do_python_stuff</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">do_python_stuff</span><span class="p">():</span>
     <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
     <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span>
@@ -711,7 +736,7 @@ In general Numba supports the following:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@numba</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">do_python_stuff</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">do_python_stuff</span><span class="p">():</span>
     <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
     <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;seven&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span>
@@ -733,7 +758,7 @@ In general Numba supports the following:</p>
 This requires updating the position of <em>every particle</em> a tiny bit for <em>many time steps</em> in a row. This makes it compute-intensive.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
 
 <span class="c1"># Initialize particles</span>
 <span class="n">n_particles</span> <span class="o">=</span> <span class="mi">1000</span>
@@ -792,7 +817,7 @@ This requires updating the position of <em>every particle</em> a tiny bit for <e
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">diffusion_python</span><span class="p">(</span><span class="n">particles_x</span><span class="p">,</span> <span class="n">particles_y</span><span class="p">,</span> <span class="n">n_timesteps</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">diffusion_python</span><span class="p">(</span><span class="n">particles_x</span><span class="p">,</span> <span class="n">particles_y</span><span class="p">,</span> <span class="n">n_timesteps</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_timesteps</span><span class="p">):</span>
         <span class="n">particles_x</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">particles_x</span><span class="p">]</span>
         <span class="n">particles_y</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">particles_y</span><span class="p">]</span>
@@ -834,7 +859,7 @@ Wall time: 2.44 s
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@numba</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">diffusion_numba</span><span class="p">(</span><span class="n">particles_x</span><span class="p">,</span> <span class="n">particles_y</span><span class="p">,</span> <span class="n">n_timesteps</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">diffusion_numba</span><span class="p">(</span><span class="n">particles_x</span><span class="p">,</span> <span class="n">particles_y</span><span class="p">,</span> <span class="n">n_timesteps</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_timesteps</span><span class="p">):</span>
         <span class="n">particles_x</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">particles_x</span><span class="p">]</span>
         <span class="n">particles_y</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">particles_y</span><span class="p">]</span>
@@ -868,9 +893,9 @@ Wall time: 141 ms
 <h2>Numpy-fy your code!<a class="headerlink" href="#numpy-fy-your-code" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="k">def</span> <span class="nf">diffusion_numpy</span><span class="p">(</span><span class="n">particles</span><span class="p">,</span> <span class="n">n_timesteps</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">diffusion_numpy</span><span class="p">(</span><span class="n">particles</span><span class="p">,</span> <span class="n">n_timesteps</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_timesteps</span><span class="p">):</span>
         <span class="n">particles</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">particles</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">particles</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
@@ -916,7 +941,7 @@ Wall time: 97.4 ms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@numba</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">diffusion_numba_parallel</span><span class="p">(</span><span class="n">n_particles</span><span class="p">,</span> <span class="n">n_timesteps</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">diffusion_numba_parallel</span><span class="p">(</span><span class="n">n_particles</span><span class="p">,</span> <span class="n">n_timesteps</span><span class="p">):</span>
     <span class="c1"># Initialize particles</span>
     <span class="n">particles</span> <span class="o">=</span> <span class="p">[[</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_particles</span><span class="p">)]</span>
 
@@ -940,12 +965,12 @@ Wall time: 97.4 ms
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numba</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">prange</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numba</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numba</span><span class="w"> </span><span class="kn">import</span> <span class="n">prange</span>
 
 <span class="nd">@numba</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">diffusion_numba_parallel</span><span class="p">(</span><span class="n">n_particles</span><span class="p">,</span> <span class="n">n_timesteps</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">diffusion_numba_parallel</span><span class="p">(</span><span class="n">n_particles</span><span class="p">,</span> <span class="n">n_timesteps</span><span class="p">):</span>
     <span class="c1"># Initialize particles using a NumPy array</span>
     <span class="n">particles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">n_particles</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 
@@ -996,7 +1021,7 @@ Wall time: 12.1 ms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@numba</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">diffusion</span><span class="p">(</span><span class="n">particles_x</span><span class="p">,</span> <span class="n">particles_y</span><span class="p">,</span> <span class="n">n_timesteps</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">diffusion</span><span class="p">(</span><span class="n">particles_x</span><span class="p">,</span> <span class="n">particles_y</span><span class="p">,</span> <span class="n">n_timesteps</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_timesteps</span><span class="p">):</span>
         <span class="n">particles_x</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">particles_x</span><span class="p">]</span>
         <span class="n">particles_y</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">particles_y</span><span class="p">]</span>
@@ -1008,10 +1033,10 @@ Wall time: 12.1 ms
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">scene</span>
-<span class="kn">from</span> <span class="nn">vispy.app</span> <span class="kn">import</span> <span class="n">Timer</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">vispy</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">vispy.app</span><span class="w"> </span><span class="kn">import</span> <span class="n">Timer</span>
 
 <span class="c1"># Define our points/spheres</span>
 <span class="n">n_points</span> <span class="o">=</span> <span class="mi">10000</span>
@@ -1037,7 +1062,7 @@ Wall time: 12.1 ms
 <span class="n">view</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">scatter</span><span class="p">)</span>
 
 <span class="c1"># Diffusion loop</span>
-<span class="k">def</span> <span class="nf">diffusion_step</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">diffusion_step</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
   
     <span class="c1"># Update points positions</span>
@@ -1114,20 +1139,20 @@ ERROR: Invoking &lt;function diffusion_step at 0x000001772DBDB760&gt; for Event
 To make the particle motion look at least a bit more realistic, we can introduce some sort of repulsion between particles.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">numba</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numba</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute distance between p1 and p2.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">p2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">p2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">add_noise</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_noise</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Add normal distributed noise to x and y.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span> <span class="n">y</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">apply_repulsion</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_repulsion</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
     <span class="n">dist</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
     <span class="c1"># Add repulsion if to elements are closer than 2x their radius</span>
     <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">d</span><span class="p">:</span>
@@ -1136,10 +1161,10 @@ To make the particle motion look at least a bit more realistic, we can introduce
         <span class="k">return</span> <span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">force</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="n">p1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">force</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">p1</span>
 
-<span class="k">def</span> <span class="nf">diffusion_step</span><span class="p">(</span><span class="n">particles</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">diffusion_step</span><span class="p">(</span><span class="n">particles</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">add_noise</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">particles</span><span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">repulsion_step</span><span class="p">(</span><span class="n">particles</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">max_motion</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">repulsion_step</span><span class="p">(</span><span class="n">particles</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">max_motion</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
             <span class="n">particles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">apply_repulsion</span><span class="p">(</span><span class="n">particles</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">particles</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">d</span><span class="p">)</span>
@@ -1174,10 +1199,10 @@ Wall time: 927 ms
 <h2>Create a visualization of this process<a class="headerlink" href="#create-a-visualization-of-this-process" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">scene</span>
-<span class="kn">from</span> <span class="nn">vispy.app</span> <span class="kn">import</span> <span class="n">Timer</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">vispy</span><span class="w"> </span><span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">scene</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">vispy.app</span><span class="w"> </span><span class="kn">import</span> <span class="n">Timer</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>  <span class="c1"># Number of particles</span>
 <span class="n">d</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># Size of each particle</span>
@@ -1202,7 +1227,7 @@ Wall time: 927 ms
 <span class="n">view</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">scatter</span><span class="p">)</span>
 
 <span class="c1"># Diffusion loop</span>
-<span class="k">def</span> <span class="nf">particle_motion</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">particle_motion</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">particles</span>
     
     <span class="c1"># Apply Brownian motion</span>
@@ -1234,8 +1259,8 @@ ERROR: Invoking &lt;function diffusion_step at 0x000001772DBDB760&gt; repeat 327
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">scene</span>
-<span class="kn">from</span> <span class="nn">vispy.app</span> <span class="kn">import</span> <span class="n">Timer</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">vispy</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">vispy.app</span><span class="w"> </span><span class="kn">import</span> <span class="n">Timer</span>
 
 <span class="c1"># Define our points/spheres</span>
 <span class="n">n_points</span> <span class="o">=</span> <span class="mi">100</span>
@@ -1260,7 +1285,7 @@ ERROR: Invoking &lt;function diffusion_step at 0x000001772DBDB760&gt; repeat 327
 <span class="n">view</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">scatter</span><span class="p">)</span>
 
 <span class="c1"># Diffusion loop</span>
-<span class="k">def</span> <span class="nf">diffusion_step</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">diffusion_step</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">particles</span>
     
     <span class="n">particles</span> <span class="o">=</span> <span class="n">diffusion_step</span><span class="p">(</span><span class="n">particles</span><span class="p">)</span>
@@ -1344,8 +1369,7 @@ ERROR: Invoking &lt;function diffusion_step at 0x000001772DBDB760&gt; repeat 512
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1420,8 +1444,8 @@ By Florian Huber
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

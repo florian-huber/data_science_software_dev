@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>13. Live Coding Einführung in das Testen von Code &#8212; Data Science Software Development with Python</title>
+    <title>14. Live Coding Einführung in das Testen von Code &#8212; Data Science Software Development with Python</title>
   
   
   
@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -63,11 +60,10 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/07_testing_live_coding';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="14. Introduction to Continuous Integration" href="07_continuous_integration.html" />
-    <link rel="prev" title="12. Warum brauchen wir Testing?" href="06_testing.html" />
+    <link rel="next" title="15. Introduction to Continuous Integration" href="07_continuous_integration.html" />
+    <link rel="prev" title="13. Warum brauchen wir Testing?" href="06_testing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -83,8 +79,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -92,6 +99,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -99,8 +107,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -116,8 +124,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -147,17 +154,21 @@
     
     
     <img src="../_static/cover_mini.png" class="logo__image only-light" alt="Data Science Software Development with Python - Home"/>
-    <img src="../_static/cover_mini.png" class="logo__image only-dark pst-js-only" alt="Data Science Software Development with Python - Home"/>
+    <script>document.write(`<img src="../_static/cover_mini.png" class="logo__image only-dark" alt="Data Science Software Development with Python - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -181,19 +192,23 @@
 <li class="toctree-l1"><a class="reference internal" href="06_linting.html">6. Linting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_code_smells.html">7. Code Smells</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Library / Repository Struktur</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="05_virtual_environments.html">8. Einführung: Python-Umgebungen für Data-Science-Projekte (venv, Miniconda/Mamba, Anaconda)</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Code Design &amp; Grundlagen der Objektorientierten Programmierung (OOP)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="08_oop_with_python.html">8. Wiederholung der OOP-Grundlagen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_oop_with_python_2.html">9. Einige Fortgeschrittene Konzepte in der OOP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_from_idea_to_code.html">10. From Idea to Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_python_software_project.html">11. Python Software Projekt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_oop_with_python.html">9. Wiederholung der OOP-Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_oop_with_python_2.html">10. Einige Fortgeschrittene Konzepte in der OOP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_from_idea_to_code.html">11. From Idea to Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_python_software_project.html">12. Python Software Projekt</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Testing and Continuous Integration</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="06_testing.html">12. Warum brauchen wir Testing?</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Live Coding Einführung in das Testen von Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">14. Introduction to Continuous Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">15. Code Testing (2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_testing.html">13. Warum brauchen wir Testing?</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. Live Coding Einführung in das Testen von Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">15. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">16. Code Testing (2)</a></li>
 
 
 
@@ -361,16 +376,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -394,13 +417,13 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wir-beginnen-mit-einem-einfachen-funktionstest">13.1. Wir beginnen mit einem einfachen Funktionstest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trennung-von-code-und-tests">13.2. Trennung von Code und Tests</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verwendung-von-pytest-zum-testen">13.3. Verwendung von pytest zum Testen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schreiben-von-tests-fur-das-spiel">13.4. Schreiben von Tests für das Spiel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verbessern-der-teststruktur">13.5. Verbessern der Teststruktur</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dekoratoren-fur-effizientes-testen-verwenden">13.6. Dekoratoren für effizientes Testen verwenden</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manche-dinge-gehen-besser-schief">13.7. Manche Dinge gehen besser schief</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wir-beginnen-mit-einem-einfachen-funktionstest">14.1. Wir beginnen mit einem einfachen Funktionstest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trennung-von-code-und-tests">14.2. Trennung von Code und Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verwendung-von-pytest-zum-testen">14.3. Verwendung von pytest zum Testen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schreiben-von-tests-fur-das-spiel">14.4. Schreiben von Tests für das Spiel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verbessern-der-teststruktur">14.5. Verbessern der Teststruktur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dekoratoren-fur-effizientes-testen-verwenden">14.6. Dekoratoren für effizientes Testen verwenden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manche-dinge-gehen-besser-schief">14.7. Manche Dinge gehen besser schief</a></li>
 </ul>
             </nav>
         </div>
@@ -413,15 +436,15 @@
                 <article class="bd-article">
                   
   <section id="live-coding-einfuhrung-in-das-testen-von-code">
-<h1><span class="section-number">13. </span>Live Coding Einführung in das Testen von Code<a class="headerlink" href="#live-coding-einfuhrung-in-das-testen-von-code" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">14. </span>Live Coding Einführung in das Testen von Code<a class="headerlink" href="#live-coding-einfuhrung-in-das-testen-von-code" title="Link to this heading">#</a></h1>
 <p>Testen ist ein wichtiger Teil der Softwareentwicklung, der sicherstellt, dass sich Ihr Code wie erwartet verhält. In dieser Sitzung geht es darum, wie wir Code mit Python effektiv testen können.</p>
 <section id="wir-beginnen-mit-einem-einfachen-funktionstest">
-<h2><span class="section-number">13.1. </span>Wir beginnen mit einem einfachen Funktionstest<a class="headerlink" href="#wir-beginnen-mit-einem-einfachen-funktionstest" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.1. </span>Wir beginnen mit einem einfachen Funktionstest<a class="headerlink" href="#wir-beginnen-mit-einem-einfachen-funktionstest" title="Link to this heading">#</a></h2>
 <p>Betrachten wir zunächst eine einfache Funktion und testen sie:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">meine_funktion</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">meine_funktion</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span><span class="o">/</span><span class="mi">2</span>
 
-<span class="k">def</span> <span class="nf">test_meine_funktion</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_meine_funktion</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">my_function</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">15</span> <span class="c1"># Du kannst den Wert ändern, um verschiedene Ergebnisse zu sehen.</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="err">„</span><span class="n">__main__</span><span class="err">“</span><span class="p">:</span>
@@ -435,7 +458,7 @@
 </ul>
 </section>
 <section id="trennung-von-code-und-tests">
-<h2><span class="section-number">13.2. </span>Trennung von Code und Tests<a class="headerlink" href="#trennung-von-code-und-tests" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.2. </span>Trennung von Code und Tests<a class="headerlink" href="#trennung-von-code-und-tests" title="Link to this heading">#</a></h2>
 <p>Für eine bessere Organisation können wir den Code und die Tests in separate Dateien aufteilen:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">functions.py</span></code> enthält die eigentliche Funktion.</p></li>
@@ -443,21 +466,21 @@
 </ul>
 <p>Beispiel:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># functions.py</span>
-<span class="k">def</span> <span class="nf">meine_funktion</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">meine_funktion</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="err">„„“</span><span class="n">Das</span> <span class="n">ist</span> <span class="n">eine</span> <span class="n">seltsame</span> <span class="n">kleine</span> <span class="n">Berechnung</span><span class="o">...</span><span class="err">„““</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span><span class="o">/</span><span class="mi">2</span>
 
 <span class="c1"># test_functions.py</span>
-<span class="kn">from</span> <span class="nn">functions</span> <span class="kn">import</span> <span class="n">my_function</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">my_function</span>
 
-<span class="k">def</span> <span class="nf">test_my_function</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_my_function</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">my_function</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">15</span>
 </pre></div>
 </div>
 <p>Die Ausführung dieser Tests kann mit <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">test_my_function.py</span></code> oder durch Ausführen der Codedatei in Ihrer IDE erfolgen. Wenn dein Softwareprojekt jedoch wächst, wirst du wahrscheinlich viele verschiedene Dateien mit Tests haben, so dass es keine gute Option ist, all diese Tests manuell auszuführen. Der richtige Weg, um alle Tests auszuführen, ist die Verwendung der Bibliothek <code class="docutils literal notranslate"><span class="pre">pytest</span></code>!</p>
 </section>
 <section id="verwendung-von-pytest-zum-testen">
-<h2><span class="section-number">13.3. </span>Verwendung von pytest zum Testen<a class="headerlink" href="#verwendung-von-pytest-zum-testen" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.3. </span>Verwendung von pytest zum Testen<a class="headerlink" href="#verwendung-von-pytest-zum-testen" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pytest</span></code> vereinfacht den Testprozess, besonders für Projekte mit mehreren Testdateien. Es erkennt automatisch Dateien und Funktionen, die dem Muster <code class="docutils literal notranslate"><span class="pre">test_*</span></code> entsprechen. Deshalb sollten die Tests in eigenen Dateien gespeichert werden, die mit <code class="docutils literal notranslate"><span class="pre">test_</span></code> beginnen und auch die einzelnen Funktionsnamen mit <code class="docutils literal notranslate"><span class="pre">test_</span></code> beginnen lassen. Um alle Ihre Testfunktionen in einem Ordner (und allen Unterordnern) auszuführen, können wir einfach folgendes ausführen
 ``bash
 pytest</p>
@@ -492,7 +515,7 @@ def play_game(names):
 <p>Eine erste Version von <code class="docutils literal notranslate"><span class="pre">count_cards()</span></code> könnte wie folgt aussehen:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vorsicht: der folgende Code enthält einen semantischen Fehler</span>
 
-<span class="k">def</span> <span class="nf">count_cards</span><span class="p">(</span><span class="n">cards</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">count_cards</span><span class="p">(</span><span class="n">cards</span><span class="p">):</span>
     <span class="err">„„“</span><span class="n">Berechnet</span> <span class="n">den</span> <span class="n">Gesamtwert</span> <span class="n">der</span> <span class="n">gegebenen</span> <span class="n">Karten</span> <span class="ow">in</span> <span class="n">einem</span> <span class="n">Blackjack</span><span class="o">-</span><span class="n">Spiel</span><span class="o">.</span>
 
     <span class="n">Bildkarten</span> <span class="p">(</span><span class="n">J</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span> <span class="n">zählen</span> <span class="n">als</span> <span class="mi">10</span><span class="p">,</span> <span class="n">nummerierte</span> <span class="n">Karten</span> <span class="n">zählen</span> <span class="n">als</span> <span class="n">ihr</span> <span class="n">Wert</span><span class="p">,</span>
@@ -522,43 +545,43 @@ def play_game(names):
 
     <span class="n">Gesamtbetrag</span> <span class="n">zurückgeben</span>
 
-<span class="k">def</span> <span class="nf">play_game</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_game</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
     <span class="err">„„“</span><span class="n">Spiellogik</span> <span class="n">für</span> <span class="n">Blackjack</span><span class="o">.</span><span class="err">„““</span>
     <span class="c1"># Platzhalter für Spiellogik</span>
 </pre></div>
 </div>
 </section>
 <section id="schreiben-von-tests-fur-das-spiel">
-<h2><span class="section-number">13.4. </span>Schreiben von Tests für das Spiel<a class="headerlink" href="#schreiben-von-tests-fur-das-spiel" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.4. </span>Schreiben von Tests für das Spiel<a class="headerlink" href="#schreiben-von-tests-fur-das-spiel" title="Link to this heading">#</a></h2>
 <p>Nun wollen wir sicherstellen, dass dieser Code wie vorgesehen läuft, jetzt und in Zukunft. Um dies zu erreichen, werden wir einige aussagekräftige Testfunktionen schreiben, die sicherstellen, dass unser Code robust ist und sich wie erwartet verhält.
 Die Tests werden in einer separaten Datei geschrieben, <code class="docutils literal notranslate"><span class="pre">test_blackjack.py</span></code>. Für den Moment können wir diese Datei einfach im selben Ordner wie <code class="docutils literal notranslate"><span class="pre">blackjack.py</span></code> haben. Später, bei größeren Projekten, werden Code und Testdateien normalerweise in verschiedenen Ordnern aufbewahrt.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># test_blackjack.py</span>
-<span class="kn">from</span> <span class="nn">blackjack</span> <span class="kn">import</span> <span class="n">count_cards</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">blackjack</span><span class="w"> </span><span class="kn">import</span> <span class="n">count_cards</span>
 
-<span class="k">def</span> <span class="nf">test_count_cards</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_count_cards</span><span class="p">():</span>
     <span class="c1"># Mehrere Assertions, um verschiedene Szenarien zu testen.</span>
 </pre></div>
 </div>
 <p>Das Ausführen dieser Tests mit <code class="docutils literal notranslate"><span class="pre">pytest</span></code> wird helfen, jegliche Probleme in der Spiellogik zu identifizieren.</p>
 </section>
 <section id="verbessern-der-teststruktur">
-<h2><span class="section-number">13.5. </span>Verbessern der Teststruktur<a class="headerlink" href="#verbessern-der-teststruktur" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.5. </span>Verbessern der Teststruktur<a class="headerlink" href="#verbessern-der-teststruktur" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Es ist von Vorteil, Tests in kleinere, gezieltere Funktionen zu unterteilen.</p></li>
 <li><p>Dies ermöglicht präzisere Tests und eine leichtere Identifizierung von Problemen.</p></li>
 <li><p>Es ist besser, mehrere kleinere Testfunktionen zu definieren als eine große Testfunktion, denn wenn ein Test fehlschlägt, ist es viel einfacher herauszufinden, woher das Problem kommt.</p></li>
 </ul>
 <p>Beispiel:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_count_cards_no_aces</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_count_cards_no_aces</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">count_cards</span><span class="p">([</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">9</span>
 
-<span class="k">def</span> <span class="nf">test_count_cards_with_aces</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_count_cards_with_aces</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">count_cards</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">18</span>
     <span class="k">assert</span> <span class="n">count_cards</span><span class="p">([</span><span class="err">„</span><span class="n">A</span><span class="err">“</span><span class="p">,</span> <span class="err">„</span><span class="n">A</span><span class="err">“</span><span class="p">])</span> <span class="o">==</span> <span class="mi">12</span>
     <span class="k">assert</span> <span class="n">count_cards</span><span class="p">([</span><span class="err">„</span><span class="n">Q</span><span class="err">“</span><span class="p">,</span> <span class="err">„</span><span class="n">A</span><span class="err">“</span><span class="p">])</span> <span class="o">==</span> <span class="mi">21</span>
     <span class="k">assert</span> <span class="n">count_cards</span><span class="p">([</span><span class="err">„</span><span class="mi">5</span><span class="err">“</span><span class="p">,</span> <span class="err">„</span><span class="mi">5</span><span class="err">“</span><span class="p">,</span> <span class="err">„</span><span class="n">A</span><span class="err">“</span><span class="p">])</span> <span class="o">==</span> <span class="mi">21</span>
 
-<span class="k">def</span> <span class="nf">test_mehr_als_21</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_mehr_als_21</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">count_cards</span><span class="p">([</span><span class="err">„</span><span class="mi">5</span><span class="err">“</span><span class="p">,</span> <span class="err">„</span><span class="mi">10</span><span class="err">“</span><span class="p">,</span> <span class="err">„</span><span class="n">K</span><span class="err">“</span><span class="p">,</span> <span class="err">„</span><span class="mi">7</span><span class="err">“</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">21</span>
 </pre></div>
 </div>
@@ -566,28 +589,28 @@ Die Tests werden in einer separaten Datei geschrieben, <code class="docutils lit
 <p>Was ist mit dem Code falsch? Bitte finde den Fehler und behebe ihn! Dann sollten die Tests alle erfolgreich sein.</p>
 </section>
 <section id="dekoratoren-fur-effizientes-testen-verwenden">
-<h2><span class="section-number">13.6. </span>Dekoratoren für effizientes Testen verwenden<a class="headerlink" href="#dekoratoren-fur-effizientes-testen-verwenden" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.6. </span>Dekoratoren für effizientes Testen verwenden<a class="headerlink" href="#dekoratoren-fur-effizientes-testen-verwenden" title="Link to this heading">#</a></h2>
 <p>Im obigen Beispiel der Testfunktionen haben wir bereits eine wichtige Best Practice für Unit-Tests umgesetzt. Anstatt einfach alle Asserts in eine Funktion zu schreiben, wurde sie in mehrere verschiedene Funktionen mit unterschiedlichen zu testenden Dingen aufgeteilt. Das hilft später dabei, zu sehen, wo etwas schief läuft (wenn es schief läuft).</p>
 <p>Ein Problem bleibt jedoch, dass immer dann, wenn ein <code class="docutils literal notranslate"><span class="pre">assert</span></code> fehlschlägt, die folgenden Codezeilen in derselben Funktion nicht ausgeführt werden. Ersetze die erste Zeile in der zweiten Funktion durch <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">count_cards(['A',</span> <span class="pre">'3',</span> <span class="pre">'4'])</span> <span class="pre">==</span> <span class="pre">999</span></code> und führe dann <code class="docutils literal notranslate"><span class="pre">pytest</span></code> aus, um zu sehen, was ich meine.</p>
 <p>Wir könnten jedes <code class="docutils literal notranslate"><span class="pre">assert</span></code> in eine eigene Funktion schreiben, aber das ist zu kompliziert. Eine viel bessere Lösung bietet ein spezieller pytest-Dekotrator: <code class="docutils literal notranslate"><span class="pre">pytest.mark.parametrize</span></code>. Dieser erlaubt es, mehrere Szenarien mit einer einzigen Testfunktion zu testen.</p>
 <p>Beispiel:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
 
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="err">„</span><span class="n">cards</span><span class="p">,</span> <span class="n">score</span><span class="err">“</span><span class="p">,</span> 
                         <span class="p">[([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">],</span> <span class="mi">18</span><span class="p">),</span>
                         <span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;9&#39;</span><span class="p">],</span> <span class="mi">21</span><span class="p">),</span> <span class="o">...</span><span class="p">]</span>
                         <span class="p">)</span>
-<span class="k">def</span> <span class="nf">test_count_cards_with_aces</span><span class="p">(</span><span class="n">cards</span><span class="p">,</span> <span class="n">score</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_count_cards_with_aces</span><span class="p">(</span><span class="n">cards</span><span class="p">,</span> <span class="n">score</span><span class="p">):</span>
     <span class="k">assert</span> <span class="n">count_cards</span><span class="p">(</span><span class="n">cards</span><span class="p">)</span> <span class="o">==</span> <span class="n">score</span>
 </pre></div>
 </div>
 <p>Nebenbei bemerkt: Für die oben geschriebene Funktion <code class="docutils literal notranslate"><span class="pre">count_cards()</span></code> könnte die Eingabe auch <code class="docutils literal notranslate"><span class="pre">„A34“</span></code> anstelle von <code class="docutils literal notranslate"><span class="pre">['A',</span> <span class="pre">'3',</span> <span class="pre">'4']</span></code> sein. Das ist Python. (Apropos: warum funktioniert das eigentlich?)</p>
 </section>
 <section id="manche-dinge-gehen-besser-schief">
-<h2><span class="section-number">13.7. </span>Manche Dinge gehen besser schief<a class="headerlink" href="#manche-dinge-gehen-besser-schief" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.7. </span>Manche Dinge gehen besser schief<a class="headerlink" href="#manche-dinge-gehen-besser-schief" title="Link to this heading">#</a></h2>
 <p>Mit pytest können wir nicht nur Dinge testen, die wie vorgesehen funktionieren, zum Beispiel mit assert wie oben. Wir können auch testen, ob Dinge dort fehlschlagen, wo sie fehlschlagen sollen. Das kann mit einer <code class="docutils literal notranslate"><span class="pre">pytest.raises</span></code>-Konstruktion gemacht werden.</p>
 <p>Hier ist ein Beispiel:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_unbekannte_Karten</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_unbekannte_Karten</span><span class="p">():</span>
     <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">)</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
         <span class="n">count_cards</span><span class="p">([</span><span class="err">„</span><span class="n">X</span><span class="err">“</span><span class="p">])</span>
     <span class="k">assert</span> <span class="err">„</span><span class="n">Ungültige</span> <span class="n">Karte</span><span class="p">:</span> <span class="n">X</span><span class="err">“</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">error</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
@@ -633,7 +656,7 @@ Die Tests werden in einer separaten Datei geschrieben, <code class="docutils lit
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>Warum brauchen wir Testing?</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Warum brauchen wir Testing?</p>
       </div>
     </a>
     <a class="right-next"
@@ -641,7 +664,7 @@ Die Tests werden in einer separaten Datei geschrieben, <code class="docutils lit
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">14. </span>Introduction to Continuous Integration</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>Introduction to Continuous Integration</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -652,8 +675,7 @@ Die Tests werden in einer separaten Datei geschrieben, <code class="docutils lit
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -662,13 +684,13 @@ Die Tests werden in einer separaten Datei geschrieben, <code class="docutils lit
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wir-beginnen-mit-einem-einfachen-funktionstest">13.1. Wir beginnen mit einem einfachen Funktionstest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trennung-von-code-und-tests">13.2. Trennung von Code und Tests</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verwendung-von-pytest-zum-testen">13.3. Verwendung von pytest zum Testen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schreiben-von-tests-fur-das-spiel">13.4. Schreiben von Tests für das Spiel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verbessern-der-teststruktur">13.5. Verbessern der Teststruktur</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dekoratoren-fur-effizientes-testen-verwenden">13.6. Dekoratoren für effizientes Testen verwenden</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manche-dinge-gehen-besser-schief">13.7. Manche Dinge gehen besser schief</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wir-beginnen-mit-einem-einfachen-funktionstest">14.1. Wir beginnen mit einem einfachen Funktionstest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trennung-von-code-und-tests">14.2. Trennung von Code und Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verwendung-von-pytest-zum-testen">14.3. Verwendung von pytest zum Testen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schreiben-von-tests-fur-das-spiel">14.4. Schreiben von Tests für das Spiel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verbessern-der-teststruktur">14.5. Verbessern der Teststruktur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dekoratoren-fur-effizientes-testen-verwenden">14.6. Dekoratoren für effizientes Testen verwenden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manche-dinge-gehen-besser-schief">14.7. Manche Dinge gehen besser schief</a></li>
 </ul>
   </nav></div>
 
@@ -717,8 +739,8 @@ By Florian Huber
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,11 +1,11 @@
 # Cleaner Code, Better Code
 
 **Eingangsfrage 1:**
-*Was bedeutet „besser“?*
+*Was bedeutet "besser"?*
 
 **Antworten:**
 
-- „Besser“ definiert eine Richtung, aber keinen festen Endpunkt.
+- "Besser" definiert eine Richtung, aber keinen festen Endpunkt.
 - Perfektion ist nicht das Endziel, da es im wirklichen Leben selten erreichbar ist.
 - Ziel ist, einen Code zu schreiben, der beständig, wiederholbar und zuverlässig arbeitet.
 - Die kommenden Wochen werden tiefer in diese Prinzipien eintauchen.

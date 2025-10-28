@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -65,7 +62,6 @@
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -81,8 +77,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -90,6 +97,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -97,8 +105,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -116,8 +124,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -147,17 +154,21 @@
     
     
     <img src="../_static/cover_mini.png" class="logo__image only-light" alt="Data Science Software Development with Python - Home"/>
-    <img src="../_static/cover_mini.png" class="logo__image only-dark pst-js-only" alt="Data Science Software Development with Python - Home"/>
+    <script>document.write(`<img src="../_static/cover_mini.png" class="logo__image only-dark" alt="Data Science Software Development with Python - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -181,19 +192,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../book/06_linting.html">6. Linting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../book/07_code_smells.html">7. Code Smells</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Library / Repository Struktur</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../book/05_virtual_environments.html">8. Einführung: Python-Umgebungen für Data-Science-Projekte (venv, Miniconda/Mamba, Anaconda)</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Code Design &amp; Grundlagen der Objektorientierten Programmierung (OOP)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../book/08_oop_with_python.html">8. Wiederholung der OOP-Grundlagen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/09_oop_with_python_2.html">9. Einige Fortgeschrittene Konzepte in der OOP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/10_from_idea_to_code.html">10. From Idea to Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/11_python_software_project.html">11. Python Software Projekt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/08_oop_with_python.html">9. Wiederholung der OOP-Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/09_oop_with_python_2.html">10. Einige Fortgeschrittene Konzepte in der OOP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/10_from_idea_to_code.html">11. From Idea to Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/11_python_software_project.html">12. Python Software Projekt</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Testing and Continuous Integration</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../book/06_testing.html">12. Warum brauchen wir Testing?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/07_testing_live_coding.html">13. Live Coding Einführung in das Testen von Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/07_continuous_integration.html">14. Introduction to Continuous Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/07_testing_2.html">15. Code Testing (2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/06_testing.html">13. Warum brauchen wir Testing?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/07_testing_live_coding.html">14. Live Coding Einführung in das Testen von Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/07_continuous_integration.html">15. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/07_testing_2.html">16. Code Testing (2)</a></li>
 
 
 
@@ -361,16 +376,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -394,11 +417,20 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-installieren">Git installieren</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">macOS:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#erste-schritte">Erste Schritte</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-coding">Live Coding</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neues-projekt-starten">Neues Projekt starten</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erste-datei-erzeugen">Erste Datei erzeugen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log">log</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ok-das-ganze-nochmal">OK, das Ganze nochmal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erste-datei-erzeugen-und-mit-git-tracken">Erste Datei erzeugen und mit git tracken</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#git-commit">Git commit</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#git-log">Git log</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datei-verandern-und-aktualisieren">Datei verändern und aktualisieren</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diff-optionen">diff –&gt; Optionen</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-ubung">Mini-Übung</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#staging">Staging</a></li>
@@ -429,9 +461,33 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="live-coding-git-github">
 <h1>Live Coding: git &amp; GitHub<a class="headerlink" href="#live-coding-git-github" title="Link to this heading">#</a></h1>
-<p>(Erstellt auf Grundlage des Carpentry Git Kurses: https://carpentries-incubator.github.io/git-novice-branch-pr/)</p>
+<p>(Erstellt auf Grundlage des <a class="reference external" href="https://carpentries-incubator.github.io/git-novice-branch-pr/">Carpentry Git Kurses</a>)</p>
+<section id="git-installieren">
+<h2>Git installieren<a class="headerlink" href="#git-installieren" title="Link to this heading">#</a></h2>
+<section id="windows">
+<h3>Windows:<a class="headerlink" href="#windows" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://git-scm.com/downloads/win">Hier</a> herunterladen &amp; installieren</p>
+</section>
+<section id="macos">
+<h3>macOS:<a class="headerlink" href="#macos" title="Link to this heading">#</a></h3>
+<p>Um git zu installieren gibt es zwei Möglichkeiten:</p>
+<ol class="arabic simple">
+<li><p>Mit dem Paketmanager <a class="reference external" href="https://brew.sh/">homebrew</a>. Dazu im launchpad/spotlight die app <em>terminal</em> öffnen und folgende Befehle ausführen:</p>
+<ol class="arabic simple">
+<li><p>wenn homebrew noch nicht installiert ist:
+<code class="docutils literal notranslate"><span class="pre">/bin/bash</span> <span class="pre">-c</span> <span class="pre">&quot;$(curl</span> <span class="pre">-fsSL</span> <span class="pre">https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</span></code></p></li>
+<li><p>Terminal schließen und wieder öffnen</p></li>
+<li><p>git installieren: <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">git</span></code></p></li>
+</ol>
+</li>
+<li><p>oder mit den xcode command line tools. Dazu im launchpad/spotlight die app <em>terminal</em> öffnen und folgendes eingeben:
+<code class="docutils literal notranslate"><span class="pre">xcode-select</span> <span class="pre">--install</span></code></p></li>
+</ol>
+</section>
+</section>
+<section id="erste-schritte">
+<h2>Erste Schritte<a class="headerlink" href="#erste-schritte" title="Link to this heading">#</a></h2>
 <ul>
-<li><p>git installieren</p></li>
 <li><p>Läuft git? –&gt; <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">version</span></code></p></li>
 <li><p>Einrichten:
 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">user.name</span> <span class="pre">&quot;Alice</span> <span class="pre">B&quot;</span></code>
@@ -443,10 +499,10 @@
 </div>
 </li>
 </ul>
+</section>
 <section id="live-coding">
 <h2>Live Coding<a class="headerlink" href="#live-coding" title="Link to this heading">#</a></h2>
 <p>(Teil des Materials wurde adaptiert von: https://carpentries-incubator.github.io/git-novice-branch-pr/03-create/)</p>
-<p>Erster Test: Ist git richtig installiert –&gt; <code class="docutils literal notranslate"><span class="pre">git</span></code> im Terminal ausführen.</p>
 <section id="neues-projekt-starten">
 <h3>Neues Projekt starten<a class="headerlink" href="#neues-projekt-starten" title="Link to this heading">#</a></h3>
 <ul>
@@ -468,8 +524,8 @@ Vielleicht nicht auf den ersten Blick (<code class="docutils literal notranslate
 <li><p>–&gt; Neuer Ordner <code class="docutils literal notranslate"><span class="pre">.git</span></code> wurde erstellt. Darin wird die Projektgeschichte gespeichert.</p></li>
 </ul>
 </section>
-<section id="erste-datei-erzeugen">
-<h3>Erste Datei erzeugen<a class="headerlink" href="#erste-datei-erzeugen" title="Link to this heading">#</a></h3>
+<section id="erste-datei-erzeugen-und-mit-git-tracken">
+<h3>Erste Datei erzeugen und mit git tracken<a class="headerlink" href="#erste-datei-erzeugen-und-mit-git-tracken" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nano mars.txt
 </pre></div>
 </div>
@@ -510,7 +566,9 @@ Changes to be committed:
 	new file:   mars.txt
 </pre></div>
 </div>
-<p>Git weiß nun, dass es <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> verfolgen soll, hat diese  Änderungen jedoch noch nicht als Commit festgehalten. Um das zu tun,  müssen wir noch einen Befehl ausführen:</p>
+<p>Git weiß nun, dass es <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> verfolgen soll, hat diese  Änderungen jedoch noch nicht als Commit festgehalten. Um das zu tun, müssen wir noch einen Befehl ausführen:</p>
+<section id="git-commit">
+<h4>Git commit<a class="headerlink" href="#git-commit" title="Link to this heading">#</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git commit -m &quot;Start notes on Mars as a base&quot;
 [main (root-commit) f22b25e] Start notes on Mars as a base
  1 file changed, 1 insertion(+)
@@ -522,8 +580,8 @@ Changes to be committed:
 <p><a class="reference external" href="https://chris.beams.io/posts/git-commit/">Gute Commit-Nachrichten</a> beginnen mit einer kurzen (weniger als 50 Zeichen) Zusammenfassung der im Commit vorgenommenen Änderungen. Wenn du ins Detail gehen möchtest, füge eine leere Zeile zwischen der Zusammenfassung und deinen zusätzlichen Anmerkungen hinzu.</p>
 <p>Danach –&gt; <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code></p>
 </section>
-<section id="log">
-<h3>log<a class="headerlink" href="#log" title="Link to this heading">#</a></h3>
+<section id="git-log">
+<h4>Git log<a class="headerlink" href="#git-log" title="Link to this heading">#</a></h4>
 <p>Wenn wir wissen wollen, was wir kürzlich gemacht haben, können wir Git bitten, uns die Historie des Projekts mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> zu zeigen:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
@@ -539,8 +597,9 @@ Date:   Thu Aug 22 09:51:46 2023 -0400
 </pre></div>
 </div>
 </section>
-<section id="ok-das-ganze-nochmal">
-<h3>OK, das Ganze nochmal<a class="headerlink" href="#ok-das-ganze-nochmal" title="Link to this heading">#</a></h3>
+</section>
+<section id="datei-verandern-und-aktualisieren">
+<h3>Datei verändern und aktualisieren<a class="headerlink" href="#datei-verandern-und-aktualisieren" title="Link to this heading">#</a></h3>
 <p>Jetzt fügen wir der Datei <code class="docutils literal notranslate"><span class="pre">mars.txt</span></code> eine weitere Zeile hinzu.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>nano<span class="w"> </span>mars.txt
 $<span class="w"> </span>cat<span class="w"> </span>mars.txt
@@ -816,8 +875,7 @@ $<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -826,11 +884,20 @@ $<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-installieren">Git installieren</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">macOS:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#erste-schritte">Erste Schritte</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-coding">Live Coding</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neues-projekt-starten">Neues Projekt starten</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erste-datei-erzeugen">Erste Datei erzeugen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log">log</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ok-das-ganze-nochmal">OK, das Ganze nochmal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erste-datei-erzeugen-und-mit-git-tracken">Erste Datei erzeugen und mit git tracken</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#git-commit">Git commit</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#git-log">Git log</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datei-verandern-und-aktualisieren">Datei verändern und aktualisieren</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diff-optionen">diff –&gt; Optionen</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-ubung">Mini-Übung</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#staging">Staging</a></li>
@@ -896,8 +963,8 @@ By Florian Huber
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

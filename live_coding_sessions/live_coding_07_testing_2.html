@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -65,7 +62,6 @@
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -81,8 +77,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -90,6 +97,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -97,8 +105,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -116,8 +124,7 @@
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -147,17 +154,21 @@
     
     
     <img src="../_static/cover_mini.png" class="logo__image only-light" alt="Data Science Software Development with Python - Home"/>
-    <img src="../_static/cover_mini.png" class="logo__image only-dark pst-js-only" alt="Data Science Software Development with Python - Home"/>
+    <script>document.write(`<img src="../_static/cover_mini.png" class="logo__image only-dark" alt="Data Science Software Development with Python - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -181,19 +192,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../book/06_linting.html">6. Linting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../book/07_code_smells.html">7. Code Smells</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Library / Repository Struktur</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../book/05_virtual_environments.html">8. Einführung: Python-Umgebungen für Data-Science-Projekte (venv, Miniconda/Mamba, Anaconda)</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Code Design &amp; Grundlagen der Objektorientierten Programmierung (OOP)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../book/08_oop_with_python.html">8. Wiederholung der OOP-Grundlagen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/09_oop_with_python_2.html">9. Einige Fortgeschrittene Konzepte in der OOP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/10_from_idea_to_code.html">10. From Idea to Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/11_python_software_project.html">11. Python Software Projekt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/08_oop_with_python.html">9. Wiederholung der OOP-Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/09_oop_with_python_2.html">10. Einige Fortgeschrittene Konzepte in der OOP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/10_from_idea_to_code.html">11. From Idea to Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/11_python_software_project.html">12. Python Software Projekt</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Testing and Continuous Integration</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../book/06_testing.html">12. Warum brauchen wir Testing?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/07_testing_live_coding.html">13. Live Coding Einführung in das Testen von Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/07_continuous_integration.html">14. Introduction to Continuous Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/07_testing_2.html">15. Code Testing (2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/06_testing.html">13. Warum brauchen wir Testing?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/07_testing_live_coding.html">14. Live Coding Einführung in das Testen von Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/07_continuous_integration.html">15. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/07_testing_2.html">16. Code Testing (2)</a></li>
 
 
 
@@ -361,16 +376,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -394,10 +417,20 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-decorators-for-efficient-testing">Using Decorators for Efficient Testing</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Live Coding - Testing (part 2)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expanding-the-game-adding-a-carddeck-class">Expanding the Game: Adding a CardDeck Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-test-the-play-game-function">How to test the <code class="docutils literal notranslate"><span class="pre">play_game()</span></code> function?</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-task">Instructor-task:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trouble-with-folders">Trouble with folders</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-part">Coding part:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-test-the-play-game-function">How to test the <code class="docutils literal notranslate"><span class="pre">play_game()</span></code> function?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task">Task:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-integration">Continuous Integration</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -411,12 +444,31 @@
   <section id="live-coding-testing-part-2">
 <h1>Live Coding - Testing (part 2)<a class="headerlink" href="#live-coding-testing-part-2" title="Link to this heading">#</a></h1>
 <p>Last time we developed the first pieces of a simple blackjack game.</p>
-<p>This included two main functions:</p>
-<ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">count_cards(cards)</span></code>, which we already developed</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">play_game(names)</span></code>, which we develop in this session</p></li>
-</ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count_cards</span><span class="p">(</span><span class="n">cards</span><span class="p">):</span>
+<section id="expanding-the-game-adding-a-carddeck-class">
+<h2>Expanding the Game: Adding a CardDeck Class<a class="headerlink" href="#expanding-the-game-adding-a-carddeck-class" title="Link to this heading">#</a></h2>
+<p>To practice Object-Oriented Programming (OOP) and further modularize our code, we introduce a <code class="docutils literal notranslate"><span class="pre">CardDeck</span></code> class which we will write into a new file, e.g., <code class="docutils literal notranslate"><span class="pre">main_classes.py</span></code>.</p>
+<p>A class is useful to handle the cards in our game, because it has internal state (the attributes) that allow “memorize” the current state. In our case this can be used to describe the available number and order of cards in the deck.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CardDeck</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_copies</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cards</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">,</span> <span class="s2">&quot;7&quot;</span><span class="p">,</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span> <span class="s2">&quot;9&quot;</span><span class="p">,</span> <span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="s2">&quot;J&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="s2">&quot;K&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_copies</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">shuffle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cards</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw_cards</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_cards</span><span class="p">):</span>
+        <span class="n">cards</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_cards</span><span class="p">):</span>
+            <span class="n">cards</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cards</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">cards</span>
+</pre></div>
+</div>
+<p>Last time we developed the function <code class="docutils literal notranslate"><span class="pre">count_cards()</span></code>. Here is a simple variant of a <code class="docutils literal notranslate"><span class="pre">play_game()</span></code> function that now uses the CardDeck and the existing function to build a minimal version of a blackjack game.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">main_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">CardDeck</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">count_cards</span><span class="p">(</span><span class="n">cards</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Counts the total value of the given cards in a blackjack game.&quot;&quot;&quot;</span>
     <span class="n">card_values</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;2&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
                    <span class="s1">&#39;7&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;8&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;9&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
@@ -434,13 +486,8 @@
 
     <span class="k">return</span> <span class="n">total</span>
 
-<span class="k">def</span> <span class="nf">play_game</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Game logic for blackjack.&quot;&quot;&quot;</span>
-    <span class="c1"># Placeholder for game logic</span>
-</pre></div>
-</div>
-<p>A simple realization of a the play_game() function could look like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">play_game</span><span class="p">():</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">play_game</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A game of Blackjack with multiple players.&quot;&quot;&quot;</span>
     <span class="n">num_players</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the number of players: &quot;</span><span class="p">))</span>
     <span class="n">players</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Player </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s1">&#39;cards&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_players</span><span class="p">)]</span>
@@ -488,63 +535,80 @@
 </div>
 <p>There is a lot of room for improvements, but it is enough to illustrate how such a game could work.</p>
 <p>Now to the testing. We already implemented tests for the <code class="docutils literal notranslate"><span class="pre">count_cards()</span></code> function last week.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_count_cards_no_aces</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">count_cards</span><span class="p">([</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">9</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">blackjack</span><span class="w"> </span><span class="kn">import</span> <span class="n">count_cards</span>
 
-<span class="k">def</span> <span class="nf">test_count_cards_with_aces</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">count_cards</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">18</span>
-    <span class="k">assert</span> <span class="n">count_cards</span><span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">12</span>
-    <span class="k">assert</span> <span class="n">count_cards</span><span class="p">([</span><span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">21</span>
-    <span class="k">assert</span> <span class="n">count_cards</span><span class="p">([</span><span class="s2">&quot;5&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">21</span>
 
-<span class="k">def</span> <span class="nf">test_more_than_21</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">count_cards</span><span class="p">([</span><span class="s2">&quot;5&quot;</span><span class="p">,</span> <span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="s2">&quot;K&quot;</span><span class="p">,</span> <span class="s2">&quot;7&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">21</span>
-</pre></div>
-</div>
-<section id="using-decorators-for-efficient-testing">
-<h2>Using Decorators for Efficient Testing<a class="headerlink" href="#using-decorators-for-efficient-testing" title="Link to this heading">#</a></h2>
-<p>Decorators in Python can be used to streamline tests, particularly with <code class="docutils literal notranslate"><span class="pre">pytest.mark.parametrize</span></code>. This allows for testing multiple scenarios with a single test function.</p>
-<p>Example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_count_cards</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">count_cards</span><span class="p">([</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">9</span>
 
-<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">&quot;cards, score&quot;</span><span class="p">,</span> <span class="p">[(</span><span class="s2">&quot;A34&quot;</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;AA9&quot;</span><span class="p">,</span> <span class="mi">21</span><span class="p">),</span> <span class="o">...</span><span class="p">])</span>
-<span class="k">def</span> <span class="nf">test_count_cards_with_aces</span><span class="p">(</span><span class="n">cards</span><span class="p">,</span> <span class="n">score</span><span class="p">):</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">&quot;cards, score&quot;</span><span class="p">,</span> 
+                         <span class="p">[([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">],</span> <span class="mi">21</span><span class="p">),</span>
+                          <span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">],</span> <span class="mi">21</span><span class="p">),</span>
+                          <span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;9&quot;</span><span class="p">],</span> <span class="mi">20</span><span class="p">),</span>
+                          <span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;7&quot;</span><span class="p">],</span> <span class="mi">19</span><span class="p">)</span>
+                          <span class="p">]</span>
+                         <span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_count_cards_with_aces</span><span class="p">(</span><span class="n">cards</span><span class="p">,</span> <span class="n">score</span><span class="p">):</span>
     <span class="k">assert</span> <span class="n">count_cards</span><span class="p">(</span><span class="n">cards</span><span class="p">)</span> <span class="o">==</span> <span class="n">score</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_more_than_21</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">count_cards</span><span class="p">([</span><span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="s2">&quot;J&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">21</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_unknown_cards</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">)</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="n">count_cards</span><span class="p">([</span><span class="s2">&quot;X&quot;</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="s2">&quot;Invalid card: X&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">error</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
-<section id="expanding-the-game-adding-a-carddeck-class">
-<h2>Expanding the Game: Adding a CardDeck Class<a class="headerlink" href="#expanding-the-game-adding-a-carddeck-class" title="Link to this heading">#</a></h2>
-<p>To practice Object-Oriented Programming (OOP) and further modularize our code, we introduced a <code class="docutils literal notranslate"><span class="pre">CardDeck</span></code> class which we will write into a new file, e.g., <code class="docutils literal notranslate"><span class="pre">main_classes.py</span></code>.</p>
-<p>A class is useful to handle the cards in our game, because it has internal state (the attributes) that allow “memorize” the current state. In our case this can be used to describe the available number and order of cards in the deck.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-
-<span class="k">class</span> <span class="nc">CardDeck</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_copies</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cards</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">,</span> <span class="s2">&quot;7&quot;</span><span class="p">,</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span> <span class="s2">&quot;9&quot;</span><span class="p">,</span> <span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="s2">&quot;J&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="s2">&quot;K&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_copies</span>
-    
-    <span class="k">def</span> <span class="nf">shuffle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cards</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">draw_cards</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_cards</span><span class="p">):</span>
-        <span class="n">cards</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_cards</span><span class="p">):</span>
-            <span class="n">cards</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cards</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
-        <span class="k">return</span> <span class="n">cards</span>
+</section>
+<section id="instructor-task">
+<h1>Instructor-task:<a class="headerlink" href="#instructor-task" title="Link to this heading">#</a></h1>
+<p>Create a repository and place those files in respective folders and push.</p>
+<p>–&gt; Everyone can then fork this and clone it to have a local copy.</p>
+<section id="trouble-with-folders">
+<h2>Trouble with folders<a class="headerlink" href="#trouble-with-folders" title="Link to this heading">#</a></h2>
+<p>We now place those files in separate folders, which is good practice. So, for instance, a <code class="docutils literal notranslate"><span class="pre">casino</span></code> folder with <code class="docutils literal notranslate"><span class="pre">blackjack.py</span></code> and <code class="docutils literal notranslate"><span class="pre">main_classes.py</span></code> and a seperate <code class="docutils literal notranslate"><span class="pre">tests</span></code> folder.</p>
+<p>The structure of our projects is now
+project/
+│
+├── casino/
+│   ├── <strong>init</strong>.py
+│   ├── blackjack.py
+│   ├── main_classes.py
+│
+├── tests/
+│   ├── <strong>init</strong>.py
+│   ├── test_blackjack.py
+│
+└── README.md</p>
+<p>Try: <code class="docutils literal notranslate"><span class="pre">pytest</span></code></p>
+<p>This no longer works.
+At this point we have to add an empty <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file in both the tests and the <code class="docutils literal notranslate"><span class="pre">casino</span></code> folder. This indicates to the Python interpreter that those folders are “modules” from which we can also import. Do do so, we can adjust the imports to <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">casino.blackjack</span> <span class="pre">import</span> <span class="pre">count_cards</span></code> in our test file.</p>
+<p>Does this work now?</p>
+<p>Not fully, we also have to change the import in the blackjack game to <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">casino.main_classes</span> <span class="pre">import</span> <span class="pre">CardDeck</span></code>. Then, the test should work (hopefully).</p>
+<p>There is <strong>more trouble coming</strong> though.
+Try now to execute the <code class="docutils literal notranslate"><span class="pre">blackjack.py</span></code> file. This will probably give you an error saying <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">'casino'&quot;</span> <span class="pre">error.</span></code>.</p>
+<p>There are some workarounds for this, but none of them is really nice (IMHO). So it’s better to avoid such execution directly from a .py-file once we build a Python package. But you can still run the code with the following command from the project root folder:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>casino.blackjack
 </pre></div>
 </div>
-<p>Once this class is designed or even written, we can start to add tests. This time in a new, separate file that we can name <code class="docutils literal notranslate"><span class="pre">test_main_classes.py</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
-<span class="kn">from</span> <span class="nn">main_classes</span> <span class="kn">import</span> <span class="n">CardDeck</span>
+</section>
+<section id="coding-part">
+<h2>Coding part:<a class="headerlink" href="#coding-part" title="Link to this heading">#</a></h2>
+<p>It is now time to also add tests for the <code class="docutils literal notranslate"><span class="pre">CardDeck</span></code> class which I placed in the file <code class="docutils literal notranslate"><span class="pre">main_classes.py</span></code>. So we will start with a new file called <code class="docutils literal notranslate"><span class="pre">test_main_classes.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">main_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">CardDeck</span>
 
-<span class="k">def</span> <span class="nf">test_card_deck</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_card_deck</span><span class="p">():</span>
 <span class="w">	</span><span class="sd">&quot;&quot;&quot;First, very simple test.&quot;&quot;&quot;</span>
     <span class="n">deck</span> <span class="o">=</span> <span class="n">CardDeck</span><span class="p">()</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">deck</span><span class="o">.</span><span class="n">cards</span><span class="p">)</span> <span class="o">==</span> <span class="mi">52</span>
     <span class="n">deck</span> <span class="o">=</span> <span class="n">CardDeck</span><span class="p">(</span><span class="n">num_copies</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">deck</span><span class="o">.</span><span class="n">cards</span><span class="p">)</span> <span class="o">==</span> <span class="mi">26</span>
 
-<span class="k">def</span> <span class="nf">test_draw_cards</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_draw_cards</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Test if drawing cards works as intended.&quot;&quot;&quot;</span>
     <span class="n">deck</span> <span class="o">=</span> <span class="n">CardDeck</span><span class="p">()</span>
     <span class="n">cards</span> <span class="o">=</span> <span class="n">deck</span><span class="o">.</span><span class="n">draw_cards</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -552,7 +616,7 @@
     <span class="c1"># Test if cards were removed</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">deck</span><span class="o">.</span><span class="n">cards</span><span class="p">)</span> <span class="o">==</span> <span class="mi">49</span>
 
-<span class="k">def</span> <span class="nf">test_card_deck_shuffle</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_card_deck_shuffle</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Test if shuffling works.&quot;&quot;&quot;</span>
     <span class="n">deck</span> <span class="o">=</span> <span class="n">CardDeck</span><span class="p">(</span><span class="n">num_copies</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
     <span class="n">before_shuffle</span> <span class="o">=</span> <span class="n">deck</span><span class="o">.</span><span class="n">cards</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -560,7 +624,7 @@
     <span class="n">after_shuffle</span> <span class="o">=</span> <span class="n">deck</span><span class="o">.</span><span class="n">cards</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="k">assert</span> <span class="n">before_shuffle</span> <span class="o">!=</span> <span class="n">after_shuffle</span>
 
-<span class="k">def</span> <span class="nf">test_card_deck_empty</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_card_deck_empty</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Test, if expected exception is indeed raised.&quot;&quot;&quot;</span>
     <span class="n">deck</span> <span class="o">=</span> <span class="n">CardDeck</span><span class="p">()</span>
     <span class="n">deck</span><span class="o">.</span><span class="n">draw_cards</span><span class="p">(</span><span class="mi">52</span><span class="p">)</span>
@@ -576,22 +640,22 @@
 <p>This function is a bit more tricky to test, because in a real game there are multiple user inputs. And there is a lot of random events (card shuffling etc.), so that in reality each game looks different.</p>
 <p>This is where <strong>mocking</strong> comes into play. In principle we replace objects (or functions/methods) in our code by fake versions which we can better control. For this we here use pytest and its <code class="docutils literal notranslate"><span class="pre">monkeypatch</span></code> module.</p>
 <p>One such test could look like:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
-<span class="kn">from</span> <span class="nn">main_functions</span> <span class="kn">import</span> <span class="n">play_game</span>
-<span class="kn">from</span> <span class="nn">main_classes</span> <span class="kn">import</span> <span class="n">CardDeck</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">casino.blackjack</span><span class="w"> </span><span class="kn">import</span> <span class="n">play_game</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">casino.main_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">CardDeck</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
 
-<span class="k">def</span> <span class="nf">test_single_player_blackjack</span><span class="p">(</span><span class="n">monkeypatch</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_single_player_blackjack</span><span class="p">(</span><span class="n">monkeypatch</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Simulate a single player getting Blackjack.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">mock_user_input</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mock_user_input</span><span class="p">():</span>
         <span class="c1"># This simulates the user input</span>
-        <span class="k">def</span> <span class="nf">fake_input</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">fake_input</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
             <span class="k">if</span> <span class="s2">&quot;number of players&quot;</span> <span class="ow">in</span> <span class="n">prompt</span><span class="p">:</span>
                 <span class="k">return</span> <span class="s2">&quot;1&quot;</span>
             <span class="k">return</span> <span class="s2">&quot;n&quot;</span>
         <span class="k">return</span> <span class="n">fake_input</span>
     
-    <span class="k">def</span> <span class="nf">mock_draw_cards</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mock_draw_cards</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="c1"># This simulates the drawing of cards.</span>
         <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;10&quot;</span><span class="p">]</span>
 
@@ -613,6 +677,40 @@
 </pre></div>
 </div>
 </section>
+<section id="task">
+<h2>Task:<a class="headerlink" href="#task" title="Link to this heading">#</a></h2>
+<p>By the way: what happens if all players exceed 21 points? Ever tested this?</p>
+</section>
+</section>
+<section id="continuous-integration">
+<h1>Continuous Integration<a class="headerlink" href="#continuous-integration" title="Link to this heading">#</a></h1>
+<p>Here a pipeline to use:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Our first Python CI</span>
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">&quot;main&quot;</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">My-first-CI</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Python</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v3</span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python -m pip install --upgrade pip</span>
+<span class="w">        </span><span class="no">python -m pip install ruff pytest</span>
+<span class="w">        </span><span class="no">if [ -f requirements.txt ]; then pip install -r requirements.txt; fi </span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Linting with Ruff</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ruff check .</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test with pytest</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest</span>
+</pre></div>
+</div>
+<p>A good tool to check your yaml file is: https://yamlchecker.com/</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -652,8 +750,7 @@
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -662,10 +759,20 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-decorators-for-efficient-testing">Using Decorators for Efficient Testing</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Live Coding - Testing (part 2)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expanding-the-game-adding-a-carddeck-class">Expanding the Game: Adding a CardDeck Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-test-the-play-game-function">How to test the <code class="docutils literal notranslate"><span class="pre">play_game()</span></code> function?</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-task">Instructor-task:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trouble-with-folders">Trouble with folders</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-part">Coding part:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-test-the-play-game-function">How to test the <code class="docutils literal notranslate"><span class="pre">play_game()</span></code> function?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task">Task:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-integration">Continuous Integration</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>
@@ -713,8 +820,8 @@ By Florian Huber
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
