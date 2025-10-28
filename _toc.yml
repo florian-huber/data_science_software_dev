@@ -18,6 +18,7 @@ parts:
     numbered: true
     chapters:
     - file: book/05_virtual_environments
+    - file: book/06_package_repository
   - caption: Code Design & Grundlagen der Objektorientierten Programmierung (OOP)
     numbered: true
     chapters:
