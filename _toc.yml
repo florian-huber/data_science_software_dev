@@ -14,6 +14,10 @@ parts:
     - file: book/05_clean_code
     - file: book/06_linting
     - file: book/07_code_smells
+  - caption: Python Library / Repository Struktur
+    numbered: true
+    chapters:
+    - file: book/05_virtual_environments
   - caption: Code Design & Grundlagen der Objektorientierten Programmierung (OOP)
     numbered: true
     chapters:
