@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>11. From Idea to Code &#8212; Data Science Software Development with Python</title>
+    <title>12. From Idea to Code &#8212; Data Science Software Development with Python</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/10_from_idea_to_code';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="12. Python Software Projekt" href="11_python_software_project.html" />
-    <link rel="prev" title="10. Einige Fortgeschrittene Konzepte in der OOP" href="09_oop_with_python_2.html" />
+    <link rel="next" title="13. Python Software Projekt" href="11_python_software_project.html" />
+    <link rel="prev" title="11. Einige Fortgeschrittene Konzepte in der OOP" href="09_oop_with_python_2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -195,20 +195,21 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Library / Repository Struktur</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="05_virtual_environments.html">8. Einführung: Python-Umgebungen für Data-Science-Projekte (venv, Miniconda/Mamba, Anaconda)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_package_repository.html">9. Python Package / Repository: Von <code class="docutils literal notranslate"><span class="pre">import</span></code> bis eigenes installierbares Paket</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Code Design &amp; Grundlagen der Objektorientierten Programmierung (OOP)</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="08_oop_with_python.html">9. Wiederholung der OOP-Grundlagen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_oop_with_python_2.html">10. Einige Fortgeschrittene Konzepte in der OOP</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. From Idea to Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_python_software_project.html">12. Python Software Projekt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_oop_with_python.html">10. Wiederholung der OOP-Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_oop_with_python_2.html">11. Einige Fortgeschrittene Konzepte in der OOP</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. From Idea to Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_python_software_project.html">13. Python Software Projekt</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Testing and Continuous Integration</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="06_testing.html">13. Warum brauchen wir Testing?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_testing_live_coding.html">14. Live Coding Einführung in das Testen von Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">15. Introduction to Continuous Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">16. Code Testing (2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_testing.html">14. Warum brauchen wir Testing?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_live_coding.html">15. Live Coding Einführung in das Testen von Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">16. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">17. Code Testing (2)</a></li>
 
 
 
@@ -417,31 +418,31 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entwicklungsphasen-von-der-idee-zum-code">11.1. Entwicklungsphasen von der Idee zum Code</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problemdefinition-und-anforderungsanalyse">11.1.1. Problemdefinition und Anforderungsanalyse</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-losungsplanung">11.1.2. High-Level Lösungsplanung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zerlegung-des-problems-in-komponenten">11.1.3. Zerlegung des Problems in Komponenten</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detailliertes-design-mit-flussdiagrammen-und-diagrammen">11.1.4. Detailliertes Design mit Flussdiagrammen und Diagrammen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-von-schnittstellen-und-interaktionen">11.1.5. Definition von Schnittstellen und Interaktionen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementierungsplanung">11.1.6. Implementierungsplanung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uberprufung-und-feedback">11.1.7. Überprüfung und Feedback</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erlauterung-und-ausrichtung-an-best-practices">11.1.8. Erläuterung und Ausrichtung an Best Practices</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zusatzliche-tipps">11.1.9. Zusätzliche Tipps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entwicklungsphasen-von-der-idee-zum-code">12.1. Entwicklungsphasen von der Idee zum Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problemdefinition-und-anforderungsanalyse">12.1.1. Problemdefinition und Anforderungsanalyse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-losungsplanung">12.1.2. High-Level Lösungsplanung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zerlegung-des-problems-in-komponenten">12.1.3. Zerlegung des Problems in Komponenten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detailliertes-design-mit-flussdiagrammen-und-diagrammen">12.1.4. Detailliertes Design mit Flussdiagrammen und Diagrammen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-von-schnittstellen-und-interaktionen">12.1.5. Definition von Schnittstellen und Interaktionen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementierungsplanung">12.1.6. Implementierungsplanung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uberprufung-und-feedback">12.1.7. Überprüfung und Feedback</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erlauterung-und-ausrichtung-an-best-practices">12.1.8. Erläuterung und Ausrichtung an Best Practices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zusatzliche-tipps">12.1.9. Zusätzliche Tipps</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-python-beispiel">11.2. Praktisches Python Beispiel</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.2.1. Problemdefinition und Anforderungsanalyse</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.2.2. High-Level Lösungsplanung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">11.2.3. Zerlegung des Problems in Komponenten</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.2.4. Detailliertes Design mit Flussdiagrammen und Diagrammen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">11.2.5. Definition von Schnittstellen und Interaktionen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">11.2.6. Implementierungsplanung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">11.2.7. Überprüfung und Feedback</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ausblick">11.2.8. Ausblick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-python-beispiel">12.2. Praktisches Python Beispiel</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">12.2.1. Problemdefinition und Anforderungsanalyse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">12.2.2. High-Level Lösungsplanung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">12.2.3. Zerlegung des Problems in Komponenten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">12.2.4. Detailliertes Design mit Flussdiagrammen und Diagrammen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">12.2.5. Definition von Schnittstellen und Interaktionen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">12.2.6. Implementierungsplanung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">12.2.7. Überprüfung und Feedback</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ausblick">12.2.8. Ausblick</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-an-ascii-scatter-plot-tool-in-python">11.3. Building an ASCII Scatter Plot Tool in Python</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endprodukt">11.3.1. Endprodukt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-an-ascii-scatter-plot-tool-in-python">12.3. Building an ASCII Scatter Plot Tool in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endprodukt">12.3.1. Endprodukt</a></li>
 </ul>
 </li>
 </ul>
@@ -456,16 +457,16 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="from-idea-to-code">
-<h1><span class="section-number">11. </span>From Idea to Code<a class="headerlink" href="#from-idea-to-code" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">12. </span>From Idea to Code<a class="headerlink" href="#from-idea-to-code" title="Link to this heading">#</a></h1>
 <p>Beim Programmieren gibt es oft einen sehr starken Impuls “einfach loszulegen”, also direkt mit dem Schreiben von Code zu beginnen. Bei kleineren Aufgaben, z.B. Übungsaufgaben, ist das in der Regel auch OK. Sobald es aber um ein größeres Programm geht ist es nicht nur sinnvoll, sondern oft fast unverzichtbar zuerst ein Konzept oder ein Code Design zu erstellen. Gerade bei komplexen Aufgaben, ist es aber gar nicht so leicht sich eine erste Vorstellung davon zu machen wie der Code aufgebaut sein sollte.</p>
 <p>Anstatt uns lange allgemeine Best Practices und Prinzipien anzuschauen, ist das Ziel hier, dass wir anhand eines konkreten Beispiels einmal durchspielen wie wir von einer Idee zum Code kommen können. Wir hangelnd uns dazu aber entlang etablierter Entwurfsphasen entlang. Diese werden wir aber zuerst zumindest kurz einführen müssen um den generellen Ablauf zu verstehen.</p>
 <p>Es gibt viele verschiedene Beschreibungen typischer Softwareentwicklungs-Prozesse. Sehr bekannt ist der <em>Unified Software Development Process</em> (oder <em>Unified Process</em>), von dem es viele Variationen gibt wie z.B. den <a class="reference external" href="https://en.wikipedia.org/wiki/Rational_unified_process"><em>Rational Unified Process</em></a> oder den <a class="reference external" href="https://en.wikipedia.org/wiki/Agile_unified_process"><em>Agile Unified Process</em></a>. Eine Variante de Unified Process wird auf <a class="reference external" href="https://www.geeksforgeeks.org/unified-process-in-ooad/">geeksforgeeks.org</a> dargestellt.</p>
 <p>Im folgenden halten wir uns nicht an einen spezifischen dieser Prozesse, sondern geben nur eine (an vielen Stellen vereinfachte) Struktur vor mit deren Hilfe sich ein Code Design erstellen lässt.</p>
 <section id="entwicklungsphasen-von-der-idee-zum-code">
-<h2><span class="section-number">11.1. </span>Entwicklungsphasen von der Idee zum Code<a class="headerlink" href="#entwicklungsphasen-von-der-idee-zum-code" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.1. </span>Entwicklungsphasen von der Idee zum Code<a class="headerlink" href="#entwicklungsphasen-von-der-idee-zum-code" title="Link to this heading">#</a></h2>
 <p>Absolut, für Data-Science-Studenten mit begrenzter Softwareentwicklungserfahrung ist es wichtig, einen klaren und praktischen Prozess zu vermitteln, der den Übergang von einer Idee zu einem konkreten Softwaredesign erleichtert. Das Ziel ist, ihnen zu helfen, ihre Problemlösungsansätze systematisch in strukturierten Code umzusetzen. Hier ist ein vereinfachter, aber professioneller Workflow, der sich an aktuellen Best Practices in der Softwareentwicklung orientiert:</p>
 <section id="problemdefinition-und-anforderungsanalyse">
-<h3><span class="section-number">11.1.1. </span>Problemdefinition und Anforderungsanalyse<a class="headerlink" href="#problemdefinition-und-anforderungsanalyse" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.1.1. </span>Problemdefinition und Anforderungsanalyse<a class="headerlink" href="#problemdefinition-und-anforderungsanalyse" title="Link to this heading">#</a></h3>
 <p><strong>Ziel</strong>: Klare Verständigung darüber, was gelöst werden muss.</p>
 <p><strong>Aktivitäten</strong>:</p>
 <ul class="simple">
@@ -485,7 +486,7 @@ document.write(`
 </ul>
 </section>
 <section id="high-level-losungsplanung">
-<h3><span class="section-number">11.1.2. </span>High-Level Lösungsplanung<a class="headerlink" href="#high-level-losungsplanung" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.1.2. </span>High-Level Lösungsplanung<a class="headerlink" href="#high-level-losungsplanung" title="Link to this heading">#</a></h3>
 <p><strong>Ziel</strong>: Einen allgemeinen Ansatz zur Lösung des Problems skizzieren.</p>
 <p><strong>Aktivitäten</strong>:</p>
 <ul class="simple">
@@ -502,7 +503,7 @@ document.write(`
 </ul>
 </section>
 <section id="zerlegung-des-problems-in-komponenten">
-<h3><span class="section-number">11.1.3. </span>Zerlegung des Problems in Komponenten<a class="headerlink" href="#zerlegung-des-problems-in-komponenten" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.1.3. </span>Zerlegung des Problems in Komponenten<a class="headerlink" href="#zerlegung-des-problems-in-komponenten" title="Link to this heading">#</a></h3>
 <p><strong>Ziel</strong>: Die Lösung in handhabbare Teile aufteilen.</p>
 <p><strong>Aktivitäten</strong>:</p>
 <ul class="simple">
@@ -520,7 +521,7 @@ document.write(`
 </ul>
 </section>
 <section id="detailliertes-design-mit-flussdiagrammen-und-diagrammen">
-<h3><span class="section-number">11.1.4. </span>Detailliertes Design mit Flussdiagrammen und Diagrammen<a class="headerlink" href="#detailliertes-design-mit-flussdiagrammen-und-diagrammen" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.1.4. </span>Detailliertes Design mit Flussdiagrammen und Diagrammen<a class="headerlink" href="#detailliertes-design-mit-flussdiagrammen-und-diagrammen" title="Link to this heading">#</a></h3>
 <p><strong>Ziel</strong>: Die Logik und Struktur der Software visualisieren.</p>
 <p><strong>Aktivitäten</strong>:</p>
 <ul class="simple">
@@ -542,7 +543,7 @@ document.write(`
 </ul>
 </section>
 <section id="definition-von-schnittstellen-und-interaktionen">
-<h3><span class="section-number">11.1.5. </span>Definition von Schnittstellen und Interaktionen<a class="headerlink" href="#definition-von-schnittstellen-und-interaktionen" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.1.5. </span>Definition von Schnittstellen und Interaktionen<a class="headerlink" href="#definition-von-schnittstellen-und-interaktionen" title="Link to this heading">#</a></h3>
 <p><strong>Ziel</strong>: Spezifizieren, wie die verschiedenen Komponenten kommunizieren.</p>
 <p><strong>Aktivitäten</strong>:</p>
 <ul class="simple">
@@ -560,7 +561,7 @@ document.write(`
 </ul>
 </section>
 <section id="implementierungsplanung">
-<h3><span class="section-number">11.1.6. </span>Implementierungsplanung<a class="headerlink" href="#implementierungsplanung" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.1.6. </span>Implementierungsplanung<a class="headerlink" href="#implementierungsplanung" title="Link to this heading">#</a></h3>
 <p><strong>Ziel</strong>: Sich mit einem klaren Fahrplan auf die Codierungsphase vorbereiten.</p>
 <p><strong>Aktivitäten</strong>:</p>
 <ul class="simple">
@@ -582,7 +583,7 @@ document.write(`
 </ul>
 </section>
 <section id="uberprufung-und-feedback">
-<h3><span class="section-number">11.1.7. </span>Überprüfung und Feedback<a class="headerlink" href="#uberprufung-und-feedback" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.1.7. </span>Überprüfung und Feedback<a class="headerlink" href="#uberprufung-und-feedback" title="Link to this heading">#</a></h3>
 <p><strong>Ziel</strong>: Das Design vor der Implementierung validieren.</p>
 <p><strong>Aktivitäten</strong>:</p>
 <ul class="simple">
@@ -601,7 +602,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="erlauterung-und-ausrichtung-an-best-practices">
-<h3><span class="section-number">11.1.8. </span>Erläuterung und Ausrichtung an Best Practices<a class="headerlink" href="#erlauterung-und-ausrichtung-an-best-practices" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.1.8. </span>Erläuterung und Ausrichtung an Best Practices<a class="headerlink" href="#erlauterung-und-ausrichtung-an-best-practices" title="Link to this heading">#</a></h3>
 <p>Dieser vereinfachte Prozess spiegelt wesentliche Phasen der professionellen Softwareentwicklung wider, ist aber für Software-Development-Anfänger angepasst:</p>
 <ul class="simple">
 <li><p><strong>Betont das Verständnis</strong>: Beginnend mit der Problemdefinition wird ein tiefes Verständnis sichergestellt, bevor mit dem Codieren begonnen wird.</p></li>
@@ -613,7 +614,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="zusatzliche-tipps">
-<h3><span class="section-number">11.1.9. </span>Zusätzliche Tipps<a class="headerlink" href="#zusatzliche-tipps" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.1.9. </span>Zusätzliche Tipps<a class="headerlink" href="#zusatzliche-tipps" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Halte es einfach</strong>: Fokussiere dich auf Klarheit statt Komplexität. Einfache Designs sind leichter zu implementieren und zu debuggen.</p></li>
 <li><p><strong>Dokumentiere dein Design</strong>: Selbst informelle Notizen und Skizzen können während des Codierens wertvoll sein.</p></li>
@@ -624,10 +625,10 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="praktisches-python-beispiel">
-<h2><span class="section-number">11.2. </span>Praktisches Python Beispiel<a class="headerlink" href="#praktisches-python-beispiel" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.2. </span>Praktisches Python Beispiel<a class="headerlink" href="#praktisches-python-beispiel" title="Link to this heading">#</a></h2>
 <p>Wenden wir diesen Prozess auf ein konkretes Projekt an: <strong>Erstellung eines ASCII-Scatterplots</strong></p>
 <section id="id1">
-<h3><span class="section-number">11.2.1. </span>Problemdefinition und Anforderungsanalyse<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.2.1. </span>Problemdefinition und Anforderungsanalyse<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Problem</strong>: Entwicklung eines Programms, das x- und y-Koordinaten aus einer CSV-Datei lädt und ein Scatterplot als ASCII-Grafik darstellt.</p></li>
 <li><p><strong>Funktionale Anforderungen</strong>:</p>
@@ -648,7 +649,7 @@ document.write(`
 </ul>
 </section>
 <section id="id2">
-<h3><span class="section-number">11.2.2. </span>High-Level Lösungsplanung<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.2.2. </span>High-Level Lösungsplanung<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Ansatz</strong>: Implementierung einer Python-Klasse <code class="docutils literal notranslate"><span class="pre">AsciiScatterPlot</span></code>, die alle erforderlichen Funktionen kapselt:</p>
 <ul>
@@ -662,7 +663,7 @@ document.write(`
 </ul>
 </section>
 <section id="id3">
-<h3><span class="section-number">11.2.3. </span>Zerlegung des Problems in Komponenten<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.2.3. </span>Zerlegung des Problems in Komponenten<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Module/Funktionen</strong>:</p>
 <ul>
@@ -706,7 +707,7 @@ document.write(`
 </ul>
 </section>
 <section id="id4">
-<h3><span class="section-number">11.2.4. </span>Detailliertes Design mit Flussdiagrammen und Diagrammen<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.2.4. </span>Detailliertes Design mit Flussdiagrammen und Diagrammen<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><strong>Klassendiagramm</strong>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+------------------------+</span>
@@ -762,7 +763,7 @@ document.write(`
 </ul>
 </section>
 <section id="id5">
-<h3><span class="section-number">11.2.5. </span>Definition von Schnittstellen und Interaktionen<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.2.5. </span>Definition von Schnittstellen und Interaktionen<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Methodenschnittstellen</strong>:</p>
 <ul>
@@ -812,7 +813,7 @@ document.write(`
 </ul>
 </section>
 <section id="id6">
-<h3><span class="section-number">11.2.6. </span>Implementierungsplanung<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.2.6. </span>Implementierungsplanung<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>In vielen Fällen, besonders bei Projekten die im Team bearbeitet werden kann (und soll) die Implementierungsplanung natürlich kein streng linearer Ablaufplan sein. Die folgende Reihenfolge ist an vielen Stellen beliebig, wichtig daran ist vor allem kleinschrittige Aufgaben zu definieren und im Team zu verteilen und zu bearbeiten.</p>
 <ul class="simple">
 <li><p><strong>Entwicklungsschritte</strong>:</p>
@@ -845,7 +846,7 @@ document.write(`
 </ul>
 </section>
 <section id="id7">
-<h3><span class="section-number">11.2.7. </span>Überprüfung und Feedback<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.2.7. </span>Überprüfung und Feedback<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Peer Review</strong>:</p>
 <ul>
@@ -861,7 +862,7 @@ document.write(`
 </ul>
 </section>
 <section id="ausblick">
-<h3><span class="section-number">11.2.8. </span>Ausblick<a class="headerlink" href="#ausblick" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.2.8. </span>Ausblick<a class="headerlink" href="#ausblick" title="Link to this heading">#</a></h3>
 <p>Wir kommen in folgenden Teilen zu weiteren Möglichkeiten die die eigentliche Implementierung begleiten können wie z.B. Testing.</p>
 <ol class="arabic simple">
 <li><p><strong>Anforderungsanalyse</strong></p>
@@ -905,7 +906,7 @@ document.write(`
 </section>
 </section>
 <section id="building-an-ascii-scatter-plot-tool-in-python">
-<h2><span class="section-number">11.3. </span>Building an ASCII Scatter Plot Tool in Python<a class="headerlink" href="#building-an-ascii-scatter-plot-tool-in-python" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.3. </span>Building an ASCII Scatter Plot Tool in Python<a class="headerlink" href="#building-an-ascii-scatter-plot-tool-in-python" title="Link to this heading">#</a></h2>
 <p><strong>Problemstellung</strong></p>
 <p>Wir wollen ein Python-Tool erstellen, das:</p>
 <ol class="arabic simple">
@@ -918,7 +919,7 @@ document.write(`
 <p><strong>Phasen der Entwicklung</strong></p>
 <hr class="docutils" />
 <section id="endprodukt">
-<h3><span class="section-number">11.3.1. </span>Endprodukt<a class="headerlink" href="#endprodukt" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.3.1. </span>Endprodukt<a class="headerlink" href="#endprodukt" title="Link to this heading">#</a></h3>
 <p>Hier eine mögliche Lösung. Der folgende Code kann jede CSV-Datei mit <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code>-Koordinaten laden und ein sauberes ASCII-Scatterplot mit klaren Achsen in der Konsole darstellen.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
@@ -1050,7 +1051,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Einige Fortgeschrittene Konzepte in der OOP</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Einige Fortgeschrittene Konzepte in der OOP</p>
       </div>
     </a>
     <a class="right-next"
@@ -1058,7 +1059,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>Python Software Projekt</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Python Software Projekt</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1078,31 +1079,31 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entwicklungsphasen-von-der-idee-zum-code">11.1. Entwicklungsphasen von der Idee zum Code</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problemdefinition-und-anforderungsanalyse">11.1.1. Problemdefinition und Anforderungsanalyse</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-losungsplanung">11.1.2. High-Level Lösungsplanung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zerlegung-des-problems-in-komponenten">11.1.3. Zerlegung des Problems in Komponenten</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detailliertes-design-mit-flussdiagrammen-und-diagrammen">11.1.4. Detailliertes Design mit Flussdiagrammen und Diagrammen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-von-schnittstellen-und-interaktionen">11.1.5. Definition von Schnittstellen und Interaktionen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementierungsplanung">11.1.6. Implementierungsplanung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uberprufung-und-feedback">11.1.7. Überprüfung und Feedback</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erlauterung-und-ausrichtung-an-best-practices">11.1.8. Erläuterung und Ausrichtung an Best Practices</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zusatzliche-tipps">11.1.9. Zusätzliche Tipps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entwicklungsphasen-von-der-idee-zum-code">12.1. Entwicklungsphasen von der Idee zum Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problemdefinition-und-anforderungsanalyse">12.1.1. Problemdefinition und Anforderungsanalyse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-losungsplanung">12.1.2. High-Level Lösungsplanung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zerlegung-des-problems-in-komponenten">12.1.3. Zerlegung des Problems in Komponenten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detailliertes-design-mit-flussdiagrammen-und-diagrammen">12.1.4. Detailliertes Design mit Flussdiagrammen und Diagrammen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-von-schnittstellen-und-interaktionen">12.1.5. Definition von Schnittstellen und Interaktionen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementierungsplanung">12.1.6. Implementierungsplanung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uberprufung-und-feedback">12.1.7. Überprüfung und Feedback</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erlauterung-und-ausrichtung-an-best-practices">12.1.8. Erläuterung und Ausrichtung an Best Practices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zusatzliche-tipps">12.1.9. Zusätzliche Tipps</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-python-beispiel">11.2. Praktisches Python Beispiel</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.2.1. Problemdefinition und Anforderungsanalyse</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.2.2. High-Level Lösungsplanung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">11.2.3. Zerlegung des Problems in Komponenten</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.2.4. Detailliertes Design mit Flussdiagrammen und Diagrammen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">11.2.5. Definition von Schnittstellen und Interaktionen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">11.2.6. Implementierungsplanung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">11.2.7. Überprüfung und Feedback</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ausblick">11.2.8. Ausblick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-python-beispiel">12.2. Praktisches Python Beispiel</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">12.2.1. Problemdefinition und Anforderungsanalyse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">12.2.2. High-Level Lösungsplanung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">12.2.3. Zerlegung des Problems in Komponenten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">12.2.4. Detailliertes Design mit Flussdiagrammen und Diagrammen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">12.2.5. Definition von Schnittstellen und Interaktionen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">12.2.6. Implementierungsplanung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">12.2.7. Überprüfung und Feedback</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ausblick">12.2.8. Ausblick</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-an-ascii-scatter-plot-tool-in-python">11.3. Building an ASCII Scatter Plot Tool in Python</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endprodukt">11.3.1. Endprodukt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-an-ascii-scatter-plot-tool-in-python">12.3. Building an ASCII Scatter Plot Tool in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endprodukt">12.3.1. Endprodukt</a></li>
 </ul>
 </li>
 </ul>

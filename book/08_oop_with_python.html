@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9. Wiederholung der OOP-Grundlagen &#8212; Data Science Software Development with Python</title>
+    <title>10. Wiederholung der OOP-Grundlagen &#8212; Data Science Software Development with Python</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/08_oop_with_python';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="10. Einige Fortgeschrittene Konzepte in der OOP" href="09_oop_with_python_2.html" />
-    <link rel="prev" title="8. Einführung: Python-Umgebungen für Data-Science-Projekte (venv, Miniconda/Mamba, Anaconda)" href="05_virtual_environments.html" />
+    <link rel="next" title="11. Einige Fortgeschrittene Konzepte in der OOP" href="09_oop_with_python_2.html" />
+    <link rel="prev" title="9. Python Package / Repository: Von import bis eigenes installierbares Paket" href="05_package_repository.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -195,20 +195,21 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Library / Repository Struktur</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="05_virtual_environments.html">8. Einführung: Python-Umgebungen für Data-Science-Projekte (venv, Miniconda/Mamba, Anaconda)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_package_repository.html">9. Python Package / Repository: Von <code class="docutils literal notranslate"><span class="pre">import</span></code> bis eigenes installierbares Paket</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Code Design &amp; Grundlagen der Objektorientierten Programmierung (OOP)</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Wiederholung der OOP-Grundlagen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_oop_with_python_2.html">10. Einige Fortgeschrittene Konzepte in der OOP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_from_idea_to_code.html">11. From Idea to Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_python_software_project.html">12. Python Software Projekt</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Wiederholung der OOP-Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_oop_with_python_2.html">11. Einige Fortgeschrittene Konzepte in der OOP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_from_idea_to_code.html">12. From Idea to Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_python_software_project.html">13. Python Software Projekt</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Testing and Continuous Integration</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="06_testing.html">13. Warum brauchen wir Testing?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_testing_live_coding.html">14. Live Coding Einführung in das Testen von Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">15. Introduction to Continuous Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">16. Code Testing (2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_testing.html">14. Warum brauchen wir Testing?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_live_coding.html">15. Live Coding Einführung in das Testen von Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">16. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">17. Code Testing (2)</a></li>
 
 
 
@@ -417,12 +418,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasse-vs-instanz">9.1. Klasse vs. Instanz</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wichtige-punkte">9.1.1. Wichtige Punkte:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasse-vs-instanz">10.1. Klasse vs. Instanz</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wichtige-punkte">10.1.1. Wichtige Punkte:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasse-in-python">9.2. Klasse in Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methoden-und-attribute">9.3. Methoden und Attribute</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasse-in-python">10.2. Klasse in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methoden-und-attribute">10.3. Methoden und Attribute</a></li>
 </ul>
             </nav>
         </div>
@@ -435,9 +436,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="wiederholung-der-oop-grundlagen">
-<h1><span class="section-number">9. </span>Wiederholung der OOP-Grundlagen<a class="headerlink" href="#wiederholung-der-oop-grundlagen" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">10. </span>Wiederholung der OOP-Grundlagen<a class="headerlink" href="#wiederholung-der-oop-grundlagen" title="Link to this heading">#</a></h1>
 <section id="klasse-vs-instanz">
-<h2><span class="section-number">9.1. </span>Klasse vs. Instanz<a class="headerlink" href="#klasse-vs-instanz" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.1. </span>Klasse vs. Instanz<a class="headerlink" href="#klasse-vs-instanz" title="Link to this heading">#</a></h2>
 <p>In der objektorientierten Programmierung (OOP) sind <strong>Klassen</strong> und <strong>Instanzen</strong> zwei grundlegende Konzepte, die es uns ermöglichen, Code strukturiert und modular zu organisieren.</p>
 <ul class="simple">
 <li><p><strong>Klasse</strong>: Eine Vorlage oder ein Bauplan zur Erstellung von Objekten. Eine Klasse definiert eine Reihe von Attributen und Methoden, die die erstellten Objekte haben werden.</p></li>
@@ -468,7 +469,7 @@ document.write(`
 </pre></div>
 </div>
 <section id="wichtige-punkte">
-<h3><span class="section-number">9.1.1. </span>Wichtige Punkte:<a class="headerlink" href="#wichtige-punkte" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.1.1. </span>Wichtige Punkte:<a class="headerlink" href="#wichtige-punkte" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Bike</span></code> ist die <strong>Klasse</strong>. Sie stellt die Struktur bereit: <code class="docutils literal notranslate"><span class="pre">wheels</span></code>, <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">model</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bike1</span></code> und <code class="docutils literal notranslate"><span class="pre">bike2</span></code> sind <strong>Instanzen</strong> der <code class="docutils literal notranslate"><span class="pre">Bike</span></code>-Klasse, jede mit eigenen <code class="docutils literal notranslate"><span class="pre">color</span></code>- und <code class="docutils literal notranslate"><span class="pre">model</span></code>-Attributen.</p></li>
@@ -477,7 +478,7 @@ document.write(`
 </section>
 </section>
 <section id="klasse-in-python">
-<h2><span class="section-number">9.2. </span>Klasse in Python<a class="headerlink" href="#klasse-in-python" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.2. </span>Klasse in Python<a class="headerlink" href="#klasse-in-python" title="Link to this heading">#</a></h2>
 <p>Eine <strong>Klasse</strong> in Python wird mit dem Schlüsselwort <code class="docutils literal notranslate"><span class="pre">class</span></code> definiert. Sie enthält normalerweise eine Konstruktor-Methode, <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, die aufgerufen wird, wenn eine neue Instanz erstellt wird. Der Konstruktor ermöglicht es, initiale Attribute für jede Instanz festzulegen.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Animal</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">species</span><span class="p">):</span>
@@ -499,7 +500,7 @@ document.write(`
 </ul>
 </section>
 <section id="methoden-und-attribute">
-<h2><span class="section-number">9.3. </span>Methoden und Attribute<a class="headerlink" href="#methoden-und-attribute" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.3. </span>Methoden und Attribute<a class="headerlink" href="#methoden-und-attribute" title="Link to this heading">#</a></h2>
 <p><strong>Attribute</strong> sind die Daten, die in einer Instanz gespeichert sind, während <strong>Methoden</strong> Funktionen sind, die in einer Klasse definiert werden und auf Instanzen der Klasse operieren.</p>
 <p>Es gibt zwei Hauptarten von Attributen:</p>
 <ul class="simple">
@@ -571,12 +572,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="05_virtual_environments.html"
+       href="05_package_repository.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Einführung: Python-Umgebungen für Data-Science-Projekte (venv, Miniconda/Mamba, Anaconda)</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Python Package / Repository: Von <code class="docutils literal notranslate"><span class="pre">import</span></code> bis eigenes installierbares Paket</p>
       </div>
     </a>
     <a class="right-next"
@@ -584,7 +585,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Einige Fortgeschrittene Konzepte in der OOP</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Einige Fortgeschrittene Konzepte in der OOP</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -604,12 +605,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasse-vs-instanz">9.1. Klasse vs. Instanz</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wichtige-punkte">9.1.1. Wichtige Punkte:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasse-vs-instanz">10.1. Klasse vs. Instanz</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wichtige-punkte">10.1.1. Wichtige Punkte:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasse-in-python">9.2. Klasse in Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methoden-und-attribute">9.3. Methoden und Attribute</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasse-in-python">10.2. Klasse in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methoden-und-attribute">10.3. Methoden und Attribute</a></li>
 </ul>
   </nav></div>
 

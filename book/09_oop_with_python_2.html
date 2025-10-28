@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10. Einige Fortgeschrittene Konzepte in der OOP &#8212; Data Science Software Development with Python</title>
+    <title>11. Einige Fortgeschrittene Konzepte in der OOP &#8212; Data Science Software Development with Python</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/09_oop_with_python_2';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="11. From Idea to Code" href="10_from_idea_to_code.html" />
-    <link rel="prev" title="9. Wiederholung der OOP-Grundlagen" href="08_oop_with_python.html" />
+    <link rel="next" title="12. From Idea to Code" href="10_from_idea_to_code.html" />
+    <link rel="prev" title="10. Wiederholung der OOP-Grundlagen" href="08_oop_with_python.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -195,20 +195,21 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Library / Repository Struktur</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="05_virtual_environments.html">8. Einführung: Python-Umgebungen für Data-Science-Projekte (venv, Miniconda/Mamba, Anaconda)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_package_repository.html">9. Python Package / Repository: Von <code class="docutils literal notranslate"><span class="pre">import</span></code> bis eigenes installierbares Paket</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Code Design &amp; Grundlagen der Objektorientierten Programmierung (OOP)</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="08_oop_with_python.html">9. Wiederholung der OOP-Grundlagen</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Einige Fortgeschrittene Konzepte in der OOP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_from_idea_to_code.html">11. From Idea to Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_python_software_project.html">12. Python Software Projekt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_oop_with_python.html">10. Wiederholung der OOP-Grundlagen</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Einige Fortgeschrittene Konzepte in der OOP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_from_idea_to_code.html">12. From Idea to Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_python_software_project.html">13. Python Software Projekt</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Testing and Continuous Integration</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="06_testing.html">13. Warum brauchen wir Testing?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_testing_live_coding.html">14. Live Coding Einführung in das Testen von Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">15. Introduction to Continuous Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">16. Code Testing (2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_testing.html">14. Warum brauchen wir Testing?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_live_coding.html">15. Live Coding Einführung in das Testen von Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">16. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">17. Code Testing (2)</a></li>
 
 
 
@@ -417,12 +418,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getter-und-setter">10.1. Getter und Setter</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dekoratoren">10.2. Dekoratoren</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#private-und-versteckte-attribute">10.3. Private und versteckte Attribute</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magische-methoden-dunder-methoden">10.4. Magische Methoden (Dunder-Methoden)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ausblick-oop-vs-funktionale-programmierung">10.5. Ausblick: OOP vs. Funktionale Programmierung</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gute-grunde-fur-die-nutzung-von-oop">10.5.1. Gute Gründe für die Nutzung von OOP:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getter-und-setter">11.1. Getter und Setter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dekoratoren">11.2. Dekoratoren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#private-und-versteckte-attribute">11.3. Private und versteckte Attribute</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magische-methoden-dunder-methoden">11.4. Magische Methoden (Dunder-Methoden)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ausblick-oop-vs-funktionale-programmierung">11.5. Ausblick: OOP vs. Funktionale Programmierung</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gute-grunde-fur-die-nutzung-von-oop">11.5.1. Gute Gründe für die Nutzung von OOP:</a></li>
 </ul>
 </li>
 </ul>
@@ -437,9 +438,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="einige-fortgeschrittene-konzepte-in-der-oop">
-<h1><span class="section-number">10. </span>Einige Fortgeschrittene Konzepte in der OOP<a class="headerlink" href="#einige-fortgeschrittene-konzepte-in-der-oop" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">11. </span>Einige Fortgeschrittene Konzepte in der OOP<a class="headerlink" href="#einige-fortgeschrittene-konzepte-in-der-oop" title="Link to this heading">#</a></h1>
 <section id="getter-und-setter">
-<h2><span class="section-number">10.1. </span>Getter und Setter<a class="headerlink" href="#getter-und-setter" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.1. </span>Getter und Setter<a class="headerlink" href="#getter-und-setter" title="Link to this heading">#</a></h2>
 <p>In Python ermöglichen <strong>Getter</strong> und <strong>Setter</strong> den kontrollierten Zugriff auf Attribute eines Objekts. Dies ist besonders nützlich, wenn man sicherstellen möchte, dass nur gültige Werte zugewiesen werden. Python bietet dafür das Konzept der <code class="docutils literal notranslate"><span class="pre">&#64;property</span></code>-Dekoratoren.</p>
 <p>Ein Beispiel mit einer <code class="docutils literal notranslate"><span class="pre">Elevator</span></code>-Klasse, die das aktuelle Stockwerk (<code class="docutils literal notranslate"><span class="pre">level</span></code>) speichert:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Elevator</span><span class="p">:</span>
@@ -466,12 +467,12 @@ document.write(`
 </ul>
 </section>
 <section id="dekoratoren">
-<h2><span class="section-number">10.2. </span>Dekoratoren<a class="headerlink" href="#dekoratoren" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.2. </span>Dekoratoren<a class="headerlink" href="#dekoratoren" title="Link to this heading">#</a></h2>
 <p><strong>Dekoratoren</strong> sind spezielle Funktionen, die andere Funktionen oder Methoden verändern. In OOP werden sie oft für Getter und Setter verwendet, aber sie können auch zur Modifikation des Verhaltens anderer Methoden dienen. Der <code class="docutils literal notranslate"><span class="pre">&#64;property</span></code>-Dekorator verwandelt eine Methode in ein Attribut, und der <code class="docutils literal notranslate"><span class="pre">&#64;level.setter</span></code>-Dekorator definiert eine zugehörige Setter-Methode.</p>
 <p>Dekoratoren sind ein wichtiges Konzept in Python, da sie eine elegante Möglichkeit bieten, Code zu wiederverwenden und die Funktionalität zu erweitern, ohne die ursprüngliche Funktion oder Methode zu verändern.</p>
 </section>
 <section id="private-und-versteckte-attribute">
-<h2><span class="section-number">10.3. </span>Private und versteckte Attribute<a class="headerlink" href="#private-und-versteckte-attribute" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.3. </span>Private und versteckte Attribute<a class="headerlink" href="#private-und-versteckte-attribute" title="Link to this heading">#</a></h2>
 <p>In Python wird durch das Präfix <code class="docutils literal notranslate"><span class="pre">_</span></code> oder <code class="docutils literal notranslate"><span class="pre">__</span></code> angezeigt, dass ein Attribut oder eine Methode <strong>privat</strong> oder <strong>versteckt</strong> ist, d.h., sie sollen nur innerhalb der Klasse verwendet werden.</p>
 <ul class="simple">
 <li><p><strong>Einfaches Unterstrich-Präfix</strong> (<code class="docutils literal notranslate"><span class="pre">_level</span></code>): Eine Konvention, die darauf hinweist, dass ein Attribut “privat” ist. Es kann immer noch von außerhalb der Klasse zugegriffen werden, aber die Konvention zeigt an, dass dies vermieden werden sollte.</p></li>
@@ -490,7 +491,7 @@ document.write(`
 </div>
 </section>
 <section id="magische-methoden-dunder-methoden">
-<h2><span class="section-number">10.4. </span>Magische Methoden (Dunder-Methoden)<a class="headerlink" href="#magische-methoden-dunder-methoden" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.4. </span>Magische Methoden (Dunder-Methoden)<a class="headerlink" href="#magische-methoden-dunder-methoden" title="Link to this heading">#</a></h2>
 <p><strong>Magische Methoden</strong> (auch <strong>Dunder-Methoden</strong> genannt, da sie durch doppelte Unterstriche umgeben sind, wie <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, <code class="docutils literal notranslate"><span class="pre">__str__</span></code>, etc.) erlauben es, das Verhalten von Python-Operatoren und Funktionen für benutzerdefinierte Klassen zu definieren.</p>
 <p>Einige häufige Magische Methoden:</p>
 <ul class="simple">
@@ -519,7 +520,7 @@ document.write(`
 <p>Hier definieren wir <code class="docutils literal notranslate"><span class="pre">__str__</span></code> für die String-Darstellung und <code class="docutils literal notranslate"><span class="pre">__len__</span></code>, um die Anzahl der Seiten anzugeben.</p>
 </section>
 <section id="ausblick-oop-vs-funktionale-programmierung">
-<h2><span class="section-number">10.5. </span>Ausblick: OOP vs. Funktionale Programmierung<a class="headerlink" href="#ausblick-oop-vs-funktionale-programmierung" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.5. </span>Ausblick: OOP vs. Funktionale Programmierung<a class="headerlink" href="#ausblick-oop-vs-funktionale-programmierung" title="Link to this heading">#</a></h2>
 <p>Python unterstützt sowohl die <strong>objektorientierte</strong> als auch die <strong>funktionale Programmierung</strong>. Beide Ansätze haben ihre Stärken, und es gibt keine allgemeingültige Antwort auf die Frage, welcher Ansatz besser ist. Oft hängt es von der Problemstellung ab:</p>
 <ul class="simple">
 <li><p><strong>OOP</strong> eignet sich gut für umfangreiche, komplexe Programme, bei denen es wichtig ist, Daten und Verhalten zu kapseln.</p></li>
@@ -527,7 +528,7 @@ document.write(`
 </ul>
 <p>Beide Paradigmen können in Python kombiniert werden, um robuste und gut strukturierte Lösungen zu entwickeln.</p>
 <section id="gute-grunde-fur-die-nutzung-von-oop">
-<h3><span class="section-number">10.5.1. </span>Gute Gründe für die Nutzung von OOP:<a class="headerlink" href="#gute-grunde-fur-die-nutzung-von-oop" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.5.1. </span>Gute Gründe für die Nutzung von OOP:<a class="headerlink" href="#gute-grunde-fur-die-nutzung-von-oop" title="Link to this heading">#</a></h3>
 <p>Bisher war die Antwort auf die Frage warum wir OOP nutzen sollten ehrlicherweise oft: “Weil ich OOP lernen will/muss”.</p>
 <p>Bessere Gründe in der Praxis wären:</p>
 <ul class="simple">
@@ -588,7 +589,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Wiederholung der OOP-Grundlagen</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Wiederholung der OOP-Grundlagen</p>
       </div>
     </a>
     <a class="right-next"
@@ -596,7 +597,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>From Idea to Code</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>From Idea to Code</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -616,12 +617,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getter-und-setter">10.1. Getter und Setter</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dekoratoren">10.2. Dekoratoren</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#private-und-versteckte-attribute">10.3. Private und versteckte Attribute</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magische-methoden-dunder-methoden">10.4. Magische Methoden (Dunder-Methoden)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ausblick-oop-vs-funktionale-programmierung">10.5. Ausblick: OOP vs. Funktionale Programmierung</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gute-grunde-fur-die-nutzung-von-oop">10.5.1. Gute Gründe für die Nutzung von OOP:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getter-und-setter">11.1. Getter und Setter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dekoratoren">11.2. Dekoratoren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#private-und-versteckte-attribute">11.3. Private und versteckte Attribute</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magische-methoden-dunder-methoden">11.4. Magische Methoden (Dunder-Methoden)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ausblick-oop-vs-funktionale-programmierung">11.5. Ausblick: OOP vs. Funktionale Programmierung</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gute-grunde-fur-die-nutzung-von-oop">11.5.1. Gute Gründe für die Nutzung von OOP:</a></li>
 </ul>
 </li>
 </ul>

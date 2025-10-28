@@ -56,9 +56,9 @@ get_max(df)
 
 [31mTypingError[39m: Failed in nopython mode pipeline (step: nopython frontend)
 [1m[1m[1mnon-precise type pyobject[0m
-[0m[1mDuring: typing of argument at /tmp/ipykernel_3567/1526091316.py (7)[0m
+[0m[1mDuring: typing of argument at /tmp/ipykernel_3609/1526091316.py (7)[0m
 [1m
-File "../../../../../../tmp/ipykernel_3567/1526091316.py", line 7:[0m
+File "../../../../../../tmp/ipykernel_3609/1526091316.py", line 7:[0m
 [1m<source missing, REPL/exec in use?>[0m
 
 [0m[1mDuring: Pass nopython_type_inference[0m 

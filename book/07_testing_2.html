@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>16. Code Testing (2) &#8212; Data Science Software Development with Python</title>
+    <title>17. Code Testing (2) &#8212; Data Science Software Development with Python</title>
   
   
   
@@ -61,7 +61,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Bibliography" href="bibliography.html" />
-    <link rel="prev" title="15. Introduction to Continuous Integration" href="07_continuous_integration.html" />
+    <link rel="prev" title="16. Introduction to Continuous Integration" href="07_continuous_integration.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -195,20 +195,21 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Library / Repository Struktur</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="05_virtual_environments.html">8. Einführung: Python-Umgebungen für Data-Science-Projekte (venv, Miniconda/Mamba, Anaconda)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_package_repository.html">9. Python Package / Repository: Von <code class="docutils literal notranslate"><span class="pre">import</span></code> bis eigenes installierbares Paket</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Code Design &amp; Grundlagen der Objektorientierten Programmierung (OOP)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="08_oop_with_python.html">9. Wiederholung der OOP-Grundlagen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_oop_with_python_2.html">10. Einige Fortgeschrittene Konzepte in der OOP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_from_idea_to_code.html">11. From Idea to Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_python_software_project.html">12. Python Software Projekt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_oop_with_python.html">10. Wiederholung der OOP-Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_oop_with_python_2.html">11. Einige Fortgeschrittene Konzepte in der OOP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_from_idea_to_code.html">12. From Idea to Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_python_software_project.html">13. Python Software Projekt</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Testing and Continuous Integration</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="06_testing.html">13. Warum brauchen wir Testing?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_testing_live_coding.html">14. Live Coding Einführung in das Testen von Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">15. Introduction to Continuous Integration</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">16. Code Testing (2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_testing.html">14. Warum brauchen wir Testing?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_live_coding.html">15. Live Coding Einführung in das Testen von Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">16. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">17. Code Testing (2)</a></li>
 
 
 
@@ -417,30 +418,30 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">16. Code Testing (2)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fixtures">17. Fixtures</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-fixture">17.1. What is a Fixture?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-and-example">17.2. Usage and Example</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">17. Code Testing (2)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fixtures">18. Fixtures</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-fixture">18.1. What is a Fixture?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-and-example">18.2. Usage and Example</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pytest-mark-parametrize">18. pytest.mark.parametrize</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">18.1. Purpose</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">18.2. Example</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pytest-mark-parametrize">19. pytest.mark.parametrize</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">19.1. Purpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">19.2. Example</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tmp-path">19. tmp_path</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">19.1. Usage</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">19.2. Example</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tmp-path">20. tmp_path</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">20.1. Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">20.2. Example</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#monkeypatch">20. Monkeypatch</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-monkeypatch-what-is-mocking">20.1. What is Monkeypatch? What is Mocking?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monkeypatch-in-pytest">20.2. Monkeypatch in Pytest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-mimicking-a-class">20.3. Example: Mimicking a Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-mimicking-user-input">20.4. Example: Mimicking User Input</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#monkeypatch">21. Monkeypatch</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-monkeypatch-what-is-mocking">21.1. What is Monkeypatch? What is Mocking?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monkeypatch-in-pytest">21.2. Monkeypatch in Pytest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-mimicking-a-class">21.3. Example: Mimicking a Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-mimicking-user-input">21.4. Example: Mimicking User Input</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">21. Summary</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">22. Summary</a></li>
 </ul>
 
             </nav>
@@ -454,17 +455,17 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="code-testing-2">
-<h1><span class="section-number">16. </span>Code Testing (2)<a class="headerlink" href="#code-testing-2" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">17. </span>Code Testing (2)<a class="headerlink" href="#code-testing-2" title="Link to this heading">#</a></h1>
 <p>Now to a few more sophisticated options we get from <code class="docutils literal notranslate"><span class="pre">pytest</span></code>, which can be really useful for testing more complex cases or for streamlining and improving the code of tests for larger software projects (e.g., by making them more readable).</p>
 </section>
 <section id="fixtures">
-<h1><span class="section-number">17. </span>Fixtures<a class="headerlink" href="#fixtures" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">18. </span>Fixtures<a class="headerlink" href="#fixtures" title="Link to this heading">#</a></h1>
 <section id="what-is-a-fixture">
-<h2><span class="section-number">17.1. </span>What is a Fixture?<a class="headerlink" href="#what-is-a-fixture" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">18.1. </span>What is a Fixture?<a class="headerlink" href="#what-is-a-fixture" title="Link to this heading">#</a></h2>
 <p>A fixture is a function that sets up a specific test environment. It can provide a fixed baseline upon which tests can reliably and repeatedly execute. Fixtures are used to initialize test functions, which can include setting up database connections, paths, or any specific system state required for testing.</p>
 </section>
 <section id="usage-and-example">
-<h2><span class="section-number">17.2. </span>Usage and Example<a class="headerlink" href="#usage-and-example" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">18.2. </span>Usage and Example<a class="headerlink" href="#usage-and-example" title="Link to this heading">#</a></h2>
 <p>To declare a fixture, use the <code class="docutils literal notranslate"><span class="pre">&#64;pytest.fixture</span></code> decorator. Test functions can then use this fixture by including it as an argument. Pytest handles the setup and teardown of the fixture.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
 
@@ -479,13 +480,13 @@ document.write(`
 </section>
 </section>
 <section id="pytest-mark-parametrize">
-<h1><span class="section-number">18. </span>pytest.mark.parametrize<a class="headerlink" href="#pytest-mark-parametrize" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">19. </span>pytest.mark.parametrize<a class="headerlink" href="#pytest-mark-parametrize" title="Link to this heading">#</a></h1>
 <section id="purpose">
-<h2><span class="section-number">18.1. </span>Purpose<a class="headerlink" href="#purpose" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.1. </span>Purpose<a class="headerlink" href="#purpose" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pytest.mark.parametrize</span></code> is used for parameterized testing in Pytest. It allows a test function to be called with different arguments, facilitating the testing of various input scenarios with a single test function.</p>
 </section>
 <section id="example">
-<h2><span class="section-number">18.2. </span>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.2. </span>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
 
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">&quot;test_input,expected&quot;</span><span class="p">,</span> <span class="p">[(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)])</span>
@@ -497,13 +498,13 @@ document.write(`
 </section>
 </section>
 <section id="tmp-path">
-<h1><span class="section-number">19. </span>tmp_path<a class="headerlink" href="#tmp-path" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">20. </span>tmp_path<a class="headerlink" href="#tmp-path" title="Link to this heading">#</a></h1>
 <section id="usage">
-<h2><span class="section-number">19.1. </span>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.1. </span>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">tmp_path</span></code> fixture provides a temporary file system path where files and directories can be created for testing purposes. These files are unique to the test and are cleaned up after the test finishes.</p>
 </section>
 <section id="id1">
-<h2><span class="section-number">19.2. </span>Example<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.2. </span>Example<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_create_file</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">):</span>
     <span class="n">temp_dir</span> <span class="o">=</span> <span class="n">tmp_path</span> <span class="o">/</span> <span class="s2">&quot;sub&quot;</span>
     <span class="n">temp_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
@@ -521,17 +522,17 @@ document.write(`
 </section>
 </section>
 <section id="monkeypatch">
-<h1><span class="section-number">20. </span>Monkeypatch<a class="headerlink" href="#monkeypatch" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">21. </span>Monkeypatch<a class="headerlink" href="#monkeypatch" title="Link to this heading">#</a></h1>
 <section id="what-is-monkeypatch-what-is-mocking">
-<h2><span class="section-number">20.1. </span>What is Monkeypatch? What is Mocking?<a class="headerlink" href="#what-is-monkeypatch-what-is-mocking" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">21.1. </span>What is Monkeypatch? What is Mocking?<a class="headerlink" href="#what-is-monkeypatch-what-is-mocking" title="Link to this heading">#</a></h2>
 <p>Monkeypatching in testing refers to dynamic (or runtime) modifications of a class or module during test execution. Mocking is a broader concept used in unit testing to simulate the behavior of complex, real (non-mock) objects.</p>
 </section>
 <section id="monkeypatch-in-pytest">
-<h2><span class="section-number">20.2. </span>Monkeypatch in Pytest<a class="headerlink" href="#monkeypatch-in-pytest" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">21.2. </span>Monkeypatch in Pytest<a class="headerlink" href="#monkeypatch-in-pytest" title="Link to this heading">#</a></h2>
 <p>Pytest’s <code class="docutils literal notranslate"><span class="pre">monkeypatch</span></code> fixture allows you to replace and modify objects, functions, dictionaries, and environment variables easily.</p>
 </section>
 <section id="example-mimicking-a-class">
-<h2><span class="section-number">20.3. </span>Example: Mimicking a Class<a class="headerlink" href="#example-mimicking-a-class" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">21.3. </span>Example: Mimicking a Class<a class="headerlink" href="#example-mimicking-a-class" title="Link to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;original&quot;</span>
@@ -548,7 +549,7 @@ document.write(`
 </div>
 </section>
 <section id="example-mimicking-user-input">
-<h2><span class="section-number">20.4. </span>Example: Mimicking User Input<a class="headerlink" href="#example-mimicking-user-input" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">21.4. </span>Example: Mimicking User Input<a class="headerlink" href="#example-mimicking-user-input" title="Link to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_username</span><span class="p">():</span>
     <span class="k">return</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter username: &quot;</span><span class="p">)</span>
 
@@ -578,7 +579,7 @@ document.write(`
 </section>
 </section>
 <section id="summary">
-<h1><span class="section-number">21. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">22. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h1>
 <p>Pytest is an incredibly versatile and powerful tool for writing and managing tests in Python. Understanding fixtures, parameterization, temporary path utilities, and monkeypatching can significantly enhance the testing process, allowing for more robust and reliable code.</p>
 </section>
 
@@ -618,7 +619,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">15. </span>Introduction to Continuous Integration</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>Introduction to Continuous Integration</p>
       </div>
     </a>
     <a class="right-next"
@@ -646,30 +647,30 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">16. Code Testing (2)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fixtures">17. Fixtures</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-fixture">17.1. What is a Fixture?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-and-example">17.2. Usage and Example</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">17. Code Testing (2)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fixtures">18. Fixtures</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-fixture">18.1. What is a Fixture?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-and-example">18.2. Usage and Example</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pytest-mark-parametrize">18. pytest.mark.parametrize</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">18.1. Purpose</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">18.2. Example</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pytest-mark-parametrize">19. pytest.mark.parametrize</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">19.1. Purpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">19.2. Example</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tmp-path">19. tmp_path</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">19.1. Usage</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">19.2. Example</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tmp-path">20. tmp_path</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">20.1. Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">20.2. Example</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#monkeypatch">20. Monkeypatch</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-monkeypatch-what-is-mocking">20.1. What is Monkeypatch? What is Mocking?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monkeypatch-in-pytest">20.2. Monkeypatch in Pytest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-mimicking-a-class">20.3. Example: Mimicking a Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-mimicking-user-input">20.4. Example: Mimicking User Input</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#monkeypatch">21. Monkeypatch</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-monkeypatch-what-is-mocking">21.1. What is Monkeypatch? What is Mocking?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monkeypatch-in-pytest">21.2. Monkeypatch in Pytest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-mimicking-a-class">21.3. Example: Mimicking a Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-mimicking-user-input">21.4. Example: Mimicking User Input</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">21. Summary</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">22. Summary</a></li>
 </ul>
 
   </nav></div>

@@ -18,8 +18,8 @@ Eine **virtuelle Umgebung** kapselt eine Python-Version und alle installierten P
 | Option                                                                            | Kurzbeschreibung                                         | Stärken                                            | Mögliche Nachteile                                | Typische Nutzung                                                              |
 | --------------------------------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------- |
 | **`venv`** (Standardbibliothek)                                                   | Eingebaute, schlanke Virtualisierung                     | Minimal, überall vorhanden, schnell                | Kein eigener Paket-Solver, reine `pip`-Welt       | Kleine bis mittlere Projekte, wenn nur PyPI nötig ist                         |
-| **Miniconda / Mambaforge / MicroMamba** (im Folgenden „**Mamba/Conda (leicht)**“) | Leichte Conda-Distributionen; mit **mamba** sehr schnell | Starker Solver, **conda-forge** + `pip`            | Etwas Setup-Aufwand                               | Data-Science, gemischte Stacks (C/Fortran-Deps), schnelle Environment-Wechsel |
-| **Anaconda**                                                                      | Große Distribution mit vielen Paketen vorinstalliert     | „Out of the box“ viel dabei, GUI-Tools (Navigator) | Schwergewichtig, längere Downloads, mehr Speicher | Einsteiger:innen, Offline-/Workshop-Setups                                    |
+| **Miniconda / Mambaforge / MicroMamba** (im Folgenden „**Mamba/Conda (leicht)**“) | Leichte Conda-Distributionen; mit **mamba** sehr schnell | Starker Solver, **conda-forge** + `pip`            | Etwas Setup-Aufwand                               | Data-Science, gemischte Stacks, schnelle Environment-Wechsel |
+| **Anaconda**                                                                      | Große Distribution mit vielen Paketen vorinstalliert     | Viele Tools mit dabei, GUI-Tools (Navigator) | Schwergewichtig, längere Downloads, mehr Speicher, mögliche Lizenzprobleme | Einsteiger:innen, Offline-/Workshop-Setups                                    |
 
 > **Faustregel:**
 >
@@ -132,7 +132,7 @@ pip install package_only_on_pypi
 mamba env export --from-history > environment.yml
 
 # Aus YAML neu erstellen
-mamba env create -n ds310 -f environment.yml
+mamba env create -f environment.yml
 
 # Aufräumen
 mamba env list

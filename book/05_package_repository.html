@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Python Package / Repository: Von import bis eigenes installierbares Paket &#8212; Data Science Software Development with Python</title>
+    <title>9. Python Package / Repository: Von import bis eigenes installierbares Paket &#8212; Data Science Software Development with Python</title>
   
   
   
@@ -60,6 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/05_package_repository';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10. Wiederholung der OOP-Grundlagen" href="08_oop_with_python.html" />
+    <link rel="prev" title="8. Einführung: Python-Umgebungen für Data-Science-Projekte (venv, Miniconda/Mamba, Anaconda)" href="05_virtual_environments.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -121,8 +123,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -193,22 +193,23 @@
 <li class="toctree-l1"><a class="reference internal" href="07_code_smells.html">7. Code Smells</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Library / Repository Struktur</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="05_virtual_environments.html">8. Einführung: Python-Umgebungen für Data-Science-Projekte (venv, Miniconda/Mamba, Anaconda)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Python Package / Repository: Von <code class="docutils literal notranslate"><span class="pre">import</span></code> bis eigenes installierbares Paket</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Code Design &amp; Grundlagen der Objektorientierten Programmierung (OOP)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="08_oop_with_python.html">9. Wiederholung der OOP-Grundlagen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_oop_with_python_2.html">10. Einige Fortgeschrittene Konzepte in der OOP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_from_idea_to_code.html">11. From Idea to Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_python_software_project.html">12. Python Software Projekt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_oop_with_python.html">10. Wiederholung der OOP-Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_oop_with_python_2.html">11. Einige Fortgeschrittene Konzepte in der OOP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_from_idea_to_code.html">12. From Idea to Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_python_software_project.html">13. Python Software Projekt</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Testing and Continuous Integration</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="06_testing.html">13. Warum brauchen wir Testing?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_testing_live_coding.html">14. Live Coding Einführung in das Testen von Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">15. Introduction to Continuous Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">16. Code Testing (2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_testing.html">14. Warum brauchen wir Testing?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_live_coding.html">15. Live Coding Einführung in das Testen von Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_continuous_integration.html">16. Introduction to Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_testing_2.html">17. Code Testing (2)</a></li>
 
 
 
@@ -417,29 +418,29 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-funktionieren-imports-in-python">1) Wie funktionieren <code class="docutils literal notranslate"><span class="pre">import</span></code>s in Python?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-suche-vereinfacht">1.1 Import-Suche (vereinfacht)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-vs-packages">1.2 Module vs. Packages</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#absolute-vs-relative-imports">1.3 Absolute vs. relative Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-funktionieren-imports-in-python">9.1. 1) Wie funktionieren <code class="docutils literal notranslate"><span class="pre">import</span></code>s in Python?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-suche-vereinfacht">9.1.1. 1.1 Import-Suche (vereinfacht)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-vs-packages">9.1.2. 1.2 Module vs. Packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#absolute-vs-relative-imports">9.1.3. 1.3 Absolute vs. relative Imports</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproduzierbare-projekte-dependencies-festhalten">2) Reproduzierbare Projekte: Dependencies festhalten</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip-venv-requirements-txt">2.1 Pip/venv („requirements.txt“)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-mamba-environment-yml">2.2 Conda/Mamba („environment.yml“)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poetry-lockfile">2.3 Poetry (lockfile)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproduzierbare-projekte-dependencies-festhalten">9.2. 2) Reproduzierbare Projekte: Dependencies festhalten</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip-venv-requirements-txt">9.2.1. 2.1 Pip/venv („requirements.txt“)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-mamba-environment-yml">9.2.2. 2.2 Conda/Mamba („environment.yml“)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poetry-lockfile">9.2.3. 2.3 Poetry (lockfile)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nachstes-level-ein-installierbares-python-package-im-repository">3) Nächstes Level: Ein <strong>installierbares</strong> Python-Package im Repository</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empfohlene-ordnerstruktur-src-layout">3.1 Empfohlene Ordnerstruktur („src layout“)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyproject-toml-mit-poetry">3.2 <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> (mit Poetry)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poetry-typische-befehle">3.3 Poetry: typische Befehle</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip-install-direkt-aus-git-vcs-url">3.4 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> direkt aus Git (VCS-URL)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests-qualitat-ci-kurz">3.5 Tests, Qualität, CI (Kurz)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nachstes-level-ein-installierbares-python-package-im-repository">9.3. 3) Nächstes Level: Ein <strong>installierbares</strong> Python-Package im Repository</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empfohlene-ordnerstruktur-src-layout">9.3.1. 3.1 Empfohlene Ordnerstruktur („src layout“)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyproject-toml-mit-poetry">9.3.2. 3.2 <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> (mit Poetry)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poetry-typische-befehle">9.3.3. 3.3 Poetry: typische Befehle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip-install-direkt-aus-git-vcs-url">9.3.4. 3.4 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> direkt aus Git (VCS-URL)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests-qualitat-ci-kurz">9.3.5. 3.5 Tests, Qualität, CI (Kurz)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typisches-repo-setup-checkliste">4) Typisches Repo-Setup (Checkliste)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#haufige-stolpersteine-tipps">5) Häufige Stolpersteine &amp; Tipps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-startvorlage">Mini-Startvorlage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typisches-repo-setup-checkliste">9.4. 4) Typisches Repo-Setup (Checkliste)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#haufige-stolpersteine-tipps">9.5. 5) Häufige Stolpersteine &amp; Tipps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-startvorlage">9.5.1. Mini-Startvorlage</a></li>
 </ul>
 </li>
 </ul>
@@ -454,13 +455,13 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="python-package-repository-von-import-bis-eigenes-installierbares-paket">
-<h1>Python Package / Repository: Von <code class="docutils literal notranslate"><span class="pre">import</span></code> bis eigenes installierbares Paket<a class="headerlink" href="#python-package-repository-von-import-bis-eigenes-installierbares-paket" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">9. </span>Python Package / Repository: Von <code class="docutils literal notranslate"><span class="pre">import</span></code> bis eigenes installierbares Paket<a class="headerlink" href="#python-package-repository-von-import-bis-eigenes-installierbares-paket" title="Link to this heading">#</a></h1>
 <p>Dieses Kapitel zeigt, wie <strong>Imports</strong> in Python funktionieren, warum <strong>Dependencies</strong> sauber definiert werden müssen, und wie du ein <strong>installierbares Python-Package</strong> in einem Git-Repository aufbaust (inkl. <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> mit Poetry), sodass man es mit <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">git+https://...</span></code> installieren kann.</p>
 <hr class="docutils" />
 <section id="wie-funktionieren-imports-in-python">
-<h2>1) Wie funktionieren <code class="docutils literal notranslate"><span class="pre">import</span></code>s in Python?<a class="headerlink" href="#wie-funktionieren-imports-in-python" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.1. </span>1) Wie funktionieren <code class="docutils literal notranslate"><span class="pre">import</span></code>s in Python?<a class="headerlink" href="#wie-funktionieren-imports-in-python" title="Link to this heading">#</a></h2>
 <section id="import-suche-vereinfacht">
-<h3>1.1 Import-Suche (vereinfacht)<a class="headerlink" href="#import-suche-vereinfacht" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.1.1. </span>1.1 Import-Suche (vereinfacht)<a class="headerlink" href="#import-suche-vereinfacht" title="Link to this heading">#</a></h3>
 <p>Wenn du <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code> oder <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">mypkg.utils</span> <span class="pre">import</span> <span class="pre">foo</span></code> schreibst, sucht Python Module/Packages in folgender Reihenfolge:</p>
 <ol class="arabic simple">
 <li><p><strong>Aktuelles Projekt / Arbeitsverzeichnis</strong> (der Ordner, von dem aus das Skript/Notebook gestartet wurde)</p></li>
@@ -473,7 +474,7 @@ document.write(`
 </div></blockquote>
 </section>
 <section id="module-vs-packages">
-<h3>1.2 Module vs. Packages<a class="headerlink" href="#module-vs-packages" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.1.2. </span>1.2 Module vs. Packages<a class="headerlink" href="#module-vs-packages" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><strong>Modul</strong>: einzelne Datei <code class="docutils literal notranslate"><span class="pre">foo.py</span></code> → importierbar als <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">foo</span></code></p></li>
 <li><p><strong>Package</strong>: Ordner mit <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>, z. B.:</p>
@@ -493,7 +494,7 @@ document.write(`
 </div></blockquote>
 </section>
 <section id="absolute-vs-relative-imports">
-<h3>1.3 Absolute vs. relative Imports<a class="headerlink" href="#absolute-vs-relative-imports" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.1.3. </span>1.3 Absolute vs. relative Imports<a class="headerlink" href="#absolute-vs-relative-imports" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Absolut</strong> (empfohlen): <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">mypkg.utils</span> <span class="pre">import</span> <span class="pre">foo</span></code></p></li>
 <li><p><strong>Relativ</strong> (innerhalb des Pakets): <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">.utils</span> <span class="pre">import</span> <span class="pre">foo</span></code> oder <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">..data.loader</span> <span class="pre">import</span> <span class="pre">load</span></code></p></li>
@@ -503,9 +504,9 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="reproduzierbare-projekte-dependencies-festhalten">
-<h2>2) Reproduzierbare Projekte: Dependencies festhalten<a class="headerlink" href="#reproduzierbare-projekte-dependencies-festhalten" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.2. </span>2) Reproduzierbare Projekte: Dependencies festhalten<a class="headerlink" href="#reproduzierbare-projekte-dependencies-festhalten" title="Link to this heading">#</a></h2>
 <section id="pip-venv-requirements-txt">
-<h3>2.1 Pip/venv („requirements.txt“)<a class="headerlink" href="#pip-venv-requirements-txt" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.2.1. </span>2.1 Pip/venv („requirements.txt“)<a class="headerlink" href="#pip-venv-requirements-txt" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><strong>Erstellen:</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
@@ -521,7 +522,7 @@ document.write(`
 <p>Pins sind hier meist <strong>exakt</strong> (<code class="docutils literal notranslate"><span class="pre">pkg==1.2.3</span></code>). Für längerfristige Reproduzierbarkeit ist das gut, kann aber bei Updates unflexibel sein.</p>
 </section>
 <section id="conda-mamba-environment-yml">
-<h3>2.2 Conda/Mamba („environment.yml“)<a class="headerlink" href="#conda-mamba-environment-yml" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.2.2. </span>2.2 Conda/Mamba („environment.yml“)<a class="headerlink" href="#conda-mamba-environment-yml" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><strong>Export (nur explizite Pakete):</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>--from-history<span class="w"> </span>&gt;<span class="w"> </span>environment.yml
@@ -537,7 +538,7 @@ document.write(`
 <p>YAML erlaubt Python-Version, Kanäle (<code class="docutils literal notranslate"><span class="pre">conda-forge</span></code>) und optionale <code class="docutils literal notranslate"><span class="pre">pip</span></code>-Sektion.</p>
 </section>
 <section id="poetry-lockfile">
-<h3>2.3 Poetry (lockfile)<a class="headerlink" href="#poetry-lockfile" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.2.3. </span>2.3 Poetry (lockfile)<a class="headerlink" href="#poetry-lockfile" title="Link to this heading">#</a></h3>
 <p>Poetry verwaltet Dependencies in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> und erstellt <strong><code class="docutils literal notranslate"><span class="pre">poetry.lock</span></code></strong>:</p>
 <ul class="simple">
 <li><p><strong>Installation gemäß Lockfile</strong>: exakt reproduzierbar</p></li>
@@ -550,7 +551,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="nachstes-level-ein-installierbares-python-package-im-repository">
-<h2>3) Nächstes Level: Ein <strong>installierbares</strong> Python-Package im Repository<a class="headerlink" href="#nachstes-level-ein-installierbares-python-package-im-repository" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.3. </span>3) Nächstes Level: Ein <strong>installierbares</strong> Python-Package im Repository<a class="headerlink" href="#nachstes-level-ein-installierbares-python-package-im-repository" title="Link to this heading">#</a></h2>
 <p>Ziel:</p>
 <ul>
 <li><p>Lokale Entwicklung mit sauberem Imports.</p></li>
@@ -562,7 +563,7 @@ document.write(`
 </li>
 </ul>
 <section id="empfohlene-ordnerstruktur-src-layout">
-<h3>3.1 Empfohlene Ordnerstruktur („src layout“)<a class="headerlink" href="#empfohlene-ordnerstruktur-src-layout" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.3.1. </span>3.1 Empfohlene Ordnerstruktur („src layout“)<a class="headerlink" href="#empfohlene-ordnerstruktur-src-layout" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>myproject/
 ├─ src/
 │  └─ mypkg/
@@ -585,7 +586,7 @@ document.write(`
 </ul>
 </section>
 <section id="pyproject-toml-mit-poetry">
-<h3>3.2 <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> (mit Poetry)<a class="headerlink" href="#pyproject-toml-mit-poetry" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.3.2. </span>3.2 <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> (mit Poetry)<a class="headerlink" href="#pyproject-toml-mit-poetry" title="Link to this heading">#</a></h3>
 <p>Minimalbeispiel (Poetry-Variante):</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry]</span>
 <span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mypkg&quot;</span>
@@ -628,12 +629,12 @@ document.write(`
 </div></blockquote>
 </section>
 <section id="poetry-typische-befehle">
-<h3>3.3 Poetry: typische Befehle<a class="headerlink" href="#poetry-typische-befehle" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.3.3. </span>3.3 Poetry: typische Befehle<a class="headerlink" href="#poetry-typische-befehle" title="Link to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Projekt initialisieren (im Repo-Root)</span>
 poetry<span class="w"> </span>init<span class="w">        </span><span class="c1"># interaktives Setup der pyproject.toml</span>
 <span class="c1"># oder neues Grundgerüst:</span>
 poetry<span class="w"> </span>new<span class="w"> </span>--src<span class="w"> </span>myproject
-<span class="c1"># -&gt; erzeugt src/myproject, tests/, pyproject.toml, README.rst</span>
+<span class="c1"># -&gt; erzeugt src/myproject, tests/, pyproject.toml, README.md</span>
 
 <span class="c1"># Abhängigkeiten hinzufügen</span>
 poetry<span class="w"> </span>add<span class="w"> </span>numpy<span class="w"> </span>pandas
@@ -657,7 +658,7 @@ poetry<span class="w"> </span>publish<span class="w"> </span>--build
 </div>
 </section>
 <section id="pip-install-direkt-aus-git-vcs-url">
-<h3>3.4 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> direkt aus Git (VCS-URL)<a class="headerlink" href="#pip-install-direkt-aus-git-vcs-url" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.3.4. </span>3.4 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> direkt aus Git (VCS-URL)<a class="headerlink" href="#pip-install-direkt-aus-git-vcs-url" title="Link to this heading">#</a></h3>
 <p>Sobald das Repo eine gültige <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> hat (mit <code class="docutils literal notranslate"><span class="pre">build-system</span></code>) und dein Paket unter <code class="docutils literal notranslate"><span class="pre">src/</span></code> liegt, kannst du es ohne PyPI installieren:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/&lt;user&gt;/&lt;repo&gt;.git
 <span class="c1"># Einen Branch/Tag/Commit angeben:</span>
@@ -671,7 +672,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot
 </div></blockquote>
 </section>
 <section id="tests-qualitat-ci-kurz">
-<h3>3.5 Tests, Qualität, CI (Kurz)<a class="headerlink" href="#tests-qualitat-ci-kurz" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.3.5. </span>3.5 Tests, Qualität, CI (Kurz)<a class="headerlink" href="#tests-qualitat-ci-kurz" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Tests</strong>: <code class="docutils literal notranslate"><span class="pre">pytest</span></code> in <code class="docutils literal notranslate"><span class="pre">tests/</span></code></p></li>
 <li><p><strong>Linter/Format</strong>: <code class="docutils literal notranslate"><span class="pre">ruff</span></code>, <code class="docutils literal notranslate"><span class="pre">black</span></code> (oder nur <code class="docutils literal notranslate"><span class="pre">ruff</span> <span class="pre">format</span></code>)</p></li>
@@ -682,7 +683,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot
 </section>
 <hr class="docutils" />
 <section id="typisches-repo-setup-checkliste">
-<h2>4) Typisches Repo-Setup (Checkliste)<a class="headerlink" href="#typisches-repo-setup-checkliste" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.4. </span>4) Typisches Repo-Setup (Checkliste)<a class="headerlink" href="#typisches-repo-setup-checkliste" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> (Poetry + Build-Infos)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">src/&lt;paketname&gt;/</span></code> mit <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> und Modulen</p></li>
@@ -709,7 +710,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot
 </section>
 <hr class="docutils" />
 <section id="haufige-stolpersteine-tipps">
-<h2>5) Häufige Stolpersteine &amp; Tipps<a class="headerlink" href="#haufige-stolpersteine-tipps" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.5. </span>5) Häufige Stolpersteine &amp; Tipps<a class="headerlink" href="#haufige-stolpersteine-tipps" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>„Module not found“</strong>: Ist die <strong>richtige Umgebung aktiv</strong>? Wurde das Paket <strong>installiert</strong> (<code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> / <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code>)?</p></li>
 <li><p><strong>Mischen von conda &amp; pip</strong>: Erst möglichst viel über <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code>, dann fehlende Pakete per <code class="docutils literal notranslate"><span class="pre">pip</span></code>. Bei Poetry bleib konsistent innerhalb der Poetry-venv.</p></li>
@@ -719,7 +720,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot
 </ul>
 <hr class="docutils" />
 <section id="mini-startvorlage">
-<h3>Mini-Startvorlage<a class="headerlink" href="#mini-startvorlage" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.5.1. </span>Mini-Startvorlage<a class="headerlink" href="#mini-startvorlage" title="Link to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Neues Repo anlegen</span>
 mkdir<span class="w"> </span>myproject<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>myproject
 git<span class="w"> </span>init
@@ -731,7 +732,7 @@ poetry<span class="w"> </span>add<span class="w"> </span>--group<span class="w">
 
 <span class="c1"># Ordner anlegen</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span>src/mypkg<span class="w"> </span>tests
-<span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>src/mypkg/__init__.py
+touch<span class="w"> </span>src/mypkg/__init__.py
 <span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;def main():\n    print(&#39;hello from mypkg&#39;)\n&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>src/mypkg/core.py
 
 <span class="c1"># CLI-Eintrag in pyproject.toml ergänzen:</span>
@@ -779,6 +780,24 @@ poetry<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> 
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="05_virtual_environments.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Einführung: Python-Umgebungen für Data-Science-Projekte (venv, Miniconda/Mamba, Anaconda)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="08_oop_with_python.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Wiederholung der OOP-Grundlagen</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -795,29 +814,29 @@ poetry<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-funktionieren-imports-in-python">1) Wie funktionieren <code class="docutils literal notranslate"><span class="pre">import</span></code>s in Python?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-suche-vereinfacht">1.1 Import-Suche (vereinfacht)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-vs-packages">1.2 Module vs. Packages</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#absolute-vs-relative-imports">1.3 Absolute vs. relative Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-funktionieren-imports-in-python">9.1. 1) Wie funktionieren <code class="docutils literal notranslate"><span class="pre">import</span></code>s in Python?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-suche-vereinfacht">9.1.1. 1.1 Import-Suche (vereinfacht)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-vs-packages">9.1.2. 1.2 Module vs. Packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#absolute-vs-relative-imports">9.1.3. 1.3 Absolute vs. relative Imports</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproduzierbare-projekte-dependencies-festhalten">2) Reproduzierbare Projekte: Dependencies festhalten</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip-venv-requirements-txt">2.1 Pip/venv („requirements.txt“)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-mamba-environment-yml">2.2 Conda/Mamba („environment.yml“)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poetry-lockfile">2.3 Poetry (lockfile)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproduzierbare-projekte-dependencies-festhalten">9.2. 2) Reproduzierbare Projekte: Dependencies festhalten</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip-venv-requirements-txt">9.2.1. 2.1 Pip/venv („requirements.txt“)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-mamba-environment-yml">9.2.2. 2.2 Conda/Mamba („environment.yml“)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poetry-lockfile">9.2.3. 2.3 Poetry (lockfile)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nachstes-level-ein-installierbares-python-package-im-repository">3) Nächstes Level: Ein <strong>installierbares</strong> Python-Package im Repository</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empfohlene-ordnerstruktur-src-layout">3.1 Empfohlene Ordnerstruktur („src layout“)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyproject-toml-mit-poetry">3.2 <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> (mit Poetry)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poetry-typische-befehle">3.3 Poetry: typische Befehle</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip-install-direkt-aus-git-vcs-url">3.4 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> direkt aus Git (VCS-URL)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests-qualitat-ci-kurz">3.5 Tests, Qualität, CI (Kurz)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nachstes-level-ein-installierbares-python-package-im-repository">9.3. 3) Nächstes Level: Ein <strong>installierbares</strong> Python-Package im Repository</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empfohlene-ordnerstruktur-src-layout">9.3.1. 3.1 Empfohlene Ordnerstruktur („src layout“)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyproject-toml-mit-poetry">9.3.2. 3.2 <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> (mit Poetry)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poetry-typische-befehle">9.3.3. 3.3 Poetry: typische Befehle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip-install-direkt-aus-git-vcs-url">9.3.4. 3.4 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> direkt aus Git (VCS-URL)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests-qualitat-ci-kurz">9.3.5. 3.5 Tests, Qualität, CI (Kurz)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typisches-repo-setup-checkliste">4) Typisches Repo-Setup (Checkliste)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#haufige-stolpersteine-tipps">5) Häufige Stolpersteine &amp; Tipps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-startvorlage">Mini-Startvorlage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typisches-repo-setup-checkliste">9.4. 4) Typisches Repo-Setup (Checkliste)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#haufige-stolpersteine-tipps">9.5. 5) Häufige Stolpersteine &amp; Tipps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-startvorlage">9.5.1. Mini-Startvorlage</a></li>
 </ul>
 </li>
 </ul>

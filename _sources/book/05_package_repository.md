@@ -174,7 +174,7 @@ build-backend = "poetry.core.masonry.api"
 poetry init        # interaktives Setup der pyproject.toml
 # oder neues Grundgerüst:
 poetry new --src myproject
-# -> erzeugt src/myproject, tests/, pyproject.toml, README.rst
+# -> erzeugt src/myproject, tests/, pyproject.toml, README.md
 
 # Abhängigkeiten hinzufügen
 poetry add numpy pandas
@@ -271,7 +271,7 @@ poetry add --group dev pytest ruff
 
 # Ordner anlegen
 mkdir -p src/mypkg tests
-printf "" > src/mypkg/__init__.py
+touch src/mypkg/__init__.py
 printf "def main():\n    print('hello from mypkg')\n" > src/mypkg/core.py
 
 # CLI-Eintrag in pyproject.toml ergänzen:
