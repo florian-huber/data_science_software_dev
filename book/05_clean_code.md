@@ -177,7 +177,7 @@ from .models import User  # Lokale Anwendung
 
 **f) Kommentare**
 
-Kommentare sind wichtig, um den Code verständlicher zu machen, insbesondere wenn er komplex ist. Es sollten jedoch keine offensichtlichen Dinge kommentiert werden. Außerdem sollte der Code so klar und lesbar wie möglich geschrieben werden, sodass er von sich aus selbsterklärend ist.
+Kommentare sind wichtig, um den Code verständlicher zu machen, insbesondere wenn er komplex ist. Es sollten jedoch keine offensichtlichen Dinge kommentiert werden. Außerdem sollte der Code so klar und lesbar wie möglich geschrieben werden, sodass er von sich aus selbsterklärend ist (soweit das möglich ist, bei komplexen Algorithmen ist das oft leichter gesagt als getan).
 
 **Beispiel:**
 
@@ -230,4 +230,4 @@ except ValueError:
     print("Bitte geben Sie eine gültige Zahl ein!")
 ```
 
-Durch das Beachten dieser und anderer Richtlinien aus PEP 8 kann man sicherstellen, dass der Python-Code nicht nur funktionsfähig, sondern auch gut lesbar und wartbar ist. Es lohnt sich, regelmäßig auf PEP 8 zurückzugreifen und den eigenen Code danach zu überprüfen
+Durch das Beachten dieser und anderer Richtlinien aus PEP 8 kann man sicherstellen, dass der Python-Code nicht nur funktionsfähig, sondern auch gut lesbar und wartbar ist. Es lohnt sich, regelmäßig auf PEP 8 zurückzugreifen und den eigenen Code danach zu überprüfen, bzw. (realistischer) den Code von automatisierten Tools überprüfen lassen (siehe "Linting").
