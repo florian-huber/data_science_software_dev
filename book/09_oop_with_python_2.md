@@ -47,10 +47,15 @@ class Secret:
         self._hidden = "Nur zur internen Nutzung"
         self.__very_hidden = "Schwer zugänglich"
 
+    def reveal(self):
+        # Now reveal all secrets!
+		print(self.__very_hidden)
+        
 secret = Secret()
 print(secret._hidden)           # Möglich, aber sollte vermieden werden
 # print(secret.__very_hidden)    # Fehler: AttributeError
 print(secret._Secret__very_hidden)  # Zugriff durch Namensänderung möglich
+secret.reveal()  # Das ist möglich, weil es von uns explizit erlaubt wurde!
 ```
 
 ## Magische Methoden (Dunder-Methoden)
