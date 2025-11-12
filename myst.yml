@@ -1,0 +1,60 @@
+version: 1
+project:
+  title: Data Science Software Development with Python
+  authors:
+    - name: Florian Huber
+  copyright: '2024'
+  github: florian-huber/data_science_software_dev
+  thebe:
+    binder:
+      repo: florian-huber/data_science_software_dev
+      provider: github
+      url: https://mybinder.org
+      ref: main
+  bibliography:
+    - book/references.bib
+  exports:
+    - format: pdf
+      template: plain_latex_book
+      output: exports/book.pdf
+  toc:
+    - file: book\cover.md
+    - title: Introduction
+      children:
+        - file: book\01_introduction.md
+        - file: book\02_shell_scripting.md
+        - file: book\03_git_github.md
+        - file: book\04_github.md
+    - title: Clean Code
+      children:
+        - file: book\05_clean_code.md
+        - file: book\06_linting.md
+        - file: book\07_code_smells.md
+    - title: Python Library / Repository Struktur
+      children:
+        - file: book\05_virtual_environments.md
+        - file: book\05_package_repository.md
+    - title: Code Design & Grundlagen der Objektorientierten Programmierung (OOP)
+      children:
+        - file: book\08_oop_with_python.md
+        - file: book\09_oop_with_python_2.md
+        - file: book\10_from_idea_to_code.md
+        - file: book\11_python_software_project.md
+    - title: Testing and Continuous Integration
+      children:
+        - file: book\06_testing.md
+        - file: book\07_testing_live_coding.md
+        - file: book\07_continuous_integration.md
+        - file: book\07_testing_2.md
+    - title: References
+      children:
+        - file: book/acknowledgements
+        - file: book\bibliography.ipynb
+    - title: Source Code and Contributions
+      children:
+        - file: book\github.md
+site:
+  options:
+    logo: images/cover_mini.png
+    folders: true
+  template: book-theme
