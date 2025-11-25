@@ -3,7 +3,7 @@ project:
   title: Data Science Software Development with Python
   authors:
     - name: Florian Huber
-  copyright: '2024'
+  copyright: '2025'
   github: florian-huber/data_science_software_dev
   thebe:
     binder:
