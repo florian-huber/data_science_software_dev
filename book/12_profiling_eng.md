@@ -32,17 +32,17 @@ A typical pattern is:
 ```python
 import time
 
-def example_function():
+def integer_sum(count_to: int):
     total = 0
-    for i in range(int(1e5)):
+    for i in range(int(count_to)):
         total += i
     return total
 
-start_time = time.perf_counter()
-example_function()
-end_time = time.perf_counter()
+start_time = time.time()
+integer_sum(1_000_000)
+end_time = time.time()
 
-print(f"Execution time: {end_time - start_time:.6f} seconds")
+print(f"Execution time: {end_time - start_time} seconds")
 ```
 
 **Explanation:**
@@ -94,13 +94,13 @@ Example using a function instead of a string:
 ```python
 import timeit
 
-def example_function():
+def integer_sum(count_to: int = 100_000):
     total = 0
-    for i in range(int(1e5)):
+    for i in range(int(count_to)):
         total += i
     return total
 
-execution_time = timeit.timeit(stmt=example_function, number=100)
+execution_time = timeit.timeit(stmt=integer_sum, number=100)
 print(f"Average execution time: {execution_time / 100:.6f} seconds")
 ```
 
@@ -124,15 +124,18 @@ In Jupyter notebooks, there are convenient **magic commands** that wrap `time` a
 - `%time` or `%timeit` at the start of a **single line**:
 
   ```python
-  %time example_function()
+  %time
+  
+  integer_sum(1_000_000)
   ```
 
 - `%%time` or `%%timeit` at the top of a **cell**:
 
   ```python
   %%time
-  result = example_function()
-  result2 = example_function()
+  
+  result = integer_sum(1_000_000)
+  result2 = integer_sum(1_000_000)
   ```
 
 `%timeit` (and `%%timeit`) will:
@@ -145,7 +148,8 @@ You can control the number of runs, for example:
 
 ```python
 %%timeit -n 10 -r 5
-example_function()
+
+integer_sum(1000_000)
 ```
 
 - `-n 10`: 10 loops per run
