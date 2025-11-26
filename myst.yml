@@ -46,9 +46,12 @@ project:
         - file: book\07_testing_live_coding.md
         - file: book\07_continuous_integration.md
         - file: book\07_testing_2.md
+    - title: Profiling and Optimization
+      children:
+        - file: book\12_profiling.md
     - title: References
       children:
-        - file: book/acknowledgements
+        - file: book\acknowledgements
         - file: book\bibliography.ipynb
     - title: Source Code and Contributions
       children:
