@@ -18,44 +18,44 @@ project:
       template: plain_latex_book
       output: exports/book.pdf
   toc:
-    - file: book\cover.md
+    - file: book/cover.md
     - title: Introduction
       children:
-        - file: book\01_introduction.md
-        - file: book\02_shell_scripting.md
-        - file: book\03_git_github.md
-        - file: book\04_github.md
+        - file: book/01_introduction.md
+        - file: book/02_shell_scripting.md
+        - file: book/03_git_github.md
+        - file: book/04_github.md
     - title: Clean Code
       children:
-        - file: book\05_clean_code.md
-        - file: book\06_linting.md
-        - file: book\07_code_smells.md
+        - file: book/05_clean_code.md
+        - file: book/06_linting.md
+        - file: book/07_code_smells.md
     - title: Python Library / Repository Struktur
       children:
-        - file: book\05_virtual_environments.md
-        - file: book\05_package_repository.md
+        - file: book/05_virtual_environments.md
+        - file: book/05_package_repository.md
     - title: Code Design & Grundlagen der Objektorientierten Programmierung (OOP)
       children:
-        - file: book\08_oop_with_python.md
-        - file: book\09_oop_with_python_2.md
-        - file: book\10_from_idea_to_code.md
-        - file: book\11_python_software_project.md
+        - file: book/08_oop_with_python.md
+        - file: book/09_oop_with_python_2.md
+        - file: book/10_from_idea_to_code.md
+        - file: book/11_python_software_project.md
     - title: Testing and Continuous Integration
       children:
-        - file: book\06_testing.md
-        - file: book\07_testing_live_coding.md
-        - file: book\07_continuous_integration.md
-        - file: book\07_testing_2.md
+        - file: book/06_testing.md
+        - file: book/07_testing_live_coding.md
+        - file: book/07_continuous_integration.md
+        - file: book/07_testing_2.md
     - title: Profiling and Optimization
       children:
-        - file: book\12_profiling.md
+        - file: book/12_profiling.md
     - title: References
       children:
-        - file: book\acknowledgements
-        - file: book\bibliography.ipynb
+        - file: book/acknowledgements
+        - file: book/bibliography.ipynb
     - title: Source Code and Contributions
       children:
-        - file: book\github.md
+        - file: book/github.md
 site:
   options:
     logo: images/cover_mini.png
