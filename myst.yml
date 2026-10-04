@@ -22,8 +22,8 @@ project:
     - title: Introduction
       children:
         - file: book\01_introduction.md
-        - file: book\02_shell_scripting.md
-        - file: book\03_git_github.md
+        - file: book\02_working_from_the_shell.md
+        - file: book\03_first_steps_in_git.md
         - file: book\04_github.md
     - title: Clean Code
       children:
