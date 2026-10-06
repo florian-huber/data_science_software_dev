@@ -71,7 +71,7 @@ animals= [    'dog',   'cat',"elephant"   ]
 
 ### Clean Code – Wer entscheidet über den Stil?
 
-Ein häufig gestellte Frage ist: Wer entscheidet eigentlich, wie der Code aussehen sollte? Warum kann nicht jeder seinen eigenen Stil entwickeln?
+Eine häufig gestellte Frage ist: Wer entscheidet eigentlich, wie der Code aussehen sollte? Warum kann nicht jeder seinen eigenen Stil entwickeln?
 
 Die Antwort lautet: Für den **Python-Interpreter** ist der Stil zwar nebensächlich, aber für Menschen, die den Code lesen, ist er entscheidend. Die Lesbarkeit steht im Vordergrund, denn Code wird häufiger gelesen als geschrieben.
 
@@ -102,7 +102,7 @@ PEP 8, das für "Python Enhancement Proposal 8" steht, ist der offizielle Style 
 
 
 
-Einige wichtigsten Punkte aus PEP 8 sind:
+Einige wichtige Punkte aus PEP 8 sind:
 
 **a) Namenskonventionen**
 
@@ -130,27 +130,30 @@ Leerzeichen spielen eine entscheidende Rolle in Python, insbesondere wegen seine
 In Fällen, in denen ein Ausdruck oder eine Anweisung zu lang wird, sollte ein Zeilenumbruch verwendet werden, um die Lesbarkeit zu erhöhen. PEP 8 bietet mehrere Methoden, um dies elegant zu tun, einschließlich:
 
 - Bei Verwendung von Klammern (`()`, `{}`, `[]`) kann der Code nach der Klammer umgebrochen werden.
-  ```python
-  # Gut:
-  total_sum = sum(
-      item_1, item_2, item_3, 
-      item_4, item_5
-  )
-  
-  # Schlecht:
-  total_sum = sum(item_1, item_2, item_3, item_4, item_5)
-  ```
+```python
+# Gut:
+total_sum = sum(
+    [item_1, item_2, item_3, item_4, item_5]
+)
+
+# Schlecht (schwerer lesbar, wenn die Zeile sehr lang wird):
+total_sum = sum([item_1, item_2, item_3, item_4, item_5])
+```
 - Bei langen Bedingungen kann `and` oder `or` zum Umbruch verwendet werden.
-  ```python
-  # Gut:
-  if (condition_1 and condition_2 and 
-      condition_3 and condition_4):
-      do_something()
-  
-  # Schlecht:
-  if condition_1 and condition_2 and condition_3 and condition_4:
-      do_something()
-  ```
+```python
+# Gut:
+if (
+    condition_1
+    and condition_2
+    and condition_3
+    and condition_4
+):
+    do_something()
+
+# Schlecht (wenn die Zeile dadurch unübersichtlich wird):
+if condition_1 and condition_2 and condition_3 and condition_4:
+    do_something()
+```
 
   
 
@@ -230,4 +233,4 @@ except ValueError:
     print("Bitte geben Sie eine gültige Zahl ein!")
 ```
 
-Durch das Beachten dieser und anderer Richtlinien aus PEP 8 kann man sicherstellen, dass der Python-Code nicht nur funktionsfähig, sondern auch gut lesbar und wartbar ist. Es lohnt sich, regelmäßig auf PEP 8 zurückzugreifen und den eigenen Code danach zu überprüfen, bzw. (realistischer) den Code von automatisierten Tools überprüfen lassen (siehe "Linting").
+Durch das Beachten dieser und anderer Richtlinien aus PEP 8 wird Python-Code konsistenter und leichter lesbar. In der Praxis werden wir viele rein formale Entscheidungen **nicht von Hand** kontrollieren: Im späteren Kapitel zu Formatting und Linting übernimmt Ruff einen großen Teil davon automatisch. Clean Code bleibt trotzdem mehr als Formatierung – gute Namen, sinnvolle Funktionen, verständliche Verantwortlichkeiten und klare Fehlerbehandlung kann uns kein Formatter vollständig abnehmen.

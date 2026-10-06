@@ -1,6 +1,10 @@
-# Code-Tests (2)
+# Code-Tests (2): pytest-Werkzeuge für größere Projekte
 
-In diesem Abschnitt gehen wir einen Schritt weiter mit einigen leistungsfähigen `pytest`-Funktionen. Diese Werkzeuge helfen, Absichten klar auszudrücken, Duplikate zu vermeiden und Test-Suites wartbar zu halten – insbesondere wenn Projekte wachsen. Wir betrachten **Fixtures**, **Parametrisierung**, **temporäre Pfade** und **Monkeypatching**. Jede Funktion löst ein typisches Testproblem: *Setup/Teardown*, *viele Eingaben abdecken*, *Dateisystem isolieren* und *das Verhalten von Abhängigkeiten steuern*.
+Im ersten Testing-Kapitel haben wir grundlegende Unit Tests geschrieben. In diesem Abschnitt gehen wir einen Schritt weiter mit einigen leistungsfähigen `pytest`-Funktionen. Diese Werkzeuge helfen, Absichten klar auszudrücken, Duplikate zu vermeiden und Test-Suites wartbar zu halten – insbesondere wenn Projekte wachsen. Wir betrachten **Fixtures**, **Parametrisierung**, **temporäre Pfade** und **Monkeypatching**. Jede Funktion löst ein typisches Testproblem: *Setup/Teardown*, *viele Eingaben abdecken*, *Dateisystem isolieren* und *das Verhalten von Abhängigkeiten steuern*.
+
+Vorab können alle Beispiele wie gewohnt mit `uv run pytest` ausgeführt werden.
+
+---
 
 ## Fixtures
 
@@ -53,7 +57,7 @@ Pytest führt `test_square` dreimal aus – je (Input, Expected)-Paar. Für bess
 @pytest.mark.parametrize(
     "test_input,expected",
     [(3, 9), (5, 25), (10, 100)],
-    ids=["3^2", "5^2", "10^2"]
+    ids=["3^2", "5^2", "10^2"],
 )
 def test_square(test_input, expected):
     assert test_input ** 2 == expected
@@ -165,3 +169,14 @@ def test_env(monkeypatch):
 ## Zusammenfassung
 
 Pytests **Fixtures** halten Setup ordentlich und wiederverwendbar, **Parametrisierung** skaliert einen Test über viele Eingaben, **`tmp_path`** isoliert Dateisystem-Interaktionen, und **Monkeypatching** erlaubt es, externes Verhalten zu steuern. Zusammen machen diese Features Tests klarer, schneller zu schreiben und robuster – genau das, was du brauchst, wenn dein Projekt wächst.
+
+
+## Praktischer Workflow
+
+```bash
+uv run pytest -q
+uv run pytest tests/test_module.py
+uv run pytest -k "name_part"
+```
+
+Gerade bei Fixtures und Monkeypatching gilt: so viel Isolation wie nötig, aber nicht mehr. Ein Test soll echtes Verhalten möglichst direkt prüfen; Test-Doubles sind Werkzeuge für Abhängigkeiten, die sonst langsam, zufällig oder extern wären.

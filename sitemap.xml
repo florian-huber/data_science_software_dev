@@ -5,19 +5,40 @@
     <loc>http://localhost:3000</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/book/clean-code</loc>
+    <loc>http://localhost:3000/book/introduction</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/book/linting</loc>
+    <loc>http://localhost:3000/book/working-from-the-shell</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/book/first-steps-in-git</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/book/github</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/book/clean-code</loc>
   </url>
   <url>
     <loc>http://localhost:3000/book/code-smells</loc>
   </url>
   <url>
+    <loc>http://localhost:3000/book/repository-structure</loc>
+  </url>
+  <url>
     <loc>http://localhost:3000/book/virtual-environments</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/book/package-repository</loc>
+    <loc>http://localhost:3000/book/testing</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/book/testing-2</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/book/formatting-linting</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/book/continuous-integration</loc>
   </url>
   <url>
     <loc>http://localhost:3000/book/oop-with-python</loc>
@@ -32,24 +53,12 @@
     <loc>http://localhost:3000/book/python-software-project</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/book/testing</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/book/testing-live-coding</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/book/continuous-integration</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/book/testing-2</loc>
-  </url>
-  <url>
     <loc>http://localhost:3000/book/profiling</loc>
   </url>
   <url>
     <loc>http://localhost:3000/book/bibliography</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/book/github</loc>
+    <loc>http://localhost:3000/book/github-1</loc>
   </url>
 </urlset>
