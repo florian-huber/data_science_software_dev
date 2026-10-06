@@ -1,74 +1,239 @@
-# GitHub
+# Zusammenarbeit mit GitHub
 
-Während **Git** als dezentrales Versionskontrollsystem dient, das in erster Linie lokal auf dem Computer eines Entwicklers betrieben wird, kommt der wahre Mehrwert von Git häufig erst dann zur Geltung, wenn es in Verbindung mit einem zentralen Repository-Hosting-Service verwendet wird. Hier treten Plattformen wie **GitHub**, **GitLab** und **Bitbucket** in Erscheinung.
+Git funktioniert lokal. GitHub ergänzt ein **Remote Repository** und Werkzeuge für Zusammenarbeit: Issues, Pull Requests, Reviews, Actions und Projektboards. In diesem Kapitel geht es vor allem um den kollaborativen Workflow; Testing, Ruff und CI werden in den folgenden Kapiteln systematisch aufgebaut.
 
-## Kurzer Vergleich
+## Lokal und Remote
 
-- **GitHub**: Eine der populärsten Plattformen für das Hosting von Git-Repositories. Sie bietet eine benutzerfreundliche Oberfläche, integrierte Issue-Tracking-Tools und einen lebhaften Marktplatz für Erweiterungen. Mit der jüngsten Übernahme durch Microsoft hat GitHub auch eine enge Integration in viele Microsoft-Produkte, insbesondere Visual Studio, erhalten.
-- **GitLab**: Ein Open-Source-Git-Repository-Manager, der sowohl als selbst gehostete Lösung als auch in einer Cloud-basierten Version verfügbar ist. GitLab bietet viele fortschrittliche Features, insbesondere im Bereich der CI/CD-Integration. Durch die Möglichkeit des eigenen Hostings wird es oft innerhalb von Firmen verwendet.
-- **Bitbucket**: Ursprünglich von Atlassian entwickelt und bietet eine tiefe Integration mit anderen Atlassian-Produkten wie JIRA und Confluence. Es unterstützt sowohl Git als auch Mercurial und wird in vielen Unternehmen eingesetzt.
+Repository klonen:
 
-Für den Zweck dieser Veranstaltung werden wir uns auf **GitHub** konzentrieren.
+```bash
+git clone https://github.com/<organisation>/<repository>.git
+cd <repository>
+```
 
-## Achtung: GitHub ist eine für alle einsehbare Visitenkarte!
+Remotes anzeigen:
 
-Ein öffentliches GitHub-Repository kann viel über einen Entwickler aussagen. Es dient oft als Portfolio für zukünftige Arbeitgeber oder für die Gemeinschaft.
+```bash
+git remote -v
+```
 
-- Mit einem aktiven GitHub-Account könnt ihr demonstrieren, dass ihr engagierte und ernstzunehmende Programmierer*innen seid – oder eben auch das Gegenteil, wenn das Repository vernachlässigt wird.
-- Bei Vorstellungsgesprächen kann euer GitHub-Profil als Beweis für eure Fähigkeiten und Erfahrungen im Umgang mit Softwareentwicklung dienen.
+Typischer Name des primären Remotes:
 
-## Grundlegender Prozess
+```text
+origin
+```
 
-### Lokal vs. Remote
+Änderungen hochladen:
 
-Mit Git arbeitet man zunächst lokal auf dem eigenen Computer (lokales Repository). Wenn man dann Änderungen mit anderen teilen möchte oder eine sichere Kopie seiner Arbeit in der Cloud haben möchte, "pusht" man die Änderungen zu einem Remote-Repository, z.B. auf GitHub.
+```bash
+git push
+```
 
-![GitHub Areas and Remote](../images/fig_github_areas_remote.png)
+Änderungen holen und integrieren:
 
-Um das lokale Repository mit der online Repository abzugleichen werden wir v.a. die folgenden Befehle nutzen
+```bash
+git pull
+```
 
-- `git push` - damit werden die neuen Commits ins online Repository verschoben
-- `git pull` - damit werden neue Commits aus dem online ins lokale Working Directory verschoben. 
-  (Achtung, d.h. es werden eventuell gerade erst bearbeitete Änderungen von uns überschrieben, daher vor git pull darauf achten, dass alle Änderungen bereits zu Git hinzugefügt wurden --> `git status`)
+Für Einsteiger:innen ist wichtig: Vor `pull` immer `git status` prüfen und eigene Arbeit sinnvoll committen oder anderweitig sichern.
 
+## Der Kursworkflow
 
+Für Teamprojekte verwenden wir standardmäßig:
 
-### Working in Teams: Centralized Workflow
+```text
+Issue
+  ↓
+Branch
+  ↓
+kleine Commits
+  ↓
+Pull Request
+  ↓
+CI
+  ↓
+Code Review
+  ↓
+Änderungen / Diskussion
+  ↓
+Merge nach main
+```
 
-- Bei diesem Ansatz haben alle Teammitglieder Schreibzugriff auf das zentrale Repository.
-- Die Entwicklung erfolgt hauptsächlich über verschiedene Branches, wobei jeder Branch eine bestimmte Aufgabe oder ein Feature repräsentiert.
-- Nachdem die Arbeit in einem Branch abgeschlossen ist, wird er in den Hauptbranch (oft "master" oder "main" genannt) gemerged. 
-  In der Regel geschieht dies über einen Pull Request um sowohl die Dokumentation als auch die Qualität des Projektes zu verbessern.
+`main` soll einen möglichst stabilen Projektstand repräsentieren.
+
+## Issues: eine gute Aufgabe beschreiben
+
+Schlecht:
+
+```text
+Implement AI
+```
+
+Besser:
+
+```markdown
+## Goal
+Add a random-move strategy for the game.
+
+## Acceptance criteria
+- only legal moves are returned
+- full boards are handled explicitly
+- behavior is covered by automated tests
+- existing game loop does not need special cases for this strategy
+```
+
+Ein Issue ist nicht nur Verwaltung. Es zwingt das Team, **vor dem Coden zu klären, wann die Aufgabe fertig ist**.
+
+## Branch pro Aufgabe
+
+```bash
+git switch -c issue-17-random-strategy
+```
+
+Branch-Namen müssen nicht perfekt sein. Sie sollten aber den Zusammenhang zur Aufgabe sichtbar machen.
+
+## Push und Pull Request
+
+```bash
+git push -u origin issue-17-random-strategy
+```
+
+Danach auf GitHub einen Pull Request eröffnen.
+
+Eine gute PR-Beschreibung beantwortet:
+
+- Was ändert dieser PR?
+- Welches Issue gehört dazu?
+- Wie wurde getestet?
+- Gibt es offene Entscheidungen oder Risiken?
+- Wurde Performance beeinflusst?
+
+## Code Review
+
+Reviewer prüfen nicht nur Stil. Vieles davon werden wir später mit Ruff automatisieren; im Review sind deshalb vor allem Verhalten, Verständlichkeit, Tests und Design wichtig.
+
+Wichtiger sind Fragen wie:
+
+- Erfüllt der Code die Akzeptanzkriterien?
+- Verstehe ich die Änderung?
+- Sind Tests aussagekräftig?
+- Gibt es Randfälle?
+- Wurde unnötige Komplexität hinzugefügt?
+- Sind neue Abhängigkeiten notwendig?
+- Passt die Änderung zur Architektur?
+
+Konstruktive Reviews beziehen sich auf Code und Anforderungen, nicht auf die Person.
+
+Beispiel:
+
+```text
+Could we add a test for a full board here? At the moment this branch seems to assume that at least one legal move exists.
+```
+
+## CI ist Teil des Reviews
+
+Ein grüner Workflow zeigt, dass automatisierte Checks bestanden wurden. Das ist notwendig, aber nicht hinreichend.
+
+```text
+CI says: "the automated checks passed"
+Reviewer says: "this change is understandable and appropriate"
+```
+
+## Shared Repository vs. Fork
+
+### Shared/central Repository
+
+Alle Teammitglieder haben Schreibrechte und arbeiten über Branches + PRs. Für feste Vierer-Teams ist das meist der einfachste Kursworkflow.
 
 ![Centralized Github Workflow](../images/fig_github_centralized_workflow.png)
 
-### Working in Teams: Fork-based Workflow
+### Fork Workflow
 
-Dieser Workflow wird vor allem in großen Projekten verwendet, insbesondere bei Community- oder Open-Source-Projekten.
+Jede Person arbeitet in einer eigenen Kopie und schlägt Änderungen an einem `upstream`-Repository vor. Das ist typisch für Open-Source-Projekte oder wenn Contributor keine direkten Schreibrechte haben.
 
-- Jeder Entwickler erstellt einen "Fork" des Hauptrepositories, was im Wesentlichen eine Kopie des Repositories ist, aber unabhängig von dem Original.
-- Entwickler führen Änderungen in ihrem eigenen Fork durch und wenn sie bereit sind, ihre Änderungen mit dem Hauptrepository zu teilen, erstellen sie einen "Pull Request".
-- Ein "Pull Request" ist eine Anfrage, Änderungen aus dem Fork in das Hauptrepository zu übernehmen. Es bietet auch eine Plattform für Code-Reviews und Diskussionen, bevor die Änderungen übernommen werden.
+Dann gibt es oft:
+
+```text
+origin    → eigener Fork
+upstream  → zentrales Projekt
+```
+
+Für den Einstieg sollte man nicht beide Modelle gleichzeitig vermischen.
 
 ![Fork-based Github Workflow](../images/fig_github_fork-based_workflow.png)
 
-In diesem Fall ist die Struktur der Abläufe in Git noch einen Schritt komplexer. Es gibt nun nicht mehr nur unsere lokale Kopie sowie `origin` (Remote Repository im eigenen GitHub Account, oder Remote Repository mit umfangreichen Schreibrechten), sondern auch noch `upstream` als weiteres Remote Repository. Letzteres ist in der Regel das "Hauptrepository", also nach außen der zentrale Anlaufpunkt. In vielen Fällen haben Nutzer\*innen auch gar keine direkten Schreibrechte für dieses Repository, z.B. bei großen Community-Projekten. Der hier beschriebene Workflow wird aber auch genutzt um einem beliebigen auf GitHub stehenden Repository eigene Änderungen vorschlagen zu können (wenn dies die jeweiligen Rechteinhaber\*innen wünschen).
-
 ![GitHub Areas and Remote](../images/fig_github_areas_remote_fork.png)
 
-### Pull Request
+## Merge-Konflikte in GitHub-Projekten vermeiden
 
-**Pull** **Requests** sind ein zentraler Prozess auf GitHub (oder anderen online Repository Plattformen) um Code-Änderungen besser beurteilen und einbringen zu können. 
+Konflikte werden weniger wahrscheinlich, wenn:
 
-Auch wenn „pull“ im Namen steckt, könnte man das Ganze im Sinne von git auch als Push oder Merge sehen. Wichtig ist: eine Änderung des Codes soll stattfinden. 
+- Issues klein sind,
+- Branches nicht wochenlang offen bleiben,
+- regelmäßig synchronisiert wird,
+- Teams nicht gleichzeitig dieselben großen Dateien umbauen.
 
-- Entwickler*in programmiert ein neues Feature in ihrem eigenen Repository (und/oder einem eigenen Branch).
-- Pull Request ist eine Anfrage ob der veränderte Code in das zentrale online Repository eingebracht werden kann.
-- Entwickler*innen begutachten und diskutieren die Änderungen (--> Code Review!). Weitere Änderungen können eingebaut werden.
-- Wenn Verantwortliche/r („maintainer“) einverstanden ist wird der neue Code „gemerged“.
+Konflikte lassen sich nie vollständig vermeiden. Sie sind ein normaler Teil kollaborativer Entwicklung.
 
-## Getting started
+## GitHub Projects / Kanban
 
-Wie auch zu Git, findet ihr im Netz viele Tutorials und Informationen zum Arbeiten mit GitHub.
-Zum Beispiel die [Einführungsseiten GitHub](https://docs.github.com/en/get-started).
+Ein leichtgewichtiges Board reicht:
 
+```text
+Backlog → In Arbeit → Review → Erledigt
+```
+
+Wichtiger als viele Spalten ist:
+
+- klare Issues,
+- sichtbare Verantwortlichkeit,
+- begrenzte parallele Arbeit,
+- regelmäßige Aktualisierung.
+
+## Schutz für `main`
+
+Je nach Repository-Rechten können GitHub Rulesets/Branch-Schutzregeln festlegen:
+
+- Pull Request erforderlich,
+- erfolgreiche CI-Checks erforderlich,
+- Review erforderlich,
+- Force Push verhindern.
+
+Damit wird der gewünschte Workflow technisch unterstützt.
+
+## Secrets
+
+Nie committen:
+
+```text
+API keys
+access tokens
+passwords
+private credentials
+```
+
+Auch ein späteres Löschen aus der aktuellen Datei entfernt ein Secret nicht automatisch aus der Git-Historie.
+
+## Coding Agents und GitHub
+
+Ein Coding Agent sollte eine **begrenzte, überprüfbare Aufgabe** bekommen. Ein gutes Issue mit Akzeptanzkriterien ist deshalb gleichzeitig eine gute Grundlage für menschliche und agentische Arbeit.
+
+Nach einer Agent-Änderung:
+
+1. PR-Diff lesen.
+2. Tests nachvollziehen.
+3. Neue Dependencies prüfen.
+4. CI ausführen.
+5. Änderungen verlangen, wenn etwas unklar ist.
+6. Nur mergen, wenn ein Mensch die Verantwortung übernimmt.
+
+## Definition of Done für Kurs-Issues
+
+Eine Aufgabe ist typischerweise erst erledigt, wenn:
+
+- Akzeptanzkriterien erfüllt sind,
+- Tests vorhanden und grün sind,
+- Ruff/Format-Checks grün sind,
+- PR reviewed wurde,
+- notwendige Dokumentation angepasst wurde,
+- und der Code in `main` gemerged ist.
