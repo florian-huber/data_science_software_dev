@@ -1,47 +1,203 @@
-# Introduction to Testing
+# Why Do We Need Testing?
 
-Testing is an integral part of software development, ensuring that code functions correctly and meets specified requirements. It's crucial to understand that even well-written and properly formatted code is not inherently error-free. In this expanded introduction, we'll delve deeper into the necessity of testing, types of errors, the reality of bug-free software, and different testing methodologies.
+Testing is an integral part of software development. Even well-written and consistently formatted code is not automatically correct. Tests help us verify that code meets its requirements and keeps doing so after later changes.
 
-## The Necessity of Testing
+## The Need for Testing
 
-### Understanding Different Types of Errors
+### Different kinds of errors
 
-In programming, errors generally fall into three categories:
+In programming, we encounter different types of errors:
 
-- **Syntax Errors**: These are grammatical errors in the code that prevent the program from running. They are usually the easiest to detect and fix.
-- **Exceptions**: These are runtime errors that occur due to anomalous situations while the program is executing, like trying to divide by zero.
-- **Semantic Errors**: The most insidious, these errors involve logic flaws. The program runs without crashing but produces incorrect results.
+- **Syntax errors:** the code is grammatically invalid and cannot be executed.
+- **Exceptions / runtime errors:** the code starts but fails in a specific situation, for example division by zero.
+- **Semantic errors:** the program runs without crashing but returns an incorrect result.
 
-### The Myth of 100% Bug-Free Software
+Semantic errors are particularly dangerous because they may remain invisible while a program appears to run normally.
 
-The concept of completely error-free software is more of a theoretical ideal than a practical reality. Studies suggest that typical software will have between 10 to 100 mistakes (or defects) per 1,000 lines of code {cite}`phipps1999comparing`{cite}`lipow1982number`. This of course largely depends on the type of software, the coding style and the use programming language. For Java, for instance, typical numbers are 50-80 defects per 1000 lines of code and 3 to 10 bugs per 1000 lines of code {cite}`phipps1999comparing` (for C++ those numbers were much higher!). Even well-tested software might have about 1 error per 1,000 lines. To put this in perspective, consider the size of some well-known software:
+## What Is Testing?
 
-- MATLAB: Approximately 100,000 lines of code.
-- Linux Kernel or Microsoft Office: About 10 million lines of code.
+Testing compares observed program behavior with expected behavior.
 
-Given these figures, it's clear that errors are inevitable in software development. These errors can have serious consequences, as exemplified by the Ariane 5 rocket failure in 1996 due to a software bug.
+A tiny test can look like this:
 
-### What is Testing?
+```python
+def add(a, b):
+    return a + b
 
-Testing in software development is the process of evaluating a system or its components with the intent to find whether it satisfies the specified requirements. It involves executing a system component to identify any gaps, errors, or missing requirements in contrast to the actual requirements.
 
-#### Manual vs. Automated Testing
+def test_add():
+    assert add(2, 3) == 5
+```
 
-- **Manual Testing**: This involves human testers playing the role of end-users and using all features of the application to ensure correct behavior.
-- **Automated Testing**: Uses software tools to run tests automatically, manage test data, and utilize results to improve software quality. It's faster and more reliable for repetitive tasks.
+The basic idea is:
 
-#### White Box vs. Black Box Testing
+```text
+Input -> run code -> compare result with expectation
+```
 
-- **White Box Testing**: Also known as clear box or glass box testing, focuses on the internal structures or workings of an application, as opposed to its functionality. It requires detailed programming skills.
-- **Black Box Testing**: Focuses on the functionality of the software without peering into its internal structures or workings. This approach tests the software from the user's perspective.
+## Manual vs. Automated Testing
 
-#### Types of Testing
+- **Manual testing:** a person runs the program, tries inputs, and evaluates the result.
+- **Automated testing:** test code performs the same checks reproducibly.
 
-- **Acceptance Testing**: Determines if the system satisfies the user and business requirements.
-- **System Testing**: Checks the complete integrated system to evaluate the system's compliance with its specified requirements.
-- **Integration Testing**: Focuses on the interfaces between units/components to ensure that they work together correctly.
-- **Unit Testing**: Involves testing individual components or units of a program to verify that each unit performs as designed. It is often the first level of testing and forms the basis for later testing levels.
+Manual testing remains useful, especially for interaction and user interfaces. Automated tests are much more reliable for checks that should be repeated frequently.
 
-### Conclusion
+## White-Box vs. Black-Box Testing
 
-Testing, in its various forms, is an essential practice in software development. It helps in identifying and fixing bugs before the software product is deployed, reducing the likelihood of failures and ensuring software quality. While achieving a completely bug-free application might be an unattainable goal, thorough testing can significantly reduce the number of defects and enhance the reliability and performance of the software product.
+- **White-box testing:** tests consider the internal structure or implementation.
+- **Black-box testing:** tests focus on input, output, and externally observable behavior.
+
+For many unit tests, a black-box perspective is useful: **What should this function do?** rather than **How is it implemented internally?**
+
+## Testing Levels
+
+Typical levels include:
+
+- **unit tests:** small units such as functions or classes,
+- **integration tests:** interaction between components,
+- **system tests:** larger complete systems,
+- **acceptance tests:** validation against user or business requirements.
+
+In this course, we start with unit tests and build from there.
+
+---
+
+## pytest in a Project
+
+We use **pytest** as our test framework.
+
+Add it as a development dependency:
+
+```bash
+uv add --dev pytest
+```
+
+Run the tests:
+
+```bash
+uv run pytest
+```
+
+Compact output:
+
+```bash
+uv run pytest -q
+```
+
+One file:
+
+```bash
+uv run pytest tests/test_math.py
+```
+
+One test:
+
+```bash
+uv run pytest tests/test_math.py::test_add
+```
+
+## How Does pytest Discover Tests?
+
+Tests typically live in a dedicated `tests/` directory:
+
+```text
+my-project/
+├── src/
+│   └── my_project/
+│       └── math_utils.py
+└── tests/
+    └── test_math_utils.py
+```
+
+pytest discovers files and functions with standard test names, for example:
+
+```python
+def test_add():
+    ...
+```
+
+## A Good Unit Test
+
+A useful mental model is **Arrange – Act – Assert**:
+
+```python
+def test_average():
+    # Arrange
+    values = [2, 4, 6]
+
+    # Act
+    result = sum(values) / len(values)
+
+    # Assert
+    assert result == 4
+```
+
+Not every test needs these comments, but the structure should be clear.
+
+### Properties of good tests
+
+Good tests should ideally be:
+
+- **small** – focused on one clear behavior,
+- **understandable** – the expected behavior is visible,
+- **reproducible** – same code + same input -> same result,
+- **independent** – one test should not depend on another running first,
+- **fast enough** to run frequently.
+
+## Test More Than the Happy Path
+
+For a function, consider more than ordinary input:
+
+```text
+normal case
+boundary case
+empty input
+invalid input
+```
+
+Example:
+
+```python
+def divide(a, b):
+    if b == 0:
+        raise ValueError("b must not be zero")
+    return a / b
+```
+
+The failure case is part of the specification too:
+
+```python
+import pytest
+
+
+def test_divide_by_zero():
+    with pytest.raises(ValueError):
+        divide(10, 0)
+```
+
+## Tests and Bugs
+
+When a bug is found, a strong workflow is often:
+
+1. write a test that reproduces the bug,
+2. verify that the test fails,
+3. fix the code,
+4. run the full test suite again.
+
+This does not only repair the bug; it also protects against a future regression.
+
+## Tests Are Not a Mathematical Guarantee
+
+A green test run means:
+
+> All **written** tests passed.
+
+It does not mean:
+
+> The program is guaranteed to be bug-free.
+
+The quality of a test suite depends on whether important requirements, edge cases, and failure modes are covered meaningfully.
+
+## Conclusion
+
+Testing makes expected behavior explicit and repeatedly verifiable. This is why it comes **before** formatting/linting and CI in our workflow: first we define what the code should do, then we automate additional quality checks, and finally CI runs all checks for every change.

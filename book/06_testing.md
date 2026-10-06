@@ -1,47 +1,203 @@
 # Warum brauchen wir Testing?
 
-Das Testen ist ein integraler Bestandteil der Softwareentwicklung und stellt sicher, dass der Code korrekt funktioniert und die festgelegten Anforderungen erfüllt. Es ist wichtig zu verstehen, dass selbst gut geschriebener und korrekt formatierter Code nicht automatisch fehlerfrei ist. In dieser erweiterten Einführung werden wir die Notwendigkeit des Testens, verschiedene Fehlerarten, die Realität fehlerfreier Software und unterschiedliche Testmethoden genauer beleuchten.
+Testen ist ein integraler Bestandteil der Softwareentwicklung. Selbst gut geschriebener und sauber formatierter Code ist nicht automatisch korrekt. Tests helfen uns zu prüfen, ob Code die festgelegten Anforderungen erfüllt – und ob er dies nach späteren Änderungen immer noch tut.
 
 ## Die Notwendigkeit des Testens
 
-### Verständnis der verschiedenen Fehlertypen
+### Verschiedene Fehlertypen
 
-In der Programmierung lassen sich Fehler allgemein in drei Kategorien einteilen:
+In der Programmierung begegnen uns unterschiedliche Arten von Fehlern:
 
-- **Syntaxfehler**: Dies sind grammatikalische Fehler im Code, die verhindern, dass das Programm ausgeführt wird. Sie sind normalerweise am einfachsten zu erkennen und zu beheben.
-- **Ausnahmen**: Dies sind Laufzeitfehler, die aufgrund von Anomalien während der Programmausführung auftreten, wie etwa der Versuch, durch Null zu teilen.
-- **Semantische Fehler**: Diese sind am schwerwiegendsten und betreffen logische Fehler. Das Programm stürzt nicht ab, liefert aber falsche Ergebnisse.
+- **Syntaxfehler:** Der Code ist grammatikalisch ungültig und kann nicht ausgeführt werden.
+- **Exceptions / Laufzeitfehler:** Der Code startet, scheitert aber in einer bestimmten Situation, z. B. bei einer Division durch Null.
+- **Semantische Fehler:** Der Code läuft ohne Absturz, liefert aber ein falsches Ergebnis.
 
-### Der Mythos der 100% fehlerfreien Software
+Gerade semantische Fehler sind gefährlich, weil sie nicht automatisch sichtbar werden. Ein Programm kann scheinbar problemlos laufen und trotzdem falsche Resultate produzieren.
 
-Das Konzept völlig fehlerfreier Software ist eher ein theoretisches Ideal als eine praktische Realität. Studien legen nahe, dass typische Software zwischen 10 und 100 Fehler (oder Defekte) pro 1.000 Codezeilen aufweist {cite}`phipps1999comparing`{cite}`lipow1982number`. Dies hängt natürlich stark von der Art der Software, dem Codierungsstil und der verwendeten Programmiersprache ab. Bei Java zum Beispiel liegen die typischen Zahlen bei 50-80 Defekten pro 1.000 Codezeilen und 3 bis 10 Fehlern pro 1.000 Zeilen {cite}`phipps1999comparing` (für C++ waren diese Zahlen deutlich höher!). Selbst gut getestete Software könnte etwa einen Fehler pro 1.000 Zeilen aufweisen. Um dies in Perspektive zu setzen, betrachten wir die Größe einiger bekannter Software:
+## Was ist Testen?
 
-- MATLAB: Ungefähr 100.000 Codezeilen.
-- Linux-Kernel oder Microsoft Office: Etwa 10 Millionen Codezeilen.
+Beim Testen vergleichen wir das beobachtete Verhalten eines Programms mit dem erwarteten Verhalten.
 
-Angesichts dieser Zahlen ist klar, dass Fehler in der Softwareentwicklung unvermeidlich sind. Diese Fehler können schwerwiegende Folgen haben, wie das Beispiel des Ariane-5-Raketenversagens im Jahr 1996 aufgrund eines Softwarefehlers zeigt.
+Ein sehr kleiner Test kann so aussehen:
 
-### Was ist Testen?
+```python
+def add(a, b):
+    return a + b
 
-Das Testen in der Softwareentwicklung ist der Prozess der Bewertung eines Systems oder seiner Komponenten, um festzustellen, ob es die festgelegten Anforderungen erfüllt. Es umfasst die Ausführung einer Systemkomponente, um Lücken, Fehler oder fehlende Anforderungen im Vergleich zu den tatsächlichen Anforderungen zu identifizieren.
 
-#### Manuelles vs. automatisiertes Testen
+def test_add():
+    assert add(2, 3) == 5
+```
 
-- **Manuelles Testen**: Dabei spielen menschliche Tester die Rolle der Endbenutzer und nutzen alle Funktionen der Anwendung, um korrektes Verhalten sicherzustellen.
-- **Automatisiertes Testen**: Hier werden Softwaretools verwendet, um Tests automatisch auszuführen, Testdaten zu verwalten und Ergebnisse zur Verbesserung der Softwarequalität zu nutzen. Es ist schneller und zuverlässiger für sich wiederholende Aufgaben.
+Die Idee ist einfach:
 
-#### White-Box- vs. Black-Box-Testing
+```text
+Input -> Code ausführen -> Ergebnis mit Erwartung vergleichen
+```
 
-- **White-Box-Testen**: Auch als Clear-Box- oder Glass-Box-Testen bekannt, konzentriert es sich auf die internen Strukturen oder Funktionsweisen einer Anwendung im Gegensatz zu deren Funktionalität. Es erfordert detaillierte Programmierkenntnisse.
-- **Black-Box-Testen**: Konzentriert sich auf die Funktionalität der Software, ohne die internen Strukturen oder Funktionsweisen zu betrachten. Dieser Ansatz testet die Software aus der Perspektive des Benutzers.
+## Manuelles vs. automatisiertes Testen
 
-#### Testarten
+- **Manuelles Testen:** Eine Person führt das Programm aus, probiert Eingaben aus und beurteilt das Ergebnis.
+- **Automatisiertes Testen:** Testcode führt dieselben Prüfungen reproduzierbar aus.
 
-- **Akzeptanztest**: Bestimmt, ob das System die Benutzer- und Geschäftsanforderungen erfüllt.
-- **Systemtest**: Überprüft das vollständig integrierte System, um die Konformität des Systems mit den festgelegten Anforderungen zu bewerten.
-- **Integrationstest**: Konzentriert sich auf die Schnittstellen zwischen Einheiten/Komponenten, um sicherzustellen, dass sie korrekt zusammenarbeiten.
-- **Unit-Test**: Umfasst das Testen einzelner Komponenten oder Einheiten eines Programms, um zu überprüfen, ob jede Einheit wie vorgesehen funktioniert. Es ist oft die erste Teststufe und bildet die Grundlage für spätere Teststufen.
+Manuelles Testen bleibt wichtig, besonders für Interaktion und Benutzeroberflächen. Für häufig wiederholte Prüfungen ist automatisiertes Testen aber wesentlich zuverlässiger.
 
-### Fazit
+## White-Box- vs. Black-Box-Testing
 
-Das Testen in seinen verschiedenen Formen ist eine wesentliche Praxis in der Softwareentwicklung. Es hilft, Fehler zu identifizieren und zu beheben, bevor das Softwareprodukt bereitgestellt wird, reduziert die Wahrscheinlichkeit von Ausfällen und stellt die Qualität der Software sicher. Während es vielleicht unerreichbar ist, eine vollständig fehlerfreie Anwendung zu erstellen, kann gründliches Testen die Anzahl der Defekte erheblich reduzieren und die Zuverlässigkeit und Leistung des Softwareprodukts verbessern.
+- **White-Box-Testing:** Tests berücksichtigen die interne Struktur oder Implementierung.
+- **Black-Box-Testing:** Tests betrachten vor allem Ein- und Ausgaben bzw. das beobachtbare Verhalten.
+
+Für viele Unit-Tests ist eine Black-Box-Perspektive hilfreich: **Was soll diese Funktion leisten?** und nicht **Wie genau ist sie intern implementiert?**
+
+## Testebenen
+
+Typische Ebenen sind:
+
+- **Unit Tests:** kleine Einheiten wie Funktionen oder Klassen,
+- **Integrationstests:** Zusammenspiel mehrerer Komponenten,
+- **Systemtests:** größeres Gesamtsystem,
+- **Akzeptanztests:** Prüfung aus Sicht der Anforderungen bzw. Nutzer:innen.
+
+In diesem Kurs beginnen wir mit Unit Tests und bauen darauf auf.
+
+---
+
+## pytest im Projekt
+
+Wir verwenden **pytest** als Testframework.
+
+Als Entwicklungsabhängigkeit hinzufügen:
+
+```bash
+uv add --dev pytest
+```
+
+Tests ausführen:
+
+```bash
+uv run pytest
+```
+
+Kurze Ausgabe:
+
+```bash
+uv run pytest -q
+```
+
+Eine einzelne Datei:
+
+```bash
+uv run pytest tests/test_math.py
+```
+
+Einen einzelnen Test:
+
+```bash
+uv run pytest tests/test_math.py::test_add
+```
+
+## Wie findet pytest Tests?
+
+Typischerweise liegen Tests in einem eigenen `tests/`-Ordner:
+
+```text
+my-project/
+├── src/
+│   └── my_project/
+│       └── math_utils.py
+└── tests/
+    └── test_math_utils.py
+```
+
+pytest erkennt standardmäßig Dateien und Funktionen mit passenden Testnamen, z. B.:
+
+```python
+def test_add():
+    ...
+```
+
+## Ein guter Unit Test
+
+Ein hilfreiches Denkmuster ist **Arrange – Act – Assert**:
+
+```python
+def test_average():
+    # Arrange
+    values = [2, 4, 6]
+
+    # Act
+    result = sum(values) / len(values)
+
+    # Assert
+    assert result == 4
+```
+
+Nicht jeder Test muss diese Kommentare enthalten. Die Struktur sollte aber erkennbar sein.
+
+### Eigenschaften guter Tests
+
+Gute Tests sind möglichst:
+
+- **klein** – sie prüfen einen klaren Sachverhalt,
+- **verständlich** – der erwartete Fall ist erkennbar,
+- **reproduzierbar** – gleicher Code + gleiche Eingabe -> gleiches Ergebnis,
+- **unabhängig** – ein Test sollte nicht davon abhängen, dass ein anderer vorher lief,
+- **schnell genug**, dass man sie häufig ausführen möchte.
+
+## Nicht nur den Happy Path testen
+
+Für eine Funktion sollten wir nicht nur normale Eingaben betrachten:
+
+```text
+normaler Fall
+Grenzfall
+leere Eingabe
+ungültige Eingabe
+```
+
+Beispiel:
+
+```python
+def divide(a, b):
+    if b == 0:
+        raise ValueError("b must not be zero")
+    return a / b
+```
+
+Der Fehlerfall gehört ebenfalls zur Spezifikation:
+
+```python
+import pytest
+
+
+def test_divide_by_zero():
+    with pytest.raises(ValueError):
+        divide(10, 0)
+```
+
+## Tests und Bugs
+
+Wenn ein Bug gefunden wurde, ist ein guter Workflow oft:
+
+1. einen Test schreiben, der den Bug reproduziert,
+2. prüfen, dass der Test wirklich fehlschlägt,
+3. den Code korrigieren,
+4. alle Tests erneut ausführen.
+
+Damit bleibt der Bug nicht nur repariert – wir schützen den Code gleichzeitig vor einer späteren Regression.
+
+## Tests sind keine mathematische Garantie
+
+Ein grüner Testlauf bedeutet:
+
+> Alle **geschriebenen** Tests sind erfolgreich.
+
+Er bedeutet nicht:
+
+> Das Programm ist garantiert fehlerfrei.
+
+Die Qualität einer Test-Suite hängt davon ab, ob die wichtigen Anforderungen, Randfälle und Fehlerfälle sinnvoll abgedeckt sind.
+
+## Fazit
+
+Testing macht Verhalten explizit und wiederholbar überprüfbar. Genau deshalb kommt es in unserem Workflow **vor** Formatting/Linting und CI: Zuerst definieren wir, was der Code tun soll. Danach automatisieren wir zusätzliche Qualitätschecks und lassen schließlich alle Checks in der CI laufen.

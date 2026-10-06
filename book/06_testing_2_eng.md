@@ -1,6 +1,10 @@
-# Code Testing (2)
+# Code Testing (2): pytest Tools for Growing Projects
 
-In this part we’ll level up with a few powerful `pytest` features. These tools help you express intent clearly, avoid duplication, and keep test suites fast and maintainable—especially as projects grow. We’ll look at **fixtures**, **parameterization**, **temporary paths**, and **monkeypatching**. Each solves a common testing problem: *setup/teardown*, *covering many inputs*, *isolating the filesystem*, and *controlling behavior of dependencies*.
+In the first testing chapter we wrote basic unit tests. In this part we’ll level up with a few powerful `pytest` features. These tools help you express intent clearly, avoid duplication, and keep test suites fast and maintainable—especially as projects grow. We’ll look at **fixtures**, **parameterization**, **temporary paths**, and **monkeypatching**. Each solves a common testing problem: *setup/teardown*, *covering many inputs*, *isolating the filesystem*, and *controlling behavior of dependencies*.
+
+All examples can be executed with `uv run pytest`.
+
+---
 
 ## Fixtures
 
@@ -53,7 +57,7 @@ Pytest executes `test_square` three times—once per (input, expected) pair. For
 @pytest.mark.parametrize(
     "test_input,expected",
     [(3, 9), (5, 25), (10, 100)],
-    ids=["3^2", "5^2", "10^2"]
+    ids=["3^2", "5^2", "10^2"],
 )
 def test_square(test_input, expected):
     assert test_input ** 2 == expected
@@ -167,3 +171,13 @@ def test_env(monkeypatch):
 Pytest’s **fixtures** keep setup tidy and reusable, **parameterization** scales a single test across many inputs, **`tmp_path`** isolates filesystem interactions, and **monkeypatching** lets you control external behavior. Together, these features make tests clearer, faster to write, and more robust—exactly what you need as your project grows.
 
 ---
+
+## Practical Workflow
+
+```bash
+uv run pytest -q
+uv run pytest tests/test_module.py
+uv run pytest -k "name_part"
+```
+
+With fixtures and monkeypatching, use as much isolation as necessary but no more. Prefer testing real behavior directly; use test doubles for dependencies that would otherwise be slow, random, or external.
