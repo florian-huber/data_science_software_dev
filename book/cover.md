@@ -1,6 +1,6 @@
-<img src="../images/cover_german.png" alt="cover image"/>
+<img src="../images/cover_software_engineering.png" alt="cover image"/>
 
-# Software Development für Data Scientists (mit Python)
+# Software Engineering für Data Scientists
 
 **Florian Huber**
 
