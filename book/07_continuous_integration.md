@@ -1,155 +1,315 @@
-Hier ist die deutsche Fassung – Struktur, Codeblöcke und Hervorhebungen bleiben erhalten:
-
 # Einführung in Continuous Integration
 
 ## 1. Einführung
 
 ### Was ist Continuous Integration?
 
-Continuous Integration (CI) bezeichnet die Praxis, kleine, häufige Codeänderungen in einen gemeinsamen Main-Branch zu mergen und diese Änderungen sofort mit automatisierten Builds und Tests zu verifizieren. Anstatt am Ende eines Sprints große, riskante Integrationen vorzunehmen, fördert CI viele sichere, inkrementelle Integrationen – oft mehrmals täglich –, sodass Probleme dort entdeckt werden, wo sie entstanden sind, und solange der Kontext noch frisch ist.
+Continuous Integration (CI) bezeichnet die Praxis, kleine, häufige Codeänderungen in einen gemeinsamen Hauptbranch zu integrieren und diese Änderungen automatisch zu verifizieren.
+
+Für unseren Kurs ist der wichtigste Gedanke sehr konkret:
+
+> Die Checks, die lokal wichtig sind, sollen bei Pushes und Pull Requests **automatisch und reproduzierbar** erneut laufen.
+
+Wir haben diese Checks bereits kennengelernt:
+
+```bash
+uv run pytest
+uv run ruff check .
+uv run ruff format --check .
+```
+
+CI erfindet also zunächst keine neue Qualitätslogik. Sie automatisiert unseren bestehenden Workflow.
 
 ### Zweck und Vorteile
 
-Das primäre Ziel von CI ist schnelles, verwertbares Feedback. Wenn sich ein Defekt einschleicht, informiert uns die Pipeline zügig, damit wir ihn beheben können, bevor er größere Auswirkungen hat. Die Ergebnisse sind greifbar:
+Das primäre Ziel von CI ist schnelles, verwertbares Feedback:
 
-* **Frühe Fehlererkennung** senkt die Kosten für Korrekturen und verhindert das Aufstauen von Regressionen.
-* **Verbesserte Qualität** durch häufiges Testen und statische Analysen.
-* **Automatisierung** von Build-, Lint- und Testschritten spart Entwicklerzeit und reduziert menschliche Fehler.
-* **Transparente Zusammenarbeit**: ein gemeinsames Statussignal zu jedem Commit und Pull Request.
+- **Frühe Fehlererkennung** verhindert, dass Regressionen lange unbemerkt bleiben.
+- **Automatische Tests** prüfen erwartetes Verhalten.
+- **Ruff-Checks** prüfen automatisierbare Codequalität und Formatierung.
+- **Reproduzierbarkeit** zeigt, dass das Projekt nicht nur in einer einzelnen lokalen Umgebung funktioniert.
+- **Transparenz im Pull Request** gibt dem Team ein gemeinsames Statussignal.
 
-> CI konzentriert sich darauf, Änderungen früh zu *verifizieren*; CD (Continuous Delivery/Deployment) baut auf CI auf, um Änderungen *sicher und häufig zu veröffentlichen*.
+> CI ersetzt kein Code Review. Ein grüner Workflow bedeutet nur: **Die automatisierten Checks sind erfolgreich.**
 
 ---
 
-## 2. Ein GitHub-Actions-Workflow einrichten
+## 2. GitHub Actions
 
-GitHub Actions ist die integrierte CI/CD-Plattform von GitHub. Ein „Workflow“ beschreibt, **wann** etwas läuft und **was** ausgeführt wird. Für Python-Projekte installiert ein guter Einstiegs-Workflow die Abhängigkeiten, führt Linter aus und startet Tests.
+GitHub Actions ist die integrierte Automatisierungsplattform von GitHub. Workflows liegen im Repository unter:
 
-### Eine Workflow-Datei erstellen
+```text
+.github/workflows/
+```
 
-Workflows liegen als YAML-Dateien unter `.github/workflows/`. Hier ist ein modernes, minimales Beispiel, das bei Pushes und Pull Requests läuft und eine typische Python-Toolchain zeigt:
+Zum Beispiel:
+
+```text
+.github/workflows/ci.yml
+```
+
+Ein Workflow definiert:
+
+1. **Wann** soll er laufen?
+2. **Auf welchem Runner**?
+3. **Welche Schritte** werden ausgeführt?
+
+## 3. Minimaler Kurs-Workflow mit uv
 
 ```yaml
 name: Python CI
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
 
 jobs:
-  build:
+  quality:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check out code
-        uses: actions/checkout@v4
+      - name: Check out repository
+        uses: actions/checkout@v7
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v10
         with:
-          python-version: '3.12'
-          cache: 'pip'
+          enable-cache: true
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install ruff pytest
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Sync project
+        run: uv sync --locked
 
-      - name: Lint with ruff
-        run: |
-          ruff check .
-          ruff format --check .
+      - name: Run tests
+        run: uv run --locked pytest -q
 
-      - name: Test with pytest
-        run: pytest -q
+      - name: Run Ruff linter
+        run: uv run --locked ruff check .
+
+      - name: Check formatting
+        run: uv run --locked ruff format --check .
 ```
 
-* `actions/checkout@v4` lädt die Inhalte deines Repos.
-* `actions/setup-python@v5` installiert den gewünschten Interpreter und aktiviert `pip`-Caching für schnellere Folgeläufe.
-* Im Beispiel kommen **ruff** (schneller Linter/Formatter) und **pytest** zum Einsatz; tausche die Tools bei Bedarf aus (z. B. `flake8`, `black`, `mypy`).
+Dieser Workflow entspricht absichtlich fast genau dem lokalen Workflow.
 
-> Tipp: Versioniere Workflow-Dateien wie normalen Code. Behandle die Pipeline als Teil deines Projekts.
+### Warum `--locked`?
 
----
+`uv.lock` liegt im Repository. Mit `--locked` verlangen wir, dass CI genau zu diesem Lockfile passt und es nicht still aktualisiert.
 
-## 3. Workflow-Auslöser verstehen
-
-Ein Workflow-Auslöser definiert, **wann** deine CI läuft. Auslöser können an die Arbeitsweise deines Teams angepasst werden: bei jedem Push, um Probleme früh zu erkennen, und bei Pull Requests, um Merges mit erforderlichen Checks abzusichern. Für weniger häufige Aufgaben – etwa Abhängigkeits-Updates – kannst du Läufe planen oder manuell auslösen.
-
-Häufige Auslöser, die du sehen wirst:
-
-* **`push`** – läuft, wenn Commits auf bestimmte Branches/Tags gepusht werden.
-* **`pull_request`** – läuft beim Erstellen/Aktualisieren eines PR, um Änderungen vor dem Merge zu validieren.
-* **`workflow_dispatch`** – manuelles Auslösen in der GitHub-UI (ideal für Wartungsjobs).
-* **`schedule`** – läuft nach Cron-Zeitplan (z. B. nachts).
-* **`release`/`tag`** – läuft, wenn eine Release veröffentlicht oder ein Tag erstellt wird.
-
-Du kannst Auslöser filtern, um die CI auf relevante Änderungen zu fokussieren (z. B. Tests nur ausführen, wenn sich Python-Dateien ändern, oder nur auf dem Branch `main`).
+Wenn `pyproject.toml` geändert wurde, aber `uv.lock` nicht dazu passt, soll CI fehlschlagen. Das ist hilfreiches Feedback.
 
 ---
 
-## 4. Events handhaben und konfigurieren
+## 4. Die Schritte verstehen
 
-### Event-Typen
+### Repository auschecken
 
-* **Push-Event**: Validiert alles, was auf deinen Branches landet; ideal für schnelles Feedback an Contributor.
-* **Pull-Request-Event**: Fügt PRs Statuschecks hinzu; kombiniere dies mit Branch-Schutzregeln, um grüne Checks vor dem Merge zu erzwingen.
-* **Schedule-Event**: Nützlich für nächtliche Testläufe, Dependency-Scans oder langlaufende Szenarien.
-* **Manuell (`workflow_dispatch`)**: Praktisch für Ad-hoc-Aufgaben wie das Neu-Generieren von Doku.
+```yaml
+- uses: actions/checkout@v7
+```
 
-### Event-Auslöser konfigurieren
+Der Runner erhält dadurch den Code des Repositories.
 
-Mit dem Schlüssel `on` steuerst du, wann der Workflow läuft. Das folgende Beispiel beschränkt CI auf den Branch `main` – sowohl für Push als auch PR – und nur, wenn relevante Pfade geändert wurden:
+### uv installieren
+
+```yaml
+- uses: astral-sh/setup-uv@v10
+```
+
+Die offizielle setup-uv-Action installiert uv und kann den uv-Cache verwenden.
+
+Für besonders sicherheitskritische Produktions-Repositories werden Actions häufig auf einen konkreten Commit-SHA gepinnt. Für den Kurs ist die Major-Version deutlich lesbarer; wichtig ist, zu verstehen, dass Actions ebenfalls externe Dependencies sind.
+
+### Projekt synchronisieren
+
+```bash
+uv sync --locked
+```
+
+Damit wird die Projektumgebung auf Basis von `pyproject.toml` und `uv.lock` aufgebaut.
+
+### Tests und Ruff
+
+```bash
+uv run --locked pytest -q
+uv run --locked ruff check .
+uv run --locked ruff format --check .
+```
+
+CI verändert den Code nicht. Deshalb verwenden wir hier **kein** `ruff check --fix` und **kein** `ruff format` ohne `--check`.
+
+---
+
+## 5. Workflow-Auslöser
+
+Ein einfacher Kursworkflow läuft bei Pushes und Pull Requests:
 
 ```yaml
 on:
   push:
-    branches: [ main ]
-    paths:
-      - '**.py'
-      - 'pyproject.toml'
-      - '.github/workflows/python-ci.yml'
   pull_request:
-    branches: [ main ]
-    paths:
-      - '**.py'
-      - 'pyproject.toml'
 ```
 
-> Pfad-Filter halten CI schnell, indem Läufe für nicht relevante Änderungen übersprungen werden (z. B. nur README-Änderungen).
+Häufige weitere Events sind:
+
+- `workflow_dispatch` – manueller Start,
+- `schedule` – zeitgesteuerte Ausführung,
+- `release` – Reaktion auf Releases.
+
+Für den Einstieg reichen `push` und `pull_request`.
+
+### Nur bestimmte Branches
+
+```yaml
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+```
+
+Ob CI nur auf `main` oder auch auf Feature-Branches bei Pushes laufen soll, ist eine Teamentscheidung. Pull Requests gegen `main` sollten in unserem Kurs immer geprüft werden.
 
 ---
 
-## 5. Die Matrix-Strategie für Tests auf mehreren Umgebungen nutzen
+## 6. Was passiert bei einem Fehler?
 
-Wenn du mehrere Python-Versionen oder Betriebssysteme unterstützt, führt die **Matrix-Strategie** denselben Job über verschiedene Variationen aus. So bekommst du Sicherheit, dass dein Paket überall funktioniert, wo du es versprichst. Das folgende Beispiel testet alle drei Betriebssysteme jeweils mit Python 3.10 bis 3.13.
+Jeder Step liefert einen Exit-Code.
+
+```text
+0  -> erfolgreich
+!=0 -> Fehler
+```
+
+pytest, Ruff und uv nutzen genau dieses Prinzip. Darum können dieselben CLI-Tools lokal und in CI verwendet werden.
+
+Wenn z. B. ein Test fehlschlägt:
+
+```bash
+uv run pytest -q
+```
+
+endet dieser Step mit Fehlerstatus und der Job wird rot.
+
+## 7. CI im Pull Request
+
+Der Kursworkflow wird damit:
+
+```text
+Issue
+  -> Branch
+  -> Commits
+  -> Pull Request
+  -> CI
+  -> Code Review
+  -> Merge
+```
+
+CI und Review haben unterschiedliche Rollen:
+
+```text
+CI:     Sind die automatisierten Regeln erfüllt?
+Review: Ist die Änderung fachlich, verständlich und angemessen?
+```
+
+## 8. Branch Protection / Rulesets
+
+GitHub kann so konfiguriert werden, dass ein Pull Request erst gemerged werden darf, wenn bestimmte Checks erfolgreich sind.
+
+Typische Regeln:
+
+- Pull Request erforderlich,
+- CI-Check erforderlich,
+- Review erforderlich,
+- Force Push auf `main` verhindern.
+
+Damit wird aus einer Empfehlung ein technisch unterstützter Teamworkflow.
+
+---
+
+## 9. Matrix-Tests: optionaler nächster Schritt
+
+Wenn ein Projekt mehrere Python-Versionen unterstützen soll, kann derselbe Testjob mehrfach ausgeführt werden:
 
 ```yaml
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
+  test:
     strategy:
-      fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ["3.10", "3.11", "3.12", "3.13"]
+        python-version: ["3.12", "3.13"]
+    runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
         with:
           python-version: ${{ matrix.python-version }}
-          cache: 'pip'
-      - run: |
-          python -m pip install --upgrade pip
-          pip install ruff pytest
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - run: ruff check .
-      - run: pytest -q
+      - run: uv sync --locked
+      - run: uv run --locked pytest -q
 ```
 
-* `fail-fast: false` sorgt dafür, dass andere Matrix-Jobs weiterlaufen, auch wenn einer fehlschlägt – so erhältst du das vollständige Bild.
-* Mit `include`/`exclude` kannst du bestimmte Kombinationen feinsteuern.
+Für normale Kursprojekte ist eine Matrix nicht zwingend notwendig. Sie ist sinnvoll, wenn mehrere Python-Versionen tatsächlich Teil der unterstützten Plattform sind.
 
 ---
 
-## 6. Fazit
+## 10. Typische Fehler
 
-CI macht Qualität zum Standard, indem jede Änderung automatisch verifiziert wird. Mit GitHub Actions kannst du einfach starten – Linting und Tests bei Push und PR – und dann nach Bedarf Matrizen, Caching, Artefakte und Schutzregeln ergänzen, wenn dein Projekt wächst. Das Ergebnis: schnelleres Feedback, weniger Regressionen und ein Code-Base, die dein Team mit Zuversicht weiterentwickeln kann.
+### Lokal grün, CI rot
+
+Prüfen:
+
+- Wurde `uv.lock` committed?
+- Sind alle benötigten Dateien im Repository?
+- Verlässt sich Code auf absolute lokale Pfade?
+- Fehlen Umgebungsvariablen oder Secrets?
+- Wurde lokal wirklich derselbe Befehl ausgeführt?
+
+### CI repariert Code
+
+Vermeiden:
+
+```yaml
+run: uv run ruff format .
+```
+
+Besser:
+
+```yaml
+run: uv run ruff format --check .
+```
+
+CI soll den committed Zustand **prüfen**, nicht heimlich umschreiben.
+
+### Tests hängen von Reihenfolge oder lokalen Daten ab
+
+Dann ist das ein Testdesign-Problem. Gute Tests sollten reproduzierbar und möglichst isoliert sein.
+
+---
+
+## 11. Minimaler Workflow zum Merken
+
+Lokal:
+
+```bash
+uv sync
+uv run pytest
+uv run ruff check .
+uv run ruff format --check .
+```
+
+CI:
+
+```text
+checkout
+-> setup uv
+-> uv sync --locked
+-> pytest
+-> ruff check
+-> ruff format --check
+```
+
+## Fazit
+
+CI ist kein eigenes Qualitätsuniversum. Sie macht unseren lokalen Entwicklungsworkflow reproduzierbar und automatisch. Genau deshalb haben wir zuerst Testing und Ruff eingeführt und bauen **danach** die Pipeline: Die Pipeline führt bekannte Checks zuverlässig für jede Änderung aus.

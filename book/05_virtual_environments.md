@@ -1,205 +1,270 @@
-# Einführung: Python-Umgebungen für Data-Science-Projekte (venv, Miniconda/Mamba, Anaconda)
+# Virtuelle Python-Umgebungen mit uv
 
-Eine **virtuelle Umgebung** kapselt eine Python-Version und alle installierten Pakete vom Rest des Systems. Das macht Projekte **reproduzierbar**, verhindert **Versionskonflikte** (z. B. „Projekt A braucht NumPy 2.x, Projekt B 1.x“) und ermöglicht **saubere Deployments** (z. B. auf Servern/CI).
+Eine **virtuelle Umgebung** kapselt Python und installierte Pakete für ein bestimmtes Projekt. Dadurch können verschiedene Projekte unterschiedliche Abhängigkeiten verwenden, ohne sich gegenseitig zu beeinflussen.
+
+Für diesen Kurs verwenden wir dafür konsequent **uv**. Wir brauchen damit keinen parallelen Zoo aus `venv`, Conda, Mamba, Poetry und verschiedenen `pip`-Workflows.
 
 ---
 
 ## Warum brauchen wir virtuelle Umgebungen?
 
-* **Isolation:** Jede Umgebung hat ihre eigene Python-Version und Bibliotheken.
-* **Reproduzierbarkeit:** Anforderungen lassen sich als `requirements.txt` oder `environment.yml` festhalten und exakt wiederherstellen.
-* **Stabilität:** Updates oder Tests gefährden nicht andere Projekte oder das System-Python.
-* **Portabilität:** Ein Team kann identische Stände nutzen (wichtig für Lehre, Hausarbeiten, CI).
+Die zentralen Gründe bleiben dieselben:
 
----
+- **Isolation:** Projekt A kann andere Paketversionen verwenden als Projekt B.
+- **Reproduzierbarkeit:** Ein Team kann denselben Dependency-Stand wiederherstellen.
+- **Stabilität:** Projektabhängigkeiten verändern nicht das System-Python.
+- **Portabilität:** Lokaler Rechner und CI können aus denselben Projektdateien arbeiten.
 
-## Häufige Optionen im Überblick
+> **Faustregel:** Ein Projekt -> eine Projektumgebung.
 
-| Option                                                                            | Kurzbeschreibung                                         | Stärken                                            | Mögliche Nachteile                                | Typische Nutzung                                                              |
-| --------------------------------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------- |
-| **`venv`** (Standardbibliothek)                                                   | Eingebaute, schlanke Virtualisierung                     | Minimal, überall vorhanden, schnell                | Kein eigener Paket-Solver, reine `pip`-Welt       | Kleine bis mittlere Projekte, wenn nur PyPI nötig ist                         |
-| **Miniconda / Mambaforge / MicroMamba** (im Folgenden „**Mamba/Conda (leicht)**“) | Leichte Conda-Distributionen; mit **mamba** sehr schnell | Starker Solver, **conda-forge** + `pip`            | Etwas Setup-Aufwand                               | Data-Science, gemischte Stacks, schnelle Environment-Wechsel |
-| **Anaconda**                                                                      | Große Distribution mit vielen Paketen vorinstalliert     | Viele Tools mit dabei, GUI-Tools (Navigator) | Schwergewichtig, längere Downloads, mehr Speicher, mögliche Lizenzprobleme | Einsteiger:innen, Offline-/Workshop-Setups                                    |
+## Was ist `.venv/`?
 
-> **Faustregel:**
->
-> * **Leicht & schnell:** `venv` oder **Miniconda/Mamba**
-> * **Komfort/„alles dabei“:** **Anaconda**
-> * Bei vielen nativen Abhängigkeiten (NumPy/SciPy/Geo/ML) sind **Conda-Kanäle** oft stressärmer als reines `pip`.
+In unseren Projekten liegt die virtuelle Umgebung normalerweise direkt im Repository-Ordner:
 
----
+```text
+my-project/
+├── .venv/
+├── pyproject.toml
+├── uv.lock
+├── src/
+└── tests/
+```
 
-## Installation & Nutzung
+`.venv/` enthält installierte Pakete und einen Python-Interpreter bzw. Verweise darauf. Dieser Ordner ist **lokal erzeugt** und wird nicht committed.
 
-### 1) `venv` – ist bei Python schon dabei
+```gitignore
+.venv/
+```
 
-**Voraussetzung:** funktionierende Python-Installation (3.11/3.12/3.13).
+## Zwei sinnvolle uv-Workflows
 
-Venv ist sofort bei Python "mit dabei", d.h. es muss nichts extra installiert werden.
+### 1) Projekt-Workflow: der Standard im Kurs
 
-**Neue Umgebung anlegen & nutzen:**
+Wenn bereits eine `pyproject.toml` existiert, ist der normale Weg:
 
 ```bash
-# Linux/macOS
-python3 -m venv .venv
+uv sync
+```
+
+Falls `.venv/` noch nicht existiert, wird sie dabei angelegt. Gleichzeitig installiert uv die in `uv.lock` festgehaltenen Projektabhängigkeiten.
+
+Befehle starten wir dann mit:
+
+```bash
+uv run python --version
+uv run pytest
+uv run ruff check .
+```
+
+`uv run` stellt sicher, dass der Befehl in der zum Projekt gehörenden Umgebung läuft und synchronisiert das Projekt bei Bedarf.
+
+### 2) Eine reine virtuelle Umgebung mit `uv venv`
+
+Manchmal möchten wir unabhängig von einem vollständigen uv-Projekt nur eine virtuelle Umgebung erzeugen:
+
+```bash
+uv venv
+```
+
+Standardmäßig entsteht ebenfalls `.venv/`.
+
+Eine bestimmte Python-Version kann angefordert werden:
+
+```bash
+uv venv --python 3.13
+```
+
+Falls diese Python-Version noch nicht verfügbar ist, kann uv sie verwalten bzw. installieren.
+
+## Muss ich die Umgebung aktivieren?
+
+Nicht unbedingt.
+
+Der Kursworkflow bevorzugt:
+
+```bash
+uv run pytest
+```
+
+anstatt erst die Umgebung zu aktivieren und danach `pytest` aufzurufen.
+
+Aktivierung ist trotzdem möglich und manchmal für Editor- oder interaktive Workflows praktisch.
+
+### Linux/macOS
+
+```bash
 source .venv/bin/activate
+```
 
-# Windows (PowerShell)
-py -3 -m venv .venv
-.\.venv\Scripts\Activate.ps1
+### Windows PowerShell
 
-# Grundpakete aktualisieren
-python -m pip install --upgrade pip setuptools wheel
+```powershell
+.venv\Scripts\Activate.ps1
+```
 
-# Pakete installieren
-pip install numpy pandas matplotlib
+Danach zeigen:
 
-# Abhängigkeiten einfrieren / wiederherstellen
-pip freeze > requirements.txt
-pip install -r requirements.txt
+```bash
+python --version
+```
 
-# Deaktivieren
+und
+
+```bash
+which python
+```
+
+bzw. unter PowerShell:
+
+```powershell
+Get-Command python
+```
+
+welcher Interpreter verwendet wird.
+
+Deaktivieren:
+
+```bash
 deactivate
 ```
 
-**Tipp:** Umgebung im Projektordner `.venv/` ablegen und nicht committen.
+> Für normale Kursbefehle ist Aktivierung optional. `uv run ...` ist meist eindeutiger und plattformübergreifend leichter zu dokumentieren.
 
 ---
 
-### 2) Miniconda / Mambaforge / MicroMamba – flexibel & schnell
+## Pakete: `uv add` statt zufälliger Installationen
 
-> Empfehlung für Data-Science: **Mambaforge** (Conda + mamba + Standardkanal `conda-forge`) **oder** **MicroMamba** (sehr "leichtgewichtig", also keine umfangreiche eigene Software nötig).
-
-#### Option A: **Mambaforge / Miniconda**
-
-* **Download & Installation:**
-
-  * **Windows/macOS:** Installer von den Projektseiten laden und durchklicken.
-  * **Linux/macOS (Shell-Installer):**
-
-    ```bash
-    # Beispiel Mambaforge (aktuelle URL der Projektseite entnehmen)
-    curl -LO https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh
-    bash Mambaforge-*.sh    # Lizenz akzeptieren, Install-Pfad bestätigen
-    exec $SHELL             # neue Shell mit init-Skripten starten
-    ```
-* **Shell-Initialisierung (falls nötig):**
-
-  ```bash
-  conda init bash   # oder zsh/fish/pwsh je nach Shell
-  exec $SHELL
-  ```
-* **mamba nachrüsten (falls nur conda vorhanden):**
-
-  ```bash
-  conda install -n base -c conda-forge mamba
-  ```
-
-#### Option B: **MicroMamba** (ultraleicht)
-
-* **Einzeiler-Setup (Linux/macOS):**
-
-  ```bash
-  curl -L micro.mamba.pm/install.sh | bash
-  # Danach Shell initialisieren:
-  micromamba shell init -s bash -p ~/micromamba   # ggf. zsh/fish/pwsh
-  exec $SHELL
-  ```
-* **Windows (PowerShell, Scoop):**
-
-  ```powershell
-  scoop install micromamba
-  micromamba shell init -s powershell -p $env:USERPROFILE\micromamba
-  ```
-* **Hinweis:** `micromamba`-Befehle sind nahezu identisch zu `mamba`.
-
-#### Nutzung (mamba/conda/micromamba – Syntax ähnlich)
+In einem uv-Projekt sollten Projektabhängigkeiten über `uv add` eingetragen werden:
 
 ```bash
-# Neue Umgebung mit spezifischer Python-Version
-mamba create -n ds310 python=3.12
-
-# Aktivieren
-mamba activate ds310
-
-# Pakete aus conda-forge (empfohlen) installieren
-mamba install -c conda-forge numpy pandas matplotlib scikit-learn
-
-# PyPI-Pakete (nur falls benötigt) anschließend:
-pip install package_only_on_pypi
-
-# Umgebung als YAML exportieren (reproduzierbar!)
-mamba env export --from-history > environment.yml
-
-# Aus YAML neu erstellen
-mamba env create -f environment.yml
-
-# Aufräumen
-mamba env list
-mamba env remove -n ds310
+uv add numpy pandas
 ```
 
-**Kanäle:** Für moderne DS-Stacks ist `-c conda-forge` meist die beste Wahl (aktuelle Builds, viele Plattformen).
-
----
-
-### 3) Anaconda – „alles dabei“
-
-* **Download:** grafischer Installer für Windows/macOS, `.sh` für Linux.
-* **Installation:** durchklicken; optional **Anaconda Navigator** (GUI) verwenden.
-* **Erstkonfiguration (Terminal):**
-
-  ```bash
-  conda init bash   # oder zsh/fish/pwsh
-  exec $SHELL
-  ```
-* **Umgebungen & Pakete:**
-
-  ```bash
-  conda create -n ds310 python=3.12
-  conda activate ds310
-  conda install -c conda-forge numpy pandas jupyterlab seaborn
-  conda env export --from-history > environment.yml
-  conda env create -n ds310 -f environment.yml
-  ```
-* **Navigator (GUI):** Umgebungen anlegen, Pakete suchen, Jupyter starten – alles per Klick.
-
----
-
-## Prüfen, Aktualisieren, Deinstallieren
+Entwicklungswerkzeuge:
 
 ```bash
-# Versionen prüfen
-python --version
-pip --version
-conda --version     # bzw. mamba --version / micromamba --version
-
-# Basissystem aktualisieren (Conda/Mamba)
-mamba update -n base -c conda-forge conda mamba
-
-# Pakete in aktiver Env aktualisieren
-mamba update --all
-
-# (Teil-)Deinstallation:
-mamba remove paketname
-mamba env remove -n envname
+uv add --dev pytest ruff
 ```
+
+Dadurch werden `pyproject.toml` und `uv.lock` aktualisiert.
+
+Ein direktes
+
+```bash
+uv pip install some-package
+```
+
+kann für Experimente sinnvoll sein, verändert aber nicht automatisch die Projektabhängigkeiten in `pyproject.toml`. Für dauerhafte Projektabhängigkeiten ist daher `uv add` der bessere Kursstandard.
+
+---
+
+## `pyproject.toml` und `uv.lock`
+
+Die beiden Dateien haben unterschiedliche Aufgaben:
+
+```text
+pyproject.toml  -> direkte Anforderungen und Projektkonfiguration
+uv.lock         -> vollständig aufgelöster Dependency-Stand
+```
+
+Beide gehören ins Git-Repository.
+
+`.venv/` dagegen nicht:
+
+```text
+.venv/          -> lokale Installation, jederzeit neu erzeugbar
+```
+
+## Umgebung reproduzieren
+
+Nach einem frischen Clone:
+
+```bash
+git clone <repository-url>
+cd <repository>
+uv sync
+```
+
+Danach können die Projektbefehle direkt laufen:
+
+```bash
+uv run pytest
+uv run ruff check .
+```
+
+Das ist genau derselbe Grundgedanke, den wir später in der CI-Pipeline verwenden.
+
+---
+
+## Python-Versionen mit uv
+
+uv kann auch Python-Versionen verwalten.
+
+Verfügbare Interpreter anzeigen:
+
+```bash
+uv python list
+```
+
+Eine Python-Version installieren:
+
+```bash
+uv python install 3.13
+```
+
+In Projekten kann `.python-version` festhalten, welche Version standardmäßig verwendet werden soll.
+
+Wichtig bleibt zusätzlich die Angabe in `pyproject.toml`:
+
+```toml
+[project]
+requires-python = ">=3.12"
+```
+
+`.python-version` ist eine konkrete lokale/default Auswahl; `requires-python` beschreibt, welche Python-Versionen das Projekt unterstützt.
+
+---
+
+## Jupyter / VS Code
+
+Wenn Notebooks Teil des Projekts sind, kann `ipykernel` als Dev-Abhängigkeit hinzugefügt werden:
+
+```bash
+uv add --dev ipykernel
+```
+
+In VS Code kann anschließend der Python-Interpreter aus `.venv/` als Kernel ausgewählt werden.
+
+Dadurch verwendet das Notebook dieselben Projektabhängigkeiten wie Skripte, Tests und CI.
 
 ---
 
 ## Best Practices
 
-* **Ein Projekt ⇒ eine Umgebung.**
-* **Versionsnummern festhalten** (z. B. `python=3.12`, `numpy=2.*`).
-* **Wiederholbarkeit testen:** frische Umgebung aufsetzen und Projekt starten lassen.
-* **`conda-forge` bevorzugen**, dann erst `pip` für fehlende Pakete.
-* **Keine globalen Installationen** (`sudo pip install` vermeiden).
-* **`.venv/` und `envs/` nicht committen**; nur `requirements.txt`/`environment.yml`.
+- **Ein Projekt -> eine `.venv/`.**
+- `.venv/` nicht committen.
+- `pyproject.toml` und `uv.lock` committen.
+- Projektabhängigkeiten mit `uv add` verwalten.
+- Nach einem Clone `uv sync` ausführen.
+- Projektkommandos bevorzugt mit `uv run ...` starten.
+- Nicht gleichzeitig mehrere Environment-Manager im selben Projekt mischen, wenn es keinen konkreten Grund dafür gibt.
 
 ---
 
-## Kurze Entscheidungshilfe
+## Cheat Sheet
 
-* **Minimaler Overhead, reine PyPI-Pakete:** `venv`
-* **Viele native/NumPy/SciPy/ML-Pakete, schneller Solver:** Miniconda/Mamba (oder MicroMamba)
-* **Komplettlösung mit GUI & vielen Paketen ab Werk:** Anaconda
+| Ziel | Befehl |
+|---|---|
+| Projektumgebung erstellen/aktualisieren | `uv sync` |
+| Nur eine virtuelle Umgebung erstellen | `uv venv` |
+| venv mit bestimmtem Python | `uv venv --python 3.13` |
+| Befehl in Projektumgebung | `uv run <command>` |
+| Dependency hinzufügen | `uv add <package>` |
+| Dev-Dependency hinzufügen | `uv add --dev <package>` |
+| Python-Versionen anzeigen | `uv python list` |
+| Python installieren | `uv python install 3.13` |
+| Umgebung aktivieren (Linux/macOS) | `source .venv/bin/activate` |
+| Umgebung aktivieren (PowerShell) | `.venv\\Scripts\\Activate.ps1` |
+| Aktivierung beenden | `deactivate` |
+
+> **Merke:** Für den Kurs reicht meistens: `uv sync` und danach `uv run ...`.
