@@ -29,6 +29,9 @@
     <loc>http://localhost:3000/book/virtual-environments</loc>
   </url>
   <url>
+    <loc>http://localhost:3000/book/why-testing</loc>
+  </url>
+  <url>
     <loc>http://localhost:3000/book/testing</loc>
   </url>
   <url>
