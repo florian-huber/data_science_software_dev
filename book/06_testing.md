@@ -903,13 +903,3 @@ Er zeigt nur, dass der Code die Tests bestanden hat, die wir geschrieben haben.
 Die zentrale Kompetenz besteht deshalb nicht darin, möglichst viele `assert`-Statements zu schreiben.
 
 Sie besteht darin, **gute Testfälle zu finden**.
-
----
-
-> **Optional: aktuelles Security-Beispiel – PHP2Shell (2026)**
->
-> Im Oktober 2026 wurden unter dem Namen **PHP2Shell** mehrere kritische Speicherfehler in PHP veröffentlicht. Unter bestimmten Bedingungen können sie unter anderem die Ausführung von fremdem Code ermöglichen.
->
-> Das Beispiel zeigt eine weitere mögliche Konsequenz von Softwarefehlern: Ein Bug kann gleichzeitig eine **Sicherheitslücke** sein.
->
-> Für unsere Betrachtung ist aber wichtig: Aus dem Vorhandensein einer Sicherheitslücke können wir nicht automatisch schließen, dass „ein Unit Test gefehlt hat“. Security Testing ist ein eigenes großes Gebiet und umfasst deutlich mehr als Unit Tests.
