@@ -33,6 +33,7 @@ project:
         - file: book/05_virtual_environments.md
     - title: Testing and Continuous Integration
       children:
+        - file: book/06_why_testing.md
         - file: book/06_testing.md
         - file: book/06_testing_2.md
         - file: book/07_formatting_linting.md

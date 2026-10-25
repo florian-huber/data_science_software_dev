@@ -2,7 +2,7 @@
 
 Dieses Live Coding baut bewusst auf dem bisherigen Beispiel mit einem kleinen Blackjack-Modul auf. Ziel ist nicht, ein vollständiges Spiel zu entwickeln, sondern Schritt für Schritt zu zeigen, **warum** wir automatisierte Tests brauchen und wie pytest uns dabei unterstützt.
 
-> **Für Tutor:innen:** Die zentrale Geschichte der Session ist ein semantischer Fehler, den Python nicht meldet, pytest aber zuverlässig sichtbar macht.
+> **Hinweis:** Die zentrale Geschichte der Session ist ein semantischer Fehler, den Python nicht meldet, pytest aber zuverlässig sichtbar macht.
 
 ## 1. Projekt anlegen
 
